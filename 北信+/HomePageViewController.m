@@ -7,10 +7,20 @@
 //
 
 #import "HomePageViewController.h"
+#import "NewsViewController.h"
 #import "SDCycleScrollView.h"
-
+#import "NewsViewController.h"
+#import "PaperDetailsView.h"
+#import "MyClasses.h"
+#import "NewsView.h"
+#import "News.h"
 
 @interface HomePageViewController () <SDCycleScrollViewDelegate>
+
+@property(nonatomic, strong) UIScrollView *scrollView;
+@property (nonatomic, retain) NSDictionary *dict;
+@property (weak, nonatomic) UIButton *cover;
+@property(nonatomic, weak) PaperDetailsView *paper;
 
 
 @end
@@ -20,7 +30,10 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    [self initHomePage];
+    
+    NSString *httpUrl = @"http://cloud.bmob.cn/17f5e4c17ad52f4a/Get_News";
+    [self request:httpUrl];
+//    [self initHomePage];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -28,17 +41,15 @@
     // Dispose of any resources that can be recreated.
 }
 
-- (void)initHomePage
-{
+- (void)initHomePageWithDict:(NSDictionary *)dict
+{    
     CGSize ww = self.view.bounds.size;
     UIScrollView *scrollView = [[UIScrollView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height)];
     scrollView.backgroundColor = [UIColor clearColor];
     scrollView.showsVerticalScrollIndicator = NO;
     //当bounces属性设置为YES时，当UIScrollView中图片滑动到边界的时候会出现弹动的效果，就像是Linux中的果冻效果一样。当bounces属性设置为NO时，当UIScrollView中图片滑动到边界时会直接定在边界就不会有弹动的效果。
-    scrollView.bounces = NO;
+//    scrollView.bounces = NO;
     [self.view addSubview:scrollView];
-    // 设置ScrollView的滚动区域
-    scrollView.contentSize = CGSizeMake(ww.width, 800); // -----------------改
     //设置navigationbar的颜色
     [self.navigationController.navigationBar setBarTintColor:[UIColor colorWithRed:38/255.0 green:184/255.0 blue:242/255.0 alpha:1.0]];
     //设置navigationbar为不透明
@@ -55,10 +66,10 @@
     self.navigationItem.titleView = titleView;
     // 设置头像View
     UIImageView *userImgView= [[UIImageView alloc] init];
-    userImgView.frame = CGRectMake(16, 22, 40, 40);
+//    userImgView.frame = CGRectMake(16, 22, 40, 40);
+    userImgView.frame = CGRectMake(0, 0, 40, 40);
     userImgView.image = [UIImage imageNamed:@"user_name"];
     userImgView.backgroundColor = [UIColor blackColor];
-    [self.navigationController.view addSubview:userImgView];
     // 设置用户头像为圆形
     userImgView.layer.cornerRadius = userImgView.frame.size.width / 2;
     userImgView.clipsToBounds = YES;
@@ -67,7 +78,8 @@
     // 设置用户头像Button
     UIButton *userButton = [UIButton buttonWithType:UIButtonTypeCustom];
     userButton.frame = CGRectMake(0, 0, 40, 40);
-    userButton.backgroundColor = [UIColor clearColor];
+    // 把用户头像View添加到button上
+    [userButton addSubview:userImgView];
     [userButton addTarget:self action:@selector(userMessage) forControlEvents:UIControlEventTouchUpInside];
     UIBarButtonItem *leftItem = [[UIBarButtonItem alloc] initWithCustomView:userButton];
     self.navigationItem.leftBarButtonItem = leftItem;
@@ -111,6 +123,11 @@
     className1.font = [UIFont systemFontOfSize:11];
     className1.textColor = [UIColor blackColor];
     [classesView1 addSubview:className1];
+    UIButton *classBtn1 = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, classesView1.frame.size.width, classesView1.frame.size.height)];
+    classBtn1.backgroundColor = [UIColor redColor];
+    [classBtn1 addTarget:self action:@selector(classViewClick) forControlEvents:UIControlEventTouchUpInside];
+    classBtn1.backgroundColor = [UIColor clearColor];
+    [classesView1 addSubview:classBtn1];
     [scrollView addSubview:classesView1];
     
     UIView *classesView2 = [[UIView alloc] initWithFrame:CGRectMake(27 + 70 + 27, 175, 70, 70)];
@@ -122,6 +139,11 @@
     className2.font = [UIFont systemFontOfSize:11];
     className2.textColor = [UIColor blackColor];
     [classesView2 addSubview:className2];
+    UIButton *classBtn2 = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, classesView2.frame.size.width, classesView2.frame.size.height)];
+    classBtn2.backgroundColor = [UIColor redColor];
+    [classBtn2 addTarget:self action:@selector(classViewClick) forControlEvents:UIControlEventTouchUpInside];
+    classBtn2.backgroundColor = [UIColor clearColor];
+    [classesView2 addSubview:classBtn2];
     [scrollView addSubview:classesView2];
     
     UIView *classesView3 = [[UIView alloc] initWithFrame:CGRectMake(27 * 3 + 70 * 2, 175, 70, 70)];
@@ -133,6 +155,11 @@
     className3.font = [UIFont systemFontOfSize:11];
     className3.textColor = [UIColor blackColor];
     [classesView3 addSubview:className3];
+    UIButton *classBtn3 = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, classesView3.frame.size.width, classesView3.frame.size.height)];
+    classBtn3.backgroundColor = [UIColor redColor];
+    [classBtn3 addTarget:self action:@selector(classViewClick) forControlEvents:UIControlEventTouchUpInside];
+    classBtn3.backgroundColor = [UIColor clearColor];
+    [classesView3 addSubview:classBtn3];
     [scrollView addSubview:classesView3];
     
     UIView *classesView4 = [[UIView alloc] initWithFrame:CGRectMake(27, 175 + 70 + 20, 70, 70)];
@@ -144,6 +171,12 @@
     className4.font = [UIFont systemFontOfSize:11];
     className4.textColor = [UIColor blackColor];
     [classesView4 addSubview:className4];
+    // 设置科目点击事件
+    UIButton *classBtn4 = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, classesView4.frame.size.width, classesView4.frame.size.height)];
+    classBtn4.backgroundColor = [UIColor redColor];
+    [classBtn4 addTarget:self action:@selector(classViewClick) forControlEvents:UIControlEventTouchUpInside];
+    classBtn4.backgroundColor = [UIColor clearColor];
+    [classesView4 addSubview:classBtn4];
     [scrollView addSubview:classesView4];
     
     UIView *classesView5 = [[UIView alloc] initWithFrame:CGRectMake(27 + 70 + 27, 175 + 70 + 20, 70, 70)];
@@ -155,15 +188,163 @@
     className5.font = [UIFont systemFontOfSize:11];
     className5.textColor = [UIColor blackColor];
     [classesView5 addSubview:className5];
+    UIButton *classBtn5 = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, classesView5.frame.size.width, classesView5.frame.size.height)];
+    classBtn5.backgroundColor = [UIColor redColor];
+    [classBtn5 addTarget:self action:@selector(classViewClick) forControlEvents:UIControlEventTouchUpInside];
+    classBtn5.backgroundColor = [UIColor clearColor];
+    [classesView5 addSubview:classBtn5];
     [scrollView addSubview:classesView5];
+    
+    // 设置校内热点新闻栏
+    UIView *newsView=[[UIView alloc] initWithFrame:CGRectMake(0, 175 + 70 + 20 + 70, w, 40)];
+    myClassView.backgroundColor = [UIColor clearColor];
+    UIImageView *newsImg = [[UIImageView alloc] initWithFrame:CGRectMake(13, 10, 35, newsView.frame.size.height - 10)];
+    newsImg.image = [UIImage imageNamed:@"crown"];
+    [newsView addSubview:newsImg];
+    UILabel *newsLabel = [[UILabel alloc] initWithFrame:CGRectMake(60, 25, 50, 20)];
+    newsLabel.text = [NSString stringWithFormat:@"热点新闻"];
+    newsLabel.textColor = [UIColor blackColor];
+    newsLabel.font = [UIFont systemFontOfSize:11];
+    [newsView addSubview:newsLabel];
+    [scrollView addSubview:newsView];
+    
+    // 每一行view的个数
+    int cloumns = 2;
+    CGFloat viewWidth = self.view.frame.size.width;
+    
+    // 高度
+    CGFloat appW = 140;          // 每一个view的大小假定固定不变
+    // 宽度
+    CGFloat appH = 120;
+    // 第一行距离顶部的距离
+    CGFloat maginTop = 400;
+    // 计算每一行中的每一个view之间的距离
+    CGFloat maginX = (viewWidth - cloumns * appW) / (cloumns + 1);
+    // 计算每一列中的每一个view之前的距离
+    CGFloat maginY = maginX;
+    
+    int tmp = 0;
+    
+    News *news = [[News alloc] initWithDict:dict];
+    for (int i = 0; i < news.array.count; i++)
+    {
+        // apps里放的是App类型的对象数据
+        News *model = news.array[i];
+        NewsView  *newsView = [NewsView newsView];
+        int colIdx = i % cloumns;           // 行索引
+        int rowIdx = i / cloumns;           // 列索引
+        CGFloat appX = maginX + colIdx * (maginX + appW);
+        CGFloat appY = maginTop + rowIdx * (maginY + appH);
+        newsView.frame = CGRectMake(appX, appY, appW, appH);
+        newsView.model = model;
+        newsView.newsBtn.tag = i;
+        [newsView.newsBtn addTarget:self action:@selector(newsViewBtnClick:) forControlEvents:UIControlEventTouchUpInside];
+        
+//        NSString *s = dict[@"results"][i][@"image_url"];
+//        NSString *str = [s stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
+//        NSURL *URL = [NSURL URLWithString:str];
+//        NSData* data = [NSData dataWithContentsOfURL:URL];
+//        newsView.newsImgView.image = [UIImage imageWithData:data];
+        
+        newsView.newsImgView.layer.cornerRadius = 5.0f;
+        newsView.newsImgView.clipsToBounds = YES;
+        [scrollView addSubview:newsView];
+        
+        tmp = appY + appH + maginY * 2 + 50;
+    }
+
+    // 设置ScrollView的滚动区域
+    scrollView.contentSize = CGSizeMake(ww.width, tmp); // -----------------改
+    
 }
 
+-(void)request: (NSString*)httpUrl
+{
+    NSURL *url = [NSURL URLWithString: httpUrl];
+    NSMutableURLRequest *request = [[NSMutableURLRequest alloc]initWithURL: url cachePolicy: NSURLRequestUseProtocolCachePolicy timeoutInterval: 10];
+    [request setHTTPMethod: @"GET"];
+    // 添加HTTP头
+    [NSURLConnection sendAsynchronousRequest: request
+                                       queue: [NSOperationQueue mainQueue]
+                           completionHandler: ^(NSURLResponse *response, NSData *data, NSError *error){
+                               if (error) {
+                                   NSLog(@"Httperror: %@%ld", error.localizedDescription, error.code);
+                               } else {
+                                   NSDictionary *Dict = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingAllowFragments error:nil];
+                                   [self initHomePageWithDict:Dict];
+                                   self.dict = Dict;
+                                }
+                           }];
+}
+
+- (void)classViewClick
+{
+    PaperDetailsView *paper = [PaperDetailsView paperView];
+    paper.frame = CGRectMake(20, 80, self.tabBarController.view.frame.size.width - 40, self.tabBarController.view.frame.size.height - 160);
+    paper.layer.cornerRadius = 13.0f;
+    paper.alpha = 0.0;
+    paper.clipsToBounds = YES;
+
+    // 创建蒙板按钮
+    UIButton *btnCover = [[UIButton alloc]init];
+    // 设置蒙板按钮的大小
+    btnCover.frame = CGRectMake(0, 0, self.navigationController.view.frame.size.width, self.navigationController.view.frame.size.height);
+    // 设置蒙板按钮的颜色
+    btnCover.backgroundColor = [UIColor blackColor];
+    // 设置蒙板按钮的透明度，开始先设置为0，使用动画进行变化
+    btnCover.alpha = 0.0;
+    // 添加蒙板按钮至最底层的View中
+    [self.tabBarController.view addSubview:btnCover];
+    self.cover = btnCover;
+    // 为按钮注册一个单击事件
+    [btnCover addTarget:self action:@selector(removeAll) forControlEvents:UIControlEventTouchUpInside];
+    //设置动画，在0.5秒内把这个图片变大
+    [UIView animateWithDuration:0.3 animations:^{
+        btnCover.alpha = 0.6;
+        paper.alpha = 1.0;
+    }];
+    
+    self.paper = paper;
+    [self.tabBarController.view addSubview:paper];
+    [self.tabBarController.view   bringSubviewToFront:paper];
+
+}
+//关闭哪个VIEW的代码在哪里？
+- (void)removeAll
+{
+    // 设置动画
+    [UIView animateWithDuration:0.3 animations:^{
+        self.cover.alpha = 0.0;
+        self.paper.alpha = 0.0;
+    } completion:^(BOOL finished) {
+        [self.paper removeFromSuperview];
+        [self.cover removeFromSuperview];
+        self.cover = nil;
+    }];
+}
+
+-(void)viewWillDisappear:(BOOL)animated
+{
+    [super viewWillDisappear:animated];
+    [self removeAll];
+}
 - (void)userMessage
 {
     NSLog(@"111");
 }
 
-
+-(void )newsViewBtnClick:(UIButton *)sender
+{
+    self.navigationItem.backBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"返回" style:UIBarButtonItemStylePlain target:nil action:nil];
+    self.navigationController.navigationBar.tintColor = [UIColor whiteColor];
+    
+    int i = (int)sender.tag;
+    NSString *str = self.dict[@"results"][i][@"url"];
+    str = [str stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
+    NewsViewController *help = [[NewsViewController alloc] init];
+    [help getNewsMessageWithURL:str];
+    [self.navigationController pushViewController:help animated:YES];
+}
 
 /*
 #pragma mark - Navigation
@@ -175,6 +356,4 @@
 }
 */
 
-- (IBAction)classBtnClick:(id)sender {
-}
 @end

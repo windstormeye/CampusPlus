@@ -29,7 +29,8 @@
     UINavigationController *firstContentViewController = [[UINavigationController alloc] initWithRootViewController:homePage];
     UINavigationController *secondContentViewController = [[UINavigationController alloc] initWithRootViewController:help];
     UINavigationController *thirdContentViewController = [[UINavigationController alloc] initWithRootViewController:find];
-    contentTabBarController.viewControllers = [[NSArray alloc] initWithObjects:firstContentViewController, secondContentViewController, thirdContentViewController, nil];
+   contentTabBarController.viewControllers = @[firstContentViewController, secondContentViewController, thirdContentViewController];
+    
     // 设置tabbar图片
     UIImage *firstImg1 = [self resetImg:@"tab_icon_homepage_normal"];
     UIImage *firstImg2 = [self resetImg:@"tab_icon_homepage_selected"];
@@ -60,6 +61,9 @@
     UIImage *img = [[UIImage imageNamed:name] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
     return img;
 }
+
+
+
 
 - (void)applicationWillResignActive:(UIApplication *)application {
     // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.

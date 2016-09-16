@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2C5F10BD1D8B942700C58B05 /* NewsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2C5F10BC1D8B942700C58B05 /* NewsViewController.m */; };
+		2C5F10C81D8BF6F600C58B05 /* PaperDetailsView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2C5F10C71D8BF6F600C58B05 /* PaperDetailsView.m */; };
+		2C5F10CC1D8C277800C58B05 /* PaperDetailsView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2C5F10CB1D8C277800C58B05 /* PaperDetailsView.xib */; };
 		2C7A8AF61D87E19900681CB4 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 2C7A8AF51D87E19900681CB4 /* main.m */; };
 		2C7A8AF91D87E19900681CB4 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 2C7A8AF81D87E19900681CB4 /* AppDelegate.m */; };
 		2C7A8AFC1D87E19900681CB4 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2C7A8AFB1D87E19900681CB4 /* ViewController.m */; };
@@ -45,6 +48,8 @@
 		2C7A8B9A1D89680500681CB4 /* MyClasses.m in Sources */ = {isa = PBXBuildFile; fileRef = 2C7A8B991D89680500681CB4 /* MyClasses.m */; };
 		2C7A8B9E1D89715B00681CB4 /* classes.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2C7A8B9D1D89715B00681CB4 /* classes.xib */; };
 		2CEAA6841D89773200AADD66 /* ClassesView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2CEAA6831D89773200AADD66 /* ClassesView.m */; };
+		2CEAA6861D8A409700AADD66 /* News.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2CEAA6851D8A409700AADD66 /* News.xib */; };
+		2CEAA6891D8A40AA00AADD66 /* NewsView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2CEAA6881D8A40AA00AADD66 /* NewsView.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -65,6 +70,11 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		2C5F10BB1D8B942700C58B05 /* NewsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewsViewController.h; sourceTree = "<group>"; };
+		2C5F10BC1D8B942700C58B05 /* NewsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewsViewController.m; sourceTree = "<group>"; };
+		2C5F10C61D8BF6F600C58B05 /* PaperDetailsView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PaperDetailsView.h; sourceTree = "<group>"; };
+		2C5F10C71D8BF6F600C58B05 /* PaperDetailsView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PaperDetailsView.m; sourceTree = "<group>"; };
+		2C5F10CB1D8C277800C58B05 /* PaperDetailsView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PaperDetailsView.xib; sourceTree = "<group>"; };
 		2C7A8AF11D87E19900681CB4 /* 北信+.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "北信+.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		2C7A8AF51D87E19900681CB4 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		2C7A8AF71D87E19900681CB4 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -141,6 +151,9 @@
 		2C7A8B9D1D89715B00681CB4 /* classes.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = classes.xib; sourceTree = "<group>"; };
 		2CEAA6821D89773200AADD66 /* ClassesView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ClassesView.h; sourceTree = "<group>"; };
 		2CEAA6831D89773200AADD66 /* ClassesView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ClassesView.m; sourceTree = "<group>"; };
+		2CEAA6851D8A409700AADD66 /* News.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = News.xib; sourceTree = "<group>"; };
+		2CEAA6871D8A40AA00AADD66 /* NewsView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewsView.h; sourceTree = "<group>"; };
+		2CEAA6881D8A40AA00AADD66 /* NewsView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewsView.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -233,9 +246,15 @@
 			children = (
 				2C7A8AFD1D87E19900681CB4 /* Main.storyboard */,
 				2C7A8B021D87E19A00681CB4 /* LaunchScreen.storyboard */,
-				2C7A8B9D1D89715B00681CB4 /* classes.xib */,
+				2C5F10C61D8BF6F600C58B05 /* PaperDetailsView.h */,
+				2C5F10C71D8BF6F600C58B05 /* PaperDetailsView.m */,
+				2C5F10CB1D8C277800C58B05 /* PaperDetailsView.xib */,
+				2CEAA6871D8A40AA00AADD66 /* NewsView.h */,
+				2CEAA6881D8A40AA00AADD66 /* NewsView.m */,
+				2CEAA6851D8A409700AADD66 /* News.xib */,
 				2CEAA6821D89773200AADD66 /* ClassesView.h */,
 				2CEAA6831D89773200AADD66 /* ClassesView.m */,
+				2C7A8B9D1D89715B00681CB4 /* classes.xib */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -244,13 +263,15 @@
 			isa = PBXGroup;
 			children = (
 				2C7A8AFA1D87E19900681CB4 /* ViewController.h */,
+				2C7A8AFB1D87E19900681CB4 /* ViewController.m */,
 				2C7A8B371D87F33900681CB4 /* HomePageViewController.h */,
 				2C7A8B381D87F33900681CB4 /* HomePageViewController.m */,
 				2C7A8B3A1D87F34400681CB4 /* HelpViewController.h */,
 				2C7A8B3B1D87F34400681CB4 /* HelpViewController.m */,
-				2C7A8AFB1D87E19900681CB4 /* ViewController.m */,
 				2C7A8B3D1D87F35400681CB4 /* FindViewController.h */,
 				2C7A8B3E1D87F35400681CB4 /* FindViewController.m */,
+				2C5F10BB1D8B942700C58B05 /* NewsViewController.h */,
+				2C5F10BC1D8B942700C58B05 /* NewsViewController.m */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -450,8 +471,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				2C7A8B041D87E19A00681CB4 /* LaunchScreen.storyboard in Resources */,
+				2CEAA6861D8A409700AADD66 /* News.xib in Resources */,
 				2C7A8B011D87E19A00681CB4 /* Assets.xcassets in Resources */,
 				2C7A8B9E1D89715B00681CB4 /* classes.xib in Resources */,
+				2C5F10CC1D8C277800C58B05 /* PaperDetailsView.xib in Resources */,
 				2C7A8AFF1D87E19900681CB4 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -491,6 +514,7 @@
 				2C7A8AF91D87E19900681CB4 /* AppDelegate.m in Sources */,
 				2C7A8AF61D87E19900681CB4 /* main.m in Sources */,
 				2C7A8B821D88EB9000681CB4 /* SDWebImageCompat.m in Sources */,
+				2C5F10C81D8BF6F600C58B05 /* PaperDetailsView.m in Sources */,
 				2C7A8B801D88EB9000681CB4 /* NSData+ImageContentType.m in Sources */,
 				2C7A8B571D88EA6200681CB4 /* TAAnimatedDotView.m in Sources */,
 				2C7A8B861D88EB9000681CB4 /* SDWebImageManager.m in Sources */,
@@ -506,6 +530,8 @@
 				2C7A8B871D88EB9000681CB4 /* SDWebImagePrefetcher.m in Sources */,
 				2C7A8B881D88EB9000681CB4 /* UIButton+WebCache.m in Sources */,
 				2C7A8B8A1D88EB9000681CB4 /* UIImage+MultiFormat.m in Sources */,
+				2C5F10BD1D8B942700C58B05 /* NewsViewController.m in Sources */,
+				2CEAA6891D8A40AA00AADD66 /* NewsView.m in Sources */,
 				2C7A8B831D88EB9000681CB4 /* SDWebImageDecoder.m in Sources */,
 				2C7A8B8E1D88EB9000681CB4 /* UIView+WebCacheOperation.m in Sources */,
 				2C7A8B5A1D88EA6200681CB4 /* SDCollectionViewCell.m in Sources */,

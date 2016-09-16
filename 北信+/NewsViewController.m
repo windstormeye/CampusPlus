@@ -1,29 +1,40 @@
 //
-//  HelpViewController.m
+//  NewsViewController.m
 //  北信+
 //
-//  Created by #incloud on 16/9/13.
+//  Created by #incloud on 16/9/16.
 //  Copyright © 2016年 #incloud. All rights reserved.
 //
 
-#import "HelpViewController.h"
+#import "NewsViewController.h"
+#import "News.h"
 
-@interface HelpViewController ()
+@interface NewsViewController ()
 
 @end
 
-@implementation HelpViewController
+@implementation NewsViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.view.backgroundColor = [UIColor grayColor];
-    // Do any additional setup after loading the view.
+
 }
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
+
+- (void)getNewsMessageWithURL:(NSString *)urlStr
+{
+    NSURL *url = [NSURL URLWithString:urlStr];
+    UIWebView *webView = [[UIWebView alloc] initWithFrame:CGRectMake(0, 0, self.view.bounds.size.width, self.view.bounds.size.height)];
+    NSURLRequest *request =[NSURLRequest requestWithURL:url];
+    [self.view addSubview: webView];
+    [webView loadRequest:request];
+}
+
+
 
 /*
 #pragma mark - Navigation
