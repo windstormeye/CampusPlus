@@ -18,7 +18,6 @@
 @interface HomePageViewController () <SDCycleScrollViewDelegate>
 
 @property(nonatomic, strong) UIScrollView *scrollView;
-@property (nonatomic, retain) NSDictionary *dict;
 @property (weak, nonatomic) UIButton *cover;
 @property(nonatomic, weak) PaperDetailsView *paper;
 
@@ -309,7 +308,6 @@
     [self.tabBarController.view   bringSubviewToFront:paper];
 
 }
-//关闭哪个VIEW的代码在哪里？
 - (void)removeAll
 {
     // 设置动画

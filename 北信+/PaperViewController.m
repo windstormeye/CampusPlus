@@ -1,22 +1,24 @@
 //
-//  HelpViewController.m
+//  PaperViewController.m
 //  北信+
 //
-//  Created by #incloud on 16/9/13.
+//  Created by #incloud on 16/9/17.
 //  Copyright © 2016年 #incloud. All rights reserved.
 //
 
-#import "HelpViewController.h"
+#import "PaperViewController.h"
 
-@interface HelpViewController ()
+@interface PaperViewController ()
 
 @end
 
-@implementation HelpViewController
+@implementation PaperViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
+    self.navigationItem.backBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"返回" style:UIBarButtonItemStylePlain target:nil action:nil];
+    self.navigationController.navigationBar.tintColor = [UIColor whiteColor];
+    self.view.backgroundColor = [UIColor redColor];
 }
 
 - (void)didReceiveMemoryWarning {

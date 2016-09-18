@@ -47,6 +47,8 @@
 		2C7A8B911D8950A300681CB4 /* News.m in Sources */ = {isa = PBXBuildFile; fileRef = 2C7A8B901D8950A300681CB4 /* News.m */; };
 		2C7A8B9A1D89680500681CB4 /* MyClasses.m in Sources */ = {isa = PBXBuildFile; fileRef = 2C7A8B991D89680500681CB4 /* MyClasses.m */; };
 		2C7A8B9E1D89715B00681CB4 /* classes.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2C7A8B9D1D89715B00681CB4 /* classes.xib */; };
+		2CB20E1D1D8D6D7800DE531D /* AllPaperDetailsTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2CB20E1C1D8D6D7800DE531D /* AllPaperDetailsTableViewController.m */; };
+		2CB20E201D8D739200DE531D /* PaperViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2CB20E1F1D8D739200DE531D /* PaperViewController.m */; };
 		2CEAA6841D89773200AADD66 /* ClassesView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2CEAA6831D89773200AADD66 /* ClassesView.m */; };
 		2CEAA6861D8A409700AADD66 /* News.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2CEAA6851D8A409700AADD66 /* News.xib */; };
 		2CEAA6891D8A40AA00AADD66 /* NewsView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2CEAA6881D8A40AA00AADD66 /* NewsView.m */; };
@@ -149,6 +151,10 @@
 		2C7A8B981D89680500681CB4 /* MyClasses.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyClasses.h; sourceTree = "<group>"; };
 		2C7A8B991D89680500681CB4 /* MyClasses.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyClasses.m; sourceTree = "<group>"; };
 		2C7A8B9D1D89715B00681CB4 /* classes.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = classes.xib; sourceTree = "<group>"; };
+		2CB20E1B1D8D6D7800DE531D /* AllPaperDetailsTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AllPaperDetailsTableViewController.h; sourceTree = "<group>"; };
+		2CB20E1C1D8D6D7800DE531D /* AllPaperDetailsTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AllPaperDetailsTableViewController.m; sourceTree = "<group>"; };
+		2CB20E1E1D8D739200DE531D /* PaperViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PaperViewController.h; sourceTree = "<group>"; };
+		2CB20E1F1D8D739200DE531D /* PaperViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PaperViewController.m; sourceTree = "<group>"; };
 		2CEAA6821D89773200AADD66 /* ClassesView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ClassesView.h; sourceTree = "<group>"; };
 		2CEAA6831D89773200AADD66 /* ClassesView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ClassesView.m; sourceTree = "<group>"; };
 		2CEAA6851D8A409700AADD66 /* News.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = News.xib; sourceTree = "<group>"; };
@@ -208,6 +214,7 @@
 				2C7A8B291D87E1AC00681CB4 /* Model */,
 				2C7A8B281D87E1A600681CB4 /* Controller */,
 				2C7A8B271D87E19F00681CB4 /* View */,
+				2CB20E241D8D77EC00DE531D /* Extension */,
 				2C7A8AF41D87E19900681CB4 /* Supporting Files */,
 			);
 			path = "北信+";
@@ -272,6 +279,10 @@
 				2C7A8B3E1D87F35400681CB4 /* FindViewController.m */,
 				2C5F10BB1D8B942700C58B05 /* NewsViewController.h */,
 				2C5F10BC1D8B942700C58B05 /* NewsViewController.m */,
+				2CB20E1B1D8D6D7800DE531D /* AllPaperDetailsTableViewController.h */,
+				2CB20E1C1D8D6D7800DE531D /* AllPaperDetailsTableViewController.m */,
+				2CB20E1E1D8D739200DE531D /* PaperViewController.h */,
+				2CB20E1F1D8D739200DE531D /* PaperViewController.m */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -365,6 +376,13 @@
 				2C7A8B7E1D88EB9000681CB4 /* UIView+WebCacheOperation.m */,
 			);
 			path = SDWebImage;
+			sourceTree = "<group>";
+		};
+		2CB20E241D8D77EC00DE531D /* Extension */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Extension;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -525,11 +543,13 @@
 				2C7A8B8C1D88EB9000681CB4 /* UIImageView+HighlightedWebCache.m in Sources */,
 				2C7A8B911D8950A300681CB4 /* News.m in Sources */,
 				2C7A8B7F1D88EB9000681CB4 /* MKAnnotationView+WebCache.m in Sources */,
+				2CB20E1D1D8D6D7800DE531D /* AllPaperDetailsTableViewController.m in Sources */,
 				2C7A8B891D88EB9000681CB4 /* UIImage+GIF.m in Sources */,
 				2C7A8B581D88EA6200681CB4 /* TADotView.m in Sources */,
 				2C7A8B871D88EB9000681CB4 /* SDWebImagePrefetcher.m in Sources */,
 				2C7A8B881D88EB9000681CB4 /* UIButton+WebCache.m in Sources */,
 				2C7A8B8A1D88EB9000681CB4 /* UIImage+MultiFormat.m in Sources */,
+				2CB20E201D8D739200DE531D /* PaperViewController.m in Sources */,
 				2C5F10BD1D8B942700C58B05 /* NewsViewController.m in Sources */,
 				2CEAA6891D8A40AA00AADD66 /* NewsView.m in Sources */,
 				2C7A8B831D88EB9000681CB4 /* SDWebImageDecoder.m in Sources */,
