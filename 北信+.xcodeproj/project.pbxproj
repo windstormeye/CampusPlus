@@ -19,7 +19,6 @@
 		2C7A8B0F1D87E19A00681CB4 /* ___Tests.m in Sources */ = {isa = PBXBuildFile; fileRef = 2C7A8B0E1D87E19A00681CB4 /* ___Tests.m */; };
 		2C7A8B1A1D87E19A00681CB4 /* ___UITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 2C7A8B191D87E19A00681CB4 /* ___UITests.m */; };
 		2C7A8B391D87F33900681CB4 /* HomePageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2C7A8B381D87F33900681CB4 /* HomePageViewController.m */; };
-		2C7A8B3C1D87F34400681CB4 /* HelpViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2C7A8B3B1D87F34400681CB4 /* HelpViewController.m */; };
 		2C7A8B3F1D87F35400681CB4 /* FindViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2C7A8B3E1D87F35400681CB4 /* FindViewController.m */; };
 		2C7A8B561D88EA6200681CB4 /* TAAbstractDotView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2C7A8B491D88EA6200681CB4 /* TAAbstractDotView.m */; };
 		2C7A8B571D88EA6200681CB4 /* TAAnimatedDotView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2C7A8B4B1D88EA6200681CB4 /* TAAnimatedDotView.m */; };
@@ -49,6 +48,9 @@
 		2C7A8B9E1D89715B00681CB4 /* classes.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2C7A8B9D1D89715B00681CB4 /* classes.xib */; };
 		2CB20E1D1D8D6D7800DE531D /* AllPaperDetailsTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2CB20E1C1D8D6D7800DE531D /* AllPaperDetailsTableViewController.m */; };
 		2CB20E201D8D739200DE531D /* PaperViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2CB20E1F1D8D739200DE531D /* PaperViewController.m */; };
+		2CB20E331D8E530A00DE531D /* HelpTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2CB20E311D8E530A00DE531D /* HelpTableViewController.m */; };
+		2CB20E371D8E55A600DE531D /* HelpThings.m in Sources */ = {isa = PBXBuildFile; fileRef = 2CB20E361D8E55A600DE531D /* HelpThings.m */; };
+		2CB20E3A1D8E9E5900DE531D /* HelpDateilsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2CB20E391D8E9E5900DE531D /* HelpDateilsViewController.m */; };
 		2CEAA6841D89773200AADD66 /* ClassesView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2CEAA6831D89773200AADD66 /* ClassesView.m */; };
 		2CEAA6861D8A409700AADD66 /* News.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2CEAA6851D8A409700AADD66 /* News.xib */; };
 		2CEAA6891D8A40AA00AADD66 /* NewsView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2CEAA6881D8A40AA00AADD66 /* NewsView.m */; };
@@ -95,8 +97,6 @@
 		2C7A8B1B1D87E19A00681CB4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		2C7A8B371D87F33900681CB4 /* HomePageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HomePageViewController.h; sourceTree = "<group>"; };
 		2C7A8B381D87F33900681CB4 /* HomePageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HomePageViewController.m; sourceTree = "<group>"; };
-		2C7A8B3A1D87F34400681CB4 /* HelpViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HelpViewController.h; path = ../HelpViewController.h; sourceTree = "<group>"; };
-		2C7A8B3B1D87F34400681CB4 /* HelpViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HelpViewController.m; path = ../HelpViewController.m; sourceTree = "<group>"; };
 		2C7A8B3D1D87F35400681CB4 /* FindViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FindViewController.h; sourceTree = "<group>"; };
 		2C7A8B3E1D87F35400681CB4 /* FindViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FindViewController.m; sourceTree = "<group>"; };
 		2C7A8B481D88EA6200681CB4 /* TAAbstractDotView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TAAbstractDotView.h; sourceTree = "<group>"; };
@@ -155,6 +155,12 @@
 		2CB20E1C1D8D6D7800DE531D /* AllPaperDetailsTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AllPaperDetailsTableViewController.m; sourceTree = "<group>"; };
 		2CB20E1E1D8D739200DE531D /* PaperViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PaperViewController.h; sourceTree = "<group>"; };
 		2CB20E1F1D8D739200DE531D /* PaperViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PaperViewController.m; sourceTree = "<group>"; };
+		2CB20E301D8E530A00DE531D /* HelpTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HelpTableViewController.h; sourceTree = "<group>"; };
+		2CB20E311D8E530A00DE531D /* HelpTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HelpTableViewController.m; sourceTree = "<group>"; };
+		2CB20E351D8E55A600DE531D /* HelpThings.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HelpThings.h; sourceTree = "<group>"; };
+		2CB20E361D8E55A600DE531D /* HelpThings.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HelpThings.m; sourceTree = "<group>"; };
+		2CB20E381D8E9E5900DE531D /* HelpDateilsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HelpDateilsViewController.h; sourceTree = "<group>"; };
+		2CB20E391D8E9E5900DE531D /* HelpDateilsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HelpDateilsViewController.m; sourceTree = "<group>"; };
 		2CEAA6821D89773200AADD66 /* ClassesView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ClassesView.h; sourceTree = "<group>"; };
 		2CEAA6831D89773200AADD66 /* ClassesView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ClassesView.m; sourceTree = "<group>"; };
 		2CEAA6851D8A409700AADD66 /* News.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = News.xib; sourceTree = "<group>"; };
@@ -273,8 +279,8 @@
 				2C7A8AFB1D87E19900681CB4 /* ViewController.m */,
 				2C7A8B371D87F33900681CB4 /* HomePageViewController.h */,
 				2C7A8B381D87F33900681CB4 /* HomePageViewController.m */,
-				2C7A8B3A1D87F34400681CB4 /* HelpViewController.h */,
-				2C7A8B3B1D87F34400681CB4 /* HelpViewController.m */,
+				2CB20E301D8E530A00DE531D /* HelpTableViewController.h */,
+				2CB20E311D8E530A00DE531D /* HelpTableViewController.m */,
 				2C7A8B3D1D87F35400681CB4 /* FindViewController.h */,
 				2C7A8B3E1D87F35400681CB4 /* FindViewController.m */,
 				2C5F10BB1D8B942700C58B05 /* NewsViewController.h */,
@@ -283,6 +289,8 @@
 				2CB20E1C1D8D6D7800DE531D /* AllPaperDetailsTableViewController.m */,
 				2CB20E1E1D8D739200DE531D /* PaperViewController.h */,
 				2CB20E1F1D8D739200DE531D /* PaperViewController.m */,
+				2CB20E381D8E9E5900DE531D /* HelpDateilsViewController.h */,
+				2CB20E391D8E9E5900DE531D /* HelpDateilsViewController.m */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -294,6 +302,8 @@
 				2C7A8B901D8950A300681CB4 /* News.m */,
 				2C7A8B981D89680500681CB4 /* MyClasses.h */,
 				2C7A8B991D89680500681CB4 /* MyClasses.m */,
+				2CB20E351D8E55A600DE531D /* HelpThings.h */,
+				2CB20E361D8E55A600DE531D /* HelpThings.m */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -518,11 +528,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				2C7A8B3C1D87F34400681CB4 /* HelpViewController.m in Sources */,
 				2C7A8B8B1D88EB9000681CB4 /* UIImage+WebP.m in Sources */,
 				2C7A8B561D88EA6200681CB4 /* TAAbstractDotView.m in Sources */,
 				2C7A8B391D87F33900681CB4 /* HomePageViewController.m in Sources */,
 				2C7A8AFC1D87E19900681CB4 /* ViewController.m in Sources */,
+				2CB20E331D8E530A00DE531D /* HelpTableViewController.m in Sources */,
 				2C7A8B5B1D88EA6200681CB4 /* SDCycleScrollView.m in Sources */,
 				2C7A8B3F1D87F35400681CB4 /* FindViewController.m in Sources */,
 				2C7A8B851D88EB9000681CB4 /* SDWebImageDownloaderOperation.m in Sources */,
@@ -539,6 +549,8 @@
 				2CEAA6841D89773200AADD66 /* ClassesView.m in Sources */,
 				2C7A8B841D88EB9000681CB4 /* SDWebImageDownloader.m in Sources */,
 				2C7A8B8D1D88EB9000681CB4 /* UIImageView+WebCache.m in Sources */,
+				2CB20E3A1D8E9E5900DE531D /* HelpDateilsViewController.m in Sources */,
+				2CB20E371D8E55A600DE531D /* HelpThings.m in Sources */,
 				2C7A8B9A1D89680500681CB4 /* MyClasses.m in Sources */,
 				2C7A8B8C1D88EB9000681CB4 /* UIImageView+HighlightedWebCache.m in Sources */,
 				2C7A8B911D8950A300681CB4 /* News.m in Sources */,

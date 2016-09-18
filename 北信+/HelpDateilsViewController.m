@@ -1,24 +1,27 @@
 //
-//  PaperViewController.m
+//  HelpDateilsViewController.m
 //  北信+
 //
-//  Created by #incloud on 16/9/17.
+//  Created by #incloud on 16/9/18.
 //  Copyright © 2016年 #incloud. All rights reserved.
 //
 
-#import "PaperViewController.h"
+#import "HelpDateilsViewController.h"
 
-@interface PaperViewController ()
+@interface HelpDateilsViewController ()
 
 @end
 
-@implementation PaperViewController
+@implementation HelpDateilsViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    
-    [self initPaperView];
+}
+
+- (void)didReceiveMemoryWarning {
+    [super didReceiveMemoryWarning];
+    // Dispose of any resources that can be recreated.
 }
 
 -(void)viewWillAppear:(BOOL)animated
@@ -32,20 +35,6 @@
 -(void)back
 {
     [self.navigationController popViewControllerAnimated:YES];
-}
-
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
-}
-
-
-
-- (void)initPaperView
-{
-    UIButton *btn = [[UIButton alloc] initWithFrame:CGRectMake(30, 30, 50, 40)];
-    btn.backgroundColor = [UIColor redColor];
-    [self.view addSubview:btn];
 }
 
 /*

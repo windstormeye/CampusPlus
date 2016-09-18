@@ -53,7 +53,6 @@
     [self.navigationController.navigationBar setBarTintColor:[UIColor colorWithRed:38/255.0 green:184/255.0 blue:242/255.0 alpha:1.0]];
     //设置navigationbar为不透明
     [self.navigationController.navigationBar setTranslucent:NO];
-    [self.navigationController.navigationBar setBackgroundColor:[UIColor redColor]];
     // 设置titleView
     UIView *titleView = [[UIView alloc] initWithFrame:CGRectMake(100, 0, 100, 44)];
     UIImageView *beixingImg = [[UIImageView alloc] initWithFrame:CGRectMake(30, 10, 40, 20)];

@@ -8,8 +8,8 @@
 
 #import "AppDelegate.h"
 #import "HomePageViewController.h"
-#import "HelpViewController.h"
 #import "FindViewController.h"
+#import "HelpTableViewController.h"
 
 @interface AppDelegate ()
 
@@ -24,7 +24,7 @@
     self.window.rootViewController = contentTabBarController;
     // 设置tabbar
     HomePageViewController *homePage = [[HomePageViewController alloc] init];
-    HelpViewController *help = [[HelpViewController alloc] init];
+    HelpTableViewController *help = [[HelpTableViewController alloc] init];
     FindViewController *find = [[FindViewController alloc] init];
     UINavigationController *firstContentViewController = [[UINavigationController alloc] initWithRootViewController:homePage];
     UINavigationController *secondContentViewController = [[UINavigationController alloc] initWithRootViewController:help];
