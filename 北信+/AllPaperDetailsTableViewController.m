@@ -29,7 +29,29 @@
 -(void)viewWillAppear:(BOOL)animated
 {
     self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"back"] style:UIBarButtonItemStylePlain target:self action:@selector(back)];
+
+    UIView *view = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, 30)];
+//    UIView *whiteView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 20, view.frame.size.height)];
+//    whiteView.backgroundColor = [UIColor clearColor];
+//    [view addSubview:whiteView];
+    UILabel *lab = [[UILabel alloc] init];
+    lab.font = [UIFont systemFontOfSize:12];
+    lab.text = @"北京信息科技大学 · BISTU";
+    // 动态计算label中的字符串长度得到label的宽度
+    CGSize size = [lab.text sizeWithAttributes:[NSDictionary dictionaryWithObjectsAndKeys:lab.font,NSFontAttributeName, nil]];
+    CGFloat labX = (self.view.frame.size.width - size.width )/ 2;
+    lab.frame = CGRectMake(labX, 0, size.width, view.frame.size.height);
+    
+    lab.tintColor = [UIColor colorWithRed:229/255.0 green:229/255.0 blue:229/255.0 alpha:1.0];
+    [view addSubview:lab];
+    view.backgroundColor = [UIColor colorWithRed:246/255.0 green:246/255.0 blue:246/255.0 alpha:1.0];
+    self.tableView.tableHeaderView = view;
+    
+     self.navigationItem.title = @"历届真题";
+    NSDictionary *dict = [NSDictionary dictionaryWithObject:[UIColor whiteColor] forKey:NSForegroundColorAttributeName];
+    self.navigationController.navigationBar.titleTextAttributes = dict;
     self.navigationController.navigationBar.tintColor = [UIColor whiteColor];
+    
 }
 
 -(void)back

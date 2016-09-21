@@ -20,6 +20,9 @@
 @property(nonatomic, strong) UIScrollView *scrollView;
 @property (weak, nonatomic) UIButton *cover;
 @property(nonatomic, weak) PaperDetailsView *paper;
+@property (nonatomic, retain) NSDictionary *newsDict;
+
+
 
 
 @end
@@ -30,9 +33,10 @@
     [super viewDidLoad];
     
     
-    NSString *httpUrl = @"http://cloud.bmob.cn/17f5e4c17ad52f4a/Get_News";
-    [self request:httpUrl];
-//    [self initHomePage];
+    NSString *newsHttpUrl = @"http://cloud.bmob.cn/17f5e4c17ad52f4a/Get_News";
+   [self requestNews:newsHttpUrl];
+ 
+    [self initHomePageWithDict:self.newsDict];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -252,28 +256,10 @@
     }
 
     // 设置ScrollView的滚动区域
-    scrollView.contentSize = CGSizeMake(ww.width, tmp); // -----------------改
+    scrollView.contentSize = CGSizeMake(ww.width, tmp);
     
 }
 
--(void)request: (NSString*)httpUrl
-{
-    NSURL *url = [NSURL URLWithString: httpUrl];
-    NSMutableURLRequest *request = [[NSMutableURLRequest alloc]initWithURL: url cachePolicy: NSURLRequestUseProtocolCachePolicy timeoutInterval: 10];
-    [request setHTTPMethod: @"GET"];
-    // 添加HTTP头
-    [NSURLConnection sendAsynchronousRequest: request
-                                       queue: [NSOperationQueue mainQueue]
-                           completionHandler: ^(NSURLResponse *response, NSData *data, NSError *error){
-                               if (error) {
-                                   NSLog(@"Httperror: %@%ld", error.localizedDescription, error.code);
-                               } else {
-                                   NSDictionary *Dict = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingAllowFragments error:nil];
-                                   [self initHomePageWithDict:Dict];
-                                   self.dict = Dict;
-                                }
-                           }];
-}
 
 - (void)classViewClick
 {
@@ -336,12 +322,33 @@
     self.navigationController.navigationBar.tintColor = [UIColor whiteColor];
     
     int i = (int)sender.tag;
-    NSString *str = self.dict[@"results"][i][@"url"];
+    NSString *str = self.newsDict[@"results"][i][@"url"];
     str = [str stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
     NewsViewController *help = [[NewsViewController alloc] init];
     [help getNewsMessageWithURL:str];
     [self.navigationController pushViewController:help animated:YES];
 }
+
+#pragma mark 网络请求 —— ipv4
+
+-(void)requestNews: (NSString*)httpUrl
+{
+    NSURL *url = [NSURL URLWithString: httpUrl];
+    NSMutableURLRequest *request = [[NSMutableURLRequest alloc]initWithURL: url cachePolicy: NSURLRequestUseProtocolCachePolicy timeoutInterval: 10];
+    [request setHTTPMethod: @"GET"];
+    [NSURLConnection sendAsynchronousRequest: request
+                                       queue: [NSOperationQueue mainQueue]
+                           completionHandler: ^(NSURLResponse *response, NSData *data, NSError *error){
+                               if (error) {
+                                   NSLog(@"Httperror: %@%ld", error.localizedDescription, error.code);
+                               } else {
+                                   NSDictionary *Dict = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingAllowFragments error:nil];
+                                   self.newsDict = Dict;
+                               }
+                           }];
+}
+
+
 
 /*
 #pragma mark - Navigation

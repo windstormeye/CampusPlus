@@ -10,6 +10,7 @@
 		2C5F10BD1D8B942700C58B05 /* NewsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2C5F10BC1D8B942700C58B05 /* NewsViewController.m */; };
 		2C5F10C81D8BF6F600C58B05 /* PaperDetailsView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2C5F10C71D8BF6F600C58B05 /* PaperDetailsView.m */; };
 		2C5F10CC1D8C277800C58B05 /* PaperDetailsView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2C5F10CB1D8C277800C58B05 /* PaperDetailsView.xib */; };
+		2C6072F51D91300B004375CD /* Paper.m in Sources */ = {isa = PBXBuildFile; fileRef = 2C6072F41D91300B004375CD /* Paper.m */; };
 		2C7A8AF61D87E19900681CB4 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 2C7A8AF51D87E19900681CB4 /* main.m */; };
 		2C7A8AF91D87E19900681CB4 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 2C7A8AF81D87E19900681CB4 /* AppDelegate.m */; };
 		2C7A8AFC1D87E19900681CB4 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2C7A8AFB1D87E19900681CB4 /* ViewController.m */; };
@@ -46,6 +47,7 @@
 		2C7A8B911D8950A300681CB4 /* News.m in Sources */ = {isa = PBXBuildFile; fileRef = 2C7A8B901D8950A300681CB4 /* News.m */; };
 		2C7A8B9A1D89680500681CB4 /* MyClasses.m in Sources */ = {isa = PBXBuildFile; fileRef = 2C7A8B991D89680500681CB4 /* MyClasses.m */; };
 		2C7A8B9E1D89715B00681CB4 /* classes.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2C7A8B9D1D89715B00681CB4 /* classes.xib */; };
+		2CA20DFB1D922DC600180B0F /* NSString+PJNSStringExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = 2CA20DFA1D922DC600180B0F /* NSString+PJNSStringExtension.m */; };
 		2CB20E1D1D8D6D7800DE531D /* AllPaperDetailsTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2CB20E1C1D8D6D7800DE531D /* AllPaperDetailsTableViewController.m */; };
 		2CB20E201D8D739200DE531D /* PaperViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2CB20E1F1D8D739200DE531D /* PaperViewController.m */; };
 		2CB20E331D8E530A00DE531D /* HelpTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2CB20E311D8E530A00DE531D /* HelpTableViewController.m */; };
@@ -79,6 +81,8 @@
 		2C5F10C61D8BF6F600C58B05 /* PaperDetailsView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PaperDetailsView.h; sourceTree = "<group>"; };
 		2C5F10C71D8BF6F600C58B05 /* PaperDetailsView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PaperDetailsView.m; sourceTree = "<group>"; };
 		2C5F10CB1D8C277800C58B05 /* PaperDetailsView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PaperDetailsView.xib; sourceTree = "<group>"; };
+		2C6072F31D91300B004375CD /* Paper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Paper.h; sourceTree = "<group>"; };
+		2C6072F41D91300B004375CD /* Paper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Paper.m; sourceTree = "<group>"; };
 		2C7A8AF11D87E19900681CB4 /* 北信+.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "北信+.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		2C7A8AF51D87E19900681CB4 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		2C7A8AF71D87E19900681CB4 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -151,6 +155,8 @@
 		2C7A8B981D89680500681CB4 /* MyClasses.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyClasses.h; sourceTree = "<group>"; };
 		2C7A8B991D89680500681CB4 /* MyClasses.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyClasses.m; sourceTree = "<group>"; };
 		2C7A8B9D1D89715B00681CB4 /* classes.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = classes.xib; sourceTree = "<group>"; };
+		2CA20DF91D922DC600180B0F /* NSString+PJNSStringExtension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+PJNSStringExtension.h"; sourceTree = "<group>"; };
+		2CA20DFA1D922DC600180B0F /* NSString+PJNSStringExtension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+PJNSStringExtension.m"; sourceTree = "<group>"; };
 		2CB20E1B1D8D6D7800DE531D /* AllPaperDetailsTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AllPaperDetailsTableViewController.h; sourceTree = "<group>"; };
 		2CB20E1C1D8D6D7800DE531D /* AllPaperDetailsTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AllPaperDetailsTableViewController.m; sourceTree = "<group>"; };
 		2CB20E1E1D8D739200DE531D /* PaperViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PaperViewController.h; sourceTree = "<group>"; };
@@ -304,6 +310,8 @@
 				2C7A8B991D89680500681CB4 /* MyClasses.m */,
 				2CB20E351D8E55A600DE531D /* HelpThings.h */,
 				2CB20E361D8E55A600DE531D /* HelpThings.m */,
+				2C6072F31D91300B004375CD /* Paper.h */,
+				2C6072F41D91300B004375CD /* Paper.m */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -391,6 +399,8 @@
 		2CB20E241D8D77EC00DE531D /* Extension */ = {
 			isa = PBXGroup;
 			children = (
+				2CA20DF91D922DC600180B0F /* NSString+PJNSStringExtension.h */,
+				2CA20DFA1D922DC600180B0F /* NSString+PJNSStringExtension.m */,
 			);
 			name = Extension;
 			sourceTree = "<group>";
@@ -562,11 +572,13 @@
 				2C7A8B881D88EB9000681CB4 /* UIButton+WebCache.m in Sources */,
 				2C7A8B8A1D88EB9000681CB4 /* UIImage+MultiFormat.m in Sources */,
 				2CB20E201D8D739200DE531D /* PaperViewController.m in Sources */,
+				2C6072F51D91300B004375CD /* Paper.m in Sources */,
 				2C5F10BD1D8B942700C58B05 /* NewsViewController.m in Sources */,
 				2CEAA6891D8A40AA00AADD66 /* NewsView.m in Sources */,
 				2C7A8B831D88EB9000681CB4 /* SDWebImageDecoder.m in Sources */,
 				2C7A8B8E1D88EB9000681CB4 /* UIView+WebCacheOperation.m in Sources */,
 				2C7A8B5A1D88EA6200681CB4 /* SDCollectionViewCell.m in Sources */,
+				2CA20DFB1D922DC600180B0F /* NSString+PJNSStringExtension.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

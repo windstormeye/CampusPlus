@@ -10,6 +10,5 @@
 
 @interface HomePageViewController : UIViewController
 
-@property (nonatomic, retain) NSDictionary *dict;
 
 @end
