@@ -8,6 +8,10 @@
 
 #import "PaperViewController.h"
 #import "NSString+PJNSStringExtension.h"
+#import "MZTimerLabel.h"
+
+#define SCREEN_WIDTH_RATIO (SCREEN.width / 320)  //屏宽比例
+#define SCREEN [UIScreen mainScreen].bounds.size
 
 @interface PaperViewController () <UIScrollViewDelegate>
 
@@ -16,7 +20,7 @@
 @property (strong, nonatomic)  UIView *topView;
 @property (strong, nonatomic)  UILabel *nowLabel;
 @property (nonatomic, retain) NSMutableArray *numArr;
-
+@property (strong, nonatomic)  UILabel *timeLabel;
 
 
 @end
@@ -35,7 +39,36 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-
+    UIView *view = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 200, self.navigationController.navigationBar.frame.size.height)];
+    view.backgroundColor = [UIColor clearColor];
+    UIButton *btn1 = [[UIButton alloc] initWithFrame:CGRectMake(120, 10, self.navigationController.navigationBar.frame.size.height - 25, self.navigationController.navigationBar.frame.size.height - 20)];
+    [btn1 addTarget:self action:@selector(collect) forControlEvents:UIControlEventTouchUpInside];
+    [view addSubview:btn1];
+    UIImageView *imgView1 = [[UIImageView alloc] initWithFrame:CGRectMake(btn1.frame.origin.x, btn1.frame.origin.y, btn1.frame.size.width, btn1.frame.size.height)];
+    imgView1.image = [UIImage imageNamed:@"exam_collect"];
+    [view addSubview:imgView1];
+    
+    UIButton *btn2 = [[UIButton alloc] initWithFrame:CGRectMake(CGRectGetMaxX(btn1.frame) + 30, btn1.frame.origin.y, btn1.frame.size.width + 8, btn1.frame.size.height)];
+    [view addSubview:btn2];
+    //------------------------ 未设置点击事件方法 -------------------------
+    [btn1 addTarget:self action:nil forControlEvents:UIControlEventTouchUpInside];
+    UIImageView *imgView2 = [[UIImageView alloc] initWithFrame:CGRectMake(btn2.frame.origin.x, btn2.frame.origin.y, btn2.frame.size.width, btn2.frame.size.height)];
+    imgView2.image = [UIImage imageNamed:@"exam_paper"];
+    [view addSubview:imgView2];
+    
+    UIButton *btn3 = [[UIButton alloc] initWithFrame:CGRectMake(CGRectGetMaxX(btn2.frame) + 30, btn2.frame.origin.y, btn2.frame.size.width, btn2.frame.size.height)];
+    [view addSubview:btn3];
+    UIImageView *imgView3 = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"exam_error"]];
+    imgView3.frame = CGRectMake(btn3.frame.origin.x, btn3.frame.origin.y, btn3.frame.size.width, btn3.frame.size.height);
+    [view addSubview:imgView3];
+    
+    MZTimerLabel *timeLabel = [[MZTimerLabel alloc] initWithFrame:CGRectMake(10, 0, self.navigationController.navigationBar.frame.size.width, self.navigationController.navigationBar.frame.size.height)];
+    timeLabel.timeLabel.textColor = [UIColor whiteColor];
+    timeLabel.timeLabel.font = [UIFont systemFontOfSize:20.0f];
+    [view addSubview:timeLabel];
+    [timeLabel start];
+    
+    [self.navigationItem setTitleView:view];
 }
 
 -(void)viewWillAppear:(BOOL)animated
@@ -46,19 +79,7 @@
     self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"close"] style:UIBarButtonItemStylePlain target:self action:@selector(back)];
     self.navigationController.navigationBar.tintColor = [UIColor whiteColor];
     
-    UIView *view = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 200, self.navigationController.navigationBar.frame.size.height)];
-    view.backgroundColor = [UIColor clearColor];
-    // ----------------------------------  改，未出现相关控件
-    UIButton *btn1 = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, self.navigationController.navigationBar.frame.size.height, self.navigationController.navigationBar.frame.size.height)];
-    btn1.imageView.image = [UIImage imageNamed:@"h1"];
-    [view addSubview:btn1];
     
-    UIButton *btn2 = [[UIButton alloc] initWithFrame:CGRectMake(CGRectGetMaxX(btn1.frame), 0, 20, 20)];
-    btn2.imageView.image = [UIImage imageNamed:@"exam_paper"];
-    [view addSubview:btn2];
-    
-    // ----------------------------------
-    [self.navigationItem setTitleView:view];
     
     NSString *paperHttpUrl = @"http://cloud.bmob.cn/17f5e4c17ad52f4a/Get_Exams";
     [self requestPaper:paperHttpUrl];
@@ -216,6 +237,30 @@
     }
     
     
+}
+
+- (void)collect
+{
+    CGFloat width = SCREEN.width * 0.5 * SCREEN_WIDTH_RATIO;
+    CGFloat height = 0.3 * width;
+    UIView * tip = [[UIView alloc]initWithFrame:CGRectMake(self.view.frame.size.width * 0.5 - width / 2, self.view.frame.size.height - (self.view.frame.size.height * 0.45 / 3 * 2), width, height)];
+    tip.backgroundColor = [UIColor colorWithRed:244/255.0 green:244/255.0 blue:244/255.0 alpha:1.0];
+    tip.layer.cornerRadius = 8.0f;
+    [self.view addSubview:tip];
+    UILabel * label = [[UILabel alloc]init];
+    label.text = @"收藏成功 (◕ω ◕｀ヽ)";
+//    label.tintColor = [UIColor whiteColor];
+    //sizetofit的作用，是让label自动适应为跟文字大小等大的label
+    label.font = [UIFont systemFontOfSize:12];
+    [label sizeToFit];
+    label.center = CGPointMake(tip.frame.size.width * 0.5, tip.frame.size.height * 0.5);
+    [tip addSubview:label];
+    tip.alpha = 0.0;
+    [UIView animateWithDuration:0.8 animations:^{
+        tip.alpha = 1;
+    } completion:^(BOOL finished) {
+        [tip removeFromSuperview];
+    }];
 }
 
 /*

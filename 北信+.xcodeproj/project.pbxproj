@@ -48,6 +48,7 @@
 		2C7A8B9A1D89680500681CB4 /* MyClasses.m in Sources */ = {isa = PBXBuildFile; fileRef = 2C7A8B991D89680500681CB4 /* MyClasses.m */; };
 		2C7A8B9E1D89715B00681CB4 /* classes.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2C7A8B9D1D89715B00681CB4 /* classes.xib */; };
 		2CA20DFB1D922DC600180B0F /* NSString+PJNSStringExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = 2CA20DFA1D922DC600180B0F /* NSString+PJNSStringExtension.m */; };
+		2CA20DFE1D9428FA00180B0F /* MZTimerLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 2CA20DFD1D9428FA00180B0F /* MZTimerLabel.m */; };
 		2CB20E1D1D8D6D7800DE531D /* AllPaperDetailsTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2CB20E1C1D8D6D7800DE531D /* AllPaperDetailsTableViewController.m */; };
 		2CB20E201D8D739200DE531D /* PaperViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2CB20E1F1D8D739200DE531D /* PaperViewController.m */; };
 		2CB20E331D8E530A00DE531D /* HelpTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2CB20E311D8E530A00DE531D /* HelpTableViewController.m */; };
@@ -157,6 +158,8 @@
 		2C7A8B9D1D89715B00681CB4 /* classes.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = classes.xib; sourceTree = "<group>"; };
 		2CA20DF91D922DC600180B0F /* NSString+PJNSStringExtension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+PJNSStringExtension.h"; sourceTree = "<group>"; };
 		2CA20DFA1D922DC600180B0F /* NSString+PJNSStringExtension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+PJNSStringExtension.m"; sourceTree = "<group>"; };
+		2CA20DFC1D9428FA00180B0F /* MZTimerLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MZTimerLabel.h; sourceTree = "<group>"; };
+		2CA20DFD1D9428FA00180B0F /* MZTimerLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MZTimerLabel.m; sourceTree = "<group>"; };
 		2CB20E1B1D8D6D7800DE531D /* AllPaperDetailsTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AllPaperDetailsTableViewController.h; sourceTree = "<group>"; };
 		2CB20E1C1D8D6D7800DE531D /* AllPaperDetailsTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AllPaperDetailsTableViewController.m; sourceTree = "<group>"; };
 		2CB20E1E1D8D739200DE531D /* PaperViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PaperViewController.h; sourceTree = "<group>"; };
@@ -396,11 +399,21 @@
 			path = SDWebImage;
 			sourceTree = "<group>";
 		};
+		2CA20DFF1D94292100180B0F /* MZTimerLabel */ = {
+			isa = PBXGroup;
+			children = (
+				2CA20DFC1D9428FA00180B0F /* MZTimerLabel.h */,
+				2CA20DFD1D9428FA00180B0F /* MZTimerLabel.m */,
+			);
+			name = MZTimerLabel;
+			sourceTree = "<group>";
+		};
 		2CB20E241D8D77EC00DE531D /* Extension */ = {
 			isa = PBXGroup;
 			children = (
 				2CA20DF91D922DC600180B0F /* NSString+PJNSStringExtension.h */,
 				2CA20DFA1D922DC600180B0F /* NSString+PJNSStringExtension.m */,
+				2CA20DFF1D94292100180B0F /* MZTimerLabel */,
 			);
 			name = Extension;
 			sourceTree = "<group>";
@@ -557,6 +570,7 @@
 				2C7A8B571D88EA6200681CB4 /* TAAnimatedDotView.m in Sources */,
 				2C7A8B861D88EB9000681CB4 /* SDWebImageManager.m in Sources */,
 				2CEAA6841D89773200AADD66 /* ClassesView.m in Sources */,
+				2CA20DFE1D9428FA00180B0F /* MZTimerLabel.m in Sources */,
 				2C7A8B841D88EB9000681CB4 /* SDWebImageDownloader.m in Sources */,
 				2C7A8B8D1D88EB9000681CB4 /* UIImageView+WebCache.m in Sources */,
 				2CB20E3A1D8E9E5900DE531D /* HelpDateilsViewController.m in Sources */,
