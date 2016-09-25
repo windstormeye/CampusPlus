@@ -29,6 +29,15 @@
 
 @implementation HomePageViewController
 
+-(NSDictionary *)newsDict
+{
+    if (!_newsDict)
+    {
+        _newsDict = [[NSDictionary alloc] init];
+    }
+    return _newsDict;
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     
@@ -242,11 +251,11 @@
         newsView.newsBtn.tag = i;
         [newsView.newsBtn addTarget:self action:@selector(newsViewBtnClick:) forControlEvents:UIControlEventTouchUpInside];
         
-//        NSString *s = dict[@"results"][i][@"image_url"];
-//        NSString *str = [s stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
-//        NSURL *URL = [NSURL URLWithString:str];
-//        NSData* data = [NSData dataWithContentsOfURL:URL];
-//        newsView.newsImgView.image = [UIImage imageWithData:data];
+        NSString *s = dict[@"results"][i][@"image_url"];
+        NSString *str = [s stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
+        NSURL *URL = [NSURL URLWithString:str];
+        NSData* data = [NSData dataWithContentsOfURL:URL];
+        newsView.newsImgView.image = [UIImage imageWithData:data];
         
         newsView.newsImgView.layer.cornerRadius = 5.0f;
         newsView.newsImgView.clipsToBounds = YES;
@@ -333,31 +342,37 @@
 
 -(void)requestNews: (NSString*)httpUrl
 {
-    NSURL *url = [NSURL URLWithString: httpUrl];
-    NSMutableURLRequest *request = [[NSMutableURLRequest alloc]initWithURL: url cachePolicy: NSURLRequestUseProtocolCachePolicy timeoutInterval: 10];
-    [request setHTTPMethod: @"GET"];
-    [NSURLConnection sendAsynchronousRequest: request
-                                       queue: [NSOperationQueue mainQueue]
-                           completionHandler: ^(NSURLResponse *response, NSData *data, NSError *error){
-                               if (error) {
-                                   NSLog(@"Httperror: %@%ld", error.localizedDescription, error.code);
-                               } else {
-                                   NSDictionary *Dict = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingAllowFragments error:nil];
-                                   self.newsDict = Dict;
-                               }
-                           }];
+    //异步失效 ----------------------
+    
+//    NSURL *url = [NSURL URLWithString: httpUrl];
+//    NSMutableURLRequest *request = [[NSMutableURLRequest alloc]initWithURL: url cachePolicy: NSURLRequestUseProtocolCachePolicy timeoutInterval: 10];
+//    [request setHTTPMethod: @"GET"];
+//    [NSURLConnection sendAsynchronousRequest: request
+//                                       queue: [NSOperationQueue mainQueue]
+//                           completionHandler: ^(NSURLResponse *response, NSData *data, NSError *error){
+//                               if (error) {
+//                                   NSLog(@"Httperror: %@%ld", error.localizedDescription, error.code);
+//                               } else {
+//                                   NSDictionary *Dict = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingAllowFragments error:nil];
+//                                   self.newsDict = Dict;
+//                                   NSLog(@"%@====",Dict);
+//                               }
+//                           }];
+    // 如果网址中存在中文,进行URLEncode
+    NSString *newUrlStr = [httpUrl stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
+    // 2.构建网络URL对象, NSURL
+    NSURL *url = [NSURL URLWithString:newUrlStr];
+    // 3.创建网络请求
+    NSURLRequest *request = [NSURLRequest requestWithURL:url cachePolicy:NSURLRequestReloadIgnoringLocalCacheData timeoutInterval:10];
+    // 创建同步链接
+    NSURLResponse *response = nil;
+    NSError *error = nil;
+    NSData *data = [NSURLConnection sendSynchronousRequest:request returningResponse:&response error:&error];
+    NSDictionary *dict = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingAllowFragments error:nil];
+    self.newsDict = dict;
+
 }
 
 
-
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
 
 @end

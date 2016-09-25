@@ -20,11 +20,11 @@
 -(void)setModel:(News *)model
 {
     _model = model;
-//    self.newsLabel.text = model.title;
-//    self.newsLabel.font = [UIFont systemFontOfSize:10];
+    self.newsLabel.text = model.title;
+    self.newsLabel.font = [UIFont systemFontOfSize:10];
     
-    self.newsLabel.text = [NSString stringWithFormat:@"11111"];
-    self.newsImgView.image = [UIImage imageNamed:@"h1"];
+//    self.newsLabel.text = [NSString stringWithFormat:@"11111"];
+//    self.newsImgView.image = [UIImage imageNamed:@"h1"];
 
 //    self.newsImgView.image = model.imgView.image;
     
