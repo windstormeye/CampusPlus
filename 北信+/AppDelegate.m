@@ -13,6 +13,10 @@
 
 @interface AppDelegate ()
 
+
+@property (nonatomic, strong) UITabBarController *contentTabBarController;
+
+
 @end
 
 @implementation AppDelegate
@@ -30,7 +34,7 @@
     UINavigationController *secondContentViewController = [[UINavigationController alloc] initWithRootViewController:help];
     UINavigationController *thirdContentViewController = [[UINavigationController alloc] initWithRootViewController:find];
    contentTabBarController.viewControllers = @[firstContentViewController, secondContentViewController, thirdContentViewController];
-    
+    self.contentTabBarController = contentTabBarController;
     // 设置tabbar图片
     UIImage *firstImg1 = [self resetImg:@"tab_icon_homepage_normal"];
     UIImage *firstImg2 = [self resetImg:@"tab_icon_homepage_selected"];
@@ -55,6 +59,8 @@
     
     return YES;
 }
+
+
 
 - (UIImage *)resetImg:(NSString *)name
 {

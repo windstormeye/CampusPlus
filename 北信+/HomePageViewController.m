@@ -14,6 +14,7 @@
 #import "MyClasses.h"
 #import "NewsView.h"
 #import "News.h"
+#import "LLSlideMenu.h"
 
 @interface HomePageViewController () <SDCycleScrollViewDelegate>
 
@@ -23,6 +24,10 @@
 @property (nonatomic, retain) NSDictionary *newsDict;
 
 
+@property (nonatomic, strong) LLSlideMenu *slideMenu;
+// 全屏侧滑手势
+@property (nonatomic, strong) UIPanGestureRecognizer *leftSwipe;
+@property (nonatomic, strong) UIPercentDrivenInteractiveTransition *percent;
 
 
 @end
@@ -91,7 +96,7 @@
     userButton.frame = CGRectMake(0, 0, 40, 40);
     // 把用户头像View添加到button上
     [userButton addSubview:userImgView];
-    [userButton addTarget:self action:@selector(userMessage) forControlEvents:UIControlEventTouchUpInside];
+    [userButton addTarget:self action:@selector(openLLSlideMenuAction) forControlEvents:UIControlEventTouchUpInside];
     UIBarButtonItem *leftItem = [[UIBarButtonItem alloc] initWithCustomView:userButton];
     self.navigationItem.leftBarButtonItem = leftItem;
     // 设置图片轮播器
@@ -267,8 +272,86 @@
     // 设置ScrollView的滚动区域
     scrollView.contentSize = CGSizeMake(ww.width, tmp);
     
+    // 设置个人中心弹簧页面
+    // 初始化
+    _slideMenu = [[LLSlideMenu alloc] init];
+
+    
+    [self.navigationController.view addSubview:_slideMenu];
+    // 设置菜单宽度
+    _slideMenu.ll_menuWidth = 200.f;
+    UIImage *backgroundImage = [UIImage imageNamed:@"user"];
+    //将刚刚生成的图片转换为UIColor对象。这样便可以实现平铺了。
+    UIColor *backgroundColor = [UIColor colorWithPatternImage:backgroundImage];
+    // 设置菜单背景色
+    _slideMenu.ll_menuBackgroundColor = backgroundColor;
+  
+    // 设置弹力和速度，  默认的是20,15,60
+    _slideMenu.ll_springDamping = 20;       // 阻力
+    _slideMenu.ll_springVelocity = 15;      // 速度
+    _slideMenu.ll_springFramesNum = 60;     // 关键帧数量
+    //===================
+    // 添加全屏侧滑手势
+    //===================
+    self.leftSwipe = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(swipeLeftHandle:)];
+    self.leftSwipe.maximumNumberOfTouches = 1;
+    [self.view addGestureRecognizer:_leftSwipe];
+    
+    // 设置头像View
+    UIImageView *userCenterImgView= [[UIImageView alloc] init];
+    //    userCenterImgView = CGRectMake(16, 22, 40, 40);
+    userCenterImgView.frame = CGRectMake(0, 0, 80, 80);
+    userCenterImgView.image = [UIImage imageNamed:@"user_name"];
+    userCenterImgView.backgroundColor = [UIColor blackColor];
+    // 设置用户头像为圆形
+    userCenterImgView.layer.cornerRadius = userCenterImgView.frame.size.width / 2;
+    userCenterImgView.clipsToBounds = YES;
+    userCenterImgView.layer.borderWidth = 1.0f;
+    userCenterImgView.layer.borderColor = [UIColor blackColor].CGColor;
+    // 设置用户头像Button
+    UIButton *userCenterButton = [UIButton buttonWithType:UIButtonTypeCustom];
+    userCenterButton.frame = CGRectMake((_slideMenu.ll_menuWidth - 80 )/ 2, 30, 80, 80);
+    // 把用户头像View添加到button上
+    [userCenterButton addSubview:userCenterImgView];
+    [userCenterButton addTarget:self action:@selector(reviseUserImg) forControlEvents:UIControlEventTouchUpInside];
+    [self.slideMenu addSubview:userCenterButton];
+    
+    CGFloat btnW = 200.f;
+    CGFloat btnH = 40;
+    CGFloat btnY = 30 + CGRectGetMaxY(userCenterButton.frame);
+    CGFloat btnMaginTop = 10;
+    for (int i = 0; i < 5; i++)
+    {
+        UIButton *btn = [[UIButton alloc] init];
+        btn.frame = CGRectMake(30, btnY + i * (btnMaginTop + btnH), btnW - 30, btnH);
+        btn.contentHorizontalAlignment = UIControlContentHorizontalAlignmentLeft;        switch (i)
+        {
+            case 0:
+                [btn setTitle:@"我的所有收藏" forState:UIControlStateNormal];
+                break;
+            case 1:
+                [btn setTitle:@"我的所有答疑" forState:UIControlStateNormal];
+                break;
+            case 2:
+                [btn setTitle:@"我的所有错题本" forState:UIControlStateNormal];
+                break;
+            case 3:
+                [btn setTitle:@"我的代理" forState:UIControlStateNormal];
+                break;
+            case 4:
+                [btn setTitle:@"关于我们" forState:UIControlStateNormal];
+                break;
+        }
+        btn.titleLabel.font = [UIFont systemFontOfSize:16];
+        btn.tintColor = [UIColor blackColor];
+        [self.slideMenu addSubview:btn];
+    }
 }
 
+- (void)reviseUserImg
+{
+    NSLog(@"点我干嘛。。。");
+}
 
 - (void)classViewClick
 {
@@ -320,10 +403,6 @@
     [super viewWillDisappear:animated];
     [self removeAll];
 }
-- (void)userMessage
-{
-    NSLog(@"111");
-}
 
 -(void )newsViewBtnClick:(UIButton *)sender
 {
@@ -373,6 +452,49 @@
 
 }
 
+
+// 全屏侧滑手势监听
+- (void)swipeLeftHandle:(UIScreenEdgePanGestureRecognizer *)recognizer {
+    // 如果菜单已打开则禁止滑动
+    if (_slideMenu.ll_isOpen) {
+        return;
+    }
+    // 计算手指滑的物理距离（滑了多远，与起始位置无关）
+    CGFloat progress = [recognizer translationInView:self.navigationController.view].x / (self.navigationController.view.bounds.size.width * 1.0);
+    // 把这个百分比限制在 0~1 之间
+    progress = MIN(1.0, MAX(0.0, progress));
+    
+    // 当手势刚刚开始，我们创建一个 UIPercentDrivenInteractiveTransition 对象
+    if (recognizer.state == UIGestureRecognizerStateBegan) {
+        self.percent = [[UIPercentDrivenInteractiveTransition alloc] init];
+    } else if (recognizer.state == UIGestureRecognizerStateChanged) {
+        
+        // 当手慢慢划入时，我们把总体手势划入的进度告诉 UIPercentDrivenInteractiveTransition 对象。
+        [self.percent updateInteractiveTransition:progress];
+        _slideMenu.ll_distance = [recognizer translationInView:self.navigationController.view].x;
+        
+    } else if (recognizer.state == UIGestureRecognizerStateCancelled || recognizer.state == UIGestureRecognizerStateEnded) {
+        // 当手势结束，我们根据用户的手势进度来判断过渡是应该完成还是取消并相应的调用 finishInteractiveTransition 或者 cancelInteractiveTransition 方法.
+        if (progress > 0.4) {
+            [self.percent finishInteractiveTransition];
+            [_slideMenu ll_openSlideMenu];
+        }else{
+            [self.percent cancelInteractiveTransition];
+            [_slideMenu ll_closeSlideMenu];
+        }
+        self.percent = nil;
+    }
+}
+
+// 按钮监听
+- (void)openLLSlideMenuAction{
+    // 当菜单出现的时候隐藏tabbar
+    if (_slideMenu.ll_isOpen) {
+        [_slideMenu ll_closeSlideMenu];
+    } else {
+        [_slideMenu ll_openSlideMenu];
+    }
+}
 
 
 @end
