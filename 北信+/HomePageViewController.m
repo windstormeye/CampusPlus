@@ -261,7 +261,7 @@
         newsView.newsImgView.clipsToBounds = YES;
         [scrollView addSubview:newsView];
         
-        tmp = appY + appH + maginY * 2 + 50;
+        tmp = appY + appH + maginY * 2 + 100;
     }
 
     // 设置ScrollView的滚动区域

@@ -255,7 +255,6 @@
             UIButton *btn = [[UIButton alloc] init];
             btn.frame = CGRectMake(appX, appY, appW, appH);
             btn.tag = btnK++;
-            NSLog(@"%ld",(long)btn.tag);
             btn.backgroundColor = [UIColor clearColor];
             [btn addTarget:self action:@selector(answerBtnClick:) forControlEvents:UIControlEventTouchUpInside];
             // 设置按钮为圆形
