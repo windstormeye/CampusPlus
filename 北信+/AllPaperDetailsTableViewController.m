@@ -47,7 +47,7 @@
     view.backgroundColor = [UIColor colorWithRed:246/255.0 green:246/255.0 blue:246/255.0 alpha:1.0];
     self.tableView.tableHeaderView = view;
     
-     self.navigationItem.title = @"历届真题";
+    self.navigationItem.title = @"历届真题";
     NSDictionary *dict = [NSDictionary dictionaryWithObject:[UIColor whiteColor] forKey:NSForegroundColorAttributeName];
     self.navigationController.navigationBar.titleTextAttributes = dict;
     self.navigationController.navigationBar.tintColor = [UIColor whiteColor];

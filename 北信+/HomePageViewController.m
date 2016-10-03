@@ -15,6 +15,11 @@
 #import "NewsView.h"
 #import "News.h"
 #import "LLSlideMenu.h"
+#import "MyAllCollectViewController.h"
+#import "MyAllExpertsAnswerViewController.h"
+#import "MyAllWrongBookViewController.h"
+#import "MyDelegatesViewController.h"
+#import "AboutUsViewController.h"
 
 @interface HomePageViewController () <SDCycleScrollViewDelegate>
 
@@ -280,7 +285,7 @@
     [self.navigationController.view addSubview:_slideMenu];
     // 设置菜单宽度
     _slideMenu.ll_menuWidth = 200.f;
-    UIImage *backgroundImage = [UIImage imageNamed:@"user"];
+    UIImage *backgroundImage = [UIImage imageNamed:@"userCenterBackground"];
     //将刚刚生成的图片转换为UIColor对象。这样便可以实现平铺了。
     UIColor *backgroundColor = [UIColor colorWithPatternImage:backgroundImage];
     // 设置菜单背景色
@@ -310,7 +315,7 @@
     userCenterImgView.layer.borderColor = [UIColor blackColor].CGColor;
     // 设置用户头像Button
     UIButton *userCenterButton = [UIButton buttonWithType:UIButtonTypeCustom];
-    userCenterButton.frame = CGRectMake((_slideMenu.ll_menuWidth - 80 )/ 2, 30, 80, 80);
+    userCenterButton.frame = CGRectMake((_slideMenu.ll_menuWidth - 80 )/ 2, 40, 80, 80);
     // 把用户头像View添加到button上
     [userCenterButton addSubview:userCenterImgView];
     [userCenterButton addTarget:self action:@selector(reviseUserImg) forControlEvents:UIControlEventTouchUpInside];
@@ -318,7 +323,7 @@
     
     CGFloat btnW = 200.f;
     CGFloat btnH = 40;
-    CGFloat btnY = 30 + CGRectGetMaxY(userCenterButton.frame);
+    CGFloat btnY = 60 + CGRectGetMaxY(userCenterButton.frame);
     CGFloat btnMaginTop = 10;
     for (int i = 0; i < 5; i++)
     {
@@ -328,21 +333,26 @@
         {
             case 0:
                 [btn setTitle:@"我的所有收藏" forState:UIControlStateNormal];
+                [btn addTarget:self action:@selector(toMyAllCollect) forControlEvents:UIControlEventTouchUpInside];
                 break;
             case 1:
                 [btn setTitle:@"我的所有答疑" forState:UIControlStateNormal];
+                [btn addTarget:self action:@selector(toMyAllExpertsAnswers) forControlEvents:UIControlEventTouchUpInside];
                 break;
             case 2:
                 [btn setTitle:@"我的所有错题本" forState:UIControlStateNormal];
+                [btn addTarget:self action:@selector(toMyAllWrongBook) forControlEvents:UIControlEventTouchUpInside];
                 break;
             case 3:
                 [btn setTitle:@"我的代理" forState:UIControlStateNormal];
+                [btn addTarget:self action:@selector(toMyDelegates) forControlEvents:UIControlEventTouchUpInside];
                 break;
             case 4:
                 [btn setTitle:@"关于我们" forState:UIControlStateNormal];
+                [btn addTarget:self action:@selector(toAboutUs) forControlEvents:UIControlEventTouchUpInside];
                 break;
         }
-        btn.titleLabel.font = [UIFont systemFontOfSize:16];
+        btn.titleLabel.font = [UIFont systemFontOfSize:18];
         btn.tintColor = [UIColor blackColor];
         [self.slideMenu addSubview:btn];
     }
@@ -488,7 +498,6 @@
 
 // 按钮监听
 - (void)openLLSlideMenuAction{
-    // 当菜单出现的时候隐藏tabbar
     if (_slideMenu.ll_isOpen) {
         [_slideMenu ll_closeSlideMenu];
     } else {
@@ -496,5 +505,60 @@
     }
 }
 
+- (void)toMyAllCollect
+{
+    [_slideMenu ll_closeSlideMenu];
+    if (_slideMenu.ll_isOpen)
+    {
+        [_slideMenu ll_closeSlideMenu];
+        MyAllCollectViewController *collect = [[MyAllCollectViewController alloc] init];
+        [self.navigationController pushViewController:collect animated:YES];
+    }
 
+}
+
+- (void)toMyAllExpertsAnswers
+{
+    [_slideMenu ll_closeSlideMenu];
+    if (_slideMenu.ll_isOpen)
+    {
+        [_slideMenu ll_closeSlideMenu];
+        MyAllExpertsAnswerViewController *answer = [[MyAllExpertsAnswerViewController alloc] init];
+        [self.navigationController pushViewController:answer animated:YES];
+    }
+}
+
+- (void)toMyAllWrongBook
+{
+    
+    [_slideMenu ll_closeSlideMenu];
+    if (_slideMenu.ll_isOpen)
+    {
+        [_slideMenu ll_closeSlideMenu];
+        MyAllWrongBookViewController *book = [[MyAllWrongBookViewController alloc] init];
+        [self.navigationController pushViewController:book animated:YES];
+    }
+}
+
+- (void)toMyDelegates
+{
+    [_slideMenu ll_closeSlideMenu];
+    if (_slideMenu.ll_isOpen)
+    {
+        [_slideMenu ll_closeSlideMenu];
+        MyDelegatesViewController *dele = [[MyDelegatesViewController alloc] init];
+        [self.navigationController pushViewController:dele animated:YES];
+    }
+}
+
+- (void)toAboutUs
+{
+    [_slideMenu ll_closeSlideMenu];
+    if (_slideMenu.ll_isOpen)
+    {
+        [_slideMenu ll_closeSlideMenu];
+        AboutUsViewController *us = [[AboutUsViewController alloc] init];
+        [self.navigationController pushViewController:us animated:YES];
+    }
+}
 @end
