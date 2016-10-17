@@ -21,6 +21,9 @@
 #import "MyDelegatesViewController.h"
 #import "AboutUsViewController.h"
 
+#import "AFURLSessionManager.h"
+#import "AFHTTPSessionManager.h"
+
 @interface HomePageViewController () <SDCycleScrollViewDelegate>
 
 @property(nonatomic, strong) UIScrollView *scrollView;
@@ -50,12 +53,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
-    
-    NSString *newsHttpUrl = @"http://cloud.bmob.cn/17f5e4c17ad52f4a/Get_News";
-   [self requestNews:newsHttpUrl];
  
-    [self initHomePageWithDict:self.newsDict];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -111,7 +109,7 @@
         @"http://nos.netease.com/edu-image/EA12D3DC06397D7FAE882FA7521C33DA.png?imageView&thumbnail=1205y490&quality=100",
         @"http://nos.netease.com/edu-image/05E35FD224C59CBE03120BFC0F8C1FA9.jpg?imageView&thumbnail=1205y490&quality=100"];// 本地图片请填写全名
     CGFloat w = self.view.bounds.size.width;
-    SDCycleScrollView *cycleScrollView = [SDCycleScrollView cycleScrollViewWithFrame:CGRectMake(0, 0, w, 120) delegate:self placeholderImage:[UIImage imageNamed:@"placeholder"]];
+    SDCycleScrollView *cycleScrollView = [SDCycleScrollView cycleScrollViewWithFrame:CGRectMake(0, 0, w, 140) delegate:self placeholderImage:[UIImage imageNamed:@"placeholder"]];
     // 自定义分页控件小圆标颜色
     cycleScrollView.currentPageDotColor = [UIColor whiteColor];
     // 设置轮播器图片
@@ -131,17 +129,17 @@
     UILabel *myclassLabel = [[UILabel alloc] initWithFrame:CGRectMake(60, 25, 50, 20)];
     myclassLabel.text = [NSString stringWithFormat:@"我的课程"];
     myclassLabel.textColor = [UIColor blackColor];
-    myclassLabel.font = [UIFont systemFontOfSize:11];
+    myclassLabel.font = [UIFont systemFontOfSize:12];
     [myClassView addSubview:myclassLabel];
     [scrollView addSubview:myClassView];
     // 设置我的课程
-    UIView *classesView1 = [[UIView alloc] initWithFrame:CGRectMake(27, 175, 70, 70)];
+    UIView *classesView1 = [[UIView alloc] initWithFrame:CGRectMake(27, CGRectGetMaxY(myClassView.frame), 70, 70)];
     UIImageView *imgView1 = [[UIImageView alloc] initWithFrame:CGRectMake(15, 10, 35, 35)];
     imgView1.image = [UIImage imageNamed:@"1"];
     [classesView1 addSubview:imgView1];
     UILabel *className1 = [[UILabel alloc] initWithFrame:CGRectMake(15, 50, 70, 20)];
     className1.text = [NSString stringWithFormat:@"离散数学"];
-    className1.font = [UIFont systemFontOfSize:11];
+    className1.font = [UIFont systemFontOfSize:12];
     className1.textColor = [UIColor blackColor];
     [classesView1 addSubview:className1];
     UIButton *classBtn1 = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, classesView1.frame.size.width, classesView1.frame.size.height)];
@@ -151,13 +149,13 @@
     [classesView1 addSubview:classBtn1];
     [scrollView addSubview:classesView1];
     
-    UIView *classesView2 = [[UIView alloc] initWithFrame:CGRectMake(27 + 70 + 27, 175, 70, 70)];
+    UIView *classesView2 = [[UIView alloc] initWithFrame:CGRectMake(27 + 70 + 27, CGRectGetMaxY(myClassView.frame), 70, 70)];
     UIImageView *imgView2 = [[UIImageView alloc] initWithFrame:CGRectMake(15, 10, 35, 35)];
     imgView2.image = [UIImage imageNamed:@"2"];
     [classesView2 addSubview:imgView2];
     UILabel *className2 = [[UILabel alloc] initWithFrame:CGRectMake(15, 50, 70, 20)];
     className2.text = [NSString stringWithFormat:@"C语言"];
-    className2.font = [UIFont systemFontOfSize:11];
+    className2.font = [UIFont systemFontOfSize:12];
     className2.textColor = [UIColor blackColor];
     [classesView2 addSubview:className2];
     UIButton *classBtn2 = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, classesView2.frame.size.width, classesView2.frame.size.height)];
@@ -167,13 +165,13 @@
     [classesView2 addSubview:classBtn2];
     [scrollView addSubview:classesView2];
     
-    UIView *classesView3 = [[UIView alloc] initWithFrame:CGRectMake(27 * 3 + 70 * 2, 175, 70, 70)];
+    UIView *classesView3 = [[UIView alloc] initWithFrame:CGRectMake(27 * 3 + 70 * 2, CGRectGetMaxY(myClassView.frame), 70, 70)];
     UIImageView *imgView3 = [[UIImageView alloc] initWithFrame:CGRectMake(15, 10, 35, 35)];
     imgView3.image = [UIImage imageNamed:@"3"];
     [classesView3 addSubview:imgView3];
     UILabel *className3 = [[UILabel alloc] initWithFrame:CGRectMake(15, 50, 70, 20)];
     className3.text = [NSString stringWithFormat:@"电工"];
-    className3.font = [UIFont systemFontOfSize:11];
+    className3.font = [UIFont systemFontOfSize:12];
     className3.textColor = [UIColor blackColor];
     [classesView3 addSubview:className3];
     UIButton *classBtn3 = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, classesView3.frame.size.width, classesView3.frame.size.height)];
@@ -183,13 +181,13 @@
     [classesView3 addSubview:classBtn3];
     [scrollView addSubview:classesView3];
     
-    UIView *classesView4 = [[UIView alloc] initWithFrame:CGRectMake(27, 175 + 70 + 20, 70, 70)];
+    UIView *classesView4 = [[UIView alloc] initWithFrame:CGRectMake(27, CGRectGetMaxY(myClassView.frame) + 70 + 20, 70, 70)];
     UIImageView *imgView4 = [[UIImageView alloc] initWithFrame:CGRectMake(15, 10, 35, 35)];
     imgView4.image = [UIImage imageNamed:@"4"];
     [classesView4 addSubview:imgView4];
     UILabel *className4 = [[UILabel alloc] initWithFrame:CGRectMake(15, 50, 70, 20)];
     className4.text = [NSString stringWithFormat:@"高等数学"];
-    className4.font = [UIFont systemFontOfSize:11];
+    className4.font = [UIFont systemFontOfSize:12];
     className4.textColor = [UIColor blackColor];
     [classesView4 addSubview:className4];
     // 设置科目点击事件
@@ -200,13 +198,13 @@
     [classesView4 addSubview:classBtn4];
     [scrollView addSubview:classesView4];
     
-    UIView *classesView5 = [[UIView alloc] initWithFrame:CGRectMake(27 + 70 + 27, 175 + 70 + 20, 70, 70)];
+    UIView *classesView5 = [[UIView alloc] initWithFrame:CGRectMake(27 + 70 + 27, CGRectGetMaxY(myClassView.frame) + 70 + 20, 70, 70)];
     UIImageView *imgView5 = [[UIImageView alloc] initWithFrame:CGRectMake(15, 10, 35, 35)];
     imgView5.image = [UIImage imageNamed:@"5"];
     [classesView5 addSubview:imgView5];
     UILabel *className5 = [[UILabel alloc] initWithFrame:CGRectMake(15, 50, 70, 20)];
     className5.text = [NSString stringWithFormat:@"大学物理"];
-    className5.font = [UIFont systemFontOfSize:11];
+    className5.font = [UIFont systemFontOfSize:12];
     className5.textColor = [UIColor blackColor];
     [classesView5 addSubview:className5];
     UIButton *classBtn5 = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, classesView5.frame.size.width, classesView5.frame.size.height)];
@@ -217,7 +215,7 @@
     [scrollView addSubview:classesView5];
     
     // 设置校内热点新闻栏
-    UIView *newsView=[[UIView alloc] initWithFrame:CGRectMake(0, 175 + 70 + 20 + 70, w, 40)];
+    UIView *newsView=[[UIView alloc] initWithFrame:CGRectMake(0, CGRectGetMaxY(classesView5.frame), w, 40)];
     myClassView.backgroundColor = [UIColor clearColor];
     UIImageView *newsImg = [[UIImageView alloc] initWithFrame:CGRectMake(13, 10, 35, newsView.frame.size.height - 10)];
     newsImg.image = [UIImage imageNamed:@"crown"];
@@ -225,7 +223,7 @@
     UILabel *newsLabel = [[UILabel alloc] initWithFrame:CGRectMake(60, 25, 50, 20)];
     newsLabel.text = [NSString stringWithFormat:@"热点新闻"];
     newsLabel.textColor = [UIColor blackColor];
-    newsLabel.font = [UIFont systemFontOfSize:11];
+    newsLabel.font = [UIFont systemFontOfSize:12];
     [newsView addSubview:newsLabel];
     [scrollView addSubview:newsView];
     
@@ -238,7 +236,7 @@
     // 宽度
     CGFloat appH = 120;
     // 第一行距离顶部的距离
-    CGFloat maginTop = 400;
+    CGFloat maginTop = CGRectGetMaxY(newsView.frame) + 10;
     // 计算每一行中的每一个view之间的距离
     CGFloat maginX = (viewWidth - cloumns * appW) / (cloumns + 1);
     // 计算每一列中的每一个view之前的距离
@@ -408,6 +406,12 @@
     }];
 }
 
+-(void)viewWillAppear:(BOOL)animated
+{
+    NSString *newsHttpUrl = @"http://cloud.bmob.cn/17f5e4c17ad52f4a/Get_News";
+    [self requestNews:newsHttpUrl];
+}
+
 -(void)viewWillDisappear:(BOOL)animated
 {
     [super viewWillDisappear:animated];
@@ -421,6 +425,7 @@
     
     int i = (int)sender.tag;
     NSString *str = self.newsDict[@"results"][i][@"url"];
+    //  把中文URL进行编码
     str = [str stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
     NewsViewController *help = [[NewsViewController alloc] init];
     [help getNewsMessageWithURL:str];
@@ -431,35 +436,24 @@
 
 -(void)requestNews: (NSString*)httpUrl
 {
-    //异步失效 ----------------------
+    AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
+    manager.responseSerializer = [AFHTTPResponseSerializer serializer];
     
-//    NSURL *url = [NSURL URLWithString: httpUrl];
-//    NSMutableURLRequest *request = [[NSMutableURLRequest alloc]initWithURL: url cachePolicy: NSURLRequestUseProtocolCachePolicy timeoutInterval: 10];
-//    [request setHTTPMethod: @"GET"];
-//    [NSURLConnection sendAsynchronousRequest: request
-//                                       queue: [NSOperationQueue mainQueue]
-//                           completionHandler: ^(NSURLResponse *response, NSData *data, NSError *error){
-//                               if (error) {
-//                                   NSLog(@"Httperror: %@%ld", error.localizedDescription, error.code);
-//                               } else {
-//                                   NSDictionary *Dict = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingAllowFragments error:nil];
-//                                   self.newsDict = Dict;
-//                                   NSLog(@"%@====",Dict);
-//                               }
-//                           }];
-    // 如果网址中存在中文,进行URLEncode
-    NSString *newUrlStr = [httpUrl stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
-    // 2.构建网络URL对象, NSURL
-    NSURL *url = [NSURL URLWithString:newUrlStr];
-    // 3.创建网络请求
-    NSURLRequest *request = [NSURLRequest requestWithURL:url cachePolicy:NSURLRequestReloadIgnoringLocalCacheData timeoutInterval:10];
-    // 创建同步链接
-    NSURLResponse *response = nil;
-    NSError *error = nil;
-    NSData *data = [NSURLConnection sendSynchronousRequest:request returningResponse:&response error:&error];
-    NSDictionary *dict = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingAllowFragments error:nil];
-    self.newsDict = dict;
+    [manager GET:httpUrl parameters:nil progress:^(NSProgress * _Nonnull downloadProgress) {
+        
+        // 这里可以获取到目前的数据请求的进度
+        
+    } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+        // 请求成功，解析数据
+        
+        NSDictionary *dic = [NSJSONSerialization JSONObjectWithData:responseObject options:NSJSONReadingMutableContainers | NSJSONReadingMutableLeaves error:nil];
+        self.newsDict = dic;
+        [self initHomePageWithDict:self.newsDict];
 
+    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+        // 请求失败
+        NSLog(@"%@", [error localizedDescription]);
+    }];
 }
 
 

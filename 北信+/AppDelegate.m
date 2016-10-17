@@ -10,6 +10,7 @@
 #import "HomePageViewController.h"
 #import "FindViewController.h"
 #import "HelpTableViewController.h"
+#import <BmobSDK/Bmob.h>
 
 @interface AppDelegate ()
 
@@ -23,6 +24,9 @@
 
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
+   
+    [Bmob registerWithAppKey:@"c1b1f0a0d66af132513b58b66df9aa25"];
+    
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     UITabBarController *contentTabBarController = [[UITabBarController alloc] init];
     self.window.rootViewController = contentTabBarController;

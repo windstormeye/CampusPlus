@@ -10,6 +10,9 @@
 #import "NSString+PJNSStringExtension.h"
 #import "MZTimerLabel.h"
 
+#import "AFURLSessionManager.h"
+#import "AFHTTPSessionManager.h"
+
 #define SCREEN_WIDTH_RATIO (SCREEN.width / 320)  //屏宽比例
 #define SCREEN [UIScreen mainScreen].bounds.size
 @interface PaperViewController () <UIScrollViewDelegate>
@@ -23,6 +26,8 @@
 @property (nonatomic, retain) NSMutableArray *titleArray;
 @property (nonatomic, retain) NSMutableArray *xArray;   // 记录下生成的webView坐标
 @property (nonatomic, assign) CGFloat lastX;
+@property (assign, nonatomic) bool isTouchCheckBtn;
+
 
 @end
 
@@ -48,6 +53,9 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    self.isTouchCheckBtn = NO;
+    
     UIView *view = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 200, self.navigationController.navigationBar.frame.size.height)];
     view.backgroundColor = [UIColor clearColor];
     // 设置navigationBar标签
@@ -95,7 +103,6 @@
     
     NSString *paperHttpUrl = @"http://cloud.bmob.cn/17f5e4c17ad52f4a/Get_Exams";
     [self requestPaper:paperHttpUrl];
-    [self initPaperViewWithDict:self.paperDict];
     // 让第一个出现的题目View的标签是非题目
     self.nowLabel.text = [NSString stringWithFormat:@"非题目"];
     self.nowLabel.textColor = [UIColor grayColor];
@@ -183,18 +190,34 @@
             // 获取每个webView的X坐标
             NSNumber *x = [NSNumber numberWithFloat:imgX];
             [self.xArray addObject:x];
-            UIWebView *webView = [[UIWebView alloc] initWithFrame:CGRectMake(imgX, imgY, imgW, imgH)];
+            UIWebView *firstwebView = [[UIWebView alloc] initWithFrame:CGRectMake(imgX, imgY, imgW, 80)];
             NSURLRequest *request =[NSURLRequest requestWithURL:url];
-            webView.scrollView.bounces = NO;
-            [self.view addSubview: webView];
-            [webView loadRequest:request];
-            [scrollView addSubview:webView];
+            firstwebView.scrollView.bounces = NO;
+            [self.view addSubview: firstwebView];
+            [firstwebView loadRequest:request];
+            [scrollView addSubview:firstwebView];
+            
+            if (self.isTouchCheckBtn)
+            {
+                // 动态计算webView高度
+                CGRect frame = firstwebView.frame;
+                frame.size.height = 1;
+                firstwebView.frame = frame;
+                frame = firstwebView.frame;
+                frame.size = [firstwebView sizeThatFits:CGSizeZero];
+                firstwebView.frame = frame;
+                
+                UIButton *btn = [[UIButton alloc] initWithFrame:CGRectMake(20, firstwebView.frame.size.height, 40, 40)];
+                btn.backgroundColor = [UIColor blackColor];
+                [firstwebView addSubview:btn];
+            }
 
             webJ++;
         }
     }
     UIScrollView *answerView = [[UIScrollView alloc] initWithFrame:CGRectMake(imgW * (i - 1), imgY, imgW, imgH)];
     answerView.bounces = NO;
+  
     // 记录下答题卡的坐标
     self.lastX = answerView.frame.origin.x;
     
@@ -208,7 +231,7 @@
     // 宽度
     CGFloat appH = 50;
     // 计算每一行中的每一个view之间的距离
-    CGFloat maginX = (viewWidth - cloumns * appW) / (cloumns + 1);
+    CGFloat maginX = (viewWidth - cloumns * appW + 60) / (cloumns + 1);
 
     CGFloat appX = 0;
     CGFloat appY = 0;
@@ -274,7 +297,20 @@
             [answerView addSubview:btn];
         }
     }
-    answerView.contentSize = CGSizeMake(0, appY + appH + 54);
+      UIButton *checkBtn = [[UIButton alloc] initWithFrame:CGRectMake(0, appY + appH + 10, self.view.frame.size.width, 60)];
+    checkBtn.backgroundColor = [UIColor colorWithRed:38/255.0 green:184/255.0 blue:242/255.0 alpha:1.0];
+    [checkBtn addTarget:self action:@selector(checkBtnMethon) forControlEvents:UIControlEventTouchUpInside];
+    UILabel *checkBtnLabel = [[UILabel alloc] init];
+    checkBtnLabel.font = [UIFont systemFontOfSize:18];
+    checkBtnLabel.frame = CGRectMake(80, 13, 200, 40);
+//    checkBtnLabel.center = checkBtn.center;
+    checkBtnLabel.text = @"查看答案并自我批改";
+    checkBtnLabel.textColor = [UIColor whiteColor];
+    
+    [checkBtn addSubview:checkBtnLabel];
+    [answerView addSubview:checkBtn];
+    
+    answerView.contentSize = CGSizeMake(0, appY + appH + checkBtn.frame.size.height+ 50);
     [scrollView addSubview:answerView];
     [self.view addSubview:scrollView];
     
@@ -293,21 +329,35 @@
     self.scrollView.delegate = self;
 }
 
+- (void)checkBtnMethon
+{
+    self.isTouchCheckBtn = !self.isTouchCheckBtn;
+    [self initPaperViewWithDict:self.paperDict];
+}
+
 // 同步请求
 -(void)requestPaper: (NSString*)httpUrl
 {
-    // 如果网址中存在中文,进行URLEncode
-    NSString *newUrlStr = [httpUrl stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
-    // 2.构建网络URL对象, NSURL
-    NSURL *url = [NSURL URLWithString:newUrlStr];
-    // 3.创建网络请求
-    NSURLRequest *request = [NSURLRequest requestWithURL:url cachePolicy:NSURLRequestReloadIgnoringLocalCacheData timeoutInterval:10];
-    // 创建同步链接
-    NSURLResponse *response = nil;
-    NSError *error = nil;
-    NSData *data = [NSURLConnection sendSynchronousRequest:request returningResponse:&response error:&error];
-    NSDictionary *dict = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingAllowFragments error:nil];
-    self.paperDict = dict;
+    AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
+    manager.responseSerializer = [AFHTTPResponseSerializer serializer];
+    
+    [manager GET:httpUrl parameters:nil progress:^(NSProgress * _Nonnull downloadProgress) {
+        
+        // 这里可以获取到目前的数据请求的进度
+        
+    } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+        // 请求成功，解析数据
+        
+        NSDictionary *dic = [NSJSONSerialization JSONObjectWithData:responseObject options:NSJSONReadingMutableContainers | NSJSONReadingMutableLeaves error:nil];
+        self.paperDict = dic;
+        [self initPaperViewWithDict:self.paperDict];
+        
+    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+        
+        // 请求失败
+        NSLog(@"%@", [error localizedDescription]);
+        
+    }];
 }
 
 // 当前题目设置

@@ -17,7 +17,14 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+ 
+}
 
+-(void)viewWillAppear:(BOOL)animated
+{
+    // 切记自定义Navigation返回
+    self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"back"] style:UIBarButtonItemStylePlain target:self action:@selector(back)];
+    self.navigationController.navigationBar.tintColor = [UIColor whiteColor];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -34,6 +41,10 @@
     [webView loadRequest:request];
 }
 
+-(void)back
+{
+    [self.navigationController popViewControllerAnimated:YES];
+}
 
 
 /*
