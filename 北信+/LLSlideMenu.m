@@ -148,6 +148,8 @@
     if (_ll_animManager.isAnimating) {
         return;
     }
+    UITabBarController* VC = (UITabBarController*)[UIApplication sharedApplication].keyWindow.rootViewController;
+    VC.tabBarController.tabBar.hidden = NO;
     _displayLayer.isAnimating = YES;
     _closeMenuButton.hidden = YES;
     _ll_animManager.isAnimating = YES;

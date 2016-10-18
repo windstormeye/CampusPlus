@@ -11,26 +11,16 @@
 
 @interface NewsView ()
 
-@property (weak, nonatomic) IBOutlet UILabel *newsLabel;
 
 @end
 
 @implementation NewsView
 
--(void)setModel:(News *)model
+
+// 此方法不能删！！！删掉后点击新闻会崩掉
+- (IBAction)newsBtnClikc:(id)sender
 {
-    _model = model;
-    self.newsLabel.text = model.title;
-    self.newsLabel.font = [UIFont systemFontOfSize:10];
-    
-//    self.newsLabel.text = [NSString stringWithFormat:@"11111"];
-//    self.newsImgView.image = [UIImage imageNamed:@"h1"];
-
-//    self.newsImgView.image = model.imgView.image;
-    
-}
-
-- (IBAction)newsBtnClikc:(id)sender {
+    // 千万不能删
 }
 
 +(instancetype)newsView

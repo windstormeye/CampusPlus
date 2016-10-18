@@ -24,23 +24,32 @@
 #import "AFURLSessionManager.h"
 #import "AFHTTPSessionManager.h"
 
+#import <BmobSDK/Bmob.h>
+
 @interface HomePageViewController () <SDCycleScrollViewDelegate>
 
 @property(nonatomic, strong) UIScrollView *scrollView;
 @property (weak, nonatomic) UIButton *cover;
 @property(nonatomic, weak) PaperDetailsView *paper;
 @property (nonatomic, retain) NSDictionary *newsDict;
-
-
 @property (nonatomic, strong) LLSlideMenu *slideMenu;
 // 全屏侧滑手势
 @property (nonatomic, strong) UIPanGestureRecognizer *leftSwipe;
 @property (nonatomic, strong) UIPercentDrivenInteractiveTransition *percent;
-
+@property (nonatomic, retain) NSMutableArray *bomeObjArr;
 
 @end
 
 @implementation HomePageViewController
+
+-(NSMutableArray *)bomeObjArr
+{
+    if (!_bomeObjArr)
+    {
+        _bomeObjArr = [[NSMutableArray alloc] init];
+    }
+    return _bomeObjArr;
+}
 
 -(NSDictionary *)newsDict
 {
@@ -50,25 +59,37 @@
     }
     return _newsDict;
 }
-
+// -(void)viewWillAppear:(BOOL)animated 此方法小心
 - (void)viewDidLoad {
     [super viewDidLoad];
  
+    BmobQuery   *bquery = [BmobQuery queryWithClassName:@"News"];
+    //查找GameScore表的数据
+    [bquery findObjectsInBackgroundWithBlock:^(NSArray *array, NSError *error)
+     {
+         for (BmobObject *obj in array)
+         {
+             [self.bomeObjArr addObject:obj];
+         }
+         [self initHomePageWithDict];
+     }];
 }
+
+
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
 
-- (void)initHomePageWithDict:(NSDictionary *)dict
+- (void)initHomePageWithDict
 {    
     CGSize ww = self.view.bounds.size;
     UIScrollView *scrollView = [[UIScrollView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height)];
     scrollView.backgroundColor = [UIColor clearColor];
     scrollView.showsVerticalScrollIndicator = NO;
     //当bounces属性设置为YES时，当UIScrollView中图片滑动到边界的时候会出现弹动的效果，就像是Linux中的果冻效果一样。当bounces属性设置为NO时，当UIScrollView中图片滑动到边界时会直接定在边界就不会有弹动的效果。
-//    scrollView.bounces = NO;
+    scrollView.bounces = NO;
     [self.view addSubview:scrollView];
     //设置navigationbar的颜色
     [self.navigationController.navigationBar setBarTintColor:[UIColor colorWithRed:38/255.0 green:184/255.0 blue:242/255.0 alpha:1.0]];
@@ -85,7 +106,6 @@
     self.navigationItem.titleView = titleView;
     // 设置头像View
     UIImageView *userImgView= [[UIImageView alloc] init];
-//    userImgView.frame = CGRectMake(16, 22, 40, 40);
     userImgView.frame = CGRectMake(0, 0, 40, 40);
     userImgView.image = [UIImage imageNamed:@"user_name"];
     userImgView.backgroundColor = [UIColor blackColor];
@@ -137,9 +157,9 @@
     UIImageView *imgView1 = [[UIImageView alloc] initWithFrame:CGRectMake(15, 10, 35, 35)];
     imgView1.image = [UIImage imageNamed:@"1"];
     [classesView1 addSubview:imgView1];
-    UILabel *className1 = [[UILabel alloc] initWithFrame:CGRectMake(15, 50, 70, 20)];
+    UILabel *className1 = [[UILabel alloc] initWithFrame:CGRectMake(8, 50, 70, 20)];
     className1.text = [NSString stringWithFormat:@"离散数学"];
-    className1.font = [UIFont systemFontOfSize:12];
+    className1.font = [UIFont systemFontOfSize:13];
     className1.textColor = [UIColor blackColor];
     [classesView1 addSubview:className1];
     UIButton *classBtn1 = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, classesView1.frame.size.width, classesView1.frame.size.height)];
@@ -155,7 +175,7 @@
     [classesView2 addSubview:imgView2];
     UILabel *className2 = [[UILabel alloc] initWithFrame:CGRectMake(15, 50, 70, 20)];
     className2.text = [NSString stringWithFormat:@"C语言"];
-    className2.font = [UIFont systemFontOfSize:12];
+    className2.font = [UIFont systemFontOfSize:13];
     className2.textColor = [UIColor blackColor];
     [classesView2 addSubview:className2];
     UIButton *classBtn2 = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, classesView2.frame.size.width, classesView2.frame.size.height)];
@@ -171,7 +191,7 @@
     [classesView3 addSubview:imgView3];
     UILabel *className3 = [[UILabel alloc] initWithFrame:CGRectMake(15, 50, 70, 20)];
     className3.text = [NSString stringWithFormat:@"电工"];
-    className3.font = [UIFont systemFontOfSize:12];
+    className3.font = [UIFont systemFontOfSize:13];
     className3.textColor = [UIColor blackColor];
     [classesView3 addSubview:className3];
     UIButton *classBtn3 = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, classesView3.frame.size.width, classesView3.frame.size.height)];
@@ -185,9 +205,9 @@
     UIImageView *imgView4 = [[UIImageView alloc] initWithFrame:CGRectMake(15, 10, 35, 35)];
     imgView4.image = [UIImage imageNamed:@"4"];
     [classesView4 addSubview:imgView4];
-    UILabel *className4 = [[UILabel alloc] initWithFrame:CGRectMake(15, 50, 70, 20)];
+    UILabel *className4 = [[UILabel alloc] initWithFrame:CGRectMake(8, 50, 70, 20)];
     className4.text = [NSString stringWithFormat:@"高等数学"];
-    className4.font = [UIFont systemFontOfSize:12];
+    className4.font = [UIFont systemFontOfSize:13];
     className4.textColor = [UIColor blackColor];
     [classesView4 addSubview:className4];
     // 设置科目点击事件
@@ -202,9 +222,9 @@
     UIImageView *imgView5 = [[UIImageView alloc] initWithFrame:CGRectMake(15, 10, 35, 35)];
     imgView5.image = [UIImage imageNamed:@"5"];
     [classesView5 addSubview:imgView5];
-    UILabel *className5 = [[UILabel alloc] initWithFrame:CGRectMake(15, 50, 70, 20)];
+    UILabel *className5 = [[UILabel alloc] initWithFrame:CGRectMake(8, 50, 70, 20)];
     className5.text = [NSString stringWithFormat:@"大学物理"];
-    className5.font = [UIFont systemFontOfSize:12];
+    className5.font = [UIFont systemFontOfSize:13];
     className5.textColor = [UIColor blackColor];
     [classesView5 addSubview:className5];
     UIButton *classBtn5 = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, classesView5.frame.size.width, classesView5.frame.size.height)];
@@ -244,22 +264,18 @@
     
     int tmp = 0;
     
-    News *news = [[News alloc] initWithDict:dict];
-    for (int i = 0; i < news.array.count; i++)
+    for (int i = 0; i < self.bomeObjArr.count; i++)
     {
-        // apps里放的是App类型的对象数据
-        News *model = news.array[i];
         NewsView  *newsView = [NewsView newsView];
         int colIdx = i % cloumns;           // 行索引
         int rowIdx = i / cloumns;           // 列索引
         CGFloat appX = maginX + colIdx * (maginX + appW);
         CGFloat appY = maginTop + rowIdx * (maginY + appH);
         newsView.frame = CGRectMake(appX, appY, appW, appH);
-        newsView.model = model;
         newsView.newsBtn.tag = i;
         [newsView.newsBtn addTarget:self action:@selector(newsViewBtnClick:) forControlEvents:UIControlEventTouchUpInside];
         
-        NSString *s = dict[@"results"][i][@"image_url"];
+        NSString *s = [self.bomeObjArr[i] objectForKey:@"image_url"];
         NSString *str = [s stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
         NSURL *URL = [NSURL URLWithString:str];
         NSData* data = [NSData dataWithContentsOfURL:URL];
@@ -267,9 +283,12 @@
         
         newsView.newsImgView.layer.cornerRadius = 5.0f;
         newsView.newsImgView.clipsToBounds = YES;
+        
+        newsView.newsLabel.text = [self.bomeObjArr[i] objectForKey:@"title"];
+        newsView.newsLabel.font = [UIFont systemFontOfSize:14];
         [scrollView addSubview:newsView];
         
-        tmp = appY + appH + maginY * 2 + 100;
+        tmp = appY + appH + maginY * 2 + 40;
     }
 
     // 设置ScrollView的滚动区域
@@ -279,8 +298,7 @@
     // 初始化
     _slideMenu = [[LLSlideMenu alloc] init];
 
-    
-    [self.navigationController.view addSubview:_slideMenu];
+    [self.tabBarController.view addSubview:_slideMenu];
     // 设置菜单宽度
     _slideMenu.ll_menuWidth = 200.f;
     UIImage *backgroundImage = [UIImage imageNamed:@"userCenterBackground"];
@@ -290,9 +308,6 @@
     _slideMenu.ll_menuBackgroundColor = backgroundColor;
   
     // 设置弹力和速度，  默认的是20,15,60
-    _slideMenu.ll_springDamping = 20;       // 阻力
-    _slideMenu.ll_springVelocity = 15;      // 速度
-    _slideMenu.ll_springFramesNum = 60;     // 关键帧数量
     //===================
     // 添加全屏侧滑手势
     //===================
@@ -320,37 +335,48 @@
     [self.slideMenu addSubview:userCenterButton];
     
     CGFloat btnW = 200.f;
-    CGFloat btnH = 40;
+    CGFloat btnH = 30;
     CGFloat btnY = 60 + CGRectGetMaxY(userCenterButton.frame);
     CGFloat btnMaginTop = 10;
     for (int i = 0; i < 5; i++)
     {
         UIButton *btn = [[UIButton alloc] init];
-        btn.frame = CGRectMake(30, btnY + i * (btnMaginTop + btnH), btnW - 30, btnH);
-        btn.contentHorizontalAlignment = UIControlContentHorizontalAlignmentLeft;        switch (i)
+        btn.frame = CGRectMake(15, btnY + i * (btnMaginTop + btnH), btnW - 30, btnH);
+        btn.contentHorizontalAlignment = UIControlContentHorizontalAlignmentLeft;
+        switch (i)
         {
             case 0:
                 [btn setTitle:@"我的所有收藏" forState:UIControlStateNormal];
                 [btn addTarget:self action:@selector(toMyAllCollect) forControlEvents:UIControlEventTouchUpInside];
+                [btn setImage:[UIImage imageNamed:@"all_of_my_collect"] forState:UIControlStateNormal];
+                [btn setTitleEdgeInsets:UIEdgeInsetsMake(0, 10, 0, 0)];
                 break;
             case 1:
                 [btn setTitle:@"我的所有答疑" forState:UIControlStateNormal];
                 [btn addTarget:self action:@selector(toMyAllExpertsAnswers) forControlEvents:UIControlEventTouchUpInside];
+                [btn setImage:[UIImage imageNamed:@"all_of_my_answer"] forState:UIControlStateNormal];
+                [btn setTitleEdgeInsets:UIEdgeInsetsMake(0, 10, 0, 0)];
                 break;
             case 2:
                 [btn setTitle:@"我的所有错题本" forState:UIControlStateNormal];
                 [btn addTarget:self action:@selector(toMyAllWrongBook) forControlEvents:UIControlEventTouchUpInside];
+                [btn setImage:[UIImage imageNamed:@"all_of_my_wrong"] forState:UIControlStateNormal];
+                [btn setTitleEdgeInsets:UIEdgeInsetsMake(0, 10, 0, 0)];
                 break;
             case 3:
                 [btn setTitle:@"我的代理" forState:UIControlStateNormal];
                 [btn addTarget:self action:@selector(toMyDelegates) forControlEvents:UIControlEventTouchUpInside];
+                [btn setImage:[UIImage imageNamed:@"mydelegate"] forState:UIControlStateNormal];
+                [btn setTitleEdgeInsets:UIEdgeInsetsMake(0, 10, 0, 0)];
                 break;
             case 4:
                 [btn setTitle:@"关于我们" forState:UIControlStateNormal];
                 [btn addTarget:self action:@selector(toAboutUs) forControlEvents:UIControlEventTouchUpInside];
+                [btn setImage:[UIImage imageNamed:@"aboutme"] forState:UIControlStateNormal];
+                [btn setTitleEdgeInsets:UIEdgeInsetsMake(0, 10, 0, 0)];
                 break;
         }
-        btn.titleLabel.font = [UIFont systemFontOfSize:18];
+        btn.titleLabel.font = [UIFont systemFontOfSize:16];
         btn.tintColor = [UIColor blackColor];
         [self.slideMenu addSubview:btn];
     }
@@ -406,12 +432,6 @@
     }];
 }
 
--(void)viewWillAppear:(BOOL)animated
-{
-    NSString *newsHttpUrl = @"http://cloud.bmob.cn/17f5e4c17ad52f4a/Get_News";
-    [self requestNews:newsHttpUrl];
-}
-
 -(void)viewWillDisappear:(BOOL)animated
 {
     [super viewWillDisappear:animated];
@@ -424,38 +444,13 @@
     self.navigationController.navigationBar.tintColor = [UIColor whiteColor];
     
     int i = (int)sender.tag;
-    NSString *str = self.newsDict[@"results"][i][@"url"];
+    NSString *str = [self.bomeObjArr[i] objectForKey:@"url"];
     //  把中文URL进行编码
     str = [str stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
     NewsViewController *help = [[NewsViewController alloc] init];
     [help getNewsMessageWithURL:str];
     [self.navigationController pushViewController:help animated:YES];
 }
-
-#pragma mark 网络请求 —— ipv4
-
--(void)requestNews: (NSString*)httpUrl
-{
-    AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
-    manager.responseSerializer = [AFHTTPResponseSerializer serializer];
-    
-    [manager GET:httpUrl parameters:nil progress:^(NSProgress * _Nonnull downloadProgress) {
-        
-        // 这里可以获取到目前的数据请求的进度
-        
-    } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
-        // 请求成功，解析数据
-        
-        NSDictionary *dic = [NSJSONSerialization JSONObjectWithData:responseObject options:NSJSONReadingMutableContainers | NSJSONReadingMutableLeaves error:nil];
-        self.newsDict = dic;
-        [self initHomePageWithDict:self.newsDict];
-
-    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
-        // 请求失败
-        NSLog(@"%@", [error localizedDescription]);
-    }];
-}
-
 
 // 全屏侧滑手势监听
 - (void)swipeLeftHandle:(UIScreenEdgePanGestureRecognizer *)recognizer {

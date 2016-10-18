@@ -13,6 +13,8 @@
 #import "AFURLSessionManager.h"
 #import "AFHTTPSessionManager.h"
 
+#import <BmobSDK/Bmob.h>
+
 #define SCREEN_WIDTH_RATIO (SCREEN.width / 320)  //屏宽比例
 #define SCREEN [UIScreen mainScreen].bounds.size
 @interface PaperViewController () <UIScrollViewDelegate>
@@ -248,7 +250,7 @@
     int btnK = 0;
     UILabel *tempLabel = [[UILabel alloc] init];
     tempLabel = firstChineseLabel;
-    for (int i = 2; i < [self.paperDict[@"Questions"] count]; i++)
+    for (int i = 2; i < [(NSMutableArray *)self.paperDict[@"Questions"] count]; i++)
     {
         
         if ([self IsChinese:self.paperDict[@"Questions"][i]])
@@ -373,7 +375,7 @@
         page = 1;
     else if (page == 1)
         page = 2;
-    else if (page == [self.paperDict[@"Questions"] count] - 1)
+    else if (page == [(NSMutableArray *)self.paperDict[@"Questions"] count] - 1)
         page = 1;
     else
         page += 1;
