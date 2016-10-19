@@ -2,11 +2,11 @@
   "images" : [
     {
       "idiom" : "universal",
+      "filename" : "mine_gold.png",
       "scale" : "1x"
     },
     {
       "idiom" : "universal",
-      "filename" : "111@2x.png",
       "scale" : "2x"
     },
     {
