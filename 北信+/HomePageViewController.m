@@ -301,7 +301,7 @@
     [self.tabBarController.view addSubview:_slideMenu];
     // 设置菜单宽度
     _slideMenu.ll_menuWidth = 200.f;
-    UIImage *backgroundImage = [UIImage imageNamed:@"userCenterBackground"];
+    UIImage *backgroundImage = [UIImage imageNamed:@"usercenterbackground"];
     //将刚刚生成的图片转换为UIColor对象。这样便可以实现平铺了。
     UIColor *backgroundColor = [UIColor colorWithPatternImage:backgroundImage];
     // 设置菜单背景色
@@ -317,8 +317,7 @@
     
     // 设置头像View
     UIImageView *userCenterImgView= [[UIImageView alloc] init];
-    //    userCenterImgView = CGRectMake(16, 22, 40, 40);
-    userCenterImgView.frame = CGRectMake(0, 0, 80, 80);
+    userCenterImgView.frame = CGRectMake(0, 0, 100, 100);
     userCenterImgView.image = [UIImage imageNamed:@"user_name"];
     userCenterImgView.backgroundColor = [UIColor blackColor];
     // 设置用户头像为圆形
@@ -328,58 +327,127 @@
     userCenterImgView.layer.borderColor = [UIColor blackColor].CGColor;
     // 设置用户头像Button
     UIButton *userCenterButton = [UIButton buttonWithType:UIButtonTypeCustom];
-    userCenterButton.frame = CGRectMake((_slideMenu.ll_menuWidth - 80 )/ 2, 40, 80, 80);
+    userCenterButton.frame = CGRectMake((_slideMenu.ll_menuWidth - 100 )/ 2, 20, 100, 100);
     // 把用户头像View添加到button上
     [userCenterButton addSubview:userCenterImgView];
     [userCenterButton addTarget:self action:@selector(reviseUserImg) forControlEvents:UIControlEventTouchUpInside];
     [self.slideMenu addSubview:userCenterButton];
+
     
+    UILabel *userCenterNamelab = [[UILabel alloc] initWithFrame:CGRectMake(15, CGRectGetMaxY(userCenterButton.frame) + 20, self.slideMenu.frame.size.width / 4 - 20, 30)];
+    userCenterNamelab.text = @"翁培钧";
+    userCenterNamelab.textColor = [UIColor colorWithRed:72/255.0 green:82/255.0 blue:94/255.0 alpha:1];
+    userCenterNamelab.font = [UIFont systemFontOfSize:18];
+    [self.slideMenu addSubview:userCenterNamelab];
+    
+    UIImageView *attestationImg = [[UIImageView alloc] initWithFrame:CGRectMake(CGRectGetMaxX(userCenterNamelab.frame) + 10
+, userCenterNamelab.frame.origin.y + 8, 50, 15)];
+    attestationImg.image = [UIImage imageNamed:@"authenticated"];
+    [self.slideMenu addSubview:attestationImg];
+    
+    UIImageView *goldImg= [[UIImageView alloc] initWithFrame:CGRectMake(self.slideMenu.frame.size.width / 2 + 5, CGRectGetMaxY(attestationImg.frame), 25, 25)];
+    goldImg.image = [UIImage imageNamed:@"mine_gold"];
+    [self.slideMenu addSubview:goldImg];
+    
+    UILabel *goldNumsLab = [[UILabel alloc] initWithFrame:CGRectMake(self.slideMenu.frame.size.width / 3 + 5, CGRectGetMidY(goldImg.frame) - 10, 50, 20)];
+    goldNumsLab.text = @"31";
+    goldNumsLab.font = [UIFont systemFontOfSize:13];
+    goldNumsLab.textAlignment = NSTextAlignmentRight;
+    goldNumsLab.textColor = [UIColor whiteColor];
+    [self.slideMenu addSubview:goldNumsLab];
+
+    UILabel *schoolNameLab = [[UILabel alloc] initWithFrame:CGRectMake(userCenterNamelab.frame.origin.x, CGRectGetMidY(userCenterNamelab.frame) + 15, 100, 20)];
+    schoolNameLab.text = @"北京信息科技大学";
+    schoolNameLab.textColor = [UIColor colorWithRed:72/255.0 green:82/255.0 blue:94/255.0 alpha:1];
+    schoolNameLab.font = [UIFont systemFontOfSize:12];
+    [self.slideMenu addSubview:schoolNameLab];
+    
+    UILabel *collegeNameAndClassNum = [[UILabel alloc] initWithFrame:CGRectMake(schoolNameLab.frame.origin.x, CGRectGetMaxY(schoolNameLab.frame), schoolNameLab.frame.size.width + 20, schoolNameLab.frame.size.height)];
+    collegeNameAndClassNum.text = @"计算机学院 1503班";
+    collegeNameAndClassNum.textColor = [UIColor colorWithRed:72/255.0 green:82/255.0 blue:94/255.0 alpha:1];
+    collegeNameAndClassNum.font = [UIFont systemFontOfSize:12];
+    [self.slideMenu addSubview:collegeNameAndClassNum];
+    
+    UIView *focusView1 = [[UIView alloc] initWithFrame:CGRectMake(2, CGRectGetMaxY(collegeNameAndClassNum.frame) + 20, self.slideMenu.frame.size.width / 3.5 + 5, 30)];
+    focusView1.backgroundColor = [UIColor colorWithRed:63/255.0 green:63/255.0 blue:63/255.0 alpha:0.4];
+    [self.slideMenu addSubview:focusView1];
+    UILabel *myAttentionLab = [[UILabel alloc] initWithFrame:CGRectMake(5, 0, self.slideMenu.frame.size.width / 3.5, 30)];
+    focusView1.layer.cornerRadius = 10;
+    myAttentionLab.text = @"我的关注 11";
+    myAttentionLab.textColor = [UIColor whiteColor];
+    myAttentionLab.textAlignment = NSTextAlignmentCenter;
+    myAttentionLab.font = [UIFont systemFontOfSize:14];
+    [focusView1 addSubview:myAttentionLab];
+    
+    UIView *focusView2 = [[UIView alloc] initWithFrame:CGRectMake(CGRectGetMaxX(focusView1.frame) + 1, CGRectGetMaxY(collegeNameAndClassNum.frame) + 20, self.slideMenu.frame.size.width / 3.5 + 5, 30)];
+    focusView2.backgroundColor = [UIColor colorWithRed:63/255.0 green:63/255.0 blue:63/255.0 alpha:0.4];
+    [self.slideMenu addSubview:focusView2];
+    UILabel *myFansLab = [[UILabel alloc] initWithFrame:CGRectMake(5, 0, self.slideMenu.frame.size.width / 3.5, 30)];
+    focusView2.layer.cornerRadius = 10;
+    myFansLab.text = @"我的粉丝 19";
+    myFansLab.textColor = [UIColor whiteColor];
+    myFansLab.textAlignment = NSTextAlignmentCenter;
+    myFansLab.font = [UIFont systemFontOfSize:14];
+    [focusView2 addSubview:myFansLab];
+    
+    CGFloat tempY = 0;
     CGFloat btnW = 200.f;
     CGFloat btnH = 30;
-    CGFloat btnY = 60 + CGRectGetMaxY(userCenterButton.frame);
-    CGFloat btnMaginTop = 10;
+    CGFloat btnY = CGRectGetMaxY(focusView1.frame) + 25;
+    CGFloat btnMaginTop = 15;
     for (int i = 0; i < 5; i++)
     {
         UIButton *btn = [[UIButton alloc] init];
-        btn.frame = CGRectMake(15, btnY + i * (btnMaginTop + btnH), btnW - 30, btnH);
+        tempY = btnY + i * (btnMaginTop + btnH);
+        btn.frame = CGRectMake(15, tempY, btnW - 30, btnH);
         btn.contentHorizontalAlignment = UIControlContentHorizontalAlignmentLeft;
         switch (i)
         {
             case 0:
-                [btn setTitle:@"我的所有收藏" forState:UIControlStateNormal];
+                [btn setTitle:@"我的收藏" forState:UIControlStateNormal];
                 [btn addTarget:self action:@selector(toMyAllCollect) forControlEvents:UIControlEventTouchUpInside];
                 [btn setImage:[UIImage imageNamed:@"all_of_my_collect"] forState:UIControlStateNormal];
-                [btn setTitleEdgeInsets:UIEdgeInsetsMake(0, 10, 0, 0)];
+                [btn setTitleColor:[UIColor colorWithRed:39/255.0 green:38/255.0 blue:54/255.0 alpha:1.0] forState:UIControlStateNormal];
+                [btn setTitleEdgeInsets:UIEdgeInsetsMake(0, 12, 0, 0)];
                 break;
             case 1:
-                [btn setTitle:@"我的所有答疑" forState:UIControlStateNormal];
+                [btn setTitle:@"我的答疑" forState:UIControlStateNormal];
                 [btn addTarget:self action:@selector(toMyAllExpertsAnswers) forControlEvents:UIControlEventTouchUpInside];
                 [btn setImage:[UIImage imageNamed:@"all_of_my_answer"] forState:UIControlStateNormal];
-                [btn setTitleEdgeInsets:UIEdgeInsetsMake(0, 10, 0, 0)];
+                [btn setTitleColor:[UIColor colorWithRed:39/255.0 green:38/255.0 blue:54/255.0 alpha:1.0] forState:UIControlStateNormal];
+                [btn setTitleEdgeInsets:UIEdgeInsetsMake(0, 12, 0, 0)];
                 break;
             case 2:
-                [btn setTitle:@"我的所有错题本" forState:UIControlStateNormal];
+                [btn setTitle:@"错题本" forState:UIControlStateNormal];
                 [btn addTarget:self action:@selector(toMyAllWrongBook) forControlEvents:UIControlEventTouchUpInside];
                 [btn setImage:[UIImage imageNamed:@"all_of_my_wrong"] forState:UIControlStateNormal];
-                [btn setTitleEdgeInsets:UIEdgeInsetsMake(0, 10, 0, 0)];
+                [btn setTitleColor:[UIColor colorWithRed:39/255.0 green:38/255.0 blue:54/255.0 alpha:1.0] forState:UIControlStateNormal];
+                [btn setTitleEdgeInsets:UIEdgeInsetsMake(0, 12, 0, 0)];
                 break;
             case 3:
                 [btn setTitle:@"我的代理" forState:UIControlStateNormal];
                 [btn addTarget:self action:@selector(toMyDelegates) forControlEvents:UIControlEventTouchUpInside];
                 [btn setImage:[UIImage imageNamed:@"mydelegate"] forState:UIControlStateNormal];
-                [btn setTitleEdgeInsets:UIEdgeInsetsMake(0, 10, 0, 0)];
+                [btn setTitleColor:[UIColor colorWithRed:39/255.0 green:38/255.0 blue:54/255.0 alpha:1.0] forState:UIControlStateNormal];
+                [btn setTitleEdgeInsets:UIEdgeInsetsMake(0, 12, 0, 0)];
                 break;
             case 4:
                 [btn setTitle:@"关于我们" forState:UIControlStateNormal];
                 [btn addTarget:self action:@selector(toAboutUs) forControlEvents:UIControlEventTouchUpInside];
                 [btn setImage:[UIImage imageNamed:@"aboutme"] forState:UIControlStateNormal];
-                [btn setTitleEdgeInsets:UIEdgeInsetsMake(0, 10, 0, 0)];
+                [btn setTitleColor:[UIColor colorWithRed:39/255.0 green:38/255.0 blue:54/255.0 alpha:1.0] forState:UIControlStateNormal];
+                [btn setTitleEdgeInsets:UIEdgeInsetsMake(0, 12, 0, 0)];
                 break;
         }
         btn.titleLabel.font = [UIFont systemFontOfSize:16];
         btn.tintColor = [UIColor blackColor];
         [self.slideMenu addSubview:btn];
     }
+    
+    UIButton *outLoginBtn = [[UIButton alloc] initWithFrame:CGRectMake(10, tempY + btnH + 30, self.slideMenu.frame.size.width / 2 + 15, 40)];
+    outLoginBtn.backgroundColor = [UIColor colorWithRed:205/255.0 green:0 blue:0 alpha:1] ;
+    [outLoginBtn setTitle:@"退出" forState:UIControlStateNormal];
+    [self.slideMenu addSubview:outLoginBtn];
 }
 
 - (void)reviseUserImg
@@ -421,6 +489,7 @@
 }
 - (void)removeAll
 {
+    
     // 设置动画
     [UIView animateWithDuration:0.3 animations:^{
         self.cover.alpha = 0.0;

@@ -119,7 +119,7 @@
 
 - (void)initPaperViewWithDict:(NSDictionary *)dict
 {
-    UIView *view = [[UIView alloc] initWithFrame:CGRectMake(0, self.navigationController.navigationBar.frame.size.height + 20, self.view.frame.size.width, 40)];
+    UIView *view = [[UIView alloc] initWithFrame:CGRectMake(0, self.navigationController.navigationBar.frame.size.height - 45, self.view.frame.size.width, 40)];
     view.backgroundColor = [UIColor whiteColor];
     UILabel *lab = [[UILabel alloc] initWithFrame:CGRectMake(10, 0, self.view.frame.size.width, view.frame.size.height - 1)];
     UIView *lineView = [[UIView alloc] initWithFrame:CGRectMake(0, lab.frame.size.height, self.view.frame.size.width, 1)];
@@ -130,7 +130,8 @@
     [view addSubview:lab];
     self.topView = view;
     
-    [self.navigationController.view addSubview:view];
+    [self.view addSubview:view];
+    [self.view bringSubviewToFront:view];
     
     NSArray *arr = dict[@"Questions"];
     // 设置整个试卷题目scrollView
@@ -213,7 +214,6 @@
                 btn.backgroundColor = [UIColor blackColor];
                 [firstwebView addSubview:btn];
             }
-
             webJ++;
         }
     }
@@ -305,7 +305,6 @@
     UILabel *checkBtnLabel = [[UILabel alloc] init];
     checkBtnLabel.font = [UIFont systemFontOfSize:18];
     checkBtnLabel.frame = CGRectMake(80, 13, 200, 40);
-//    checkBtnLabel.center = checkBtn.center;
     checkBtnLabel.text = @"查看答案并自我批改";
     checkBtnLabel.textColor = [UIColor whiteColor];
     

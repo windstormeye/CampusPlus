@@ -10,12 +10,11 @@
 
 @implementation demandView
 
-/*
-// Only override drawRect: if you perform custom drawing.
-// An empty implementation adversely affects performance during animation.
-- (void)drawRect:(CGRect)rect {
-    // Drawing code
+
++(instancetype)demandView
+{
+    
+     return [[[NSBundle mainBundle] loadNibNamed:@"demandView" owner:nil options:nil] firstObject];
 }
-*/
 
 @end

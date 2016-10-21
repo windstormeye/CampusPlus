@@ -142,7 +142,7 @@
     middleView.backgroundColor = [UIColor whiteColor];
     [self.scrollView addSubview:middleView];
     UILabel *middleViewLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 150, 40)];
-    middleViewLabel.text = @"同校go";
+    middleViewLabel.text = @"同校Go";
     middleViewLabel.font = [UIFont systemFontOfSize:14];
     middleViewLabel.textColor = [UIColor grayColor];
     [middleView addSubview:middleViewLabel];

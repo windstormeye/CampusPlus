@@ -10,6 +10,8 @@
 #import "HomePageViewController.h"
 #import "FindViewController.h"
 #import "HelpTableViewController.h"
+#import "IQKeyboardManager.h"
+
 #import <BmobSDK/Bmob.h>
 
 @interface AppDelegate ()
@@ -23,8 +25,17 @@
 @implementation AppDelegate
 
 
-- (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
+- (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
+{
    
+    IQKeyboardManager *manager = [IQKeyboardManager sharedManager];
+    manager.enable = YES;
+    manager.shouldResignOnTouchOutside = YES;
+    manager.shouldToolbarUsesTextFieldTintColor = YES;
+    manager.enableAutoToolbar = NO;
+    
+    
+    
     [Bmob registerWithAppKey:@"c1b1f0a0d66af132513b58b66df9aa25"];
     
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];

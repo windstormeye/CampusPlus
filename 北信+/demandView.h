@@ -9,5 +9,12 @@
 #import <UIKit/UIKit.h>
 
 @interface demandView : UIView
+@property (weak, nonatomic) IBOutlet UITextView *textView;
+@property (weak, nonatomic) IBOutlet UITextField *moneyTextField;
+@property (weak, nonatomic) IBOutlet UIButton *sureBtn;
+@property (weak, nonatomic) IBOutlet UITextField *titleTextField;
+
+
++ (instancetype)demandView;
 
 @end
