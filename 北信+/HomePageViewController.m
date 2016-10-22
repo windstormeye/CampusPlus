@@ -518,7 +518,9 @@
     str = [str stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
     NewsViewController *help = [[NewsViewController alloc] init];
     [help getNewsMessageWithURL:str];
+    self.hidesBottomBarWhenPushed=YES;
     [self.navigationController pushViewController:help animated:YES];
+    self.hidesBottomBarWhenPushed=NO;
 }
 
 // 全屏侧滑手势监听
@@ -569,8 +571,10 @@
     if (_slideMenu.ll_isOpen)
     {
         [_slideMenu ll_closeSlideMenu];
+        self.hidesBottomBarWhenPushed=YES;
         MyAllCollectViewController *collect = [[MyAllCollectViewController alloc] init];
         [self.navigationController pushViewController:collect animated:YES];
+        self.hidesBottomBarWhenPushed=NO;
     }
 
 }
@@ -581,8 +585,10 @@
     if (_slideMenu.ll_isOpen)
     {
         [_slideMenu ll_closeSlideMenu];
+        self.hidesBottomBarWhenPushed=YES;
         MyAllExpertsAnswerViewController *answer = [[MyAllExpertsAnswerViewController alloc] init];
         [self.navigationController pushViewController:answer animated:YES];
+        self.hidesBottomBarWhenPushed=NO;
     }
 }
 
@@ -593,8 +599,10 @@
     if (_slideMenu.ll_isOpen)
     {
         [_slideMenu ll_closeSlideMenu];
+        self.hidesBottomBarWhenPushed=YES;
         MyAllWrongBookViewController *book = [[MyAllWrongBookViewController alloc] init];
         [self.navigationController pushViewController:book animated:YES];
+        self.hidesBottomBarWhenPushed=NO;
     }
 }
 
@@ -604,8 +612,10 @@
     if (_slideMenu.ll_isOpen)
     {
         [_slideMenu ll_closeSlideMenu];
+        self.hidesBottomBarWhenPushed=YES;
         MyDelegatesViewController *dele = [[MyDelegatesViewController alloc] init];
         [self.navigationController pushViewController:dele animated:YES];
+        self.hidesBottomBarWhenPushed=NO;
     }
 }
 
@@ -615,8 +625,10 @@
     if (_slideMenu.ll_isOpen)
     {
         [_slideMenu ll_closeSlideMenu];
+        self.hidesBottomBarWhenPushed=YES;
         AboutUsViewController *us = [[AboutUsViewController alloc] init];
         [self.navigationController pushViewController:us animated:YES];
+        self.hidesBottomBarWhenPushed=NO;
     }
 }
 @end

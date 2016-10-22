@@ -208,8 +208,10 @@
     //  把中文URL进行编码
     str = [str stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
     NewsViewController *help = [[NewsViewController alloc] init];
+    self.hidesBottomBarWhenPushed=YES;
     [help getNewsMessageWithURL:str];
     [[self getCurrentVC] pushViewController:help animated:YES];
+    self.hidesBottomBarWhenPushed=NO;
 }
 
 - (void)moreBtnClick
@@ -228,7 +230,9 @@
     str = [str stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
     NewsViewController *help = [[NewsViewController alloc] init];
     [help getNewsMessageWithURL:str];
+    self.hidesBottomBarWhenPushed=YES;
     [[self getCurrentVC] pushViewController:help animated:YES];
+    self.hidesBottomBarWhenPushed=NO;
 }
 
 //获取当前屏幕显示的NavigationController

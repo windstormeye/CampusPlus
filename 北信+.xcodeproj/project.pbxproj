@@ -419,7 +419,6 @@
 				2CB20E1C1D8D6D7800DE531D /* AllPaperDetailsTableViewController.m */,
 				2CB20E1E1D8D739200DE531D /* PaperViewController.h */,
 				2CB20E1F1D8D739200DE531D /* PaperViewController.m */,
-				2C225BD01DB4C6710072F970 /* HelpDateilsView */,
 			);
 			name = Papers;
 			sourceTree = "<group>";
@@ -449,6 +448,7 @@
 		2C225BCE1DB4C6140072F970 /* HelpPage */ = {
 			isa = PBXGroup;
 			children = (
+				2C225BD01DB4C6710072F970 /* HelpDateilsView */,
 				2CB20E301D8E530A00DE531D /* HelpTableViewController.h */,
 				2CB20E311D8E530A00DE531D /* HelpTableViewController.m */,
 			);

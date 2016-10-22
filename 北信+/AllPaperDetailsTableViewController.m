@@ -121,8 +121,10 @@
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    self.hidesBottomBarWhenPushed = YES;
     PaperViewController *paper = [[PaperViewController alloc] init];
     [self.navigationController pushViewController:paper animated:YES];
+    self.hidesBottomBarWhenPushed = NO;
 }
 
 

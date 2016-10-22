@@ -23,8 +23,9 @@
 @property (strong, nonatomic)  UIScrollView *scrollView;
 @property (strong, nonatomic)  UIView *topView;
 @property (strong, nonatomic)  UILabel *nowLabel;
-@property (strong, nonatomic)  UILabel *timeLabel;
+@property (strong, nonatomic)  MZTimerLabel *timeLabel;
 @property (strong, nonatomic)  MZTimerLabel *tLabel;
+@property (nonatomic, retain) NSString *timeLabelPauseStr;
 @property (nonatomic, retain) NSMutableArray *titleArray;
 @property (nonatomic, retain) NSMutableArray *xArray;   // 记录下生成的webView坐标
 @property (nonatomic, assign) CGFloat lastX;
@@ -341,7 +342,7 @@
             [answerView addSubview:btn];
         }
     }
-      UIButton *checkBtn = [[UIButton alloc] initWithFrame:CGRectMake(0, appY + appH + 30, self.view.frame.size.width, 60)];
+      UIButton *checkBtn = [[UIButton alloc] initWithFrame:CGRectMake(0, answerView.frame.size.height - 100, self.view.frame.size.width, 60)];
     self.checkBtn = checkBtn;
     checkBtn.backgroundColor = [UIColor colorWithRed:38/255.0 green:184/255.0 blue:242/255.0 alpha:1.0];
     [checkBtn addTarget:self action:@selector(checkBtnMethon) forControlEvents:UIControlEventTouchUpInside];
@@ -399,9 +400,13 @@
         UIView *overView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height)];
         overView.backgroundColor = [UIColor blackColor];
         [self.view addSubview:overView];
+        
     }
     else
     {
+        [self.timeLabel pause];
+        self.timeLabelPauseStr = self.timeLabel.text;
+        NSLog(@"%@", self.timeLabelPauseStr);
         self.isTouchCheckBtn = YES;
         
         BmobQuery *bquery = [BmobQuery queryWithClassName:@"QuestionsAndAnswers"];
