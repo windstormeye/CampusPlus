@@ -38,6 +38,12 @@
     NSArray *segmentedArray = [[NSArray alloc]initWithObjects:@"校内",@"校外",nil];
     //初始化UISegmentedControl
     UISegmentedControl *segmentedControl = [[UISegmentedControl alloc]initWithItems:segmentedArray];
+    segmentedControl.layer.masksToBounds = YES;
+    segmentedControl.layer.cornerRadius = 10;
+    segmentedControl.layer.borderWidth = 1;
+    segmentedControl.layer.borderColor = [[UIColor whiteColor] CGColor];
+    segmentedControl.frame = CGRectMake(0, 0, 100, 30);
+    
     segmentedControl.selectedSegmentIndex = 0;//设置默认选择项索引
     segmentedControl.tintColor = [UIColor whiteColor];
     self.navigationItem.titleView = segmentedControl;

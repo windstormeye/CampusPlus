@@ -17,7 +17,7 @@
 
 #define SCREEN_WIDTH_RATIO (SCREEN.width / 320)  //屏宽比例
 #define SCREEN [UIScreen mainScreen].bounds.size
-@interface PaperViewController () <UIScrollViewDelegate>
+@interface PaperViewController () <UIScrollViewDelegate, UIWebViewDelegate>
 
 @property (nonatomic, retain) NSDictionary *paperDict;
 @property (strong, nonatomic)  UIScrollView *scrollView;
@@ -29,11 +29,34 @@
 @property (nonatomic, retain) NSMutableArray *xArray;   // 记录下生成的webView坐标
 @property (nonatomic, assign) CGFloat lastX;
 @property (assign, nonatomic) bool isTouchCheckBtn;
-
+@property (assign, nonatomic) bool isTouchCheckBtnAgain;
+@property (strong, nonatomic) UIButton *checkBtn;
+@property (strong, nonatomic) UILabel *checkBtnLabel;
+@property (strong, nonatomic) UIWebView *firstWebView;
+@property (nonatomic, retain) NSMutableArray *webViewY;
+@property (nonatomic, retain) NSMutableArray *answerBomeObjArr;
 
 @end
 
 @implementation PaperViewController
+
+-(NSMutableArray *)answerBomeObjArr
+{
+    if (!_answerBomeObjArr)
+    {
+        _answerBomeObjArr = [[NSMutableArray alloc] init];
+    }
+    return _answerBomeObjArr;
+}
+
+-(NSMutableArray *)webViewY
+{
+    if(!_webViewY)
+    {
+        _webViewY = [[NSMutableArray alloc] init];
+    }
+    return _webViewY;
+}
 
 -(NSArray *)titleArray
 {
@@ -56,7 +79,12 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+  
+    
+    
+    
     self.isTouchCheckBtn = NO;
+    self.isTouchCheckBtnAgain = NO;
     
     UIView *view = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 200, self.navigationController.navigationBar.frame.size.height)];
     view.backgroundColor = [UIColor clearColor];
@@ -105,6 +133,7 @@
     
     NSString *paperHttpUrl = @"http://cloud.bmob.cn/17f5e4c17ad52f4a/Get_Exams";
     [self requestPaper:paperHttpUrl];
+
     // 让第一个出现的题目View的标签是非题目
     self.nowLabel.text = [NSString stringWithFormat:@"非题目"];
     self.nowLabel.textColor = [UIColor grayColor];
@@ -150,8 +179,9 @@
     CGFloat imgY = 0;
     CGFloat imgX = 0;
     int webJ = 0;
-    int i;
-    for (i = 1; i < arr.count; i ++)
+    CGFloat lastY = 0.0;
+    int i, j;
+    for (i = 1, j = 0; i < arr.count; i ++)
     {
         imgX = (i - 1) * imgW;
         NSMutableString *str = dict[@"Questions"][0];
@@ -185,6 +215,9 @@
         }
         else
         {
+            UIScrollView *view = [[UIScrollView alloc] initWithFrame:CGRectMake(imgX, imgY, imgW, imgH)];
+            view.backgroundColor = [UIColor whiteColor];
+            [scrollView addSubview:view];
             NSString *strURL = [[NSString alloc] init];
             NSString *strTMP = dict[@"Questions"][i];
             strURL = [str stringByAppendingString:strTMP];
@@ -193,27 +226,35 @@
             // 获取每个webView的X坐标
             NSNumber *x = [NSNumber numberWithFloat:imgX];
             [self.xArray addObject:x];
-            UIWebView *firstwebView = [[UIWebView alloc] initWithFrame:CGRectMake(imgX, imgY, imgW, 80)];
+            UIWebView *firstwebView = [[UIWebView alloc] initWithFrame:CGRectMake(0, 0, imgW, imgH)];
             NSURLRequest *request =[NSURLRequest requestWithURL:url];
+            firstwebView.delegate = self;
             firstwebView.scrollView.bounces = NO;
-            [self.view addSubview: firstwebView];
             [firstwebView loadRequest:request];
-            [scrollView addSubview:firstwebView];
+            [view addSubview:firstwebView];
             
             if (self.isTouchCheckBtn)
             {
-                // 动态计算webView高度
-                CGRect frame = firstwebView.frame;
-                frame.size.height = 1;
-                firstwebView.frame = frame;
-                frame = firstwebView.frame;
-                frame.size = [firstwebView sizeThatFits:CGSizeZero];
-                firstwebView.frame = frame;
+                UIView *firstLineView = [[UIView alloc] initWithFrame:CGRectMake(0, [self.webViewY[j] floatValue] + 1, firstwebView.frame.size.width, 1)];
+                firstLineView.backgroundColor = [UIColor colorWithRed:229/255.0 green:229/255.0 blue:229/255.0 alpha:1.0];
+                [view addSubview:firstLineView];
                 
-                UIButton *btn = [[UIButton alloc] initWithFrame:CGRectMake(20, firstwebView.frame.size.height, 40, 40)];
-                btn.backgroundColor = [UIColor blackColor];
-                [firstwebView addSubview:btn];
+                UIWebView *secondWebView = [[UIWebView alloc] initWithFrame:CGRectMake(0, CGRectGetMaxY(firstLineView.frame), imgW, imgH)];
+                NSString *url = [self.answerBomeObjArr[i - 1] objectForKey:@"A_url"];
+                // 解决URL带有中文
+                url = [url stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
+                NSURL *URL = [NSURL URLWithString:url];
+                NSURLRequest *request =[NSURLRequest requestWithURL:URL];
+                secondWebView.delegate = self;
+                secondWebView.scrollView.bounces = NO;
+                [self.view addSubview: secondWebView];
+                [secondWebView loadRequest:request];
+                [view addSubview:secondWebView];
+                lastY = CGRectGetMaxY(secondWebView.frame);
+                j++;
             }
+            view.contentSize = CGSizeMake(0, lastY);
+            
             webJ++;
         }
     }
@@ -229,9 +270,9 @@
     int cloumns = 6;
     CGFloat viewWidth = self.view.frame.size.width;
     // 高度
-    CGFloat appW = 50;          // 每一个view的大小假定固定不变
+    CGFloat appW = 35;          // 每一个view的大小假定固定不变
     // 宽度
-    CGFloat appH = 50;
+    CGFloat appH = 35;
     // 计算每一行中的每一个view之间的距离
     CGFloat maginX = (viewWidth - cloumns * appW + 60) / (cloumns + 1);
 
@@ -288,9 +329,10 @@
             btn.layer.borderWidth = 1.0f;
             btn.layer.borderColor = [UIColor colorWithRed:130/255.0 green:130/255.0 blue:130/255.0 alpha:1.0].CGColor;
             // 题目标签
-            UILabel *numLabel = [[UILabel alloc] initWithFrame:CGRectMake(5, 10, 40, 30)];
+            UILabel *numLabel = [[UILabel alloc] initWithFrame:CGRectMake(3, 7, 30, 20)];
+            numLabel.center = numLabel.center;
             numLabel.text = self.paperDict[@"Questions"][i];
-            numLabel.font = [UIFont systemFontOfSize:16];
+            numLabel.font = [UIFont systemFontOfSize:14];
             numLabel.textAlignment = NSTextAlignmentCenter;
             numLabel.textColor = [UIColor colorWithRed:130/255.0 green:130/255.0 blue:130/255.0 alpha:1.0];
             numLabel.backgroundColor = [UIColor clearColor];
@@ -299,15 +341,24 @@
             [answerView addSubview:btn];
         }
     }
-      UIButton *checkBtn = [[UIButton alloc] initWithFrame:CGRectMake(0, appY + appH + 10, self.view.frame.size.width, 60)];
+      UIButton *checkBtn = [[UIButton alloc] initWithFrame:CGRectMake(0, appY + appH + 30, self.view.frame.size.width, 60)];
+    self.checkBtn = checkBtn;
     checkBtn.backgroundColor = [UIColor colorWithRed:38/255.0 green:184/255.0 blue:242/255.0 alpha:1.0];
     [checkBtn addTarget:self action:@selector(checkBtnMethon) forControlEvents:UIControlEventTouchUpInside];
     UILabel *checkBtnLabel = [[UILabel alloc] init];
     checkBtnLabel.font = [UIFont systemFontOfSize:18];
-    checkBtnLabel.frame = CGRectMake(80, 13, 200, 40);
-    checkBtnLabel.text = @"查看答案并自我批改";
+    checkBtnLabel.frame = CGRectMake((checkBtn.frame.size.width - 165) / 2, (checkBtn.frame.size.height - 40) / 2, 165, 40);
+    checkBtnLabel.textAlignment = NSTextAlignmentCenter;
+    if (self.isTouchCheckBtnAgain)
+    {
+        checkBtnLabel.text = @"完成批改并查看报告";
+    }
+    else
+    {
+        checkBtnLabel.text = @"查看答案并自我批改";
+    }
     checkBtnLabel.textColor = [UIColor whiteColor];
-    
+    self.checkBtnLabel = checkBtnLabel;
     [checkBtn addSubview:checkBtnLabel];
     [answerView addSubview:checkBtn];
     
@@ -330,10 +381,39 @@
     self.scrollView.delegate = self;
 }
 
+-(void)webViewDidFinishLoad:(UIWebView*)webView
+{
+    CGFloat webViewHeight=[[webView stringByEvaluatingJavaScriptFromString:@"document.body.offsetHeight"]floatValue] + 20;      // 加上20，不让webview.scrollview动
+    webView.scrollView.showsVerticalScrollIndicator = NO;
+    CGRect newFrame = webView.frame;
+    newFrame.size.height = webViewHeight;
+    webView.frame = newFrame;
+    NSNumber *num = [NSNumber numberWithFloat:webViewHeight];
+    [self.webViewY addObject: num];
+}
+
 - (void)checkBtnMethon
 {
-    self.isTouchCheckBtn = !self.isTouchCheckBtn;
-    [self initPaperViewWithDict:self.paperDict];
+    if (self.isTouchCheckBtnAgain)
+    {
+        UIView *overView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height)];
+        overView.backgroundColor = [UIColor blackColor];
+        [self.view addSubview:overView];
+    }
+    else
+    {
+        self.isTouchCheckBtn = YES;
+        
+        BmobQuery *bquery = [BmobQuery queryWithClassName:@"QuestionsAndAnswers"];
+        [bquery findObjectsInBackgroundWithBlock:^(NSArray *array, NSError *error) {
+            for (BmobObject *obj in array)
+            {
+                [self.answerBomeObjArr addObject:obj];
+            }
+            [self initPaperViewWithDict:self.paperDict];
+        }];
+        self.isTouchCheckBtnAgain = YES;
+    }
 }
 
 // 同步请求

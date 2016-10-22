@@ -16,7 +16,13 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.view.backgroundColor = [UIColor blueColor];
+    self.view.backgroundColor = [UIColor whiteColor];
+    
+    UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 210, 20)];
+    label.center = self.view.center;
+    label.text = @"该模块暂未开放，敬请期待！";
+    label.font = [UIFont systemFontOfSize:16];
+    [self.view addSubview:label];
 }
 
 - (void)didReceiveMemoryWarning {
