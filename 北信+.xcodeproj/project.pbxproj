@@ -93,6 +93,8 @@
 		2C97BC3F1DB9D9C700E7CD7C /* IQKeyboardManager.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 2C97BC3E1DB9D9C700E7CD7C /* IQKeyboardManager.bundle */; };
 		2C97BC441DB9D9D000E7CD7C /* IQKeyboardManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 2C97BC411DB9D9D000E7CD7C /* IQKeyboardManager.m */; };
 		2C97BC451DB9D9D000E7CD7C /* IQKeyboardReturnKeyHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 2C97BC431DB9D9D000E7CD7C /* IQKeyboardReturnKeyHandler.m */; };
+		2C97BC491DBC7B0300E7CD7C /* MBProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 2C97BC481DBC7B0300E7CD7C /* MBProgressHUD.m */; };
+		2C97BC511DBC8ADB00E7CD7C /* AnswerChatTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2C97BC501DBC8ADB00E7CD7C /* AnswerChatTableViewController.m */; };
 		2CA20DFB1D922DC600180B0F /* NSString+PJNSStringExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = 2CA20DFA1D922DC600180B0F /* NSString+PJNSStringExtension.m */; };
 		2CA20DFE1D9428FA00180B0F /* MZTimerLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 2CA20DFD1D9428FA00180B0F /* MZTimerLabel.m */; };
 		2CB20E1D1D8D6D7800DE531D /* AllPaperDetailsTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2CB20E1C1D8D6D7800DE531D /* AllPaperDetailsTableViewController.m */; };
@@ -284,6 +286,10 @@
 		2C97BC411DB9D9D000E7CD7C /* IQKeyboardManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = IQKeyboardManager.m; path = "../../../../../../../../../../../Downloads/IQKeyboardManager-master 2/IQKeyboardManager/IQKeyboardManager.m"; sourceTree = "<group>"; };
 		2C97BC421DB9D9D000E7CD7C /* IQKeyboardReturnKeyHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = IQKeyboardReturnKeyHandler.h; path = "../../../../../../../../../../../Downloads/IQKeyboardManager-master 2/IQKeyboardManager/IQKeyboardReturnKeyHandler.h"; sourceTree = "<group>"; };
 		2C97BC431DB9D9D000E7CD7C /* IQKeyboardReturnKeyHandler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = IQKeyboardReturnKeyHandler.m; path = "../../../../../../../../../../../Downloads/IQKeyboardManager-master 2/IQKeyboardManager/IQKeyboardReturnKeyHandler.m"; sourceTree = "<group>"; };
+		2C97BC471DBC7B0300E7CD7C /* MBProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MBProgressHUD.h; path = ../../../../../../../../CASE/test/test/MBProgressHUD.h; sourceTree = "<group>"; };
+		2C97BC481DBC7B0300E7CD7C /* MBProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MBProgressHUD.m; path = ../../../../../../../../CASE/test/test/MBProgressHUD.m; sourceTree = "<group>"; };
+		2C97BC4F1DBC8ADB00E7CD7C /* AnswerChatTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AnswerChatTableViewController.h; sourceTree = "<group>"; };
+		2C97BC501DBC8ADB00E7CD7C /* AnswerChatTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AnswerChatTableViewController.m; sourceTree = "<group>"; };
 		2CA20DF91D922DC600180B0F /* NSString+PJNSStringExtension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+PJNSStringExtension.h"; sourceTree = "<group>"; };
 		2CA20DFA1D922DC600180B0F /* NSString+PJNSStringExtension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+PJNSStringExtension.m"; sourceTree = "<group>"; };
 		2CA20DFC1D9428FA00180B0F /* MZTimerLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MZTimerLabel.h; sourceTree = "<group>"; };
@@ -415,6 +421,7 @@
 		2C225BCB1DB4C59B0072F970 /* Papers */ = {
 			isa = PBXGroup;
 			children = (
+				2C97BC4B1DBC838800E7CD7C /* AnswerChat */,
 				2CB20E1B1D8D6D7800DE531D /* AllPaperDetailsTableViewController.h */,
 				2CB20E1C1D8D6D7800DE531D /* AllPaperDetailsTableViewController.m */,
 				2CB20E1E1D8D739200DE531D /* PaperViewController.h */,
@@ -460,7 +467,7 @@
 			children = (
 				2C7A8B3D1D87F35400681CB4 /* FindViewController.h */,
 				2C7A8B3E1D87F35400681CB4 /* FindViewController.m */,
-				2C225BD11DB4C6A10072F970 /* New Group */,
+				2C225BD11DB4C6A10072F970 /* Activity */,
 			);
 			name = FindPage;
 			sourceTree = "<group>";
@@ -474,7 +481,7 @@
 			name = HelpDateilsView;
 			sourceTree = "<group>";
 		};
-		2C225BD11DB4C6A10072F970 /* New Group */ = {
+		2C225BD11DB4C6A10072F970 /* Activity */ = {
 			isa = PBXGroup;
 			children = (
 				2C225BD21DB4C6D00072F970 /* OnCampusViewController.h */,
@@ -482,7 +489,7 @@
 				2C225BD51DB4C6FC0072F970 /* OutCampusViewController.h */,
 				2C225BD61DB4C6FC0072F970 /* OutCampusViewController.m */,
 			);
-			name = "New Group";
+			name = Activity;
 			sourceTree = "<group>";
 		};
 		2C7A8AE81D87E19900681CB4 = {
@@ -752,6 +759,24 @@
 			name = Resources;
 			sourceTree = "<group>";
 		};
+		2C97BC461DBC7AF600E7CD7C /* MBProgressHUD */ = {
+			isa = PBXGroup;
+			children = (
+				2C97BC471DBC7B0300E7CD7C /* MBProgressHUD.h */,
+				2C97BC481DBC7B0300E7CD7C /* MBProgressHUD.m */,
+			);
+			name = MBProgressHUD;
+			sourceTree = "<group>";
+		};
+		2C97BC4B1DBC838800E7CD7C /* AnswerChat */ = {
+			isa = PBXGroup;
+			children = (
+				2C97BC4F1DBC8ADB00E7CD7C /* AnswerChatTableViewController.h */,
+				2C97BC501DBC8ADB00E7CD7C /* AnswerChatTableViewController.m */,
+			);
+			name = AnswerChat;
+			sourceTree = "<group>";
+		};
 		2CA20DFF1D94292100180B0F /* MZTimerLabel */ = {
 			isa = PBXGroup;
 			children = (
@@ -769,6 +794,7 @@
 				2C2048E01DA0F05500FD6BC0 /* UINavigationController+FDFullscreenPopGesture.h */,
 				2C2048E11DA0F05500FD6BC0 /* UINavigationController+FDFullscreenPopGesture.m */,
 				2C2048E51DA0F79900FD6BC0 /* LLSlideMenu */,
+				2C97BC461DBC7AF600E7CD7C /* MBProgressHUD */,
 				2CA20DFF1D94292100180B0F /* MZTimerLabel */,
 			);
 			name = Extension;
@@ -916,6 +942,7 @@
 				2C97BC271DB9D99A00E7CD7C /* IQUIView+Hierarchy.m in Sources */,
 				2C97BC2E1DB9D9B600E7CD7C /* IQTextView.m in Sources */,
 				2C7A8AFC1D87E19900681CB4 /* ViewController.m in Sources */,
+				2C97BC491DBC7B0300E7CD7C /* MBProgressHUD.m in Sources */,
 				2C225BDA1DB884500072F970 /* demandView.m in Sources */,
 				2CB20E331D8E530A00DE531D /* HelpTableViewController.m in Sources */,
 				2C7A8B5B1D88EA6200681CB4 /* SDCycleScrollView.m in Sources */,
@@ -962,6 +989,7 @@
 				2C97BC441DB9D9D000E7CD7C /* IQKeyboardManager.m in Sources */,
 				2C7A8B8A1D88EB9000681CB4 /* UIImage+MultiFormat.m in Sources */,
 				2C20490E1DA1F27D00FD6BC0 /* MyAllWrongBookViewController.m in Sources */,
+				2C97BC511DBC8ADB00E7CD7C /* AnswerChatTableViewController.m in Sources */,
 				2C225BC51DB495910072F970 /* AFNetworkReachabilityManager.m in Sources */,
 				2CB20E201D8D739200DE531D /* PaperViewController.m in Sources */,
 				2C97BC451DB9D9D000E7CD7C /* IQKeyboardReturnKeyHandler.m in Sources */,

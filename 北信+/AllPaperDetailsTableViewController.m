@@ -29,7 +29,11 @@
 -(void)viewWillAppear:(BOOL)animated
 {
     self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"back"] style:UIBarButtonItemStylePlain target:self action:@selector(back)];
-
+    self.navigationItem.title = @"历届真题";
+    NSDictionary *dict = [NSDictionary dictionaryWithObject:[UIColor whiteColor] forKey:NSForegroundColorAttributeName];
+    self.navigationController.navigationBar.titleTextAttributes = dict;
+    self.navigationController.navigationBar.tintColor = [UIColor whiteColor];
+    
     UIView *view = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, 30)];
 //    UIView *whiteView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 20, view.frame.size.height)];
 //    whiteView.backgroundColor = [UIColor clearColor];
@@ -46,11 +50,7 @@
     [view addSubview:lab];
     view.backgroundColor = [UIColor colorWithRed:246/255.0 green:246/255.0 blue:246/255.0 alpha:1.0];
     self.tableView.tableHeaderView = view;
-    
-    self.navigationItem.title = @"历届真题";
-    NSDictionary *dict = [NSDictionary dictionaryWithObject:[UIColor whiteColor] forKey:NSForegroundColorAttributeName];
-    self.navigationController.navigationBar.titleTextAttributes = dict;
-    self.navigationController.navigationBar.tintColor = [UIColor whiteColor];
+
     
 }
 

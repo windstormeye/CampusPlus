@@ -7,11 +7,15 @@
 //
 
 #import "PaperViewController.h"
+#import "AnswerChatTableViewController.h"
+
 #import "NSString+PJNSStringExtension.h"
 #import "MZTimerLabel.h"
 
 #import "AFURLSessionManager.h"
 #import "AFHTTPSessionManager.h"
+
+#import "MBProgressHUD.h"
 
 #import <BmobSDK/Bmob.h>
 
@@ -35,11 +39,36 @@
 @property (strong, nonatomic) UILabel *checkBtnLabel;
 @property (strong, nonatomic) UIWebView *firstWebView;
 @property (nonatomic, retain) NSMutableArray *webViewY;
+@property (nonatomic, retain) NSMutableArray *webViewYY;
 @property (nonatomic, retain) NSMutableArray *answerBomeObjArr;
+@property (weak, nonatomic) UIButton *cover;
+@property (nonatomic, retain) NSMutableArray *answerUsersBomeObjArr;
+
 
 @end
 
 @implementation PaperViewController
+{
+    int numOfQuestions;
+}
+
+-(NSMutableArray *)webViewYY
+{
+    if(!_webViewYY)
+    {
+        _webViewYY = [[NSMutableArray alloc] init];
+    }
+    return _webViewYY;
+}
+
+-(NSMutableArray *)answerUsersBomeObjArr
+{
+    if (!_answerUsersBomeObjArr)
+    {
+        _answerUsersBomeObjArr = [[NSMutableArray alloc] init];
+    }
+    return _answerUsersBomeObjArr;
+}
 
 -(NSMutableArray *)answerBomeObjArr
 {
@@ -80,35 +109,33 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-  
-    
-    
-    
     self.isTouchCheckBtn = NO;
     self.isTouchCheckBtnAgain = NO;
     
-    UIView *view = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 200, self.navigationController.navigationBar.frame.size.height)];
+    UIView *view = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.navigationController.navigationBar.frame.size.width, self.navigationController.navigationBar.frame.size.height)];
+    view.backgroundColor = [UIColor grayColor];
     view.backgroundColor = [UIColor clearColor];
     // 设置navigationBar标签
     UIButton *btn1 = [[UIButton alloc] initWithFrame:CGRectMake(120, 10, self.navigationController.navigationBar.frame.size.height - 25, self.navigationController.navigationBar.frame.size.height - 20)];
     [btn1 addTarget:self action:@selector(collect) forControlEvents:UIControlEventTouchUpInside];
     [view addSubview:btn1];
-    UIImageView *imgView1 = [[UIImageView alloc] initWithFrame:CGRectMake(btn1.frame.origin.x, btn1.frame.origin.y, btn1.frame.size.width, btn1.frame.size.height)];
+    UIImageView *imgView1 = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, btn1.frame.size.width, btn1.frame.size.height)];
     imgView1.image = [UIImage imageNamed:@"exam_collect"];
-    [view addSubview:imgView1];
+    [btn1 addSubview:imgView1];
     // 设置navigationBar答题卡
     UIButton *btn2 = [[UIButton alloc] initWithFrame:CGRectMake(CGRectGetMaxX(btn1.frame) + 30, btn1.frame.origin.y, btn1.frame.size.width + 8, btn1.frame.size.height)];
     [view addSubview:btn2];
     [btn2 addTarget:self action:@selector(answerViewClick) forControlEvents:UIControlEventTouchUpInside];
-    UIImageView *imgView2 = [[UIImageView alloc] initWithFrame:CGRectMake(btn2.frame.origin.x, btn2.frame.origin.y, btn2.frame.size.width, btn2.frame.size.height)];
+    UIImageView *imgView2 = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, btn2.frame.size.width, btn2.frame.size.height)];
     imgView2.image = [UIImage imageNamed:@"exam_paper"];
-    [view addSubview:imgView2];
+    [btn2 addSubview:imgView2];
     // 设置navigationBar纠错
-    UIButton *btn3 = [[UIButton alloc] initWithFrame:CGRectMake(CGRectGetMaxX(btn2.frame) + 30, btn2.frame.origin.y, btn2.frame.size.width, btn2.frame.size.height)];
+    UIButton *btn3 = [[UIButton alloc] initWithFrame:CGRectMake(CGRectGetMaxX(btn2.frame) + 30, btn2.frame.origin.y, btn2.frame.size.width + 8, btn2.frame.size.height)];
     [view addSubview:btn3];
-    UIImageView *imgView3 = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"exam_error"]];
-    imgView3.frame = CGRectMake(btn3.frame.origin.x, btn3.frame.origin.y, btn3.frame.size.width, btn3.frame.size.height);
-    [view addSubview:imgView3];
+    [btn3 addTarget:self action:@selector(messageBtnClickMethon) forControlEvents:UIControlEventTouchUpInside];
+    UIImageView *imgView3 = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, btn2.frame.size.width, btn2.frame.size.height)];
+    imgView3.image = [UIImage imageNamed:@"message"];
+    [btn3 addSubview:imgView3];
     // 设置navigationBar计时器
     MZTimerLabel *timeLabel = [[MZTimerLabel alloc] initWithFrame:CGRectMake(10, 0, self.navigationController.navigationBar.frame.size.width, self.navigationController.navigationBar.frame.size.height)];
     timeLabel.timeLabel.textColor = [UIColor whiteColor];
@@ -128,17 +155,29 @@
 -(void)viewWillAppear:(BOOL)animated
 {
     [super viewWillDisappear:animated];
+
+    numOfQuestions = 0;
+    
+    MBProgressHUD *MB = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+    MB.label.text = @"正在加载试卷，请稍后...";
+    [self.view bringSubviewToFront:MB];
+    
     self.view.backgroundColor = [UIColor whiteColor];
     self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"close"] style:UIBarButtonItemStylePlain target:self action:@selector(back)];
     self.navigationController.navigationBar.tintColor = [UIColor whiteColor];
-    
-    NSString *paperHttpUrl = @"http://cloud.bmob.cn/17f5e4c17ad52f4a/Get_Exams";
-    [self requestPaper:paperHttpUrl];
 
-    // 让第一个出现的题目View的标签是非题目
-    self.nowLabel.text = [NSString stringWithFormat:@"非题目"];
-    self.nowLabel.textColor = [UIColor grayColor];
-    self.nowLabel.font = [UIFont systemFontOfSize:18];
+    BmobQuery *bquery = [BmobQuery queryWithClassName:@"Questions"];
+    // 按照升序排列
+    [bquery orderByAscending:@"Q_num"];
+    [bquery findObjectsInBackgroundWithBlock:^(NSArray *array, NSError *error) {
+        numOfQuestions = (int)array.count;
+        for (BmobObject *obj in array)
+        {
+            [self.answerBomeObjArr addObject:obj];
+        }
+        [self initPaperViewWithDict];
+        [MB hideAnimated:YES];
+    }];
 }
 
 -(void)back
@@ -147,8 +186,13 @@
     [self.topView removeFromSuperview];
 }
 
-- (void)initPaperViewWithDict:(NSDictionary *)dict
+- (void)initPaperViewWithDict
 {
+    // 让第一个出现的题目View的标签是非题目
+    self.nowLabel.text = [NSString stringWithFormat:@"非题目"];
+    self.nowLabel.textColor = [UIColor grayColor];
+    self.nowLabel.font = [UIFont systemFontOfSize:18];
+    
     UIView *view = [[UIView alloc] initWithFrame:CGRectMake(0, self.navigationController.navigationBar.frame.size.height - 45, self.view.frame.size.width, 40)];
     view.backgroundColor = [UIColor whiteColor];
     UILabel *lab = [[UILabel alloc] initWithFrame:CGRectMake(10, 0, self.view.frame.size.width, view.frame.size.height - 1)];
@@ -163,14 +207,13 @@
     [self.view addSubview:view];
     [self.view bringSubviewToFront:view];
     
-    NSArray *arr = dict[@"Questions"];
     // 设置整个试卷题目scrollView
     UIScrollView *scrollView = [[UIScrollView alloc] initWithFrame:CGRectMake(0, view.frame.size.height, self.view.frame.size.width, self.view.frame.size.height)];
     scrollView.backgroundColor = [UIColor whiteColor];
     
     self.scrollView = scrollView;
     
-    CGFloat maxX = self.scrollView.frame.size.width * arr.count;
+    CGFloat maxX = self.scrollView.frame.size.width * (numOfQuestions + 1);
     self.scrollView.pagingEnabled = YES;
     self.scrollView.showsHorizontalScrollIndicator = NO;
     self.scrollView.bounces = NO;
@@ -182,15 +225,14 @@
     int webJ = 0;
     CGFloat lastY = 0.0;
     int i, j;
-    for (i = 1, j = 0; i < arr.count; i ++)
+    for (i = 0, j = 0; i < numOfQuestions; i ++)
     {
-        imgX = (i - 1) * imgW;
-        NSMutableString *str = dict[@"Questions"][0];
+        imgX = i * imgW;
         // 区分大题目
-        if ([self IsChinese:arr[i]])
+        if ([self.answerBomeObjArr[i] objectForKey:@"Title"])
         {
             // 进行标题切词
-            NSString *titleString = arr[i];
+            NSString *titleString = [self.answerBomeObjArr[i] objectForKey:@"Title"];
             NSRange range = [titleString rangeOfString:@"|"];
             titleString = [titleString substringToIndex:range.location];
             [self.titleArray addObject:titleString];
@@ -199,7 +241,7 @@
             
             UILabel *titleLabel = [[UILabel alloc] init];
             UIFont *font = [UIFont systemFontOfSize:10];
-            CGSize textSize = [arr[i] sizeOfTextWithMaxSize:CGSizeMake(200, MAXFLOAT) font:font];
+            CGSize textSize = [[self.answerBomeObjArr[i] objectForKey:@"Title" ] sizeOfTextWithMaxSize:CGSizeMake(200, MAXFLOAT) font:font];
             CGFloat textW = textSize.width + imgW - 200;
             CGFloat textH = textSize.height + 30;
             titleLabel.frame = CGRectMake(5, 20, 100, 30);
@@ -207,7 +249,7 @@
             titleLabel.textColor = [UIColor colorWithRed:26/255.0 green:167/255.0 blue:242/255.0 alpha:1.0];
             titleLabel.text = titleString;
             UILabel *textLabel = [[UILabel alloc] initWithFrame:CGRectMake(titleLabel.frame.origin.x, CGRectGetMaxY(titleLabel.frame), textW, textH)];
-            textLabel.text = [arr[i] substringFromIndex:range.location + 1];
+            textLabel.text = [[self.answerBomeObjArr[i] objectForKey:@"Title"] substringFromIndex:range.location + 1];
             // 切记加下面这行代码，代表允许自动换行
             textLabel.numberOfLines = 0;
             [chineseView addSubview:textLabel];
@@ -219,10 +261,8 @@
             UIScrollView *view = [[UIScrollView alloc] initWithFrame:CGRectMake(imgX, imgY, imgW, imgH)];
             view.backgroundColor = [UIColor whiteColor];
             [scrollView addSubview:view];
-            NSString *strURL = [[NSString alloc] init];
-            NSString *strTMP = dict[@"Questions"][i];
-            strURL = [str stringByAppendingString:strTMP];
-            strURL = [strURL stringByAppendingString:@".html"];
+            NSString *strURL = [self.answerBomeObjArr[i] objectForKey:@"Q_url"];
+            strURL = [strURL stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
             NSURL *url = [NSURL URLWithString:strURL];
             // 获取每个webView的X坐标
             NSNumber *x = [NSNumber numberWithFloat:imgX];
@@ -237,11 +277,13 @@
             if (self.isTouchCheckBtn)
             {
                 UIView *firstLineView = [[UIView alloc] initWithFrame:CGRectMake(0, [self.webViewY[j] floatValue] + 1, firstwebView.frame.size.width, 1)];
+                firstLineView.backgroundColor = [UIColor whiteColor];
+                
                 firstLineView.backgroundColor = [UIColor colorWithRed:229/255.0 green:229/255.0 blue:229/255.0 alpha:1.0];
                 [view addSubview:firstLineView];
                 
-                UIWebView *secondWebView = [[UIWebView alloc] initWithFrame:CGRectMake(0, CGRectGetMaxY(firstLineView.frame), imgW, imgH)];
-                NSString *url = [self.answerBomeObjArr[i - 1] objectForKey:@"A_url"];
+                UIWebView *secondWebView = [[UIWebView alloc] initWithFrame:CGRectMake(0, CGRectGetMaxY(firstLineView.frame), imgW, 250)];
+                NSString *url = [self.answerBomeObjArr[i] objectForKey:@"A_url"];
                 // 解决URL带有中文
                 url = [url stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
                 NSURL *URL = [NSURL URLWithString:url];
@@ -252,14 +294,42 @@
                 [secondWebView loadRequest:request];
                 [view addSubview:secondWebView];
                 lastY = CGRectGetMaxY(secondWebView.frame);
+                
+                UIView *secondLineView = [[UIView alloc] initWithFrame:CGRectMake(0, CGRectGetMaxY(secondWebView.frame) + 1, secondWebView.frame.size.width, 30)];
+                secondLineView.backgroundColor = [UIColor whiteColor];
+//                secondLineView.backgroundColor = [UIColor colorWithRed:229/255.0 green:229/255.0 blue:229/255.0 alpha:1.0];
+                [view addSubview:secondLineView];
+                UILabel *secondLineViewLabel = [[UILabel alloc] initWithFrame:CGRectMake(10, 0, 150, 30)];
+                secondLineViewLabel.text = @"不会做？看这里！";
+                secondLineViewLabel.font = [UIFont systemFontOfSize:14];
+                secondLineViewLabel.textColor = [UIColor colorWithRed:38/255.0 green:184/255.0 blue:242/255.0 alpha:1.0];
+                [secondLineView addSubview:secondLineViewLabel];
+//                //关联对象表
+//                BmobQuery *bquery = [BmobQuery queryWithClassName:@"Questions"];
+//                
+//                //需要查询的列
+//                BmobObject *post = [BmobObject objectWithoutDataWithClassName:@"Users" objectId:@"ZqQ7KKKx"];
+//                [bquery whereObjectKey:@"likes" relatedTo:post];
+//                
+//                
+//                [bquery findObjectsInBackgroundWithBlock:^(NSArray *array, NSError *error) {
+//                    if (error) {
+//                        NSLog(@"%@",error);
+//                    } else {
+//                        for (BmobObject *user in array) {
+//                            NSLog(@"%@",[user objectForKey:@"username"]);
+//                        }
+//                    }
+//                }];
+                
                 j++;
             }
-            view.contentSize = CGSizeMake(0, lastY);
+            view.contentSize = CGSizeMake(0, lastY + 50);
             
             webJ++;
         }
     }
-    UIScrollView *answerView = [[UIScrollView alloc] initWithFrame:CGRectMake(imgW * (i - 1), imgY, imgW, imgH)];
+    UIScrollView *answerView = [[UIScrollView alloc] initWithFrame:CGRectMake(imgW * i, imgY, imgW, imgH)];
     answerView.bounces = NO;
   
     // 记录下答题卡的坐标
@@ -271,9 +341,9 @@
     int cloumns = 6;
     CGFloat viewWidth = self.view.frame.size.width;
     // 高度
-    CGFloat appW = 35;          // 每一个view的大小假定固定不变
+    CGFloat appW = 45;          // 每一个view的大小假定固定不变
     // 宽度
-    CGFloat appH = 35;
+    CGFloat appH = 45;
     // 计算每一行中的每一个view之间的距离
     CGFloat maginX = (viewWidth - cloumns * appW + 60) / (cloumns + 1);
 
@@ -288,16 +358,14 @@
     [answerView addSubview:firstChineseLabel];
     
     CGFloat labY = 5;
-    int titleK = 0;
+    int titleK = 1, numJ = 1;
     int btnK = 0;
     UILabel *tempLabel = [[UILabel alloc] init];
     tempLabel = firstChineseLabel;
-    for (int i = 2; i < [(NSMutableArray *)self.paperDict[@"Questions"] count]; i++)
+    for (int i = 1; i < numOfQuestions; i++)
     {
-        
-        if ([self IsChinese:self.paperDict[@"Questions"][i]])
+        if ([self.answerBomeObjArr[i] objectForKey:@"Title"])
         {
-            titleK++;
             labY = appY + appH + 5;
             UILabel *chineseLabel = [[UILabel alloc] initWithFrame:CGRectMake(firstChineseLabel.frame.origin.x, labY, firstChineseLabel.frame.size.width, firstChineseLabel.frame.size.height)];
             chineseLabel.text = self.titleArray[titleK];
@@ -305,18 +373,21 @@
             chineseLabel.textColor = [UIColor colorWithRed:130/255.0 green:130/255.0 blue:130/255.0 alpha:1.0];
             tempLabel = chineseLabel;
             [answerView addSubview:chineseLabel];
+            
+            numJ++;
+            titleK++;
         }
         else
         {
             int p = 0;
             // 防止出现下标为18时，btn移位
-            if (i == 18)
+            if (i == 17)
             {
-                p = 20;
+                p = 19;
             }
             else
                 p=i;
-            int colIdx = (p - 2) % cloumns;           // 行索引
+            int colIdx = (p - 1) % cloumns;           // 行索引
             appX = maginX + colIdx * (maginX + appW);
             appY = CGRectGetMaxY(tempLabel.frame) + 5;
             UIButton *btn = [[UIButton alloc] init];
@@ -330,16 +401,17 @@
             btn.layer.borderWidth = 1.0f;
             btn.layer.borderColor = [UIColor colorWithRed:130/255.0 green:130/255.0 blue:130/255.0 alpha:1.0].CGColor;
             // 题目标签
-            UILabel *numLabel = [[UILabel alloc] initWithFrame:CGRectMake(3, 7, 30, 20)];
+            UILabel *numLabel = [[UILabel alloc] initWithFrame:CGRectMake(8, 12, 30, 20)];
             numLabel.center = numLabel.center;
-            numLabel.text = self.paperDict[@"Questions"][i];
-            numLabel.font = [UIFont systemFontOfSize:14];
+            numLabel.text = [NSString stringWithFormat:@"%d", colIdx + 1];
+            numLabel.font = [UIFont systemFontOfSize:16];
             numLabel.textAlignment = NSTextAlignmentCenter;
             numLabel.textColor = [UIColor colorWithRed:130/255.0 green:130/255.0 blue:130/255.0 alpha:1.0];
             numLabel.backgroundColor = [UIColor clearColor];
             [btn addSubview:numLabel];
             
             [answerView addSubview:btn];
+            
         }
     }
       UIButton *checkBtn = [[UIButton alloc] initWithFrame:CGRectMake(0, answerView.frame.size.height - 100, self.view.frame.size.width, 60)];
@@ -384,11 +456,8 @@
 
 -(void)webViewDidFinishLoad:(UIWebView*)webView
 {
+    webView.backgroundColor = [UIColor grayColor];
     CGFloat webViewHeight=[[webView stringByEvaluatingJavaScriptFromString:@"document.body.offsetHeight"]floatValue] + 20;      // 加上20，不让webview.scrollview动
-    webView.scrollView.showsVerticalScrollIndicator = NO;
-    CGRect newFrame = webView.frame;
-    newFrame.size.height = webViewHeight;
-    webView.frame = newFrame;
     NSNumber *num = [NSNumber numberWithFloat:webViewHeight];
     [self.webViewY addObject: num];
 }
@@ -404,46 +473,17 @@
     }
     else
     {
+        MBProgressHUD *MB = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+        MB.label.text = @"正在查询答案，请稍等...";
         [self.timeLabel pause];
         self.timeLabelPauseStr = self.timeLabel.text;
-        NSLog(@"%@", self.timeLabelPauseStr);
         self.isTouchCheckBtn = YES;
-        
-        BmobQuery *bquery = [BmobQuery queryWithClassName:@"QuestionsAndAnswers"];
-        [bquery findObjectsInBackgroundWithBlock:^(NSArray *array, NSError *error) {
-            for (BmobObject *obj in array)
-            {
-                [self.answerBomeObjArr addObject:obj];
-            }
-            [self initPaperViewWithDict:self.paperDict];
-        }];
         self.isTouchCheckBtnAgain = YES;
-    }
-}
+        [self initPaperViewWithDict];
+        [self initPaperViewWithDict];
 
-// 同步请求
--(void)requestPaper: (NSString*)httpUrl
-{
-    AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
-    manager.responseSerializer = [AFHTTPResponseSerializer serializer];
-    
-    [manager GET:httpUrl parameters:nil progress:^(NSProgress * _Nonnull downloadProgress) {
-        
-        // 这里可以获取到目前的数据请求的进度
-        
-    } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
-        // 请求成功，解析数据
-        
-        NSDictionary *dic = [NSJSONSerialization JSONObjectWithData:responseObject options:NSJSONReadingMutableContainers | NSJSONReadingMutableLeaves error:nil];
-        self.paperDict = dic;
-        [self initPaperViewWithDict:self.paperDict];
-        
-    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
-        
-        // 请求失败
-        NSLog(@"%@", [error localizedDescription]);
-        
-    }];
+        [MB hideAnimated:YES];
+    }
 }
 
 // 当前题目设置
@@ -454,22 +494,21 @@
     offSetX = offSetX + (self.scrollView.frame.size.width / 2);
     int page = offSetX / self.scrollView.frame.size.width;
 
-    //防止直接调用字典的时候出错，特殊点
-    if (page == 0)
-        page = 1;
-    else if (page == 1)
-        page = 2;
-    else if (page == [(NSMutableArray *)self.paperDict[@"Questions"] count] - 1)
-        page = 1;
-    else
-        page += 1;
-    
-    NSString *str = self.paperDict[@"Questions"][page];
-    if ([self isPureFloat:str])
+    if (page < 21)
     {
-        self.nowLabel.text = [NSString stringWithFormat:@"%@",self.paperDict[@"Questions"][page]];
-        self.nowLabel.textColor = [UIColor colorWithRed:26/255.0 green:167/255.0 blue:242/255.0 alpha:1.0];
-        self.nowLabel.font = [UIFont systemFontOfSize: 20];
+        NSString *str = [NSString localizedStringWithFormat:@"%ld", [[self.answerBomeObjArr[page] objectForKey:@"Q_num"] integerValue]];
+        if (![self.answerBomeObjArr[page] objectForKey:@"Title"])
+        {
+            self.nowLabel.text = str;
+            self.nowLabel.textColor = [UIColor colorWithRed:26/255.0 green:167/255.0 blue:242/255.0 alpha:1.0];
+            self.nowLabel.font = [UIFont systemFontOfSize: 20];
+        }
+        else
+        {
+            self.nowLabel.text = [NSString stringWithFormat:@"非题目"];
+            self.nowLabel.textColor = [UIColor grayColor];
+            self.nowLabel.font = [UIFont systemFontOfSize:18];
+        }
     }
     else
     {
@@ -510,6 +549,14 @@
 - (void)answerViewClick
 {
     [self.scrollView setContentOffset:CGPointMake(_lastX, 0) animated:YES];
+}
+
+// 我的答疑点击事件
+- (void)messageBtnClickMethon
+{
+    self.hidesBottomBarWhenPushed = YES;
+    AnswerChatTableViewController * AC = [[AnswerChatTableViewController alloc] init];
+    [self.navigationController pushViewController:AC animated:YES];
 }
 
 #pragma mark 正则表达式
