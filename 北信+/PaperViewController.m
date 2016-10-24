@@ -44,6 +44,9 @@
 @property (nonatomic, retain) NSMutableArray *answerBomeObjArr;
 @property (weak, nonatomic) UIButton *cover;
 @property (nonatomic, retain) NSMutableArray *answerUsersBomeObjArr;
+@property (weak, nonatomic) MBProgressHUD *MB;
+@property (weak, nonatomic) UIScrollView *anserwView;
+@property (weak, nonatomic) UIView *navigationBarView;
 
 
 @end
@@ -51,6 +54,8 @@
 @implementation PaperViewController
 {
     int numOfQuestions;
+    int trueQuestionsNum;
+    float Questions;
 }
 
 -(NSMutableArray *)webViewYY
@@ -112,8 +117,10 @@
     
     self.isTouchCheckBtn = NO;
     self.isTouchCheckBtnAgain = NO;
+    trueQuestionsNum = 0;
     
     UIView *view = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.navigationController.navigationBar.frame.size.width, self.navigationController.navigationBar.frame.size.height)];
+    self.navigationBarView = view;
     view.backgroundColor = [UIColor grayColor];
     view.backgroundColor = [UIColor clearColor];
     // 设置navigationBar标签
@@ -145,18 +152,7 @@
     [view addSubview:self.timeLabel];
     [timeLabel start];
     
-    [self.navigationItem setTitleView:view];
-}
-
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
-}
-
--(void)viewWillAppear:(BOOL)animated
-{
-    [super viewWillDisappear:animated];
-
+    
     numOfQuestions = 0;
     
     MBProgressHUD *MB = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
@@ -166,7 +162,7 @@
     self.view.backgroundColor = [UIColor whiteColor];
     self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"close"] style:UIBarButtonItemStylePlain target:self action:@selector(back)];
     self.navigationController.navigationBar.tintColor = [UIColor whiteColor];
-
+    
     BmobQuery *bquery = [BmobQuery queryWithClassName:@"Questions"];
     // 按照升序排列
     [bquery orderByAscending:@"Q_num"];
@@ -179,7 +175,20 @@
         [self initPaperViewWithDict];
         [MB hideAnimated:YES];
     }];
+    
+    [self.navigationItem setTitleView:view];
 }
+
+- (void)didReceiveMemoryWarning {
+    [super didReceiveMemoryWarning];
+    // Dispose of any resources that can be recreated.
+}
+
+// 如果把初始化试卷方法放在这里，在pop退回到上级界面中会重新当前界面
+//-(void)viewWillAppear:(BOOL)animated
+//{
+//    [super viewWillDisappear:animated];
+//}
 
 -(void)back
 {
@@ -189,6 +198,8 @@
 
 - (void)initPaperViewWithDict
 {
+    Questions = 0;
+    
     // 让第一个出现的题目View的标签是非题目
     self.nowLabel.text = [NSString stringWithFormat:@"非题目"];
     self.nowLabel.textColor = [UIColor grayColor];
@@ -259,6 +270,7 @@
         }
         else
         {
+            Questions ++;
             UIScrollView *view = [[UIScrollView alloc] initWithFrame:CGRectMake(imgX, imgY, imgW, imgH)];
             view.backgroundColor = [UIColor whiteColor];
             [scrollView addSubview:view];
@@ -335,11 +347,15 @@
                 //需要查询的列
                 BmobObject *post = [BmobObject objectWithoutDataWithClassName:@"Questions" objectId:[self.answerBomeObjArr[i] objectForKey:@"objectId"]];
                 [bquery whereObjectKey:@"Users" relatedTo:post];
-                [bquery findObjectsInBackgroundWithBlock:^(NSArray *array, NSError *error) {
-                    if (error) {
+                [bquery findObjectsInBackgroundWithBlock:^(NSArray *array, NSError *error)
+                 {
+                    if (error)
+                    {
                         NSLog(@"%@",error);
-                    } else {
-                        for (BmobObject *user in array) {
+                    } else
+                    {
+                        for (BmobObject *user in array)
+                        {
                             usersNum++;
                             [userArr addObject:user];
                         }
@@ -362,7 +378,21 @@
                         }
                     }
                 }];
-                
+                // 设置正确和错误答题按钮
+                UIButton *trueBtn = [[UIButton alloc] initWithFrame:CGRectMake(190, secondLineView.frame.origin.y - 10, 60, 60)];
+                trueBtn.tag = imgX + imgW;
+                trueBtn.selected = NO;
+                [trueBtn setImage:[UIImage imageNamed:@"right_normal"] forState:UIControlStateNormal];
+                [trueBtn setImage:[UIImage imageNamed:@"right_selected"] forState:UIControlStateSelected];
+                [trueBtn addTarget:self action:@selector(trueBtnClickMethon:) forControlEvents:UIControlEventTouchUpInside];
+                [view addSubview:trueBtn];
+                UIButton *falseBtn = [[UIButton alloc] initWithFrame:CGRectMake(255, secondLineView.frame.origin.y  - 10, 60, 60)];
+                falseBtn.selected = NO;
+                [falseBtn addTarget:self action:@selector(falseBtnClickMethon:) forControlEvents:UIControlEventTouchUpInside];
+                falseBtn.tag = imgX + imgW;
+                [falseBtn setImage:[UIImage imageNamed:@"wrong_normal"] forState:UIControlStateNormal];
+                [falseBtn setImage:[UIImage imageNamed:@"wrong_selected"] forState:UIControlStateSelected];
+                [view addSubview:falseBtn];
                 j++;
             }
             
@@ -371,11 +401,14 @@
     }
     UIScrollView *answerView = [[UIScrollView alloc] initWithFrame:CGRectMake(imgW * i, imgY, imgW, imgH)];
     answerView.bounces = NO;
-  
+    self.anserwView = answerView;
     // 记录下答题卡的坐标
     self.lastX = answerView.frame.origin.x;
     
     self.scrollView.contentSize = CGSizeMake(maxX, 0);
+    
+    // 用这个去放答题卡界面，而不是直接加载anserwView里边
+    UIView *anserwBtnView = [[UIView alloc] init];
     
     // 每一行view的个0数0
     int cloumns = 6;
@@ -398,7 +431,7 @@
     [answerView addSubview:firstChineseLabel];
     
     CGFloat labY = 5;
-    int titleK = 1, numJ = 1;
+    int titleK = 1, numJ = 1, question = 1;
     int btnK = 0;
     UILabel *tempLabel = [[UILabel alloc] init];
     tempLabel = firstChineseLabel;
@@ -443,7 +476,7 @@
             // 题目标签
             UILabel *numLabel = [[UILabel alloc] initWithFrame:CGRectMake(8, 12, 30, 20)];
             numLabel.center = numLabel.center;
-            numLabel.text = [NSString stringWithFormat:@"%d", colIdx + 1];
+            numLabel.text = [NSString stringWithFormat:@"%d", question];
             numLabel.font = [UIFont systemFontOfSize:16];
             numLabel.textAlignment = NSTextAlignmentCenter;
             numLabel.textColor = [UIColor colorWithRed:130/255.0 green:130/255.0 blue:130/255.0 alpha:1.0];
@@ -451,7 +484,7 @@
             [btn addSubview:numLabel];
             
             [answerView addSubview:btn];
-            
+            question ++;
         }
     }
       UIButton *checkBtn = [[UIButton alloc] initWithFrame:CGRectMake(0, answerView.frame.size.height - 100, self.view.frame.size.width, 60)];
@@ -465,6 +498,7 @@
     if (self.isTouchCheckBtnAgain)
     {
         checkBtnLabel.text = @"完成批改并查看报告";
+        checkBtn.backgroundColor = [UIColor colorWithRed:50/255.0 green:205/255.0 blue:50/255.0 alpha:1.0];
     }
     else
     {
@@ -494,6 +528,21 @@
     self.scrollView.delegate = self;
 }
 
+- (void)trueBtnClickMethon:(UIButton *)button
+{
+    trueQuestionsNum ++;
+    button.selected = !button.selected;
+    [NSThread sleepForTimeInterval:0.2];
+    [self.scrollView setContentOffset:CGPointMake(button.tag, 0) animated:YES];
+}
+
+- (void)falseBtnClickMethon:(UIButton *)button
+{
+    button.selected = !button.selected;
+    [NSThread sleepForTimeInterval:0.2];
+    [self.scrollView setContentOffset:CGPointMake(button.tag, 0) animated:YES];
+}
+
 -(void)webViewDidFinishLoad:(UIWebView*)webView
 {
     webView.backgroundColor = [UIColor grayColor];
@@ -506,21 +555,63 @@
 {
     if (self.isTouchCheckBtnAgain)
     {
-        UIView *overView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height)];
-        overView.backgroundColor = [UIColor blackColor];
-        [self.view addSubview:overView];
+        [self.navigationBarView removeFromSuperview];
+        self.navigationController.navigationBar.backgroundColor = [UIColor colorWithRed:50/255.0 green:205/255.0 blue:50/255.0 alpha:1.0];
+        float trueNums = (trueQuestionsNum / Questions ) * 100;
+        UIScrollView *finalView = [[UIScrollView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height)];
+        finalView.bounces = NO;
+        finalView.backgroundColor = [UIColor whiteColor];
+        [self.view addSubview:finalView];
+        UIView *topView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, 150)];
+        [finalView addSubview:topView];
+        topView.backgroundColor = [UIColor colorWithRed:50/255.0 green:205/255.0 blue:50/255.0 alpha:1.0];
+        UILabel *accuracyNumLabel = [[UILabel alloc] initWithFrame:CGRectMake(15, 10, 60, 30)];
+        accuracyNumLabel.text = @"正确率";
+        accuracyNumLabel.font = [UIFont systemFontOfSize:15];
+        accuracyNumLabel.textColor = [UIColor whiteColor];
+        [topView addSubview:accuracyNumLabel];
         
+        UILabel *percentageNumLabel = [[UILabel alloc] initWithFrame:CGRectMake(5, 40, 160, 80)];
+        percentageNumLabel.text = [NSString stringWithFormat:@"%2.1f", trueNums];
+        percentageNumLabel.textColor = [UIColor whiteColor];
+        percentageNumLabel.font = [UIFont systemFontOfSize:80];
+        
+        UILabel *percentageLabel = [[UILabel alloc] initWithFrame:CGRectMake(CGRectGetMaxX(percentageNumLabel.frame), CGRectGetMaxY(percentageNumLabel.frame) - 20, 20, 20)];
+        percentageLabel.textColor = [UIColor whiteColor];
+        percentageLabel.text = @"%";
+        [topView addSubview:percentageLabel];
+        [topView addSubview:percentageNumLabel];
+        
+        UILabel *paperNameLabel = [[UILabel alloc] initWithFrame:CGRectMake(CGRectGetMaxX(accuracyNumLabel.frame) + 20, accuracyNumLabel.frame.origin.y, self.view.frame.size.width - CGRectGetMaxX(accuracyNumLabel.frame) + 20, 30)];
+        paperNameLabel.textAlignment = NSTextAlignmentCenter;
+        paperNameLabel.text = [NSString stringWithFormat:@"14年高数期末考试试卷"];
+        paperNameLabel.textColor = [UIColor whiteColor];
+        paperNameLabel.font = [UIFont systemFontOfSize:15];
+        [topView addSubview:paperNameLabel];
+        
+        UILabel *timeLabel = [[UILabel alloc] initWithFrame:CGRectMake(CGRectGetMaxX(percentageLabel.frame), CGRectGetMaxY(paperNameLabel.frame) + 15, paperNameLabel.frame.size.width, 30)];
+        timeLabel.textColor = [UIColor whiteColor];
+        timeLabel.text = [NSString stringWithFormat:@"共耗时：%@", self.timeLabelPauseStr];
+        timeLabel.font = [UIFont systemFontOfSize:16];
+        [topView addSubview:timeLabel];
+        
+        UIView *anserwPaperView = [[UIView alloc] initWithFrame:CGRectMake(0, CGRectGetMaxY(topView.frame), self.view.frame.size.width, self.anserwView.frame.size.height)];
+        self.anserwView.frame = CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height);
+        [anserwPaperView addSubview:self.anserwView];
+        [finalView addSubview:anserwPaperView];
+        finalView.contentSize = CGSizeMake(self.view.frame.size.width, CGRectGetMaxY(anserwPaperView.frame));
     }
     else
     {
-        MBProgressHUD *MB = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
-        MB.label.text = @"正在查询答案，请稍等...";
+        MBProgressHUD *mb = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+        [self.view addSubview:mb];
+        [self.view bringSubviewToFront:mb];
         [self.timeLabel pause];
         self.timeLabelPauseStr = self.timeLabel.text;
         self.isTouchCheckBtn = YES;
         self.isTouchCheckBtnAgain = YES;
         [self initPaperViewWithDict];
-        [MB hideAnimated:YES];
+        [mb hideAnimated:YES];
     }
 }
 
@@ -562,6 +653,7 @@
         self.nowLabel.font = [UIFont systemFontOfSize:18];
     }
 }
+
 // 收藏按钮点击事件
 - (void)collect
 {
