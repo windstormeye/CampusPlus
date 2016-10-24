@@ -95,6 +95,7 @@
 		2C97BC451DB9D9D000E7CD7C /* IQKeyboardReturnKeyHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 2C97BC431DB9D9D000E7CD7C /* IQKeyboardReturnKeyHandler.m */; };
 		2C97BC491DBC7B0300E7CD7C /* MBProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 2C97BC481DBC7B0300E7CD7C /* MBProgressHUD.m */; };
 		2C97BC511DBC8ADB00E7CD7C /* AnswerChatTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2C97BC501DBC8ADB00E7CD7C /* AnswerChatTableViewController.m */; };
+		2C97BC541DBDCDB300E7CD7C /* NowAnserwChatViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2C97BC531DBDCDB300E7CD7C /* NowAnserwChatViewController.m */; };
 		2CA20DFB1D922DC600180B0F /* NSString+PJNSStringExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = 2CA20DFA1D922DC600180B0F /* NSString+PJNSStringExtension.m */; };
 		2CA20DFE1D9428FA00180B0F /* MZTimerLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 2CA20DFD1D9428FA00180B0F /* MZTimerLabel.m */; };
 		2CB20E1D1D8D6D7800DE531D /* AllPaperDetailsTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2CB20E1C1D8D6D7800DE531D /* AllPaperDetailsTableViewController.m */; };
@@ -290,6 +291,8 @@
 		2C97BC481DBC7B0300E7CD7C /* MBProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MBProgressHUD.m; path = ../../../../../../../../CASE/test/test/MBProgressHUD.m; sourceTree = "<group>"; };
 		2C97BC4F1DBC8ADB00E7CD7C /* AnswerChatTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AnswerChatTableViewController.h; sourceTree = "<group>"; };
 		2C97BC501DBC8ADB00E7CD7C /* AnswerChatTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AnswerChatTableViewController.m; sourceTree = "<group>"; };
+		2C97BC521DBDCDB300E7CD7C /* NowAnserwChatViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NowAnserwChatViewController.h; sourceTree = "<group>"; };
+		2C97BC531DBDCDB300E7CD7C /* NowAnserwChatViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NowAnserwChatViewController.m; sourceTree = "<group>"; };
 		2CA20DF91D922DC600180B0F /* NSString+PJNSStringExtension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+PJNSStringExtension.h"; sourceTree = "<group>"; };
 		2CA20DFA1D922DC600180B0F /* NSString+PJNSStringExtension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+PJNSStringExtension.m"; sourceTree = "<group>"; };
 		2CA20DFC1D9428FA00180B0F /* MZTimerLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MZTimerLabel.h; sourceTree = "<group>"; };
@@ -773,6 +776,8 @@
 			children = (
 				2C97BC4F1DBC8ADB00E7CD7C /* AnswerChatTableViewController.h */,
 				2C97BC501DBC8ADB00E7CD7C /* AnswerChatTableViewController.m */,
+				2C97BC521DBDCDB300E7CD7C /* NowAnserwChatViewController.h */,
+				2C97BC531DBDCDB300E7CD7C /* NowAnserwChatViewController.m */,
 			);
 			name = AnswerChat;
 			sourceTree = "<group>";
@@ -952,6 +957,7 @@
 				2C7A8B811D88EB9000681CB4 /* SDImageCache.m in Sources */,
 				2C7A8B591D88EA6200681CB4 /* TAPageControl.m in Sources */,
 				2C225BC71DB495910072F970 /* AFURLRequestSerialization.m in Sources */,
+				2C97BC541DBDCDB300E7CD7C /* NowAnserwChatViewController.m in Sources */,
 				2C225BC91DB495910072F970 /* AFURLSessionManager.m in Sources */,
 				2C7A8AF91D87E19900681CB4 /* AppDelegate.m in Sources */,
 				2C7A8AF61D87E19900681CB4 /* main.m in Sources */,

@@ -8,6 +8,7 @@
 
 #import "PaperViewController.h"
 #import "AnswerChatTableViewController.h"
+#import "NowAnserwChatViewController.h"
 
 #import "NSString+PJNSStringExtension.h"
 #import "MZTimerLabel.h"
@@ -223,7 +224,7 @@
     CGFloat imgY = 0;
     CGFloat imgX = 0;
     int webJ = 0;
-    CGFloat lastY = 0.0;
+    __block CGFloat lastY = 0.0;
     int i, j;
     for (i = 0, j = 0; i < numOfQuestions; i ++)
     {
@@ -273,6 +274,18 @@
             firstwebView.scrollView.bounces = NO;
             [firstwebView loadRequest:request];
             [view addSubview:firstwebView];
+            UIWebView *secondWebView = [[UIWebView alloc] init];
+            NSString *urll = [self.answerBomeObjArr[i] objectForKey:@"A_url"];
+            // 解决URL带有中文
+            urll = [urll stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
+            NSURL *URL = [NSURL URLWithString:urll];
+            NSURLRequest *requestt =[NSURLRequest requestWithURL:URL];
+            secondWebView.delegate = self;
+            secondWebView.scrollView.bounces = NO;
+            [self.view addSubview: secondWebView];
+            [secondWebView loadRequest:requestt];
+            [view addSubview:secondWebView];
+
             
             if (self.isTouchCheckBtn)
             {
@@ -282,7 +295,7 @@
                 firstLineView.backgroundColor = [UIColor colorWithRed:229/255.0 green:229/255.0 blue:229/255.0 alpha:1.0];
                 [view addSubview:firstLineView];
                 
-                UIWebView *secondWebView = [[UIWebView alloc] initWithFrame:CGRectMake(0, CGRectGetMaxY(firstLineView.frame), imgW, 250)];
+                UIWebView *secondWebView = [[UIWebView alloc] initWithFrame:CGRectMake(0, CGRectGetMaxY(firstLineView.frame), imgW, 300)];
                 NSString *url = [self.answerBomeObjArr[i] objectForKey:@"A_url"];
                 // 解决URL带有中文
                 url = [url stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
@@ -293,11 +306,8 @@
                 [self.view addSubview: secondWebView];
                 [secondWebView loadRequest:request];
                 [view addSubview:secondWebView];
-                lastY = CGRectGetMaxY(secondWebView.frame);
-                
                 UIView *secondLineView = [[UIView alloc] initWithFrame:CGRectMake(0, CGRectGetMaxY(secondWebView.frame) + 1, secondWebView.frame.size.width, 30)];
                 secondLineView.backgroundColor = [UIColor whiteColor];
-//                secondLineView.backgroundColor = [UIColor colorWithRed:229/255.0 green:229/255.0 blue:229/255.0 alpha:1.0];
                 [view addSubview:secondLineView];
                 UILabel *secondLineViewLabel = [[UILabel alloc] initWithFrame:CGRectMake(10, 0, 150, 30)];
                 secondLineViewLabel.text = @"不会做？看这里！";
@@ -305,26 +315,56 @@
                 secondLineViewLabel.textColor = [UIColor colorWithRed:38/255.0 green:184/255.0 blue:242/255.0 alpha:1.0];
                 [secondLineView addSubview:secondLineViewLabel];
 //                //关联对象表
-//                BmobQuery *bquery = [BmobQuery queryWithClassName:@"Questions"];
-//                
-//                //需要查询的列
-//                BmobObject *post = [BmobObject objectWithoutDataWithClassName:@"Users" objectId:@"ZqQ7KKKx"];
-//                [bquery whereObjectKey:@"likes" relatedTo:post];
-//                
-//                
-//                [bquery findObjectsInBackgroundWithBlock:^(NSArray *array, NSError *error) {
-//                    if (error) {
-//                        NSLog(@"%@",error);
-//                    } else {
-//                        for (BmobObject *user in array) {
-//                            NSLog(@"%@",[user objectForKey:@"username"]);
-//                        }
-//                    }
-//                }];
+                BmobQuery *bquery = [BmobQuery queryWithClassName:@"_User"];
+                
+                // 每一行view的个0数0
+                int cloumns = 5;
+                CGFloat viewWidth = self.view.frame.size.width;
+                // 高度
+                CGFloat appW = 55;          // 每一个view的大小假定固定不变
+                // 宽度
+                CGFloat appH = 55;
+                // 计算每一行中的每一个view之间的距离
+                CGFloat maginX = (viewWidth - cloumns * appW + 60) / (cloumns + 1);
+                // 计算每一列中的每一个view之前的距离
+                CGFloat maginY = 10;
+                CGFloat maginTop = CGRectGetMaxY(secondLineView.frame);;
+                
+                __block int usersNum = 0;
+                NSMutableArray *userArr = [[NSMutableArray alloc] init];
+                //需要查询的列
+                BmobObject *post = [BmobObject objectWithoutDataWithClassName:@"Questions" objectId:[self.answerBomeObjArr[i] objectForKey:@"objectId"]];
+                [bquery whereObjectKey:@"Users" relatedTo:post];
+                [bquery findObjectsInBackgroundWithBlock:^(NSArray *array, NSError *error) {
+                    if (error) {
+                        NSLog(@"%@",error);
+                    } else {
+                        for (BmobObject *user in array) {
+                            usersNum++;
+                            [userArr addObject:user];
+                        }
+                        for (int j = 0; j < userArr.count; j++)
+                        {
+                            int colIdx = j % cloumns;           // 行索引
+                            int rowIdx = j / cloumns;           // 列索引
+                            CGFloat appX = maginX + colIdx * (maginX + appW);
+                            CGFloat appY = maginTop + rowIdx * (maginY + appH);
+                            UIButton *userImgBtn = [[UIButton alloc] initWithFrame:CGRectMake(appX, appY, appW, appH)];
+                            BmobFile *file = (BmobFile*)[userArr[j] objectForKey:@"user_pic"];
+                            NSURL *url = [NSURL URLWithString:file.url];
+                            NSData *data = [NSData dataWithContentsOfURL:url];
+                            [userImgBtn setImage:[UIImage imageWithData:data] forState:UIControlStateNormal];
+                            [userImgBtn addTarget:self action:@selector(userImgBtnClickMethon:) forControlEvents:UIControlEventTouchUpInside];
+                            userImgBtn.imageView.layer.cornerRadius = userImgBtn.frame.size.width / 2;
+                            [view addSubview:userImgBtn];
+                            lastY = CGRectGetMaxY(userImgBtn.frame);
+                            view.contentSize = CGSizeMake(0, lastY + 80);
+                        }
+                    }
+                }];
                 
                 j++;
             }
-            view.contentSize = CGSizeMake(0, lastY + 50);
             
             webJ++;
         }
@@ -480,10 +520,15 @@
         self.isTouchCheckBtn = YES;
         self.isTouchCheckBtnAgain = YES;
         [self initPaperViewWithDict];
-        [self initPaperViewWithDict];
-
         [MB hideAnimated:YES];
     }
+}
+
+- (void)userImgBtnClickMethon:(UIButton *)button
+{
+    self.hidesBottomBarWhenPushed = YES;
+    NowAnserwChatViewController *now = [[NowAnserwChatViewController alloc] init];
+    [self.navigationController pushViewController:now animated:YES];
 }
 
 // 当前题目设置
