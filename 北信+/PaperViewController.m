@@ -45,8 +45,10 @@
 @property (weak, nonatomic) UIButton *cover;
 @property (nonatomic, retain) NSMutableArray *answerUsersBomeObjArr;
 @property (weak, nonatomic) MBProgressHUD *MB;
-@property (weak, nonatomic) UIScrollView *anserwView;
+@property (weak, nonatomic) UIScrollView *paperScrollView;
 @property (weak, nonatomic) UIView *navigationBarView;
+@property (nonatomic, retain) NSMutableArray *titleNumArr;
+
 
 
 @end
@@ -56,8 +58,17 @@
     int numOfQuestions;
     int trueQuestionsNum;
     float Questions;
+    int answerPaperViewNums;
 }
 
+- (NSMutableArray *)titleNumArr
+{
+    if ((!_titleNumArr))
+    {
+        _titleNumArr = [[NSMutableArray alloc] init];
+    }
+    return _titleNumArr;
+}
 -(NSMutableArray *)webViewYY
 {
     if(!_webViewYY)
@@ -115,9 +126,14 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    self.view.backgroundColor = [UIColor whiteColor];
+    self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"close"] style:UIBarButtonItemStylePlain target:self action:@selector(back)];
+    self.navigationController.navigationBar.tintColor = [UIColor whiteColor];
+    
     self.isTouchCheckBtn = NO;
     self.isTouchCheckBtnAgain = NO;
     trueQuestionsNum = 0;
+    answerPaperViewNums = 0;
     
     UIView *view = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.navigationController.navigationBar.frame.size.width, self.navigationController.navigationBar.frame.size.height)];
     self.navigationBarView = view;
@@ -150,7 +166,6 @@
     timeLabel.timeLabel.font = [UIFont systemFontOfSize:20.0f];
     self.timeLabel = timeLabel;
     [view addSubview:self.timeLabel];
-    [timeLabel start];
     
     
     numOfQuestions = 0;
@@ -158,10 +173,6 @@
     MBProgressHUD *MB = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
     MB.label.text = @"正在加载试卷，请稍后...";
     [self.view bringSubviewToFront:MB];
-    
-    self.view.backgroundColor = [UIColor whiteColor];
-    self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"close"] style:UIBarButtonItemStylePlain target:self action:@selector(back)];
-    self.navigationController.navigationBar.tintColor = [UIColor whiteColor];
     
     BmobQuery *bquery = [BmobQuery queryWithClassName:@"Questions"];
     // 按照升序排列
@@ -174,6 +185,8 @@
         }
         [self initPaperViewWithDict];
         [MB hideAnimated:YES];
+        [timeLabel start];
+
     }];
     
     [self.navigationItem setTitleView:view];
@@ -183,12 +196,6 @@
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
-
-// 如果把初始化试卷方法放在这里，在pop退回到上级界面中会重新当前界面
-//-(void)viewWillAppear:(BOOL)animated
-//{
-//    [super viewWillDisappear:animated];
-//}
 
 -(void)back
 {
@@ -211,7 +218,7 @@
     UIView *lineView = [[UIView alloc] initWithFrame:CGRectMake(0, lab.frame.size.height, self.view.frame.size.width, 1)];
     lineView.backgroundColor = [UIColor colorWithRed:229/255.0 green:229/255.0 blue:229/255.0 alpha:1.0];
     [view addSubview:lineView];
-    lab.text = @"高数简答题";
+    lab.text = @"14年高数期末试卷";
     lab.font = [UIFont systemFontOfSize:15];
     [view addSubview:lab];
     self.topView = view;
@@ -267,10 +274,21 @@
             [chineseView addSubview:textLabel];
             [chineseView addSubview:titleLabel];
             [scrollView addSubview:chineseView];
+            
+            if (self.titleNumArr.count <= self.answerBomeObjArr.count)
+            {
+                [self.titleNumArr addObject:titleString];
+            }
         }
         else
         {
             Questions ++;
+            if (self.titleNumArr.count <= self.answerBomeObjArr.count)
+            {
+                NSNumber *tempNum = [NSNumber numberWithInt:Questions];
+                [self.titleNumArr addObject:tempNum];
+            }
+         
             UIScrollView *view = [[UIScrollView alloc] initWithFrame:CGRectMake(imgX, imgY, imgW, imgH)];
             view.backgroundColor = [UIColor whiteColor];
             [scrollView addSubview:view];
@@ -286,24 +304,10 @@
             firstwebView.scrollView.bounces = NO;
             [firstwebView loadRequest:request];
             [view addSubview:firstwebView];
-            UIWebView *secondWebView = [[UIWebView alloc] init];
-            NSString *urll = [self.answerBomeObjArr[i] objectForKey:@"A_url"];
-            // 解决URL带有中文
-            urll = [urll stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
-            NSURL *URL = [NSURL URLWithString:urll];
-            NSURLRequest *requestt =[NSURLRequest requestWithURL:URL];
-            secondWebView.delegate = self;
-            secondWebView.scrollView.bounces = NO;
-            [self.view addSubview: secondWebView];
-            [secondWebView loadRequest:requestt];
-            [view addSubview:secondWebView];
-
             
             if (self.isTouchCheckBtn)
             {
                 UIView *firstLineView = [[UIView alloc] initWithFrame:CGRectMake(0, [self.webViewY[j] floatValue] + 1, firstwebView.frame.size.width, 1)];
-                firstLineView.backgroundColor = [UIColor whiteColor];
-                
                 firstLineView.backgroundColor = [UIColor colorWithRed:229/255.0 green:229/255.0 blue:229/255.0 alpha:1.0];
                 [view addSubview:firstLineView];
                 
@@ -328,8 +332,7 @@
                 [secondLineView addSubview:secondLineViewLabel];
 //                //关联对象表
                 BmobQuery *bquery = [BmobQuery queryWithClassName:@"_User"];
-                
-                // 每一行view的个0数0
+                // 每一行view的个数
                 int cloumns = 5;
                 CGFloat viewWidth = self.view.frame.size.width;
                 // 高度
@@ -393,22 +396,21 @@
                 [falseBtn setImage:[UIImage imageNamed:@"wrong_normal"] forState:UIControlStateNormal];
                 [falseBtn setImage:[UIImage imageNamed:@"wrong_selected"] forState:UIControlStateSelected];
                 [view addSubview:falseBtn];
+                
                 j++;
             }
             
             webJ++;
         }
     }
+
     UIScrollView *answerView = [[UIScrollView alloc] initWithFrame:CGRectMake(imgW * i, imgY, imgW, imgH)];
     answerView.bounces = NO;
-    self.anserwView = answerView;
     // 记录下答题卡的坐标
     self.lastX = answerView.frame.origin.x;
-    
+
     self.scrollView.contentSize = CGSizeMake(maxX, 0);
-    
-    // 用这个去放答题卡界面，而不是直接加载anserwView里边
-    UIView *anserwBtnView = [[UIView alloc] init];
+    self.paperScrollView = answerView;
     
     // 每一行view的个0数0
     int cloumns = 6;
@@ -495,7 +497,7 @@
     checkBtnLabel.font = [UIFont systemFontOfSize:18];
     checkBtnLabel.frame = CGRectMake((checkBtn.frame.size.width - 165) / 2, (checkBtn.frame.size.height - 40) / 2, 165, 40);
     checkBtnLabel.textAlignment = NSTextAlignmentCenter;
-    if (self.isTouchCheckBtnAgain)
+    if (self.isTouchCheckBtn)
     {
         checkBtnLabel.text = @"完成批改并查看报告";
         checkBtn.backgroundColor = [UIColor colorWithRed:50/255.0 green:205/255.0 blue:50/255.0 alpha:1.0];
@@ -545,73 +547,76 @@
 
 -(void)webViewDidFinishLoad:(UIWebView*)webView
 {
-    webView.backgroundColor = [UIColor grayColor];
-    CGFloat webViewHeight=[[webView stringByEvaluatingJavaScriptFromString:@"document.body.offsetHeight"]floatValue] + 20;      // 加上20，不让webview.scrollview动
+    CGFloat webViewHeight=[[webView stringByEvaluatingJavaScriptFromString:@"document.body.offsetHeight"]floatValue] + self.topView.frame.size.height / 2;      // 加上20，不让webview.scrollview动
     NSNumber *num = [NSNumber numberWithFloat:webViewHeight];
     [self.webViewY addObject: num];
 }
 
 - (void)checkBtnMethon
 {
+    if (self.isTouchCheckBtn)
+    {
+        self.isTouchCheckBtnAgain = YES;
+        // 设置完为yes后，要么刷新当前视图，要么向下边这么做
+        self.nowLabel.text = [NSString stringWithFormat:@"答题报告"];
+        self.nowLabel.textColor = [UIColor colorWithRed:50/255.0 green:205/255.0 blue:50/255.0 alpha:1.0];
+    }
+    
     if (self.isTouchCheckBtnAgain)
     {
-        [self.navigationBarView removeFromSuperview];
-        self.navigationController.navigationBar.backgroundColor = [UIColor colorWithRed:50/255.0 green:205/255.0 blue:50/255.0 alpha:1.0];
-        float trueNums = (trueQuestionsNum / Questions ) * 100;
-        UIScrollView *finalView = [[UIScrollView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height)];
-        finalView.bounces = NO;
-        finalView.backgroundColor = [UIColor whiteColor];
-        [self.view addSubview:finalView];
-        UIView *topView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, 150)];
-        [finalView addSubview:topView];
-        topView.backgroundColor = [UIColor colorWithRed:50/255.0 green:205/255.0 blue:50/255.0 alpha:1.0];
-        UILabel *accuracyNumLabel = [[UILabel alloc] initWithFrame:CGRectMake(15, 10, 60, 30)];
-        accuracyNumLabel.text = @"正确率";
-        accuracyNumLabel.font = [UIFont systemFontOfSize:15];
-        accuracyNumLabel.textColor = [UIColor whiteColor];
-        [topView addSubview:accuracyNumLabel];
-        
-        UILabel *percentageNumLabel = [[UILabel alloc] initWithFrame:CGRectMake(5, 40, 160, 80)];
-        percentageNumLabel.text = [NSString stringWithFormat:@"%2.1f", trueNums];
-        percentageNumLabel.textColor = [UIColor whiteColor];
-        percentageNumLabel.font = [UIFont systemFontOfSize:80];
-        
-        UILabel *percentageLabel = [[UILabel alloc] initWithFrame:CGRectMake(CGRectGetMaxX(percentageNumLabel.frame), CGRectGetMaxY(percentageNumLabel.frame) - 20, 20, 20)];
-        percentageLabel.textColor = [UIColor whiteColor];
-        percentageLabel.text = @"%";
-        [topView addSubview:percentageLabel];
-        [topView addSubview:percentageNumLabel];
-        
-        UILabel *paperNameLabel = [[UILabel alloc] initWithFrame:CGRectMake(CGRectGetMaxX(accuracyNumLabel.frame) + 20, accuracyNumLabel.frame.origin.y, self.view.frame.size.width - CGRectGetMaxX(accuracyNumLabel.frame) + 20, 30)];
-        paperNameLabel.textAlignment = NSTextAlignmentCenter;
-        paperNameLabel.text = [NSString stringWithFormat:@"14年高数期末考试试卷"];
-        paperNameLabel.textColor = [UIColor whiteColor];
-        paperNameLabel.font = [UIFont systemFontOfSize:15];
-        [topView addSubview:paperNameLabel];
-        
-        UILabel *timeLabel = [[UILabel alloc] initWithFrame:CGRectMake(CGRectGetMaxX(percentageLabel.frame), CGRectGetMaxY(paperNameLabel.frame) + 15, paperNameLabel.frame.size.width, 30)];
-        timeLabel.textColor = [UIColor whiteColor];
-        timeLabel.text = [NSString stringWithFormat:@"共耗时：%@", self.timeLabelPauseStr];
-        timeLabel.font = [UIFont systemFontOfSize:16];
-        [topView addSubview:timeLabel];
-        
-        UIView *anserwPaperView = [[UIView alloc] initWithFrame:CGRectMake(0, CGRectGetMaxY(topView.frame), self.view.frame.size.width, self.anserwView.frame.size.height)];
-        self.anserwView.frame = CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height);
-        [anserwPaperView addSubview:self.anserwView];
-        [finalView addSubview:anserwPaperView];
-        finalView.contentSize = CGSizeMake(self.view.frame.size.width, CGRectGetMaxY(anserwPaperView.frame));
+        MBProgressHUD *mb = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+        mb.label.text = @"正在生成答题报告,请稍等...";
+        // 采用GCD模式模拟计算生成答题报告所需时间
+        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1.5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+            float trueNums = (trueQuestionsNum / Questions ) * 100;
+            UIScrollView *finalView = [[UIScrollView alloc] initWithFrame:CGRectMake(self.answerBomeObjArr.count * self.view.frame.size.width, 0, self.view.frame.size.width, self.view.frame.size.height)];
+            finalView.bounces = NO;
+            finalView.backgroundColor = [UIColor whiteColor];
+            UIView *topView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, 150)];
+            [finalView addSubview:topView];
+            topView.backgroundColor = [UIColor colorWithRed:50/255.0 green:205/255.0 blue:50/255.0 alpha:1.0];
+            UILabel *accuracyNumLabel = [[UILabel alloc] initWithFrame:CGRectMake(15, 10, 60, 30)];
+            accuracyNumLabel.text = @"正确率";
+            accuracyNumLabel.font = [UIFont systemFontOfSize:18];
+            accuracyNumLabel.textColor = [UIColor whiteColor];
+            [topView addSubview:accuracyNumLabel];
+            
+            self.paperScrollView.frame = CGRectMake(0, CGRectGetMaxY(topView.frame), self.view.frame.size.width, self.view.frame.size.height);
+            
+            [finalView addSubview:self.paperScrollView];
+            
+            UILabel *percentageNumLabel = [[UILabel alloc] initWithFrame:CGRectMake(5, 40, 160, 80)];
+            percentageNumLabel.text = [NSString stringWithFormat:@"%2.1f", trueNums];
+            percentageNumLabel.textColor = [UIColor whiteColor];
+            percentageNumLabel.font = [UIFont systemFontOfSize:80];
+            
+            UILabel *percentageLabel = [[UILabel alloc] initWithFrame:CGRectMake(CGRectGetMaxX(percentageNumLabel.frame), CGRectGetMaxY(percentageNumLabel.frame) - 20, 20, 20)];
+            percentageLabel.textColor = [UIColor whiteColor];
+            percentageLabel.text = @"%";
+            [topView addSubview:percentageLabel];
+            [topView addSubview:percentageNumLabel];
+            
+            UILabel *timeLabel = [[UILabel alloc] initWithFrame:CGRectMake(CGRectGetMaxX(accuracyNumLabel.frame)  + 60, accuracyNumLabel.frame.origin.y, self.view.frame.size.width - CGRectGetMaxX(accuracyNumLabel.frame) - 40, 30)];
+            timeLabel.textColor = [UIColor whiteColor];
+            timeLabel.text = [NSString stringWithFormat:@"共耗时：%@", self.timeLabelPauseStr];
+            timeLabel.font = [UIFont systemFontOfSize:18];
+            [topView addSubview:timeLabel];
+            
+            [self.scrollView addSubview:finalView];
+            finalView.contentSize = CGSizeMake(0, CGRectGetMaxY(self.scrollView.frame) + self.topView.frame.size.height);
+        });
+        [mb hideAnimated:YES afterDelay:1.5];
     }
     else
     {
-        MBProgressHUD *mb = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
-        [self.view addSubview:mb];
-        [self.view bringSubviewToFront:mb];
+        MBProgressHUD *MB = [MBProgressHUD showHUDAddedTo:[[UIApplication sharedApplication]keyWindow] animated:YES];
+        MB.label.text = @"加载需要较多时间，耐心等待...";
         [self.timeLabel pause];
         self.timeLabelPauseStr = self.timeLabel.text;
         self.isTouchCheckBtn = YES;
-        self.isTouchCheckBtnAgain = YES;
+        self.isTouchCheckBtnAgain = NO;
         [self initPaperViewWithDict];
-        [mb hideAnimated:YES];
+        [MB hideAnimated:YES afterDelay:2];
     }
 }
 
@@ -629,13 +634,14 @@
     // 当滑过一半的时候就跳到下一页
     offSetX = offSetX + (self.scrollView.frame.size.width / 2);
     int page = offSetX / self.scrollView.frame.size.width;
-
+    
     if (page < 21)
     {
-        NSString *str = [NSString localizedStringWithFormat:@"%ld", [[self.answerBomeObjArr[page] objectForKey:@"Q_num"] integerValue]];
-        if (![self.answerBomeObjArr[page] objectForKey:@"Title"])
+
+        NSString *tempstr = [NSString stringWithFormat:@"%@", self.titleNumArr[page]];
+        if ([self isPureInt:tempstr])
         {
-            self.nowLabel.text = str;
+            self.nowLabel.text = tempstr;
             self.nowLabel.textColor = [UIColor colorWithRed:26/255.0 green:167/255.0 blue:242/255.0 alpha:1.0];
             self.nowLabel.font = [UIFont systemFontOfSize: 20];
         }
@@ -646,11 +652,21 @@
             self.nowLabel.font = [UIFont systemFontOfSize:18];
         }
     }
-    else
+    else if (page == 21)
     {
-        self.nowLabel.text = [NSString stringWithFormat:@"非题目"];
-        self.nowLabel.textColor = [UIColor grayColor];
-        self.nowLabel.font = [UIFont systemFontOfSize:18];
+        if (self.isTouchCheckBtnAgain)
+        {
+            self.nowLabel.text = [NSString stringWithFormat:@"答题报告"];
+            self.nowLabel.textColor = [UIColor colorWithRed:50/255.0 green:205/255.0 blue:50/255.0 alpha:1.0];
+            self.nowLabel.font = [UIFont systemFontOfSize:18];
+            
+        }
+        else
+        {
+            self.nowLabel.text = [NSString stringWithFormat:@"答题卡"];
+            self.nowLabel.textColor = [UIColor colorWithRed:38/255.0 green:184/255.0 blue:242/255.0 alpha:1.0];
+            self.nowLabel.font = [UIFont systemFontOfSize:18];
+        }
     }
 }
 
