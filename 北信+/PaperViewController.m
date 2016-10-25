@@ -609,9 +609,9 @@
     }
     else
     {
+        [self.timeLabel pause];
         MBProgressHUD *MB = [MBProgressHUD showHUDAddedTo:[[UIApplication sharedApplication]keyWindow] animated:YES];
         MB.label.text = @"加载需要较多时间，耐心等待...";
-        [self.timeLabel pause];
         self.timeLabelPauseStr = self.timeLabel.text;
         self.isTouchCheckBtn = YES;
         self.isTouchCheckBtnAgain = NO;
