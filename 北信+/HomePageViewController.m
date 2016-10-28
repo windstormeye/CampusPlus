@@ -62,6 +62,8 @@
 // -(void)viewWillAppear:(BOOL)animated 此方法小心
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    self.view.backgroundColor = [UIColor whiteColor];
  
     BmobQuery   *bquery = [BmobQuery queryWithClassName:@"News"];
     //查找GameScore表的数据
@@ -74,8 +76,6 @@
          [self initHomePageWithDict];
      }];
 }
-
-
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
@@ -105,15 +105,8 @@
     [titleView addSubview:beixingjiaiImg];
     self.navigationItem.titleView = titleView;
     // 设置头像View
-    UIImageView *userImgView= [[UIImageView alloc] init];
-    userImgView.frame = CGRectMake(0, 0, 40, 40);
-    userImgView.image = [UIImage imageNamed:@"user_name"];
-    userImgView.backgroundColor = [UIColor blackColor];
-    // 设置用户头像为圆形
-    userImgView.layer.cornerRadius = userImgView.frame.size.width / 2;
-    userImgView.clipsToBounds = YES;
-    userImgView.layer.borderWidth = 1.0f;
-    userImgView.layer.borderColor = [UIColor blackColor].CGColor;
+    UIImageView *userImgView= [[UIImageView alloc] initWithFrame:CGRectMake(0, 5, 25, 30)];
+    userImgView.image = [UIImage imageNamed:@"汉堡线"];
     // 设置用户头像Button
     UIButton *userButton = [UIButton buttonWithType:UIButtonTypeCustom];
     userButton.frame = CGRectMake(0, 0, 40, 40);

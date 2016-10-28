@@ -7,7 +7,8 @@
 //
 
 #import "PaperViewController.h"
-#import "AnswerChatTableViewController.h"
+#import "AnswerChatListViewController.h"
+#import "NowAnserwChatViewController.h"
 #import "NowAnserwChatViewController.h"
 
 #import "NSString+PJNSStringExtension.h"
@@ -585,7 +586,7 @@
             
             [finalView addSubview:self.paperScrollView];
             
-            UILabel *percentageNumLabel = [[UILabel alloc] initWithFrame:CGRectMake(5, 40, 160, 80)];
+            UILabel *percentageNumLabel = [[UILabel alloc] initWithFrame:CGRectMake(5, 40, 170, 80)];
             percentageNumLabel.text = [NSString stringWithFormat:@"%2.1f", trueNums];
             percentageNumLabel.textColor = [UIColor whiteColor];
             percentageNumLabel.font = [UIFont systemFontOfSize:80];
@@ -708,7 +709,7 @@
 - (void)messageBtnClickMethon
 {
     self.hidesBottomBarWhenPushed = YES;
-    AnswerChatTableViewController * AC = [[AnswerChatTableViewController alloc] init];
+    NowAnserwChatViewController * AC = [[NowAnserwChatViewController alloc] init];
     [self.navigationController pushViewController:AC animated:YES];
 }
 

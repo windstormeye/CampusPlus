@@ -9,6 +9,7 @@
 
 #import "PaperDetailsView.h"
 #import "AllPaperDetailsTableViewController.h"
+#import "ViewController.h"
 #define SCREEN_WIDTH_RATIO (SCREEN.width / 320)  //屏宽比例
 #define SCREEN [UIScreen mainScreen].bounds.size
 
@@ -74,8 +75,8 @@
 //获取当前屏幕显示的viewcontroller
 - (UINavigationController *)getCurrentVC
 {
-        UITabBarController* VC = (UITabBarController*)[UIApplication sharedApplication].keyWindow.rootViewController;
-        UINavigationController* vc = (UINavigationController*)VC.childViewControllers[0];
+    UITabBarController* VC = (UITabBarController*)[UIApplication sharedApplication].keyWindow.rootViewController;
+    UINavigationController* vc = (UINavigationController*)VC.childViewControllers[0];
     
     return vc;
 }

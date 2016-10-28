@@ -7,12 +7,8 @@
 //
 
 #import "AppDelegate.h"
-#import "HomePageViewController.h"
-#import "FindViewController.h"
-#import "HelpTableViewController.h"
-#import "IQKeyboardManager.h"
+#import "ViewController.h"
 
-#import <BmobSDK/Bmob.h>
 
 @interface AppDelegate ()
 
@@ -27,51 +23,11 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
-   
-    IQKeyboardManager *manager = [IQKeyboardManager sharedManager];
-    manager.enable = YES;
-    manager.shouldResignOnTouchOutside = YES;
-    manager.shouldToolbarUsesTextFieldTintColor = YES;
-    manager.enableAutoToolbar = NO;
-    
-    
-    
-    [Bmob registerWithAppKey:@"c1b1f0a0d66af132513b58b66df9aa25"];
-    
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
-    UITabBarController *contentTabBarController = [[UITabBarController alloc] init];
-    self.window.rootViewController = contentTabBarController;
-    // 设置tabbar
-    HomePageViewController *homePage = [[HomePageViewController alloc] init];
-    HelpTableViewController *help = [[HelpTableViewController alloc] init];
-    FindViewController *find = [[FindViewController alloc] init];
-    UINavigationController *firstContentViewController = [[UINavigationController alloc] initWithRootViewController:homePage];
-    UINavigationController *secondContentViewController = [[UINavigationController alloc] initWithRootViewController:help];
-    UINavigationController *thirdContentViewController = [[UINavigationController alloc] initWithRootViewController:find];
-   contentTabBarController.viewControllers = @[firstContentViewController, secondContentViewController, thirdContentViewController];
-    self.contentTabBarController = contentTabBarController;
-    // 设置tabbar图片
-    UIImage *firstImg1 = [self resetImg:@"tab_icon_homepage_normal"];
-    UIImage *firstImg2 = [self resetImg:@"tab_icon_homepage_selected"];
-    UIImage *secondImg1 = [self resetImg:@"tab_icon_life_normal"];
-    UIImage *secondImg2 = [self resetImg:@"tab_icon_life_selected"];
-    UIImage *thirdImg1 = [self resetImg:@"tab_icon_discover_normal"];
-    UIImage *thirdImg2 = [self resetImg:@"tab_icon_discover_selected"];
-    firstContentViewController.tabBarItem = [[UITabBarItem alloc] initWithTitle:@"首页" image:firstImg1 selectedImage:firstImg2];
-    secondContentViewController.tabBarItem = [[UITabBarItem alloc] initWithTitle:@"代理" image:secondImg1 selectedImage:secondImg2];
-    thirdContentViewController.tabBarItem = [[UITabBarItem alloc] initWithTitle:@"发现" image:thirdImg1 selectedImage:thirdImg2];
-    // 设置tabbar文字颜色
-    contentTabBarController.tabBar.tintColor = [UIColor colorWithRed:38/255.0 green:184/255.0 blue:242/255.0 alpha:1.0];
-    // 更改tabbar的背景颜色
-    UIView *backView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 320, 49)];
-    backView.backgroundColor = [UIColor whiteColor];
-    [contentTabBarController.tabBar insertSubview:backView atIndex:0];
-    // 设置底部tabbar为不透明
-    contentTabBarController.tabBar.translucent = NO;
-    // 让当前window成为主窗口并显示出来
-    self.window.backgroundColor = [UIColor whiteColor];
-    [self.window makeKeyWindow];
     
+    ViewController *view = [[ViewController alloc] init];
+    self.window.rootViewController = view;
+    [self.window makeKeyAndVisible];
     return YES;
 }
 
