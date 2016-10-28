@@ -9,6 +9,7 @@
 #import "LoginViewController.h"
 #import "HomePageViewController.h"
 #import "ViewController.h"
+#import "AppDelegate.h"
 
 #import "MBProgressHUD+NJ.h"
 #import <BmobSDK/Bmob.h>
@@ -62,6 +63,10 @@
                 if (user)
                 {
                     [MBProgressHUD showSuccess:@"登录成功"];
+                    ViewController *vc = [[ViewController alloc] init];
+                    AppDelegate* appDelagete = [UIApplication sharedApplication].delegate;
+                   appDelagete.window.rootViewController = vc.contentTabBarController;
+
                     [self dismissViewControllerAnimated:YES completion:nil];
                 }
                 else

@@ -7,7 +7,6 @@
 //
 
 #import "AppDelegate.h"
-#import "ViewController.h"
 
 
 @interface AppDelegate ()
@@ -23,21 +22,14 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
-    self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     
-    ViewController *view = [[ViewController alloc] init];
-    self.window.rootViewController = view;
-    [self.window makeKeyAndVisible];
+    
     return YES;
 }
 
 
 
-- (UIImage *)resetImg:(NSString *)name
-{
-    UIImage *img = [[UIImage imageNamed:name] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
-    return img;
-}
+
 
 
 
