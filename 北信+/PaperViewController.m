@@ -8,8 +8,6 @@
 
 #import "PaperViewController.h"
 #import "AnswerChatListViewController.h"
-#import "NowAnserwChatViewController.h"
-#import "NowAnserwChatViewController.h"
 
 #import "NSString+PJNSStringExtension.h"
 #import "MZTimerLabel.h"
@@ -20,10 +18,11 @@
 #import "MBProgressHUD.h"
 
 #import <BmobSDK/Bmob.h>
+#import "IQKeyboardManager.h"
 
 #define SCREEN_WIDTH_RATIO (SCREEN.width / 320)  //屏宽比例
 #define SCREEN [UIScreen mainScreen].bounds.size
-@interface PaperViewController () <UIScrollViewDelegate, UIWebViewDelegate>
+@interface PaperViewController () <UIScrollViewDelegate, UIWebViewDelegate, RCIMUserInfoDataSource, RCIMGroupInfoDataSource>
 
 @property (nonatomic, retain) NSDictionary *paperDict;
 @property (strong, nonatomic)  UIScrollView *scrollView;
@@ -124,8 +123,26 @@
     return _xArray;
 }
 
+- (void)viewWillAppear:(BOOL)animated{
+    
+    [super viewWillAppear:animated];
+    
+    [IQKeyboardManager sharedManager].enable = NO;
+    
+}
+
+- (void)viewWillDisappear:(BOOL)animated{
+    
+    [super viewWillDisappear:animated];
+    
+    [IQKeyboardManager sharedManager].enable = YES;
+    
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    [[RCIM sharedRCIM] setUserInfoDataSource:self];
     
     self.view.backgroundColor = [UIColor whiteColor];
     self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"close"] style:UIBarButtonItemStylePlain target:self action:@selector(back)];
@@ -346,7 +363,6 @@
                 CGFloat maginY = 10;
                 CGFloat maginTop = CGRectGetMaxY(secondLineView.frame);;
                 
-                __block int usersNum = 0;
                 NSMutableArray *userArr = [[NSMutableArray alloc] init];
                 //需要查询的列
                 BmobObject *post = [BmobObject objectWithoutDataWithClassName:@"Questions" objectId:[self.answerBomeObjArr[i] objectForKey:@"objectId"]];
@@ -360,7 +376,6 @@
                     {
                         for (BmobObject *user in array)
                         {
-                            usersNum++;
                             [userArr addObject:user];
                         }
                         for (int j = 0; j < userArr.count; j++)
@@ -375,6 +390,9 @@
                             NSData *data = [NSData dataWithContentsOfURL:url];
                             [userImgBtn setImage:[UIImage imageWithData:data] forState:UIControlStateNormal];
                             [userImgBtn addTarget:self action:@selector(userImgBtnClickMethon:) forControlEvents:UIControlEventTouchUpInside];
+                            userImgBtn.tintColor = [UIColor clearColor];
+                            [userImgBtn setTitle:[userArr[j] objectForKey:@"objectId"] forState:UIControlStateNormal];
+                            [userImgBtn setTitle:[userArr[j] objectForKey:@"username"] forState:UIControlStateHighlighted];
                             userImgBtn.imageView.layer.cornerRadius = userImgBtn.frame.size.width / 2;
                             [view addSubview:userImgBtn];
                             lastY = CGRectGetMaxY(userImgBtn.frame);
@@ -612,20 +630,13 @@
     {
         [self.timeLabel pause];
         MBProgressHUD *MB = [MBProgressHUD showHUDAddedTo:[[UIApplication sharedApplication]keyWindow] animated:YES];
-        MB.label.text = @"加载需要较多时间，耐心等待...";
+        MB.label.text = @"答案正在加载，请耐心等待...";
         self.timeLabelPauseStr = self.timeLabel.text;
         self.isTouchCheckBtn = YES;
         self.isTouchCheckBtnAgain = NO;
         [self initPaperViewWithDict];
         [MB hideAnimated:YES afterDelay:2];
     }
-}
-
-- (void)userImgBtnClickMethon:(UIButton *)button
-{
-    self.hidesBottomBarWhenPushed = YES;
-    NowAnserwChatViewController *now = [[NowAnserwChatViewController alloc] init];
-    [self.navigationController pushViewController:now animated:YES];
 }
 
 // 当前题目设置
@@ -709,8 +720,52 @@
 - (void)messageBtnClickMethon
 {
     self.hidesBottomBarWhenPushed = YES;
-    NowAnserwChatViewController * AC = [[NowAnserwChatViewController alloc] init];
+    AnswerChatListViewController * AC = [[AnswerChatListViewController alloc] init];
+    AC.isShowNetworkIndicatorView = YES;
     [self.navigationController pushViewController:AC animated:YES];
+}
+
+// 答疑同学头像点击事件
+- (void)userImgBtnClickMethon:(UIButton *)button
+{
+    self.hidesBottomBarWhenPushed = YES;
+    //新建一个聊天会话View Controller对象
+    RCConversationViewController *chat = [[RCConversationViewController alloc]init];
+    chat.conversationType = ConversationType_PRIVATE;
+    chat.targetId = [button titleForState:UIControlStateNormal];
+    chat.enableUnreadMessageIcon = YES;
+    chat.enableSaveNewPhotoToLocalSystem = YES;
+    chat.enableNewComingMessageIcon = YES;
+    chat.title = [button titleForState:UIControlStateHighlighted];
+    
+    //显示聊天会话界面
+    [self.navigationController pushViewController:chat animated:YES];
+}
+
+- (void)getUserInfoWithUserId:(NSString *)userId completion:(void (^)(RCUserInfo *))completion
+{
+    // 设置聊天界面用户头像为圆形
+    [RCIM sharedRCIM].globalMessageAvatarStyle=RC_USER_AVATAR_CYCLE;
+    BmobQuery   *bquery = [BmobQuery queryWithClassName:@"_User"];
+    //查找GameScore表里面id为0c6db13c的数据
+    [bquery getObjectInBackgroundWithId:userId block:^(BmobObject *object,NSError *error){
+        if (error)
+        {
+            NSLog(@"%@", error);
+        }
+        else
+        {
+            if (object)
+            {
+                RCUserInfo *user = [[RCUserInfo alloc] init];
+                BmobFile *file = (BmobFile*)[object objectForKey:@"user_pic"];
+                user.portraitUri = file.url;
+                user.userId = userId;
+                user.name = [object objectForKey:@"username"];
+                return completion(user);
+            }
+        }
+    }];
 }
 
 #pragma mark 正则表达式

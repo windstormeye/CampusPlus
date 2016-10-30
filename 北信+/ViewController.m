@@ -21,7 +21,6 @@
 @interface ViewController ()
 
 
-
 @end
 
 @implementation ViewController
@@ -63,15 +62,8 @@
         [contentTabBarController.tabBar insertSubview:backView atIndex:0];
         // 设置底部tabbar为不透明
         contentTabBarController.tabBar.translucent = NO;
-
     }
     return _contentTabBarController;
-}
-
-- (void)viewDidLoad {
-    [super viewDidLoad];
-
-  
 }
 
 - (void)viewDidAppear:(BOOL)animated
@@ -79,20 +71,22 @@
     BmobUser *bUser = [BmobUser currentUser];
     if (bUser == NULL)
     {
-        // 得设置延迟操作，让界面都加载完，因为不能在一个ViewController中进行另外一个Viewcontroller
-//        [self performSelector:@selector(login) withObject:nil afterDelay:0.5];
-        
         LoginViewController *lg = [LoginViewController loginView];
-//        [self presentViewController:lg animated:YES completion:nil];
         AppDelegate* appDelagete = [UIApplication sharedApplication].delegate;
         appDelagete.window.rootViewController = lg;
     }
+    else
+    {
+        AppDelegate* appDelagete = [UIApplication sharedApplication].delegate;
+        appDelagete.window.rootViewController = self.contentTabBarController;
+    }
 }
 
-- (void)loadView
+- (void)viewDidLoad
 {
-    [super loadView];
+    [super viewDidLoad];
     
+    // 做测试，测试完成后删除
     [BmobUser logout];
     
     IQKeyboardManager *manager = [IQKeyboardManager sharedManager];
@@ -103,28 +97,6 @@
     
     [Bmob registerWithAppKey:@"c1b1f0a0d66af132513b58b66df9aa25"];
     [[RCIM sharedRCIM] initWithAppKey:@"kj7swf8o7k8c2"];
-    
-    [[RCIM sharedRCIM] connectWithToken:@"S6INovIiurjw9zwbXzKs/DeTpnHumjRk5qL8B+hm4JsA2uVqF2raxOSD+kszN10MwDbb3+SwocWM8aBV+JjyqcGy1csRwJ5H" success:^(NSString *userId) {
-        NSLog(@"登陆成功。当前登录的用户ID：%@", userId);
-    } error:^(RCConnectErrorCode status) {
-        NSLog(@"登陆的错误码为:%ld", (long)status);
-    } tokenIncorrect:^{
-        //token过期或者不正确。
-        //如果设置了token有效期并且token过期，请重新请求您的服务器获取新的token
-        //如果没有设置token有效期却提示token错误，请检查您客户端和服务器的appkey是否匹配，还有检查您获取token的流程。
-        NSLog(@"token错误");
-    }];
-
-
-//    AppDelegate* appDelagete = [UIApplication sharedApplication].delegate;
-//    appDelagete.window.rootViewController = self.contentTabBarController;
-    
-//    [self addChildViewController:self.contentTabBarController];
-//    [self.view addSubview:self.contentTabBarController.view];
-//
-    
-    
-
 }
 
 - (void)didReceiveMemoryWarning {

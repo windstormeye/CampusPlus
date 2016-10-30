@@ -7,6 +7,8 @@
 //
 
 #import "AnswerChatListViewController.h"
+#import <BmobSDK/Bmob.h>
+
 
 @interface AnswerChatListViewController ()
 
@@ -23,8 +25,13 @@
     self.navigationController.navigationBar.titleTextAttributes = dict;
     self.navigationController.navigationBar.tintColor = [UIColor whiteColor];
     
+    // 隐藏未显示的cell并且已显示的cell
+    self.conversationListTableView.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
     
     [self setDisplayConversationTypes:@[@(ConversationType_PRIVATE)]];
+    // 设置聊天列表界面和聊天界面用户头像为圆形
+    [RCIM sharedRCIM].globalConversationAvatarStyle=RC_USER_AVATAR_CYCLE;
+    [RCIM sharedRCIM].globalMessageAvatarStyle=RC_USER_AVATAR_CYCLE;
 }
 
 -(void)back
@@ -44,7 +51,27 @@
     RCConversationViewController *conversationVC = [[RCConversationViewController alloc]init];
     conversationVC.conversationType = model.conversationType;
     conversationVC.targetId = model.targetId;
-    conversationVC.title = @"交流心得";
+
+    BmobQuery   *bquery = [BmobQuery queryWithClassName:@"_User"];
+    [bquery getObjectInBackgroundWithId:conversationVC.targetId block:^(BmobObject *object,NSError *error){
+        if (error)
+        {
+            //进行错误处理
+            NSLog(@"%@", error);
+        }
+        else
+        {
+            if (object)
+            {
+//                dispatch_async(dispatch_get_main_queue(), ^{
+//
+//                });
+                // 设置从聊天列表界面进入当前聊天界面时的titleView
+                conversationVC.title = [object objectForKey:@"username"];
+            }
+        }
+    }];
+    
     [self.navigationController pushViewController:conversationVC animated:YES];
 }
 

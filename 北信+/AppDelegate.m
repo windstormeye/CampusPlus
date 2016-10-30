@@ -11,10 +11,6 @@
 
 @interface AppDelegate ()
 
-
-@property (nonatomic, strong) UITabBarController *contentTabBarController;
-
-
 @end
 
 @implementation AppDelegate
@@ -23,15 +19,8 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     
-    
     return YES;
 }
-
-
-
-
-
-
 
 
 - (void)applicationWillResignActive:(UIApplication *)application {

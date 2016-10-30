@@ -20,6 +20,7 @@
 #import "MyAllWrongBookViewController.h"
 #import "MyDelegatesViewController.h"
 #import "AboutUsViewController.h"
+#import "MBProgressHUD+NJ.h"
 
 #import "AFURLSessionManager.h"
 #import "AFHTTPSessionManager.h"
@@ -83,7 +84,7 @@
 }
 
 - (void)initHomePageWithDict
-{    
+{
     CGSize ww = self.view.bounds.size;
     UIScrollView *scrollView = [[UIScrollView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height)];
     scrollView.backgroundColor = [UIColor clearColor];
