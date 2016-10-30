@@ -35,6 +35,7 @@
 		2C225BD71DB4C6FC0072F970 /* OutCampusViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2C225BD61DB4C6FC0072F970 /* OutCampusViewController.m */; };
 		2C225BDA1DB884500072F970 /* demandView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2C225BD91DB884500072F970 /* demandView.m */; };
 		2C225BDC1DB884640072F970 /* demandView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2C225BDB1DB884640072F970 /* demandView.xib */; };
+		2C3C65581DC641CD00C7A5FB /* MyActivitiesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2C3C65571DC641CD00C7A5FB /* MyActivitiesViewController.m */; };
 		2C5DDD601DC050680065527D /* UserCenterPageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2C5DDD5F1DC050680065527D /* UserCenterPageViewController.m */; };
 		2C5F10BD1D8B942700C58B05 /* NewsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2C5F10BC1D8B942700C58B05 /* NewsViewController.m */; };
 		2C5F10C81D8BF6F600C58B05 /* PaperDetailsView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2C5F10C71D8BF6F600C58B05 /* PaperDetailsView.m */; };
@@ -181,6 +182,8 @@
 		2C225BD81DB884500072F970 /* demandView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = demandView.h; sourceTree = "<group>"; };
 		2C225BD91DB884500072F970 /* demandView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = demandView.m; sourceTree = "<group>"; };
 		2C225BDB1DB884640072F970 /* demandView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = demandView.xib; sourceTree = "<group>"; };
+		2C3C65561DC641CD00C7A5FB /* MyActivitiesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyActivitiesViewController.h; sourceTree = "<group>"; };
+		2C3C65571DC641CD00C7A5FB /* MyActivitiesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyActivitiesViewController.m; sourceTree = "<group>"; };
 		2C5DDD5E1DC050680065527D /* UserCenterPageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserCenterPageViewController.h; sourceTree = "<group>"; };
 		2C5DDD5F1DC050680065527D /* UserCenterPageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserCenterPageViewController.m; sourceTree = "<group>"; };
 		2C5F10BB1D8B942700C58B05 /* NewsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewsViewController.h; sourceTree = "<group>"; };
@@ -545,6 +548,8 @@
 				2C20490D1DA1F27D00FD6BC0 /* MyAllWrongBookViewController.m */,
 				2C20490F1DA1F2BB00FD6BC0 /* MyDelegatesViewController.h */,
 				2C2049101DA1F2BB00FD6BC0 /* MyDelegatesViewController.m */,
+				2C3C65561DC641CD00C7A5FB /* MyActivitiesViewController.h */,
+				2C3C65571DC641CD00C7A5FB /* MyActivitiesViewController.m */,
 				2C2049121DA1F2E400FD6BC0 /* AboutUsViewController.h */,
 				2C2049131DA1F2E400FD6BC0 /* AboutUsViewController.m */,
 			);
@@ -1078,6 +1083,7 @@
 				2C7A8B391D87F33900681CB4 /* HomePageViewController.m in Sources */,
 				2C97BC271DB9D99A00E7CD7C /* IQUIView+Hierarchy.m in Sources */,
 				2C97BC2E1DB9D9B600E7CD7C /* IQTextView.m in Sources */,
+				2C3C65581DC641CD00C7A5FB /* MyActivitiesViewController.m in Sources */,
 				2C7A8AFC1D87E19900681CB4 /* ViewController.m in Sources */,
 				2C97BC491DBC7B0300E7CD7C /* MBProgressHUD.m in Sources */,
 				2C225BDA1DB884500072F970 /* demandView.m in Sources */,

@@ -87,7 +87,7 @@
     [super viewDidLoad];
     
     // 做测试，测试完成后删除
-    [BmobUser logout];
+//    [BmobUser logout];
     
     IQKeyboardManager *manager = [IQKeyboardManager sharedManager];
     manager.enable = YES;

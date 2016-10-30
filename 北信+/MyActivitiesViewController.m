@@ -1,34 +1,29 @@
 //
-//  MyAllExpertsAnswerViewController.m
+//  MyActivitiesViewController.m
 //  北信+
 //
-//  Created by #incloud on 16/10/3.
+//  Created by #incloud on 16/10/30.
 //  Copyright © 2016年 #incloud. All rights reserved.
 //
 
-#import "MyAllExpertsAnswerViewController.h"
+#import "MyActivitiesViewController.h"
 
-@interface MyAllExpertsAnswerViewController ()
+@interface MyActivitiesViewController ()
 
 @end
 
-@implementation MyAllExpertsAnswerViewController
+@implementation MyActivitiesViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-
-    self.view.backgroundColor = [UIColor whiteColor];
+    // Do any additional setup after loading the view.
 }
 
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
-}
 -(void)viewWillAppear:(BOOL)animated
 {
     self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"back"] style:UIBarButtonItemStylePlain target:self action:@selector(back)];
     self.navigationController.navigationBar.tintColor = [UIColor whiteColor];
-    self.navigationItem.title = @"我的答疑";
+    self.navigationItem.title = @"我的活动";
     NSDictionary *dict = [NSDictionary dictionaryWithObject:[UIColor whiteColor] forKey:NSForegroundColorAttributeName];
     self.navigationController.navigationBar.titleTextAttributes = dict;
     self.navigationController.navigationBar.tintColor = [UIColor whiteColor];
@@ -38,6 +33,12 @@
 {
     [self.navigationController popViewControllerAnimated:YES];
 }
+
+- (void)didReceiveMemoryWarning {
+    [super didReceiveMemoryWarning];
+    // Dispose of any resources that can be recreated.
+}
+
 /*
 #pragma mark - Navigation
 
