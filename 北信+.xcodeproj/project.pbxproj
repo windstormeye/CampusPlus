@@ -36,6 +36,13 @@
 		2C225BDA1DB884500072F970 /* demandView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2C225BD91DB884500072F970 /* demandView.m */; };
 		2C225BDC1DB884640072F970 /* demandView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2C225BDB1DB884640072F970 /* demandView.xib */; };
 		2C3C65581DC641CD00C7A5FB /* MyActivitiesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2C3C65571DC641CD00C7A5FB /* MyActivitiesViewController.m */; };
+		2C3C655B1DC72E9B00C7A5FB /* SWRevealViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2C3C655A1DC72E9B00C7A5FB /* SWRevealViewController.m */; };
+		2C3C65651DC7333200C7A5FB /* YiLeftView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2C3C65601DC7333200C7A5FB /* YiLeftView.m */; };
+		2C3C65661DC7333200C7A5FB /* YiRightView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2C3C65621DC7333200C7A5FB /* YiRightView.m */; };
+		2C3C65671DC7333200C7A5FB /* YiSlideMenu.m in Sources */ = {isa = PBXBuildFile; fileRef = 2C3C65641DC7333200C7A5FB /* YiSlideMenu.m */; };
+		2C3C656A1DC776C500C7A5FB /* OBC.m in Sources */ = {isa = PBXBuildFile; fileRef = 2C3C65691DC776C500C7A5FB /* OBC.m */; };
+		2C3C65721DC8D75200C7A5FB /* AgentView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2C3C65711DC8D75200C7A5FB /* AgentView.m */; };
+		2C3C65741DC8D76900C7A5FB /* AgentView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2C3C65731DC8D76900C7A5FB /* AgentView.xib */; };
 		2C5DDD601DC050680065527D /* UserCenterPageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2C5DDD5F1DC050680065527D /* UserCenterPageViewController.m */; };
 		2C5F10BD1D8B942700C58B05 /* NewsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2C5F10BC1D8B942700C58B05 /* NewsViewController.m */; };
 		2C5F10C81D8BF6F600C58B05 /* PaperDetailsView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2C5F10C71D8BF6F600C58B05 /* PaperDetailsView.m */; };
@@ -184,6 +191,19 @@
 		2C225BDB1DB884640072F970 /* demandView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = demandView.xib; sourceTree = "<group>"; };
 		2C3C65561DC641CD00C7A5FB /* MyActivitiesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyActivitiesViewController.h; sourceTree = "<group>"; };
 		2C3C65571DC641CD00C7A5FB /* MyActivitiesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyActivitiesViewController.m; sourceTree = "<group>"; };
+		2C3C65591DC72E9B00C7A5FB /* SWRevealViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SWRevealViewController.h; path = "../../../../../../../../../../Downloads/SWRevealViewController-master/SWRevealViewController/SWRevealViewController.h"; sourceTree = "<group>"; };
+		2C3C655A1DC72E9B00C7A5FB /* SWRevealViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SWRevealViewController.m; path = "../../../../../../../../../../Downloads/SWRevealViewController-master/SWRevealViewController/SWRevealViewController.m"; sourceTree = "<group>"; };
+		2C3C655F1DC7333200C7A5FB /* YiLeftView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YiLeftView.h; sourceTree = "<group>"; };
+		2C3C65601DC7333200C7A5FB /* YiLeftView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YiLeftView.m; sourceTree = "<group>"; };
+		2C3C65611DC7333200C7A5FB /* YiRightView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YiRightView.h; sourceTree = "<group>"; };
+		2C3C65621DC7333200C7A5FB /* YiRightView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YiRightView.m; sourceTree = "<group>"; };
+		2C3C65631DC7333200C7A5FB /* YiSlideMenu.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YiSlideMenu.h; sourceTree = "<group>"; };
+		2C3C65641DC7333200C7A5FB /* YiSlideMenu.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YiSlideMenu.m; sourceTree = "<group>"; };
+		2C3C65681DC776C500C7A5FB /* OBC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OBC.h; sourceTree = "<group>"; };
+		2C3C65691DC776C500C7A5FB /* OBC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OBC.m; sourceTree = "<group>"; };
+		2C3C65701DC8D75200C7A5FB /* AgentView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AgentView.h; sourceTree = "<group>"; };
+		2C3C65711DC8D75200C7A5FB /* AgentView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AgentView.m; sourceTree = "<group>"; };
+		2C3C65731DC8D76900C7A5FB /* AgentView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AgentView.xib; sourceTree = "<group>"; };
 		2C5DDD5E1DC050680065527D /* UserCenterPageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserCenterPageViewController.h; sourceTree = "<group>"; };
 		2C5DDD5F1DC050680065527D /* UserCenterPageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserCenterPageViewController.m; sourceTree = "<group>"; };
 		2C5F10BB1D8B942700C58B05 /* NewsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewsViewController.h; sourceTree = "<group>"; };
@@ -492,6 +512,8 @@
 				2C7A8B381D87F33900681CB4 /* HomePageViewController.m */,
 				2C5F10BB1D8B942700C58B05 /* NewsViewController.h */,
 				2C5F10BC1D8B942700C58B05 /* NewsViewController.m */,
+				2C3C65681DC776C500C7A5FB /* OBC.h */,
+				2C3C65691DC776C500C7A5FB /* OBC.m */,
 				2C225BCB1DB4C59B0072F970 /* Papers */,
 			);
 			name = HomePage;
@@ -535,6 +557,20 @@
 				2C225BD61DB4C6FC0072F970 /* OutCampusViewController.m */,
 			);
 			name = Activity;
+			sourceTree = "<group>";
+		};
+		2C3C655E1DC7332C00C7A5FB /* YiSlideMenu */ = {
+			isa = PBXGroup;
+			children = (
+				2C3C655F1DC7333200C7A5FB /* YiLeftView.h */,
+				2C3C65601DC7333200C7A5FB /* YiLeftView.m */,
+				2C3C65611DC7333200C7A5FB /* YiRightView.h */,
+				2C3C65621DC7333200C7A5FB /* YiRightView.m */,
+				2C3C65631DC7333200C7A5FB /* YiSlideMenu.h */,
+				2C3C65641DC7333200C7A5FB /* YiSlideMenu.m */,
+			);
+			name = YiSlideMenu;
+			path = SDCycleScrollView;
 			sourceTree = "<group>";
 		};
 		2C5DDD5D1DC0504D0065527D /* pages */ = {
@@ -637,6 +673,9 @@
 				2C8DBEA81DC2F331001F6A4F /* LoginViewController.h */,
 				2C8DBEA91DC2F331001F6A4F /* LoginViewController.m */,
 				2C8DBEA61DC2F312001F6A4F /* Login.xib */,
+				2C3C65701DC8D75200C7A5FB /* AgentView.h */,
+				2C3C65711DC8D75200C7A5FB /* AgentView.m */,
+				2C3C65731DC8D76900C7A5FB /* AgentView.xib */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -671,9 +710,12 @@
 			children = (
 				2C7A8AF71D87E19900681CB4 /* AppDelegate.h */,
 				2C7A8AF81D87E19900681CB4 /* AppDelegate.m */,
+				2C3C65591DC72E9B00C7A5FB /* SWRevealViewController.h */,
+				2C3C655A1DC72E9B00C7A5FB /* SWRevealViewController.m */,
 				2C97BC121DB9D92F00E7CD7C /* IQKeyboardManager */,
 				2C225BB61DB4957F0072F970 /* AFNetworking */,
 				2C7A8B5D1D88EB8F00681CB4 /* SDWebImage */,
+				2C3C655E1DC7332C00C7A5FB /* YiSlideMenu */,
 				2C7A8B461D88EA6200681CB4 /* SDCycleScrollView */,
 			);
 			name = Others;
@@ -1002,6 +1044,7 @@
 				2C8DBEA71DC2F312001F6A4F /* Login.xib in Resources */,
 				2C225BDC1DB884640072F970 /* demandView.xib in Resources */,
 				2C8DBEAE1DC34D21001F6A4F /* MBProgressHUD.bundle in Resources */,
+				2C3C65741DC8D76900C7A5FB /* AgentView.xib in Resources */,
 				2C97BC3F1DB9D9C700E7CD7C /* IQKeyboardManager.bundle in Resources */,
 				2C5F10CC1D8C277800C58B05 /* PaperDetailsView.xib in Resources */,
 				2C7A8AFF1D87E19900681CB4 /* Main.storyboard in Resources */,
@@ -1100,6 +1143,7 @@
 				2C8DBEA21DC2EC62001F6A4F /* AnswerChatListViewController.m in Sources */,
 				2C7A8AF61D87E19900681CB4 /* main.m in Sources */,
 				2C7A8B821D88EB9000681CB4 /* SDWebImageCompat.m in Sources */,
+				2C3C65651DC7333200C7A5FB /* YiLeftView.m in Sources */,
 				2C5F10C81D8BF6F600C58B05 /* PaperDetailsView.m in Sources */,
 				2C7A8B801D88EB9000681CB4 /* NSData+ImageContentType.m in Sources */,
 				2C7A8B571D88EA6200681CB4 /* TAAnimatedDotView.m in Sources */,
@@ -1120,6 +1164,7 @@
 				2C5DDD601DC050680065527D /* UserCenterPageViewController.m in Sources */,
 				2C7A8B8C1D88EB9000681CB4 /* UIImageView+HighlightedWebCache.m in Sources */,
 				2C7A8B911D8950A300681CB4 /* News.m in Sources */,
+				2C3C655B1DC72E9B00C7A5FB /* SWRevealViewController.m in Sources */,
 				2C7A8B7F1D88EB9000681CB4 /* MKAnnotationView+WebCache.m in Sources */,
 				2CB20E1D1D8D6D7800DE531D /* AllPaperDetailsTableViewController.m in Sources */,
 				2C97BC251DB9D99A00E7CD7C /* IQUIScrollView+Additions.m in Sources */,
@@ -1131,13 +1176,17 @@
 				2C7A8B871D88EB9000681CB4 /* SDWebImagePrefetcher.m in Sources */,
 				2C8DBEAF1DC34D21001F6A4F /* MBProgressHUD+NJ.m in Sources */,
 				2C97BC281DB9D99A00E7CD7C /* IQUIViewController+Additions.m in Sources */,
+				2C3C656A1DC776C500C7A5FB /* OBC.m in Sources */,
+				2C3C65721DC8D75200C7A5FB /* AgentView.m in Sources */,
 				2C7A8B881D88EB9000681CB4 /* UIButton+WebCache.m in Sources */,
 				2C97BC441DB9D9D000E7CD7C /* IQKeyboardManager.m in Sources */,
 				2C7A8B8A1D88EB9000681CB4 /* UIImage+MultiFormat.m in Sources */,
 				2C20490E1DA1F27D00FD6BC0 /* MyAllWrongBookViewController.m in Sources */,
+				2C3C65671DC7333200C7A5FB /* YiSlideMenu.m in Sources */,
 				2C225BC51DB495910072F970 /* AFNetworkReachabilityManager.m in Sources */,
 				2C8DBEAA1DC2F331001F6A4F /* LoginViewController.m in Sources */,
 				2CB20E201D8D739200DE531D /* PaperViewController.m in Sources */,
+				2C3C65661DC7333200C7A5FB /* YiRightView.m in Sources */,
 				2C97BC451DB9D9D000E7CD7C /* IQKeyboardReturnKeyHandler.m in Sources */,
 				2C2049011DA0F7B700FD6BC0 /* LLDisplayLayer.m in Sources */,
 				2C20490B1DA1F25100FD6BC0 /* MyAllExpertsAnswerViewController.m in Sources */,

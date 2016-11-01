@@ -7,6 +7,7 @@
 //
 
 #import "AnswerChatListViewController.h"
+#import "HelpTableViewController.h"
 #import <BmobSDK/Bmob.h>
 
 

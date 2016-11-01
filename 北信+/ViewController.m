@@ -14,12 +14,12 @@
 #import "IQKeyboardManager.h"
 #import "LoginViewController.h"
 #import "AppDelegate.h"
+#import "YiSlideMenu.h"
 
 #import <BmobSDK/Bmob.h>
 #import <RongIMKit/RongIMKit.h>
 
 @interface ViewController ()
-
 
 @end
 

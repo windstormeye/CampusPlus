@@ -86,6 +86,7 @@
 
 - (void)initHomePageWithDict
 {
+    
     CGSize ww = self.view.bounds.size;
     UIScrollView *scrollView = [[UIScrollView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height)];
     scrollView.backgroundColor = [UIColor clearColor];
@@ -295,14 +296,16 @@
 
     [self.tabBarController.view addSubview:_slideMenu];
     // 设置菜单宽度
-    _slideMenu.ll_menuWidth = 200.f;
-    UIImage *backgroundImage = [UIImage imageNamed:@"usercenterbackground"];
+    _slideMenu.ll_menuWidth = 220;
+//    UIImage *backgroundImage = [UIImage imageNamed:@"usercenterbackground"];
     //将刚刚生成的图片转换为UIColor对象。这样便可以实现平铺了。
-    UIColor *backgroundColor = [UIColor colorWithPatternImage:backgroundImage];
+//    UIColor *backgroundColor = [UIColor colorWithPatternImage:backgroundImage];
     // 设置菜单背景色
-    _slideMenu.ll_menuBackgroundColor = backgroundColor;
+//    _slideMenu.backgroundColor = [UIColor colorWithRed:124/255.0 green:124/255.0 blue:124/255.0 alpha:0.5];
+    _slideMenu.ll_menuBackgroundColor = [UIColor whiteColor];
   
     // 设置弹力和速度，  默认的是20,15,60
+
     //===================
     // 添加全屏侧滑手势
     //===================
@@ -311,7 +314,7 @@
     [self.view addGestureRecognizer:_leftSwipe];
     
     UIImageView *userCenterBGI = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"侧滑背景图"]];
-    userCenterBGI.frame = CGRectMake(0, 0, 200, 130);
+    userCenterBGI.frame = CGRectMake(0, 0, self.slideMenu.frame.size.width - 100, 150);
     [self.slideMenu addSubview:userCenterBGI];
     
     // 设置头像View
@@ -388,7 +391,8 @@
 //    myFansLab.font = [UIFont systemFontOfSize:14];
 //    [focusView2 addSubview:myFansLab];
     
-    UIScrollView *menuScrollView = [[UIScrollView alloc] initWithFrame:CGRectMake(0, CGRectGetMaxY(userCenterBGI.frame) + 10, self.slideMenu.frame.size.width, self.view.frame.size.height - userCenterBGI.frame.size.height + 10)];
+    UIScrollView *menuScrollView = [[UIScrollView alloc] initWithFrame:CGRectMake(0, CGRectGetMaxY(userCenterBGI.frame) + 10, userCenterBGI.frame.size.width, self.view.frame.size.height - userCenterBGI.frame.size.height + 30)];
+    menuScrollView.showsVerticalScrollIndicator = YES;
     [self.slideMenu addSubview:menuScrollView];
     
     CGFloat tempY = 0;
@@ -451,8 +455,16 @@
         btn.tintColor = [UIColor blackColor];
         [menuScrollView addSubview:btn];
     }
-    
     menuScrollView.contentSize = CGSizeMake(0, menuScrollView.frame.size.height + 20);
+    
+    UIButton *settingBtn = [[UIButton alloc] initWithFrame:CGRectMake(0, self.slideMenu.frame.size.height - 40, 80, 30)];
+    settingBtn.font = [UIFont systemFontOfSize:16];
+    [settingBtn setImage:[UIImage imageNamed:@"设置"] forState:UIControlStateNormal];
+    [settingBtn setTitle:@"设置" forState:UIControlStateNormal];
+    [settingBtn setTitleEdgeInsets:UIEdgeInsetsMake(0, 12, 0, 0)];
+    [settingBtn setTitleColor:[UIColor colorWithRed:39/255.0 green:38/255.0 blue:54/255.0 alpha:1.0] forState:UIControlStateNormal];
+    [self.slideMenu addSubview:settingBtn];
+    
 }
 
 - (void)classViewClick
@@ -547,9 +559,11 @@
         if (progress > 0.4) {
             [self.percent finishInteractiveTransition];
             [_slideMenu ll_openSlideMenu];
+           
         }else{
             [self.percent cancelInteractiveTransition];
             [_slideMenu ll_closeSlideMenu];
+           
         }
         self.percent = nil;
     }
@@ -559,8 +573,10 @@
 - (void)openLLSlideMenuAction{
     if (_slideMenu.ll_isOpen) {
         [_slideMenu ll_closeSlideMenu];
+
     } else {
         [_slideMenu ll_openSlideMenu];
+
     }
 }
 
