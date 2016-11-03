@@ -747,7 +747,6 @@
     // 设置聊天界面用户头像为圆形
     [RCIM sharedRCIM].globalMessageAvatarStyle=RC_USER_AVATAR_CYCLE;
     BmobQuery   *bquery = [BmobQuery queryWithClassName:@"_User"];
-    //查找GameScore表里面id为0c6db13c的数据
     [bquery getObjectInBackgroundWithId:userId block:^(BmobObject *object,NSError *error){
         if (error)
         {

@@ -10,10 +10,10 @@
 
 @implementation MyGetAgentView
 
+
 + (instancetype)getAgentView
 {
     return [[[NSBundle mainBundle] loadNibNamed:@"MyGetAgentView" owner:nil options:nil] firstObject];
-
 }
 
 @end

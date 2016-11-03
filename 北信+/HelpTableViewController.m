@@ -14,8 +14,10 @@
 #import "MBProgressHUD+NJ.h"
 
 #import <BmobSDK/Bmob.h>
+#import <RongIMKit/RongIMKit.h>
 
-@interface HelpTableViewController ()
+
+@interface HelpTableViewController () <RCIMUserInfoDataSource, RCIMGroupInfoDataSource>
 
 //  查询控制器
 @property (nonatomic,strong)UISearchController *searchController;
@@ -61,7 +63,6 @@
 - (void)loadNewData
 {
     BmobQuery   *bquery = [BmobQuery queryWithClassName:@"Test"];
-    //查找GameScore表的数据
     NSMutableArray *tempArr = [[NSMutableArray alloc] init];
     [bquery findObjectsInBackgroundWithBlock:^(NSArray *array, NSError *error)
      {
@@ -181,7 +182,9 @@
     agent.AgentAvatarImg.image = [UIImage imageWithData:data];
     agent.AgentAvatarImg.clipsToBounds = YES;
     agent.AgentAvatarImg.layer.cornerRadius = agent.AgentAvatarImg.frame.size.width / 2;
-    [agent.AvatarBtn addTarget:self action:@selector(AvatarBtnClickMethon) forControlEvents:UIControlEventTouchUpInside];
+    [agent.AvatarBtn addTarget:self action:@selector(AvatarBtnClickMethon:) forControlEvents:UIControlEventTouchUpInside];
+    [agent.AvatarBtn setTitle:[self.agentArr[indexPath.row] objectForKey:@"promulgatorId"] forState:UIControlStateNormal];
+    [agent.AvatarBtn setTitle:[self.agentArr[indexPath.row] objectForKey:@"Agent_username"] forState:UIControlStateHighlighted];
     agent.Agent_getBtn.tag = indexPath.row;
     [agent.Agent_getBtn addTarget:self action:@selector(Agent_getBtnClickMethon:) forControlEvents:UIControlEventTouchUpInside];
     agent.view.frame = CGRectMake(0, 0, 250, 330);
@@ -228,9 +231,49 @@
 }
 
 // 头像点击事件
-- (void)AvatarBtnClickMethon
+- (void)AvatarBtnClickMethon:(UIButton *)button
 {
+    //新建一个聊天会话View Controller对象
+    RCConversationViewController *chat = [[RCConversationViewController alloc]init];
+    chat.conversationType = ConversationType_PRIVATE;
+    chat.targetId = [button titleForState:UIControlStateNormal];
+    chat.enableUnreadMessageIcon = YES;
+    chat.enableSaveNewPhotoToLocalSystem = YES;
+    chat.enableNewComingMessageIcon = YES;
+    chat.title = [button titleForState:UIControlStateHighlighted];
+    //显示聊天会话界面
     
+    [self removeAll];
+    
+    // 重要点，不用 self.hidesBottomBarWhenPushed ！！！
+    chat.hidesBottomBarWhenPushed = YES;
+    [self.navigationController pushViewController:chat animated:YES];
+    self.hidesBottomBarWhenPushed = NO;
+}
+
+- (void)getUserInfoWithUserId:(NSString *)userId completion:(void (^)(RCUserInfo *))completion
+{
+    // 设置聊天界面用户头像为圆形
+    [RCIM sharedRCIM].globalMessageAvatarStyle=RC_USER_AVATAR_CYCLE;
+    BmobQuery   *bquery = [BmobQuery queryWithClassName:@"_User"];
+    [bquery getObjectInBackgroundWithId:userId block:^(BmobObject *object,NSError *error){
+        if (error)
+        {
+            NSLog(@"%@", error);
+        }
+        else
+        {
+            if (object)
+            {
+                RCUserInfo *user = [[RCUserInfo alloc] init];
+                BmobFile *file = (BmobFile*)[object objectForKey:@"user_pic"];
+                user.portraitUri = file.url;
+                user.userId = userId;
+                user.name = [object objectForKey:@"username"];
+                return completion(user);
+            }
+        }
+    }];
 }
 
 // 抢

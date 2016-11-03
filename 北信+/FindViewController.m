@@ -58,7 +58,7 @@
     [self.view addSubview:on.view];
     
     // 活动发布按钮
-    UIButton *addBtn = [[UIButton alloc] initWithFrame:CGRectMake(260, 390, 50, 50)];
+    UIButton *addBtn = [[UIButton alloc] initWithFrame:CGRectMake(250, 390, 55, 55)];
     [addBtn setImage:[UIImage imageNamed:@"add_activity"] forState:UIControlStateNormal];
     [addBtn addTarget:self action:@selector(addBtnClick) forControlEvents:UIControlEventTouchUpInside];
     addBtn.layer.shadowOffset =  CGSizeMake(1, 1);
