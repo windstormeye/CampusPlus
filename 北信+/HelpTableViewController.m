@@ -7,10 +7,11 @@
 //
 
 #import "HelpTableViewController.h"
-#import "HelpDateilsViewController.h"
 #import "HelpThings.h"
 #import "MyDelegatesViewController.h"
 #import "AgentView.h"
+#import "MJRefresh.h"
+#import "MBProgressHUD+NJ.h"
 
 #import <BmobSDK/Bmob.h>
 
@@ -40,71 +41,47 @@
     return _agentArr;
 }
 
-- (void)viewDidLoad {
-    [super viewDidLoad];
-    
-    self.tableView.contentInset = UIEdgeInsetsMake(10, 0, 0, 0);
+- (void)viewWillAppear:(BOOL)animated
+{
     self.tableView.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
- 
+    // 设置tableView的frame是因为会出现的黑边，给高度加20，否则下边出黑边
+    self.tableView.frame = CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height + 20);
+   
+    self.tableView.mj_header = [MJRefreshNormalHeader headerWithRefreshingBlock:^{
+        // 进入刷新状态后会自动调用这个block
+        [self loadNewData];
+        [self.tableView reloadData];
+    }];
+    // 设置回调（一旦进入刷新状态，就调用target的action，也就是调用self的loadNewData方法）
+    self.tableView.mj_header = [MJRefreshNormalHeader headerWithRefreshingTarget:self refreshingAction:@selector(loadNewData)];
+    // 马上进入刷新状态
+    [self.tableView.mj_header beginRefreshing];
+}
+
+- (void)loadNewData
+{
     BmobQuery   *bquery = [BmobQuery queryWithClassName:@"Test"];
     //查找GameScore表的数据
     NSMutableArray *tempArr = [[NSMutableArray alloc] init];
     [bquery findObjectsInBackgroundWithBlock:^(NSArray *array, NSError *error)
-    {
-        for (BmobObject *obj in array)
-        {
-            [tempArr addObject:obj];
-        }
-        dispatch_async(dispatch_get_main_queue(), ^{
-            self.agentArr = tempArr;
-            [self.tableView reloadData];
-        });
-    }];
-    
-//    在GameScore创建一条数据，如果当前没GameScore表，则会创建GameScore表
-//    BmobObject  *gameScore = [BmobObject objectWithClassName:@"Test"];
-//    
-//    NSLog(@"%@", [[BmobUser currentUser] valueForKey:@"objectId"]);
-//    
-//    [gameScore setObject:[[BmobUser currentUser] valueForKey:@"objectId"] forKey:@"promulgatorId"];
-//    [gameScore setObject:[NSString stringWithFormat:@"帮我取快递"] forKey:@"Agent_Content"];
-//    [gameScore setObject:[NSString stringWithFormat:@"100"] forKey:@"Agent_Money"];
-//    [gameScore setObject:[NSString stringWithFormat:@"取快递"] forKey:@"Agent_Title"];
-//    [gameScore setObject:[[BmobUser currentUser] objectForKey:@"user_pic"] forKey:@"user_pic"];
-//    [gameScore setObject:[[BmobUser currentUser] objectForKey:@"username"] forKey:@"Agent_username"];
-//
-//
-//    //异步保存到服务器
-//    [gameScore saveInBackgroundWithResultBlock:^(BOOL isSuccessful, NSError *error) {
-//        if (isSuccessful) {
-//            //创建成功后会返回objectId，updatedAt，createdAt等信息
-//            //创建对象成功，打印对象值
-//            NSLog(@"%@",gameScore);
-//        } else if (error){
-//            //发生错误后的动作
-//            NSLog(@"%@",error);
-//        } else {
-//            NSLog(@"Unknow error");
-//        }
-//    }];
-    
-    //设置navigationbar的颜色
-    [self.navigationController.navigationBar setBarTintColor:[UIColor colorWithRed:38/255.0 green:184/255.0 blue:242/255.0 alpha:1.0]];
-    //设置navigationbar为不透明
-    [self.navigationController.navigationBar setTranslucent:NO];
-    
-    self.navigationItem.title = @"校园代理";
-    NSDictionary *dict = [NSDictionary dictionaryWithObject:[UIColor whiteColor] forKey:NSForegroundColorAttributeName];
-    self.navigationController.navigationBar.titleTextAttributes = dict;
-//    
-//    self.navigationController.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"message"] style:UIBarButtonItemStylePlain target:self action:@selector(messageBtnClickMethon)];
-//
-    
-    UIButton *messageBtn = [[UIButton alloc] initWithFrame:CGRectMake(self.navigationController.navigationBar.frame.size.width - 40, 5, 30, 30)];
-    self.messageBtn = messageBtn;
-    [messageBtn setImage:[UIImage imageNamed:@"mydelegate_white"] forState:UIControlStateNormal];
-    [messageBtn addTarget:self action:@selector(messageBtnClickMethon) forControlEvents:UIControlEventTouchUpInside];
-    [self.navigationController.navigationBar addSubview:messageBtn];
+     {
+         for (BmobObject *obj in array)
+         {
+             if ([[obj objectForKey:@"Acceptor"] isEqualToString:[[BmobUser currentUser] objectForKey:@"username"]])
+                 continue;
+             [tempArr addObject:obj];
+         }
+         dispatch_async(dispatch_get_main_queue(), ^{
+             for (int i = 0; i < tempArr.count/2; i++)
+             {
+                 [tempArr  exchangeObjectAtIndex:i withObjectAtIndex:tempArr.count-1-i];
+             }
+             self.agentArr = tempArr;
+             [self.tableView reloadData];
+             // 放到这进行下拉刷新的停止
+             [self.tableView.mj_header endRefreshing];
+         });
+     }];
 }
 
 // 我的答疑点击事件
@@ -139,7 +116,8 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     static NSString *flag=@"cellFlag";
-    UITableViewCell *cell=[tableView dequeueReusableCellWithIdentifier:flag];
+    //根据indexPath准确地取出一行，而不是从cell重用队列中取出
+    UITableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
     if (cell==nil)
     {
         cell=[[UITableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:flag];
@@ -186,17 +164,26 @@
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-//    self.hidesBottomBarWhenPushed = YES;
-//    HelpDateilsViewController *help = [[HelpDateilsViewController alloc] init];
-//    [self.navigationController pushViewController:help animated:YES];
-//    self.hidesBottomBarWhenPushed = NO;
-    
     AgentView *agent = [AgentView agentView];
     agent.Agent_content.backgroundColor = [UIColor clearColor];
     agent.Agent_content.layer.cornerRadius = 10;
     agent.Agent_content.layer.borderColor = [UIColor whiteColor].CGColor;
     agent.Agent_content.layer.borderWidth = 1;
     agent.Agent_content.textColor = [UIColor whiteColor];
+    agent.Agent_content.text = [self.agentArr[indexPath.row] objectForKey:@"Agent_Content"];
+    agent.Agent_content.editable = NO;
+    agent.Agent_title.text = [self.agentArr[indexPath.row] objectForKey:@"Agent_Title"];
+    agent.Agent_money.text = [self.agentArr[indexPath.row] objectForKey:@"Agent_Money"];
+    agent.Agent_time.text = [self.agentArr[indexPath.row] objectForKey:@"createdAt"];
+    BmobFile *file = (BmobFile*)[self.agentArr[indexPath.row] objectForKey:@"user_pic"];
+    NSURL *url = [NSURL URLWithString:file.url];
+    NSData *data = [NSData dataWithContentsOfURL:url];
+    agent.AgentAvatarImg.image = [UIImage imageWithData:data];
+    agent.AgentAvatarImg.clipsToBounds = YES;
+    agent.AgentAvatarImg.layer.cornerRadius = agent.AgentAvatarImg.frame.size.width / 2;
+    [agent.AvatarBtn addTarget:self action:@selector(AvatarBtnClickMethon) forControlEvents:UIControlEventTouchUpInside];
+    agent.Agent_getBtn.tag = indexPath.row;
+    [agent.Agent_getBtn addTarget:self action:@selector(Agent_getBtnClickMethon:) forControlEvents:UIControlEventTouchUpInside];
     agent.view.frame = CGRectMake(0, 0, 250, 330);
     agent.view.center = self.navigationController.view.center;
     agent.view.layer.cornerRadius = 13.0f;
@@ -216,7 +203,7 @@
     self.cover = btnCover;
     // 为按钮注册一个单击事件
     [btnCover addTarget:self action:@selector(removeAll) forControlEvents:UIControlEventTouchUpInside];
-    //设置动画，在0.5秒内把这个图片变大
+    //设置动画，在0.5秒内把这个图片显示出来
     [UIView animateWithDuration:0.3 animations:^{
         btnCover.alpha = 0.6;
         agent.view.alpha = 1.0;
@@ -239,6 +226,32 @@
         self.cover = nil;
     }];
 }
+
+// 头像点击事件
+- (void)AvatarBtnClickMethon
+{
+    
+}
+
+// 抢
+- (void)Agent_getBtnClickMethon:(UIButton *)button
+{
+    //创建一条数据，并上传至服务器
+    BmobObject  *gameScore = [BmobObject objectWithoutDataWithClassName:@"Test" objectId:[self.agentArr[button.tag] objectForKey:@"objectId"]];
+    //异步保存到服务器
+    [gameScore setObject:[[BmobUser currentUser] objectForKey:@"username"] forKey:@"Acceptor"];
+    [gameScore updateInBackgroundWithResultBlock:^(BOOL isSuccessful, NSError *error) {
+        if (isSuccessful) {
+            NSLog(@"更新成功，以下为对象值，可以看到score值已经改变");
+            NSLog(@"%@",gameScore);
+            [MBProgressHUD showSuccess:@"成功抢到！"];
+        } else {
+            NSLog(@"%@",error);
+        }
+    }];
+
+}
+
 
 
 @end

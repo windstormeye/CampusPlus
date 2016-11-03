@@ -9,7 +9,7 @@
 #import "ViewController.h"
 #import "HomePageViewController.h"
 #import "FindViewController.h"
-#import "HelpTableViewController.h"
+#import "HelpViewController.h"
 #import "UserCenterPageViewController.h"
 #import "IQKeyboardManager.h"
 #import "LoginViewController.h"
@@ -31,7 +31,7 @@
         UITabBarController *contentTabBarController = [[UITabBarController alloc] init];
         // 设置tabbar
         HomePageViewController *homePage = [[HomePageViewController alloc] init];
-        HelpTableViewController *help = [[HelpTableViewController alloc] init];
+        HelpViewController *help = [[HelpViewController alloc] init];
         FindViewController *find = [[FindViewController alloc] init];
         UserCenterPageViewController *user = [[UserCenterPageViewController alloc] init];
         UINavigationController *firstContentViewController = [[UINavigationController alloc] initWithRootViewController:homePage];
@@ -87,7 +87,7 @@
     [super viewDidLoad];
     
     // 做测试，测试完成后删除
-//    [BmobUser logout];
+    [BmobUser logout];
     
     IQKeyboardManager *manager = [IQKeyboardManager sharedManager];
     manager.enable = YES;

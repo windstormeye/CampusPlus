@@ -85,7 +85,7 @@
     de.textView.layer.borderWidth = 0.3;
     de.textView.layer.cornerRadius = 10;
     de.center = self.navigationController.view.center;
-    de.layer.cornerRadius = 13.0f;
+    de.layer.cornerRadius = 10;
     de.clipsToBounds = YES;
     de.alpha = 0.0;
     
@@ -116,6 +116,19 @@
     [self.tabBarController.view   bringSubviewToFront:de];
 }
 
+- (void)removeAll
+{
+    // 设置动画
+    [UIView animateWithDuration:0.3 animations:^{
+        self.cover.alpha = 0.0;
+        self.de.alpha = 0.0;
+    } completion:^(BOOL finished) {
+        [self.de removeFromSuperview];
+        [self.cover removeFromSuperview];
+        self.cover = nil;
+    }];
+}
+
 - (void)demandViewSureBtnMethon
 {
     self.titleStr = self.de.titleTextField.text;
@@ -131,21 +144,6 @@
 {
     [self.de endEditing:YES];
 }
-
-- (void)removeAll
-{
-    // 设置动画
-    [UIView animateWithDuration:0.3 animations:^{
-        self.cover.alpha = 0.0;
-        self.de.alpha = 0.0;
-    } completion:^(BOOL finished) {
-        [self.de removeFromSuperview];
-        [self.cover removeFromSuperview];
-        self.cover = nil;
-    }];
-}
-
-
 
 -(void)segmentAction:(UISegmentedControl *)Seg
 {

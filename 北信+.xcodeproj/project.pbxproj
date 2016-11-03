@@ -43,6 +43,9 @@
 		2C3C656A1DC776C500C7A5FB /* OBC.m in Sources */ = {isa = PBXBuildFile; fileRef = 2C3C65691DC776C500C7A5FB /* OBC.m */; };
 		2C3C65721DC8D75200C7A5FB /* AgentView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2C3C65711DC8D75200C7A5FB /* AgentView.m */; };
 		2C3C65741DC8D76900C7A5FB /* AgentView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2C3C65731DC8D76900C7A5FB /* AgentView.xib */; };
+		2C3C65771DC982A900C7A5FB /* HelpViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2C3C65761DC982A900C7A5FB /* HelpViewController.m */; };
+		2C3C65871DCAF3D300C7A5FB /* MyGetAgentView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2C3C65861DCAF3D300C7A5FB /* MyGetAgentView.m */; };
+		2C3C65891DCAF3DE00C7A5FB /* MyGetAgentView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2C3C65881DCAF3DE00C7A5FB /* MyGetAgentView.xib */; };
 		2C5DDD601DC050680065527D /* UserCenterPageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2C5DDD5F1DC050680065527D /* UserCenterPageViewController.m */; };
 		2C5F10BD1D8B942700C58B05 /* NewsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2C5F10BC1D8B942700C58B05 /* NewsViewController.m */; };
 		2C5F10C81D8BF6F600C58B05 /* PaperDetailsView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2C5F10C71D8BF6F600C58B05 /* PaperDetailsView.m */; };
@@ -112,7 +115,6 @@
 		2CB20E201D8D739200DE531D /* PaperViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2CB20E1F1D8D739200DE531D /* PaperViewController.m */; };
 		2CB20E331D8E530A00DE531D /* HelpTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2CB20E311D8E530A00DE531D /* HelpTableViewController.m */; };
 		2CB20E371D8E55A600DE531D /* HelpThings.m in Sources */ = {isa = PBXBuildFile; fileRef = 2CB20E361D8E55A600DE531D /* HelpThings.m */; };
-		2CB20E3A1D8E9E5900DE531D /* HelpDateilsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2CB20E391D8E9E5900DE531D /* HelpDateilsViewController.m */; };
 		2CEAA6861D8A409700AADD66 /* News.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2CEAA6851D8A409700AADD66 /* News.xib */; };
 		2CEAA6891D8A40AA00AADD66 /* NewsView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2CEAA6881D8A40AA00AADD66 /* NewsView.m */; };
 		EA607025D395B045278EB88E /* libPods-北信+.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 2D389DB6BA7A2B61A1249394 /* libPods-北信+.a */; };
@@ -204,6 +206,11 @@
 		2C3C65701DC8D75200C7A5FB /* AgentView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AgentView.h; sourceTree = "<group>"; };
 		2C3C65711DC8D75200C7A5FB /* AgentView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AgentView.m; sourceTree = "<group>"; };
 		2C3C65731DC8D76900C7A5FB /* AgentView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AgentView.xib; sourceTree = "<group>"; };
+		2C3C65751DC982A900C7A5FB /* HelpViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HelpViewController.h; sourceTree = "<group>"; };
+		2C3C65761DC982A900C7A5FB /* HelpViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HelpViewController.m; sourceTree = "<group>"; };
+		2C3C65851DCAF3D300C7A5FB /* MyGetAgentView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyGetAgentView.h; sourceTree = "<group>"; };
+		2C3C65861DCAF3D300C7A5FB /* MyGetAgentView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyGetAgentView.m; sourceTree = "<group>"; };
+		2C3C65881DCAF3DE00C7A5FB /* MyGetAgentView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MyGetAgentView.xib; sourceTree = "<group>"; };
 		2C5DDD5E1DC050680065527D /* UserCenterPageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserCenterPageViewController.h; sourceTree = "<group>"; };
 		2C5DDD5F1DC050680065527D /* UserCenterPageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserCenterPageViewController.m; sourceTree = "<group>"; };
 		2C5F10BB1D8B942700C58B05 /* NewsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewsViewController.h; sourceTree = "<group>"; };
@@ -354,8 +361,6 @@
 		2CB20E311D8E530A00DE531D /* HelpTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HelpTableViewController.m; sourceTree = "<group>"; };
 		2CB20E351D8E55A600DE531D /* HelpThings.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HelpThings.h; sourceTree = "<group>"; };
 		2CB20E361D8E55A600DE531D /* HelpThings.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HelpThings.m; sourceTree = "<group>"; };
-		2CB20E381D8E9E5900DE531D /* HelpDateilsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HelpDateilsViewController.h; sourceTree = "<group>"; };
-		2CB20E391D8E9E5900DE531D /* HelpDateilsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HelpDateilsViewController.m; sourceTree = "<group>"; };
 		2CEAA6851D8A409700AADD66 /* News.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = News.xib; sourceTree = "<group>"; };
 		2CEAA6871D8A40AA00AADD66 /* NewsView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewsView.h; sourceTree = "<group>"; };
 		2CEAA6881D8A40AA00AADD66 /* NewsView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewsView.m; sourceTree = "<group>"; };
@@ -522,9 +527,10 @@
 		2C225BCE1DB4C6140072F970 /* HelpPage */ = {
 			isa = PBXGroup;
 			children = (
-				2C225BD01DB4C6710072F970 /* HelpDateilsView */,
 				2CB20E301D8E530A00DE531D /* HelpTableViewController.h */,
 				2CB20E311D8E530A00DE531D /* HelpTableViewController.m */,
+				2C3C65751DC982A900C7A5FB /* HelpViewController.h */,
+				2C3C65761DC982A900C7A5FB /* HelpViewController.m */,
 			);
 			name = HelpPage;
 			sourceTree = "<group>";
@@ -537,15 +543,6 @@
 				2C225BD11DB4C6A10072F970 /* Activity */,
 			);
 			name = FindPage;
-			sourceTree = "<group>";
-		};
-		2C225BD01DB4C6710072F970 /* HelpDateilsView */ = {
-			isa = PBXGroup;
-			children = (
-				2CB20E381D8E9E5900DE531D /* HelpDateilsViewController.h */,
-				2CB20E391D8E9E5900DE531D /* HelpDateilsViewController.m */,
-			);
-			name = HelpDateilsView;
 			sourceTree = "<group>";
 		};
 		2C225BD11DB4C6A10072F970 /* Activity */ = {
@@ -676,6 +673,9 @@
 				2C3C65701DC8D75200C7A5FB /* AgentView.h */,
 				2C3C65711DC8D75200C7A5FB /* AgentView.m */,
 				2C3C65731DC8D76900C7A5FB /* AgentView.xib */,
+				2C3C65851DCAF3D300C7A5FB /* MyGetAgentView.h */,
+				2C3C65861DCAF3D300C7A5FB /* MyGetAgentView.m */,
+				2C3C65881DCAF3DE00C7A5FB /* MyGetAgentView.xib */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -1040,6 +1040,7 @@
 			files = (
 				2C7A8B041D87E19A00681CB4 /* LaunchScreen.storyboard in Resources */,
 				2CEAA6861D8A409700AADD66 /* News.xib in Resources */,
+				2C3C65891DCAF3DE00C7A5FB /* MyGetAgentView.xib in Resources */,
 				2C7A8B011D87E19A00681CB4 /* Assets.xcassets in Resources */,
 				2C8DBEA71DC2F312001F6A4F /* Login.xib in Resources */,
 				2C225BDC1DB884640072F970 /* demandView.xib in Resources */,
@@ -1143,6 +1144,7 @@
 				2C8DBEA21DC2EC62001F6A4F /* AnswerChatListViewController.m in Sources */,
 				2C7A8AF61D87E19900681CB4 /* main.m in Sources */,
 				2C7A8B821D88EB9000681CB4 /* SDWebImageCompat.m in Sources */,
+				2C3C65771DC982A900C7A5FB /* HelpViewController.m in Sources */,
 				2C3C65651DC7333200C7A5FB /* YiLeftView.m in Sources */,
 				2C5F10C81D8BF6F600C58B05 /* PaperDetailsView.m in Sources */,
 				2C7A8B801D88EB9000681CB4 /* NSData+ImageContentType.m in Sources */,
@@ -1154,7 +1156,6 @@
 				2CA20DFE1D9428FA00180B0F /* MZTimerLabel.m in Sources */,
 				2C7A8B841D88EB9000681CB4 /* SDWebImageDownloader.m in Sources */,
 				2C7A8B8D1D88EB9000681CB4 /* UIImageView+WebCache.m in Sources */,
-				2CB20E3A1D8E9E5900DE531D /* HelpDateilsViewController.m in Sources */,
 				2C97BC241DB9D99A00E7CD7C /* IQNSArray+Sort.m in Sources */,
 				2CB20E371D8E55A600DE531D /* HelpThings.m in Sources */,
 				2C97BC261DB9D99A00E7CD7C /* IQUITextFieldView+Additions.m in Sources */,
@@ -1195,6 +1196,7 @@
 				2C6072F51D91300B004375CD /* Paper.m in Sources */,
 				2C225BD71DB4C6FC0072F970 /* OutCampusViewController.m in Sources */,
 				2C97BC3C1DB9D9BF00E7CD7C /* IQToolbar.m in Sources */,
+				2C3C65871DCAF3D300C7A5FB /* MyGetAgentView.m in Sources */,
 				2C2049001DA0F7B700FD6BC0 /* LLCircleLayer.m in Sources */,
 				2C5F10BD1D8B942700C58B05 /* NewsViewController.m in Sources */,
 				2C97BC3B1DB9D9BF00E7CD7C /* IQTitleBarButtonItem.m in Sources */,

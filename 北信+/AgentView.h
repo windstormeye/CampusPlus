@@ -15,6 +15,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *Agent_money;
 @property (weak, nonatomic) IBOutlet UILabel *Agent_time;
 @property (weak, nonatomic) IBOutlet UIButton *Agent_getBtn;
+@property (weak, nonatomic) IBOutlet UIButton *AvatarBtn;
 
 +(instancetype)agentView;
 

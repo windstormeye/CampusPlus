@@ -11,13 +11,6 @@
             <rect key="frame" x="0.0" y="0.0" width="250" height="300"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <subviews>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="发起活动" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YtW-N0-Bzl">
-                    <rect key="frame" x="0.0" y="0.0" width="250" height="52"/>
-                    <color key="backgroundColor" red="0.096920983036129615" green="0.6840299102090226" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                    <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                    <nil key="highlightedColor"/>
-                </label>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="标题：" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QOY-YQ-Lug">
                     <rect key="frame" x="19" y="61" width="51" height="21"/>
                     <fontDescription key="fontDescription" type="system" pointSize="15"/>
@@ -72,6 +65,13 @@
                     <fontDescription key="fontDescription" type="system" pointSize="15"/>
                     <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                 </textView>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="发起活动" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YtW-N0-Bzl">
+                    <rect key="frame" x="0.0" y="0.0" width="250" height="52"/>
+                    <color key="backgroundColor" red="0.096920983036129615" green="0.6840299102090226" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                    <nil key="highlightedColor"/>
+                </label>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
@@ -80,6 +80,7 @@
                 <outlet property="sureBtn" destination="3q2-IW-YUD" id="4DX-bX-2ms"/>
                 <outlet property="textView" destination="CqQ-Gn-2TM" id="aOz-Nb-mgK"/>
                 <outlet property="titleTextField" destination="MxD-dj-Gyr" id="3Cn-ED-9QO"/>
+                <outlet property="viewTitle" destination="YtW-N0-Bzl" id="HjW-2Y-uw6"/>
             </connections>
             <point key="canvasLocation" x="247" y="247"/>
         </view>

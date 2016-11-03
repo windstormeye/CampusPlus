@@ -69,6 +69,9 @@
                         <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
+                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1zV-aD-a6n">
+                        <rect key="frame" x="6" y="8" width="46" height="46.5"/>
+                    </button>
                 </subviews>
                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
             </view>
@@ -81,6 +84,7 @@
                 <outlet property="Agent_money" destination="ESr-CH-gbP" id="JW7-km-Bq9"/>
                 <outlet property="Agent_time" destination="CnO-TX-2Km" id="f4Y-mN-qV1"/>
                 <outlet property="Agent_title" destination="5xs-gU-r5W" id="N9N-fZ-wPv"/>
+                <outlet property="AvatarBtn" destination="1zV-aD-a6n" id="ges-pY-6vw"/>
             </connections>
             <point key="canvasLocation" x="581" y="455"/>
         </viewController>

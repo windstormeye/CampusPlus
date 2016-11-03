@@ -10,5 +10,6 @@
 
 @interface HelpTableViewController : UITableViewController
 
+- (void)loadNewData;
 
 @end
