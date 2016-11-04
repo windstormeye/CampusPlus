@@ -457,7 +457,7 @@
     }
     menuScrollView.contentSize = CGSizeMake(0, menuScrollView.frame.size.height + 20);
     
-    UIButton *settingBtn = [[UIButton alloc] initWithFrame:CGRectMake(0, self.slideMenu.frame.size.height - 40, 80, 30)];
+    UIButton *settingBtn = [[UIButton alloc] initWithFrame:CGRectMake(125, self.slideMenu.frame.size.height - 40, 80, 30)];
     settingBtn.font = [UIFont systemFontOfSize:16];
     [settingBtn setImage:[UIImage imageNamed:@"设置"] forState:UIControlStateNormal];
     [settingBtn setTitle:@"设置" forState:UIControlStateNormal];

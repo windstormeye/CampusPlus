@@ -59,6 +59,8 @@
     int trueQuestionsNum;
     float Questions;
     int answerPaperViewNums;
+    int currentPaperNum;
+    bool isPaper;
 }
 
 - (NSMutableArray *)titleNumArr
@@ -150,8 +152,10 @@
     
     self.isTouchCheckBtn = NO;
     self.isTouchCheckBtnAgain = NO;
+    isPaper = NO;
     trueQuestionsNum = 0;
     answerPaperViewNums = 0;
+    currentPaperNum = 0;
     
     UIView *view = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.navigationController.navigationBar.frame.size.width, self.navigationController.navigationBar.frame.size.height)];
     self.navigationBarView = view;
@@ -340,7 +344,25 @@
                 [self.view addSubview: secondWebView];
                 [secondWebView loadRequest:request];
                 [view addSubview:secondWebView];
-                UIView *secondLineView = [[UIView alloc] initWithFrame:CGRectMake(0, CGRectGetMaxY(secondWebView.frame) + 1, secondWebView.frame.size.width, 30)];
+                
+                // 设置正确和错误答题按钮
+                UIButton *trueBtn = [[UIButton alloc] initWithFrame:CGRectMake(190, CGRectGetMaxY(secondWebView.frame) + 10, 60, 60)];
+                trueBtn.tag = imgX + imgW;
+                trueBtn.selected = NO;
+                [trueBtn setImage:[UIImage imageNamed:@"right_normal"] forState:UIControlStateNormal];
+                [trueBtn setImage:[UIImage imageNamed:@"right_selected"] forState:UIControlStateSelected];
+                [trueBtn addTarget:self action:@selector(trueBtnClickMethon:) forControlEvents:UIControlEventTouchUpInside];
+                [view addSubview:trueBtn];
+                UIButton *falseBtn = [[UIButton alloc] initWithFrame:CGRectMake(255, CGRectGetMaxY(secondWebView.frame) + 10, 60, 60)];
+                falseBtn.selected = NO;
+                [falseBtn addTarget:self action:@selector(falseBtnClickMethon:) forControlEvents:UIControlEventTouchUpInside];
+                falseBtn.tag = imgX + imgW;
+                [falseBtn setImage:[UIImage imageNamed:@"wrong_normal"] forState:UIControlStateNormal];
+                [falseBtn setImage:[UIImage imageNamed:@"wrong_selected"] forState:UIControlStateSelected];
+                [view addSubview:falseBtn];
+
+                
+                UIView *secondLineView = [[UIView alloc] initWithFrame:CGRectMake(0, CGRectGetMaxY(trueBtn.frame) + 10, secondWebView.frame.size.width, 30)];
                 secondLineView.backgroundColor = [UIColor whiteColor];
                 [view addSubview:secondLineView];
                 UILabel *secondLineViewLabel = [[UILabel alloc] initWithFrame:CGRectMake(10, 0, 150, 30)];
@@ -400,21 +422,6 @@
                         }
                     }
                 }];
-                // 设置正确和错误答题按钮
-                UIButton *trueBtn = [[UIButton alloc] initWithFrame:CGRectMake(190, secondLineView.frame.origin.y - 10, 60, 60)];
-                trueBtn.tag = imgX + imgW;
-                trueBtn.selected = NO;
-                [trueBtn setImage:[UIImage imageNamed:@"right_normal"] forState:UIControlStateNormal];
-                [trueBtn setImage:[UIImage imageNamed:@"right_selected"] forState:UIControlStateSelected];
-                [trueBtn addTarget:self action:@selector(trueBtnClickMethon:) forControlEvents:UIControlEventTouchUpInside];
-                [view addSubview:trueBtn];
-                UIButton *falseBtn = [[UIButton alloc] initWithFrame:CGRectMake(255, secondLineView.frame.origin.y  - 10, 60, 60)];
-                falseBtn.selected = NO;
-                [falseBtn addTarget:self action:@selector(falseBtnClickMethon:) forControlEvents:UIControlEventTouchUpInside];
-                falseBtn.tag = imgX + imgW;
-                [falseBtn setImage:[UIImage imageNamed:@"wrong_normal"] forState:UIControlStateNormal];
-                [falseBtn setImage:[UIImage imageNamed:@"wrong_selected"] forState:UIControlStateSelected];
-                [view addSubview:falseBtn];
                 
                 j++;
             }
@@ -555,6 +562,22 @@
     button.selected = !button.selected;
     [NSThread sleepForTimeInterval:0.2];
     [self.scrollView setContentOffset:CGPointMake(button.tag, 0) animated:YES];
+    
+    BmobObject *author = [BmobObject objectWithoutDataWithClassName:@"Questions" objectId:[self.answerBomeObjArr[currentPaperNum] objectForKey:@"objectId"]];
+    //新建relation对象
+    BmobRelation *relation = [[BmobRelation alloc] init];
+    // 注意！！！取currentuser的id时，应该使用valueforkey而不是objectforkey
+    [relation addObject:[BmobObject objectWithoutDataWithClassName:@"_User" objectId:[[BmobUser currentUser] valueForKey:@"objectId"]]];
+    //添加关联关系到postlist列中
+    [author addRelation:relation forKey:@"Users"];
+    //异步更新obj的数据
+    [author updateInBackgroundWithResultBlock:^(BOOL isSuccessful, NSError *error) {
+        if (isSuccessful) {
+            NSLog(@"successful");
+        }else{
+            NSLog(@"error %@",[error description]);
+        }
+    }];
 }
 
 - (void)falseBtnClickMethon:(UIButton *)button
@@ -562,6 +585,23 @@
     button.selected = !button.selected;
     [NSThread sleepForTimeInterval:0.2];
     [self.scrollView setContentOffset:CGPointMake(button.tag, 0) animated:YES];
+    
+    // 上传错误题目
+    BmobObject *author = [BmobObject objectWithoutDataWithClassName:@"_User" objectId:[[BmobUser currentUser] valueForKey:@"objectId"]];
+    //新建relation对象
+    BmobRelation *relation = [[BmobRelation alloc] init];
+    // 注意！！！取currentuser的id时，应该使用valueforkey而不是objectforkey
+    [relation addObject:[BmobObject objectWithoutDataWithClassName:@"Questions" objectId:[self.answerBomeObjArr[currentPaperNum] objectForKey:@"objectId"]]];
+    //添加关联关系到postlist列中
+    [author addRelation:relation forKey:@"wrong_questions"];
+    //异步更新obj的数据
+    [author updateInBackgroundWithResultBlock:^(BOOL isSuccessful, NSError *error) {
+        if (isSuccessful) {
+            NSLog(@"successful");
+        }else{
+            NSLog(@"error %@",[error description]);
+        }
+    }];
 }
 
 -(void)webViewDidFinishLoad:(UIWebView*)webView
@@ -649,19 +689,22 @@
     
     if (page < 21)
     {
-
+        
         NSString *tempstr = [NSString stringWithFormat:@"%@", self.titleNumArr[page]];
         if ([self isPureInt:tempstr])
         {
             self.nowLabel.text = tempstr;
             self.nowLabel.textColor = [UIColor colorWithRed:26/255.0 green:167/255.0 blue:242/255.0 alpha:1.0];
             self.nowLabel.font = [UIFont systemFontOfSize: 20];
+            currentPaperNum = page;
+            isPaper = YES;
         }
         else
         {
             self.nowLabel.text = [NSString stringWithFormat:@"非题目"];
             self.nowLabel.textColor = [UIColor grayColor];
             self.nowLabel.font = [UIFont systemFontOfSize:18];
+            isPaper = NO;
         }
     }
     else if (page == 21)
@@ -685,25 +728,67 @@
 // 收藏按钮点击事件
 - (void)collect
 {
-    CGFloat width = SCREEN.width * 0.5 * SCREEN_WIDTH_RATIO;
-    CGFloat height = 0.3 * width;
-    UIView * tip = [[UIView alloc]initWithFrame:CGRectMake(self.view.frame.size.width * 0.5 - width / 2, self.view.frame.size.height - (self.view.frame.size.height * 0.45 / 3 * 2), width, height)];
-    tip.backgroundColor = [UIColor colorWithRed:244/255.0 green:244/255.0 blue:244/255.0 alpha:1.0];
-    tip.layer.cornerRadius = 8.0f;
-    [self.view addSubview:tip];
-    UILabel * label = [[UILabel alloc]init];
-    label.text = @"收藏成功 (◕ω ◕｀ヽ)";
-    //sizetofit的作用，是让label自动适应为跟文字大小等大的label
-    label.font = [UIFont systemFontOfSize:12];
-    [label sizeToFit];
-    label.center = CGPointMake(tip.frame.size.width * 0.5, tip.frame.size.height * 0.5);
-    [tip addSubview:label];
-    tip.alpha = 0.0;
-    [UIView animateWithDuration:0.8 animations:^{
-        tip.alpha = 1;
-    } completion:^(BOOL finished) {
-        [tip removeFromSuperview];
-    }];
+    if (isPaper)
+    {
+        // 上传收藏题目
+        BmobObject *author = [BmobObject objectWithoutDataWithClassName:@"_User" objectId:[[BmobUser currentUser] valueForKey:@"objectId"]];
+        //新建relation对象
+        BmobRelation *relation = [[BmobRelation alloc] init];
+        // 注意！！！取currentuser的id时，应该使用valueforkey而不是objectforkey
+        [relation addObject:[BmobObject objectWithoutDataWithClassName:@"Questions" objectId:[self.answerBomeObjArr[currentPaperNum] objectForKey:@"objectId"]]];
+        //添加关联关系到postlist列中
+        [author addRelation:relation forKey:@"collect_questions"];
+        //异步更新obj的数据
+        [author updateInBackgroundWithResultBlock:^(BOOL isSuccessful, NSError *error) {
+            if (isSuccessful) {
+                NSLog(@"successful");
+            }else{
+                NSLog(@"error %@",[error description]);
+            }
+        }];
+
+        CGFloat width = SCREEN.width * 0.5 * SCREEN_WIDTH_RATIO;
+        CGFloat height = 0.3 * width;
+        UIView * tip = [[UIView alloc]initWithFrame:CGRectMake(self.view.frame.size.width * 0.5 - width / 2, self.view.frame.size.height - (self.view.frame.size.height * 0.45 / 3 * 2), width, height)];
+        tip.backgroundColor = [UIColor colorWithRed:244/255.0 green:244/255.0 blue:244/255.0 alpha:1.0];
+        tip.layer.cornerRadius = 8.0f;
+        [self.view addSubview:tip];
+        UILabel * label = [[UILabel alloc]init];
+        label.text = @"收藏成功 (◕ω ◕｀ヽ)";
+        //sizetofit的作用，是让label自动适应为跟文字大小等大的label
+        label.font = [UIFont systemFontOfSize:12];
+        [label sizeToFit];
+        label.center = CGPointMake(tip.frame.size.width * 0.5, tip.frame.size.height * 0.5);
+        [tip addSubview:label];
+        tip.alpha = 0.0;
+        [UIView animateWithDuration:0.8 animations:^{
+            tip.alpha = 1;
+        } completion:^(BOOL finished) {
+            [tip removeFromSuperview];
+        }];
+    }
+    else
+    {
+        CGFloat width = SCREEN.width * 0.5 * SCREEN_WIDTH_RATIO;
+        CGFloat height = 0.3 * width;
+        UIView * tip = [[UIView alloc]initWithFrame:CGRectMake(self.view.frame.size.width * 0.5 - width / 2, self.view.frame.size.height - (self.view.frame.size.height * 0.45 / 3 * 2), width, height)];
+        tip.backgroundColor = [UIColor colorWithRed:244/255.0 green:244/255.0 blue:244/255.0 alpha:1.0];
+        tip.layer.cornerRadius = 8.0f;
+        [self.view addSubview:tip];
+        UILabel * label = [[UILabel alloc]init];
+        label.text = @"这不是题目噢~";
+        //sizetofit的作用，是让label自动适应为跟文字大小等大的label
+        label.font = [UIFont systemFontOfSize:12];
+        [label sizeToFit];
+        label.center = CGPointMake(tip.frame.size.width * 0.5, tip.frame.size.height * 0.5);
+        [tip addSubview:label];
+        tip.alpha = 0.0;
+        [UIView animateWithDuration:0.8 animations:^{
+            tip.alpha = 1;
+        } completion:^(BOOL finished) {
+            [tip removeFromSuperview];
+        }];
+    }
 }
 // 答题卡题目按钮点击事件
 - (void)answerBtnClick:(UIButton *)sender

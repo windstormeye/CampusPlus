@@ -40,7 +40,6 @@
 		2C3C65651DC7333200C7A5FB /* YiLeftView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2C3C65601DC7333200C7A5FB /* YiLeftView.m */; };
 		2C3C65661DC7333200C7A5FB /* YiRightView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2C3C65621DC7333200C7A5FB /* YiRightView.m */; };
 		2C3C65671DC7333200C7A5FB /* YiSlideMenu.m in Sources */ = {isa = PBXBuildFile; fileRef = 2C3C65641DC7333200C7A5FB /* YiSlideMenu.m */; };
-		2C3C656A1DC776C500C7A5FB /* OBC.m in Sources */ = {isa = PBXBuildFile; fileRef = 2C3C65691DC776C500C7A5FB /* OBC.m */; };
 		2C3C65721DC8D75200C7A5FB /* AgentView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2C3C65711DC8D75200C7A5FB /* AgentView.m */; };
 		2C3C65741DC8D76900C7A5FB /* AgentView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2C3C65731DC8D76900C7A5FB /* AgentView.xib */; };
 		2C3C65771DC982A900C7A5FB /* HelpViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2C3C65761DC982A900C7A5FB /* HelpViewController.m */; };
@@ -201,8 +200,6 @@
 		2C3C65621DC7333200C7A5FB /* YiRightView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YiRightView.m; sourceTree = "<group>"; };
 		2C3C65631DC7333200C7A5FB /* YiSlideMenu.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YiSlideMenu.h; sourceTree = "<group>"; };
 		2C3C65641DC7333200C7A5FB /* YiSlideMenu.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YiSlideMenu.m; sourceTree = "<group>"; };
-		2C3C65681DC776C500C7A5FB /* OBC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OBC.h; sourceTree = "<group>"; };
-		2C3C65691DC776C500C7A5FB /* OBC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OBC.m; sourceTree = "<group>"; };
 		2C3C65701DC8D75200C7A5FB /* AgentView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AgentView.h; sourceTree = "<group>"; };
 		2C3C65711DC8D75200C7A5FB /* AgentView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AgentView.m; sourceTree = "<group>"; };
 		2C3C65731DC8D76900C7A5FB /* AgentView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AgentView.xib; sourceTree = "<group>"; };
@@ -517,8 +514,6 @@
 				2C7A8B381D87F33900681CB4 /* HomePageViewController.m */,
 				2C5F10BB1D8B942700C58B05 /* NewsViewController.h */,
 				2C5F10BC1D8B942700C58B05 /* NewsViewController.m */,
-				2C3C65681DC776C500C7A5FB /* OBC.h */,
-				2C3C65691DC776C500C7A5FB /* OBC.m */,
 				2C225BCB1DB4C59B0072F970 /* Papers */,
 			);
 			name = HomePage;
@@ -1177,7 +1172,6 @@
 				2C7A8B871D88EB9000681CB4 /* SDWebImagePrefetcher.m in Sources */,
 				2C8DBEAF1DC34D21001F6A4F /* MBProgressHUD+NJ.m in Sources */,
 				2C97BC281DB9D99A00E7CD7C /* IQUIViewController+Additions.m in Sources */,
-				2C3C656A1DC776C500C7A5FB /* OBC.m in Sources */,
 				2C3C65721DC8D75200C7A5FB /* AgentView.m in Sources */,
 				2C7A8B881D88EB9000681CB4 /* UIButton+WebCache.m in Sources */,
 				2C97BC441DB9D9D000E7CD7C /* IQKeyboardManager.m in Sources */,
