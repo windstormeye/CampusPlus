@@ -32,8 +32,8 @@
     [super viewDidLoad];
     
     self.loginBtn.layer.cornerRadius = 10;
-    self.usernameTextField.text = @"";
-    self.passwdTextField.text= @"";
+    self.usernameTextField.text = @"孙伊凡";
+    self.passwdTextField.text= @"123456";
 }
 
 + (instancetype)loginView

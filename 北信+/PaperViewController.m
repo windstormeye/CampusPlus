@@ -208,7 +208,6 @@
         [self initPaperViewWithDict];
         [MB hideAnimated:YES];
         [timeLabel start];
-
     }];
     
     [self.navigationItem setTitleView:view];
@@ -361,7 +360,6 @@
                 [falseBtn setImage:[UIImage imageNamed:@"wrong_selected"] forState:UIControlStateSelected];
                 [view addSubview:falseBtn];
 
-                
                 UIView *secondLineView = [[UIView alloc] initWithFrame:CGRectMake(0, CGRectGetMaxY(trueBtn.frame) + 10, secondWebView.frame.size.width, 30)];
                 secondLineView.backgroundColor = [UIColor whiteColor];
                 [view addSubview:secondLineView];

@@ -13,10 +13,7 @@
 		2C2049011DA0F7B700FD6BC0 /* LLDisplayLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 2C2048FA1DA0F7B700FD6BC0 /* LLDisplayLayer.m */; };
 		2C2049021DA0F7B700FD6BC0 /* LLSlideMenu.m in Sources */ = {isa = PBXBuildFile; fileRef = 2C2048FC1DA0F7B700FD6BC0 /* LLSlideMenu.m */; };
 		2C2049031DA0F7B700FD6BC0 /* UIView+SetRect.m in Sources */ = {isa = PBXBuildFile; fileRef = 2C2048FE1DA0F7B700FD6BC0 /* UIView+SetRect.m */; };
-		2C2049081DA1F20C00FD6BC0 /* MyAllCollectViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2C2049071DA1F20C00FD6BC0 /* MyAllCollectViewController.m */; };
-		2C20490B1DA1F25100FD6BC0 /* MyAllExpertsAnswerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2C20490A1DA1F25100FD6BC0 /* MyAllExpertsAnswerViewController.m */; };
 		2C20490E1DA1F27D00FD6BC0 /* MyAllWrongBookViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2C20490D1DA1F27D00FD6BC0 /* MyAllWrongBookViewController.m */; };
-		2C2049111DA1F2BB00FD6BC0 /* MyDelegatesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2C2049101DA1F2BB00FD6BC0 /* MyDelegatesViewController.m */; };
 		2C2049141DA1F2E400FD6BC0 /* AboutUsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2C2049131DA1F2E400FD6BC0 /* AboutUsViewController.m */; };
 		2C225B9E1DB48FB50072F970 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2C225B9D1DB48FB50072F970 /* CoreLocation.framework */; };
 		2C225BA01DB48FC10072F970 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2C225B9F1DB48FC10072F970 /* Security.framework */; };
@@ -50,6 +47,7 @@
 		2C5F10C81D8BF6F600C58B05 /* PaperDetailsView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2C5F10C71D8BF6F600C58B05 /* PaperDetailsView.m */; };
 		2C5F10CC1D8C277800C58B05 /* PaperDetailsView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2C5F10CB1D8C277800C58B05 /* PaperDetailsView.xib */; };
 		2C6072F51D91300B004375CD /* Paper.m in Sources */ = {isa = PBXBuildFile; fileRef = 2C6072F41D91300B004375CD /* Paper.m */; };
+		2C72FF171DCCAFC3007D560D /* MyAllCollectTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2C72FF161DCCAFC3007D560D /* MyAllCollectTableViewController.m */; };
 		2C7A8AF61D87E19900681CB4 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 2C7A8AF51D87E19900681CB4 /* main.m */; };
 		2C7A8AF91D87E19900681CB4 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 2C7A8AF81D87E19900681CB4 /* AppDelegate.m */; };
 		2C7A8AFC1D87E19900681CB4 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2C7A8AFB1D87E19900681CB4 /* ViewController.m */; };
@@ -92,6 +90,9 @@
 		2C8DBEAA1DC2F331001F6A4F /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2C8DBEA91DC2F331001F6A4F /* LoginViewController.m */; };
 		2C8DBEAE1DC34D21001F6A4F /* MBProgressHUD.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 2C8DBEAB1DC34D21001F6A4F /* MBProgressHUD.bundle */; };
 		2C8DBEAF1DC34D21001F6A4F /* MBProgressHUD+NJ.m in Sources */ = {isa = PBXBuildFile; fileRef = 2C8DBEAD1DC34D21001F6A4F /* MBProgressHUD+NJ.m */; };
+		2C946F6D1DCDB12500C14903 /* MyAllCollectDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2C946F6C1DCDB12500C14903 /* MyAllCollectDetailViewController.m */; };
+		2C946F741DCDC7DF00C14903 /* MyAllWrongBookDetailTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2C946F731DCDC7DF00C14903 /* MyAllWrongBookDetailTableViewController.m */; };
+		2C946F7B1DCDD29200C14903 /* MydelegateTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2C946F7A1DCDD29200C14903 /* MydelegateTableViewController.m */; };
 		2C97BC241DB9D99A00E7CD7C /* IQNSArray+Sort.m in Sources */ = {isa = PBXBuildFile; fileRef = 2C97BC191DB9D99A00E7CD7C /* IQNSArray+Sort.m */; };
 		2C97BC251DB9D99A00E7CD7C /* IQUIScrollView+Additions.m in Sources */ = {isa = PBXBuildFile; fileRef = 2C97BC1B1DB9D99A00E7CD7C /* IQUIScrollView+Additions.m */; };
 		2C97BC261DB9D99A00E7CD7C /* IQUITextFieldView+Additions.m in Sources */ = {isa = PBXBuildFile; fileRef = 2C97BC1D1DB9D99A00E7CD7C /* IQUITextFieldView+Additions.m */; };
@@ -149,14 +150,8 @@
 		2C2048FC1DA0F7B700FD6BC0 /* LLSlideMenu.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LLSlideMenu.m; sourceTree = "<group>"; };
 		2C2048FD1DA0F7B700FD6BC0 /* UIView+SetRect.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+SetRect.h"; sourceTree = "<group>"; };
 		2C2048FE1DA0F7B700FD6BC0 /* UIView+SetRect.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+SetRect.m"; sourceTree = "<group>"; };
-		2C2049061DA1F20C00FD6BC0 /* MyAllCollectViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyAllCollectViewController.h; sourceTree = "<group>"; };
-		2C2049071DA1F20C00FD6BC0 /* MyAllCollectViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyAllCollectViewController.m; sourceTree = "<group>"; };
-		2C2049091DA1F25100FD6BC0 /* MyAllExpertsAnswerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyAllExpertsAnswerViewController.h; sourceTree = "<group>"; };
-		2C20490A1DA1F25100FD6BC0 /* MyAllExpertsAnswerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyAllExpertsAnswerViewController.m; sourceTree = "<group>"; };
 		2C20490C1DA1F27D00FD6BC0 /* MyAllWrongBookViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MyAllWrongBookViewController.h; path = ../MyAllWrongBookViewController.h; sourceTree = "<group>"; };
 		2C20490D1DA1F27D00FD6BC0 /* MyAllWrongBookViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MyAllWrongBookViewController.m; path = ../MyAllWrongBookViewController.m; sourceTree = "<group>"; };
-		2C20490F1DA1F2BB00FD6BC0 /* MyDelegatesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyDelegatesViewController.h; sourceTree = "<group>"; };
-		2C2049101DA1F2BB00FD6BC0 /* MyDelegatesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyDelegatesViewController.m; sourceTree = "<group>"; };
 		2C2049121DA1F2E400FD6BC0 /* AboutUsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AboutUsViewController.h; sourceTree = "<group>"; };
 		2C2049131DA1F2E400FD6BC0 /* AboutUsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AboutUsViewController.m; sourceTree = "<group>"; };
 		2C225B9D1DB48FB50072F970 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
@@ -217,6 +212,8 @@
 		2C5F10CB1D8C277800C58B05 /* PaperDetailsView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PaperDetailsView.xib; sourceTree = "<group>"; };
 		2C6072F31D91300B004375CD /* Paper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Paper.h; sourceTree = "<group>"; };
 		2C6072F41D91300B004375CD /* Paper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Paper.m; sourceTree = "<group>"; };
+		2C72FF151DCCAFC3007D560D /* MyAllCollectTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyAllCollectTableViewController.h; sourceTree = "<group>"; };
+		2C72FF161DCCAFC3007D560D /* MyAllCollectTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyAllCollectTableViewController.m; sourceTree = "<group>"; };
 		2C7A8AF11D87E19900681CB4 /* 北信+.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "北信+.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		2C7A8AF51D87E19900681CB4 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		2C7A8AF71D87E19900681CB4 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -313,6 +310,12 @@
 		2C8DBEAB1DC34D21001F6A4F /* MBProgressHUD.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = MBProgressHUD.bundle; path = ../../../../../../../../../../Downloads/LibraryTest/LibraryTest/Library/MBProgressHUD/MBProgressHUD.bundle; sourceTree = "<group>"; };
 		2C8DBEAC1DC34D21001F6A4F /* MBProgressHUD+NJ.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "MBProgressHUD+NJ.h"; path = "../../../../../../../../../../Downloads/LibraryTest/LibraryTest/Library/MBProgressHUD/MBProgressHUD+NJ.h"; sourceTree = "<group>"; };
 		2C8DBEAD1DC34D21001F6A4F /* MBProgressHUD+NJ.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "MBProgressHUD+NJ.m"; path = "../../../../../../../../../../Downloads/LibraryTest/LibraryTest/Library/MBProgressHUD/MBProgressHUD+NJ.m"; sourceTree = "<group>"; };
+		2C946F6B1DCDB12500C14903 /* MyAllCollectDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyAllCollectDetailViewController.h; sourceTree = "<group>"; };
+		2C946F6C1DCDB12500C14903 /* MyAllCollectDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyAllCollectDetailViewController.m; sourceTree = "<group>"; };
+		2C946F721DCDC7DF00C14903 /* MyAllWrongBookDetailTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyAllWrongBookDetailTableViewController.h; sourceTree = "<group>"; };
+		2C946F731DCDC7DF00C14903 /* MyAllWrongBookDetailTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyAllWrongBookDetailTableViewController.m; sourceTree = "<group>"; };
+		2C946F791DCDD29200C14903 /* MydelegateTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MydelegateTableViewController.h; sourceTree = "<group>"; };
+		2C946F7A1DCDD29200C14903 /* MydelegateTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MydelegateTableViewController.m; sourceTree = "<group>"; };
 		2C97BC181DB9D99A00E7CD7C /* IQNSArray+Sort.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "IQNSArray+Sort.h"; path = "../../../../../../../../../../../Downloads/IQKeyboardManager-master 2/IQKeyboardManager/Categories/IQNSArray+Sort.h"; sourceTree = "<group>"; };
 		2C97BC191DB9D99A00E7CD7C /* IQNSArray+Sort.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "IQNSArray+Sort.m"; path = "../../../../../../../../../../../Downloads/IQKeyboardManager-master 2/IQKeyboardManager/Categories/IQNSArray+Sort.m"; sourceTree = "<group>"; };
 		2C97BC1A1DB9D99A00E7CD7C /* IQUIScrollView+Additions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "IQUIScrollView+Additions.h"; path = "../../../../../../../../../../../Downloads/IQKeyboardManager-master 2/IQKeyboardManager/Categories/IQUIScrollView+Additions.h"; sourceTree = "<group>"; };
@@ -568,16 +571,12 @@
 		2C5DDD5D1DC0504D0065527D /* pages */ = {
 			isa = PBXGroup;
 			children = (
-				2C2049061DA1F20C00FD6BC0 /* MyAllCollectViewController.h */,
-				2C2049071DA1F20C00FD6BC0 /* MyAllCollectViewController.m */,
-				2C2049091DA1F25100FD6BC0 /* MyAllExpertsAnswerViewController.h */,
-				2C20490A1DA1F25100FD6BC0 /* MyAllExpertsAnswerViewController.m */,
-				2C20490C1DA1F27D00FD6BC0 /* MyAllWrongBookViewController.h */,
-				2C20490D1DA1F27D00FD6BC0 /* MyAllWrongBookViewController.m */,
-				2C20490F1DA1F2BB00FD6BC0 /* MyDelegatesViewController.h */,
-				2C2049101DA1F2BB00FD6BC0 /* MyDelegatesViewController.m */,
+				2C946F6A1DCDB0F000C14903 /* MyAllCollect */,
+				2C946F6E1DCDC78700C14903 /* MyAllWrongBook */,
 				2C3C65561DC641CD00C7A5FB /* MyActivitiesViewController.h */,
 				2C3C65571DC641CD00C7A5FB /* MyActivitiesViewController.m */,
+				2C946F791DCDD29200C14903 /* MydelegateTableViewController.h */,
+				2C946F7A1DCDD29200C14903 /* MydelegateTableViewController.m */,
 				2C2049121DA1F2E400FD6BC0 /* AboutUsViewController.h */,
 				2C2049131DA1F2E400FD6BC0 /* AboutUsViewController.m */,
 			);
@@ -783,6 +782,28 @@
 				2C7A8B7E1D88EB9000681CB4 /* UIView+WebCacheOperation.m */,
 			);
 			path = SDWebImage;
+			sourceTree = "<group>";
+		};
+		2C946F6A1DCDB0F000C14903 /* MyAllCollect */ = {
+			isa = PBXGroup;
+			children = (
+				2C72FF151DCCAFC3007D560D /* MyAllCollectTableViewController.h */,
+				2C72FF161DCCAFC3007D560D /* MyAllCollectTableViewController.m */,
+				2C946F6B1DCDB12500C14903 /* MyAllCollectDetailViewController.h */,
+				2C946F6C1DCDB12500C14903 /* MyAllCollectDetailViewController.m */,
+			);
+			name = MyAllCollect;
+			sourceTree = "<group>";
+		};
+		2C946F6E1DCDC78700C14903 /* MyAllWrongBook */ = {
+			isa = PBXGroup;
+			children = (
+				2C946F721DCDC7DF00C14903 /* MyAllWrongBookDetailTableViewController.h */,
+				2C946F731DCDC7DF00C14903 /* MyAllWrongBookDetailTableViewController.m */,
+				2C20490C1DA1F27D00FD6BC0 /* MyAllWrongBookViewController.h */,
+				2C20490D1DA1F27D00FD6BC0 /* MyAllWrongBookViewController.m */,
+			);
+			name = MyAllWrongBook;
 			sourceTree = "<group>";
 		};
 		2C97BC121DB9D92F00E7CD7C /* IQKeyboardManager */ = {
@@ -1116,10 +1137,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2C72FF171DCCAFC3007D560D /* MyAllCollectTableViewController.m in Sources */,
 				2C7A8B8B1D88EB9000681CB4 /* UIImage+WebP.m in Sources */,
-				2C2049111DA1F2BB00FD6BC0 /* MyDelegatesViewController.m in Sources */,
 				2C7A8B561D88EA6200681CB4 /* TAAbstractDotView.m in Sources */,
 				2C7A8B391D87F33900681CB4 /* HomePageViewController.m in Sources */,
+				2C946F741DCDC7DF00C14903 /* MyAllWrongBookDetailTableViewController.m in Sources */,
 				2C97BC271DB9D99A00E7CD7C /* IQUIView+Hierarchy.m in Sources */,
 				2C97BC2E1DB9D9B600E7CD7C /* IQTextView.m in Sources */,
 				2C3C65581DC641CD00C7A5FB /* MyActivitiesViewController.m in Sources */,
@@ -1141,6 +1163,7 @@
 				2C7A8B821D88EB9000681CB4 /* SDWebImageCompat.m in Sources */,
 				2C3C65771DC982A900C7A5FB /* HelpViewController.m in Sources */,
 				2C3C65651DC7333200C7A5FB /* YiLeftView.m in Sources */,
+				2C946F7B1DCDD29200C14903 /* MydelegateTableViewController.m in Sources */,
 				2C5F10C81D8BF6F600C58B05 /* PaperDetailsView.m in Sources */,
 				2C7A8B801D88EB9000681CB4 /* NSData+ImageContentType.m in Sources */,
 				2C7A8B571D88EA6200681CB4 /* TAAnimatedDotView.m in Sources */,
@@ -1167,7 +1190,6 @@
 				2C2049141DA1F2E400FD6BC0 /* AboutUsViewController.m in Sources */,
 				2C2049021DA0F7B700FD6BC0 /* LLSlideMenu.m in Sources */,
 				2C7A8B891D88EB9000681CB4 /* UIImage+GIF.m in Sources */,
-				2C2049081DA1F20C00FD6BC0 /* MyAllCollectViewController.m in Sources */,
 				2C7A8B581D88EA6200681CB4 /* TADotView.m in Sources */,
 				2C7A8B871D88EB9000681CB4 /* SDWebImagePrefetcher.m in Sources */,
 				2C8DBEAF1DC34D21001F6A4F /* MBProgressHUD+NJ.m in Sources */,
@@ -1184,7 +1206,6 @@
 				2C3C65661DC7333200C7A5FB /* YiRightView.m in Sources */,
 				2C97BC451DB9D9D000E7CD7C /* IQKeyboardReturnKeyHandler.m in Sources */,
 				2C2049011DA0F7B700FD6BC0 /* LLDisplayLayer.m in Sources */,
-				2C20490B1DA1F25100FD6BC0 /* MyAllExpertsAnswerViewController.m in Sources */,
 				2C225BC81DB495910072F970 /* AFURLResponseSerialization.m in Sources */,
 				2C97BC3D1DB9D9BF00E7CD7C /* IQUIView+IQKeyboardToolbar.m in Sources */,
 				2C6072F51D91300B004375CD /* Paper.m in Sources */,
@@ -1192,6 +1213,7 @@
 				2C97BC3C1DB9D9BF00E7CD7C /* IQToolbar.m in Sources */,
 				2C3C65871DCAF3D300C7A5FB /* MyGetAgentView.m in Sources */,
 				2C2049001DA0F7B700FD6BC0 /* LLCircleLayer.m in Sources */,
+				2C946F6D1DCDB12500C14903 /* MyAllCollectDetailViewController.m in Sources */,
 				2C5F10BD1D8B942700C58B05 /* NewsViewController.m in Sources */,
 				2C97BC3B1DB9D9BF00E7CD7C /* IQTitleBarButtonItem.m in Sources */,
 				2C2048E21DA0F05500FD6BC0 /* UINavigationController+FDFullscreenPopGesture.m in Sources */,

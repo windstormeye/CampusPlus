@@ -15,10 +15,11 @@
 #import "NewsView.h"
 #import "News.h"
 #import "LLSlideMenu.h"
-#import "MyAllCollectViewController.h"
-#import "MyAllExpertsAnswerViewController.h"
-#import "MyAllWrongBookViewController.h"
-#import "MyDelegatesViewController.h"
+#import "MyAllCollectTableViewController.h"
+#import "MyAllWrongBookDetailTableViewController.h"
+#import "AnswerChatListViewController.h"
+#import "MydelegateTableViewController.h"
+#import "HelpTableViewController.h"
 #import "MyActivitiesViewController.h"
 #import "AboutUsViewController.h"
 #import "MBProgressHUD+NJ.h"
@@ -297,18 +298,7 @@
     [self.tabBarController.view addSubview:_slideMenu];
     // 设置菜单宽度
     _slideMenu.ll_menuWidth = 220;
-//    UIImage *backgroundImage = [UIImage imageNamed:@"usercenterbackground"];
-    //将刚刚生成的图片转换为UIColor对象。这样便可以实现平铺了。
-//    UIColor *backgroundColor = [UIColor colorWithPatternImage:backgroundImage];
-    // 设置菜单背景色
-//    _slideMenu.backgroundColor = [UIColor colorWithRed:124/255.0 green:124/255.0 blue:124/255.0 alpha:0.5];
     _slideMenu.ll_menuBackgroundColor = [UIColor whiteColor];
-  
-    // 设置弹力和速度，  默认的是20,15,60
-
-    //===================
-    // 添加全屏侧滑手势
-    //===================
     self.leftSwipe = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(swipeLeftHandle:)];
     self.leftSwipe.maximumNumberOfTouches = 1;
     [self.view addGestureRecognizer:_leftSwipe];
@@ -340,22 +330,6 @@
     userCenterNamelab.textColor = [UIColor colorWithRed:72/255.0 green:82/255.0 blue:94/255.0 alpha:1];
     userCenterNamelab.font = [UIFont fontWithName:@"Helvetica-Bold" size:20];
     [self.slideMenu addSubview:userCenterNamelab];
-    
-//    UIImageView *attestationImg = [[UIImageView alloc] initWithFrame:CGRectMake(CGRectGetMaxX(userCenterNamelab.frame) + 10
-//, userCenterNamelab.frame.origin.y + 8, 50, 15)];
-//    attestationImg.image = [UIImage imageNamed:@"authenticated"];
-//    [self.slideMenu addSubview:attestationImg];
-//    
-//    UIImageView *goldImg= [[UIImageView alloc] initWithFrame:CGRectMake(self.slideMenu.frame.size.width / 2 + 5, CGRectGetMaxY(attestationImg.frame), 25, 25)];
-//    goldImg.image = [UIImage imageNamed:@"mine_gold"];
-//    [self.slideMenu addSubview:goldImg];
-//    
-//    UILabel *goldNumsLab = [[UILabel alloc] initWithFrame:CGRectMake(self.slideMenu.frame.size.width / 3 + 5, CGRectGetMidY(goldImg.frame) - 10, 50, 20)];
-//    goldNumsLab.text = @"31";
-//    goldNumsLab.font = [UIFont systemFontOfSize:13];
-//    goldNumsLab.textAlignment = NSTextAlignmentRight;
-//    goldNumsLab.textColor = [UIColor whiteColor];
-//    [self.slideMenu addSubview:goldNumsLab];
 
     UILabel *schoolNameLab = [[UILabel alloc] initWithFrame:CGRectMake(userCenterButton.frame.origin.x, CGRectGetMaxY(userCenterButton.frame) + 10, self.slideMenu.frame.size.width - userCenterButton.frame.origin.x, 20)];
     schoolNameLab.text = @"北京信息科技大学";
@@ -368,28 +342,6 @@
     collegeNameAndClassNum.textColor = [UIColor colorWithRed:72/255.0 green:82/255.0 blue:94/255.0 alpha:1];
     collegeNameAndClassNum.font = [UIFont fontWithName:@"Helvetica-Bold" size:14];
     [self.slideMenu addSubview:collegeNameAndClassNum];
-    
-//    UIView *focusView1 = [[UIView alloc] initWithFrame:CGRectMake(2, CGRectGetMaxY(collegeNameAndClassNum.frame) + 20, self.slideMenu.frame.size.width / 3.5 + 5, 30)];
-//    focusView1.backgroundColor = [UIColor colorWithRed:63/255.0 green:63/255.0 blue:63/255.0 alpha:0.4];
-//    [self.slideMenu addSubview:focusView1];
-//    UILabel *myAttentionLab = [[UILabel alloc] initWithFrame:CGRectMake(5, 0, self.slideMenu.frame.size.width / 3.5, 30)];
-//    focusView1.layer.cornerRadius = 10;
-//    myAttentionLab.text = @"我的关注 11";
-//    myAttentionLab.textColor = [UIColor whiteColor];
-//    myAttentionLab.textAlignment = NSTextAlignmentCenter;
-//    myAttentionLab.font = [UIFont systemFontOfSize:14];
-//    [focusView1 addSubview:myAttentionLab];
-//    
-//    UIView *focusView2 = [[UIView alloc] initWithFrame:CGRectMake(CGRectGetMaxX(focusView1.frame) + 1, CGRectGetMaxY(collegeNameAndClassNum.frame) + 20, self.slideMenu.frame.size.width / 3.5 + 5, 30)];
-//    focusView2.backgroundColor = [UIColor colorWithRed:63/255.0 green:63/255.0 blue:63/255.0 alpha:0.4];
-//    [self.slideMenu addSubview:focusView2];
-//    UILabel *myFansLab = [[UILabel alloc] initWithFrame:CGRectMake(5, 0, self.slideMenu.frame.size.width / 3.5, 30)];
-//    focusView2.layer.cornerRadius = 10;
-//    myFansLab.text = @"我的粉丝 19";
-//    myFansLab.textColor = [UIColor whiteColor];
-//    myFansLab.textAlignment = NSTextAlignmentCenter;
-//    myFansLab.font = [UIFont systemFontOfSize:14];
-//    [focusView2 addSubview:myFansLab];
     
     UIScrollView *menuScrollView = [[UIScrollView alloc] initWithFrame:CGRectMake(0, CGRectGetMaxY(userCenterBGI.frame) + 10, userCenterBGI.frame.size.width, self.view.frame.size.height - userCenterBGI.frame.size.height + 30)];
     menuScrollView.showsVerticalScrollIndicator = YES;
@@ -416,7 +368,7 @@
                 [btn setTitleEdgeInsets:UIEdgeInsetsMake(0, 12, 0, 0)];
                 break;
             case 1:
-                [btn setTitle:@"我的答疑" forState:UIControlStateNormal];
+                [btn setTitle:@"我的消息" forState:UIControlStateNormal];
                 [btn addTarget:self action:@selector(toMyAllExpertsAnswers) forControlEvents:UIControlEventTouchUpInside];
                 [btn setImage:[UIImage imageNamed:@"all_of_my_answer"] forState:UIControlStateNormal];
                 [btn setTitleColor:[UIColor colorWithRed:39/255.0 green:38/255.0 blue:54/255.0 alpha:1.0] forState:UIControlStateNormal];
@@ -457,7 +409,7 @@
     }
     menuScrollView.contentSize = CGSizeMake(0, menuScrollView.frame.size.height + 20);
     
-    UIButton *settingBtn = [[UIButton alloc] initWithFrame:CGRectMake(125, self.slideMenu.frame.size.height - 40, 80, 30)];
+    UIButton *settingBtn = [[UIButton alloc] initWithFrame:CGRectMake(0, self.slideMenu.frame.size.height - 40, 80, 35)];
     settingBtn.font = [UIFont systemFontOfSize:16];
     [settingBtn setImage:[UIImage imageNamed:@"设置"] forState:UIControlStateNormal];
     [settingBtn setTitle:@"设置" forState:UIControlStateNormal];
@@ -587,7 +539,7 @@
     {
         [_slideMenu ll_closeSlideMenu];
         self.hidesBottomBarWhenPushed=YES;
-        MyAllCollectViewController *collect = [[MyAllCollectViewController alloc] init];
+        MyAllCollectTableViewController *collect = [[MyAllCollectTableViewController alloc] init];
         [self.navigationController pushViewController:collect animated:YES];
         self.hidesBottomBarWhenPushed=NO;
     }
@@ -600,22 +552,22 @@
     if (_slideMenu.ll_isOpen)
     {
         [_slideMenu ll_closeSlideMenu];
-        self.hidesBottomBarWhenPushed=YES;
-        MyAllExpertsAnswerViewController *answer = [[MyAllExpertsAnswerViewController alloc] init];
-        [self.navigationController pushViewController:answer animated:YES];
-        self.hidesBottomBarWhenPushed=NO;
+        self.hidesBottomBarWhenPushed = YES;
+        AnswerChatListViewController * AC = [[AnswerChatListViewController alloc] init];
+        AC.isShowNetworkIndicatorView = YES;
+        [self.navigationController pushViewController:AC animated:YES];
+        self.hidesBottomBarWhenPushed = NO;
     }
 }
 
 - (void)toMyAllWrongBook
 {
-    
     [_slideMenu ll_closeSlideMenu];
     if (_slideMenu.ll_isOpen)
     {
         [_slideMenu ll_closeSlideMenu];
         self.hidesBottomBarWhenPushed=YES;
-        MyAllWrongBookViewController *book = [[MyAllWrongBookViewController alloc] init];
+        MyAllWrongBookDetailTableViewController *book = [[MyAllWrongBookDetailTableViewController alloc] init];
         [self.navigationController pushViewController:book animated:YES];
         self.hidesBottomBarWhenPushed=NO;
     }
@@ -628,7 +580,7 @@
     {
         [_slideMenu ll_closeSlideMenu];
         self.hidesBottomBarWhenPushed=YES;
-        MyDelegatesViewController *dele = [[MyDelegatesViewController alloc] init];
+        MydelegateTableViewController *dele = [[MydelegateTableViewController alloc] init];
         [self.navigationController pushViewController:dele animated:YES];
         self.hidesBottomBarWhenPushed=NO;
     }

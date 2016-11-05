@@ -1,21 +1,23 @@
 //
-//  MyAllWrongBookViewController.m
+//  MyAllCollectDetailViewController.m
 //  北信+
 //
-//  Created by #incloud on 16/10/3.
+//  Created by #incloud on 16/11/5.
 //  Copyright © 2016年 #incloud. All rights reserved.
 //
 
-#import "MyAllWrongBookViewController.h"
+#import "MyAllCollectDetailViewController.h"
 #import <BmobSDK/Bmob.h>
 #import <RongIMKit/RongIMKit.h>
 
-@interface MyAllWrongBookViewController () <RCIMUserInfoDataSource, RCIMGroupInfoDataSource>
+@interface MyAllCollectDetailViewController () <RCIMUserInfoDataSource, RCIMGroupInfoDataSource>
 @property (nonatomic ,retain) NSMutableArray *paperArr;
+
+
 
 @end
 
-@implementation MyAllWrongBookViewController
+@implementation MyAllCollectDetailViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -179,5 +181,15 @@
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
 }
+
+/*
+#pragma mark - Navigation
+
+// In a storyboard-based application, you will often want to do a little preparation before navigation
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    // Get the new view controller using [segue destinationViewController].
+    // Pass the selected object to the new view controller.
+}
+*/
 
 @end

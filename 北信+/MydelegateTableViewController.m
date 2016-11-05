@@ -1,13 +1,12 @@
 //
-//  HelpTableViewController.m
+//  MydelegateTableViewController.m
 //  北信+
 //
-//  Created by #incloud on 16/9/18.
+//  Created by #incloud on 16/11/5.
 //  Copyright © 2016年 #incloud. All rights reserved.
 //
 
-#import "HelpTableViewController.h"
-#import "HelpThings.h"
+#import "MydelegateTableViewController.h"
 #import "AgentView.h"
 #import "MJRefresh.h"
 #import "MBProgressHUD+NJ.h"
@@ -15,9 +14,7 @@
 #import <BmobSDK/Bmob.h>
 #import <RongIMKit/RongIMKit.h>
 
-
-@interface HelpTableViewController () <RCIMUserInfoDataSource, RCIMGroupInfoDataSource>
-
+@interface MydelegateTableViewController ()  <RCIMUserInfoDataSource, RCIMGroupInfoDataSource>
 //  查询控制器
 @property (nonatomic,strong)UISearchController *searchController;
 @property (strong,nonatomic) NSMutableArray  *searchList;
@@ -26,12 +23,9 @@
 @property (retain, nonatomic) NSMutableArray *agentArr;
 @property (weak, nonatomic) UIButton *cover;
 @property (nonatomic,strong) AgentView *agentView;
-
-
-
 @end
 
-@implementation HelpTableViewController
+@implementation MydelegateTableViewController
 
 -(NSMutableArray *)agentArr
 {
@@ -47,12 +41,12 @@
     self.view.backgroundColor = [UIColor whiteColor];
     self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"back"] style:UIBarButtonItemStylePlain target:self action:@selector(back)];
     self.navigationController.navigationBar.tintColor = [UIColor whiteColor];
-
+    
     
     self.tableView.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
     // 设置tableView的frame是因为会出现的黑边，给高度加20，否则下边出黑边
     self.tableView.frame = CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height + 20);
-   
+    
     self.tableView.mj_header = [MJRefreshNormalHeader headerWithRefreshingBlock:^{
         // 进入刷新状态后会自动调用这个block
         [self loadNewData];
@@ -78,8 +72,9 @@
          for (BmobObject *obj in array)
          {
              if ([[obj objectForKey:@"Acceptor"] isEqualToString:[[BmobUser currentUser] objectForKey:@"username"]])
-                 continue;
-             [tempArr addObject:obj];
+             {
+                 [tempArr addObject:obj];
+             }
          }
          dispatch_async(dispatch_get_main_queue(), ^{
              for (int i = 0; i < tempArr.count/2; i++)
@@ -106,7 +101,7 @@
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-
+    
     return self.agentArr.count;
 }
 
@@ -134,7 +129,7 @@
     avatarImg.layer.borderWidth = 0.5;
     avatarImg.layer.borderColor = [UIColor grayColor].CGColor;
     [cell addSubview:avatarImg];
-
+    
     UILabel *titleLabel = [[UILabel alloc] initWithFrame:CGRectMake(CGRectGetMaxX(avatarImg.frame) + 10, avatarImg.frame.origin.y - 10, 60, 30)];
     titleLabel.text = [self.agentArr[indexPath.row] objectForKey:@"Agent_Title"];
     titleLabel.textColor = [UIColor blackColor];
@@ -159,13 +154,14 @@
     moneyLabel.textColor = [UIColor colorWithRed:255/255.0 green:165/255.0 blue:0 alpha:1.0];
     moneyLabel.font = [UIFont systemFontOfSize:12];
     [cell addSubview:moneyLabel];
-      
+    
     return cell;
 }
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     AgentView *agent = [AgentView agentView];
+    agent.Agent_getBtn.hidden = YES;
     agent.Agent_content.backgroundColor = [UIColor clearColor];
     agent.Agent_content.layer.cornerRadius = 10;
     agent.Agent_content.layer.borderColor = [UIColor whiteColor].CGColor;
@@ -275,26 +271,5 @@
         }
     }];
 }
-
-// 抢
-- (void)Agent_getBtnClickMethon:(UIButton *)button
-{
-    //创建一条数据，并上传至服务器
-    BmobObject  *gameScore = [BmobObject objectWithoutDataWithClassName:@"Test" objectId:[self.agentArr[button.tag] objectForKey:@"objectId"]];
-    //异步保存到服务器
-    [gameScore setObject:[[BmobUser currentUser] objectForKey:@"username"] forKey:@"Acceptor"];
-    [gameScore updateInBackgroundWithResultBlock:^(BOOL isSuccessful, NSError *error) {
-        if (isSuccessful) {
-            NSLog(@"更新成功，以下为对象值，可以看到score值已经改变");
-            NSLog(@"%@",gameScore);
-            [MBProgressHUD showSuccess:@"成功抢到！"];
-        } else {
-            NSLog(@"%@",error);
-        }
-    }];
-
-}
-
-
 
 @end

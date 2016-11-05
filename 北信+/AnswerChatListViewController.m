@@ -11,7 +11,7 @@
 #import <BmobSDK/Bmob.h>
 
 
-@interface AnswerChatListViewController ()
+@interface AnswerChatListViewController () <RCIMUserInfoDataSource, RCIMGroupInfoDataSource>
 
 @end
 
@@ -19,6 +19,8 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    [[RCIM sharedRCIM] setUserInfoDataSource:self];
     
     self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"back"] style:UIBarButtonItemStylePlain target:self action:@selector(back)];
     self.navigationItem.title = @"我的答疑";
@@ -74,6 +76,31 @@
     }];
     
     [self.navigationController pushViewController:conversationVC animated:YES];
+}
+
+- (void)getUserInfoWithUserId:(NSString *)userId completion:(void (^)(RCUserInfo *))completion
+{
+    // 设置聊天界面用户头像为圆形
+    [RCIM sharedRCIM].globalMessageAvatarStyle=RC_USER_AVATAR_CYCLE;
+    BmobQuery   *bquery = [BmobQuery queryWithClassName:@"_User"];
+    [bquery getObjectInBackgroundWithId:userId block:^(BmobObject *object,NSError *error){
+        if (error)
+        {
+            NSLog(@"%@", error);
+        }
+        else
+        {
+            if (object)
+            {
+                RCUserInfo *user = [[RCUserInfo alloc] init];
+                BmobFile *file = (BmobFile*)[object objectForKey:@"user_pic"];
+                user.portraitUri = file.url;
+                user.userId = userId;
+                user.name = [object objectForKey:@"username"];
+                return completion(user);
+            }
+        }
+    }];
 }
 
 @end

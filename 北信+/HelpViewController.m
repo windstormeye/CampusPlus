@@ -137,7 +137,6 @@
 - (void)loadNewData
 {
     BmobQuery   *bquery = [BmobQuery queryWithClassName:@"Test"];
-    //查找GameScore表的数据
     NSMutableArray *tempArr = [[NSMutableArray alloc] init];
     [bquery findObjectsInBackgroundWithBlock:^(NSArray *array, NSError *error)
      {

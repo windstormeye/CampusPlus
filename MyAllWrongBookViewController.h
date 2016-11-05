@@ -7,7 +7,11 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <BmobSDK/Bmob.h>
+#import <RongIMKit/RongIMKit.h>
 
 @interface MyAllWrongBookViewController : UIViewController
+
+@property (nonatomic ,copy) NSString *paperId;
 
 @end
