@@ -8,11 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		2C2048E21DA0F05500FD6BC0 /* UINavigationController+FDFullscreenPopGesture.m in Sources */ = {isa = PBXBuildFile; fileRef = 2C2048E11DA0F05500FD6BC0 /* UINavigationController+FDFullscreenPopGesture.m */; };
-		2C2048FF1DA0F7B700FD6BC0 /* LLAnimationManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 2C2048F61DA0F7B700FD6BC0 /* LLAnimationManager.m */; };
-		2C2049001DA0F7B700FD6BC0 /* LLCircleLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 2C2048F81DA0F7B700FD6BC0 /* LLCircleLayer.m */; };
-		2C2049011DA0F7B700FD6BC0 /* LLDisplayLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 2C2048FA1DA0F7B700FD6BC0 /* LLDisplayLayer.m */; };
-		2C2049021DA0F7B700FD6BC0 /* LLSlideMenu.m in Sources */ = {isa = PBXBuildFile; fileRef = 2C2048FC1DA0F7B700FD6BC0 /* LLSlideMenu.m */; };
-		2C2049031DA0F7B700FD6BC0 /* UIView+SetRect.m in Sources */ = {isa = PBXBuildFile; fileRef = 2C2048FE1DA0F7B700FD6BC0 /* UIView+SetRect.m */; };
 		2C20490E1DA1F27D00FD6BC0 /* MyAllWrongBookViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2C20490D1DA1F27D00FD6BC0 /* MyAllWrongBookViewController.m */; };
 		2C2049141DA1F2E400FD6BC0 /* AboutUsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2C2049131DA1F2E400FD6BC0 /* AboutUsViewController.m */; };
 		2C225B9E1DB48FB50072F970 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2C225B9D1DB48FB50072F970 /* CoreLocation.framework */; };
@@ -46,7 +41,6 @@
 		2C5F10BD1D8B942700C58B05 /* NewsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2C5F10BC1D8B942700C58B05 /* NewsViewController.m */; };
 		2C5F10C81D8BF6F600C58B05 /* PaperDetailsView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2C5F10C71D8BF6F600C58B05 /* PaperDetailsView.m */; };
 		2C5F10CC1D8C277800C58B05 /* PaperDetailsView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2C5F10CB1D8C277800C58B05 /* PaperDetailsView.xib */; };
-		2C6072F51D91300B004375CD /* Paper.m in Sources */ = {isa = PBXBuildFile; fileRef = 2C6072F41D91300B004375CD /* Paper.m */; };
 		2C72FF171DCCAFC3007D560D /* MyAllCollectTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2C72FF161DCCAFC3007D560D /* MyAllCollectTableViewController.m */; };
 		2C7A8AF61D87E19900681CB4 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 2C7A8AF51D87E19900681CB4 /* main.m */; };
 		2C7A8AF91D87E19900681CB4 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 2C7A8AF81D87E19900681CB4 /* AppDelegate.m */; };
@@ -82,7 +76,6 @@
 		2C7A8B8D1D88EB9000681CB4 /* UIImageView+WebCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 2C7A8B7C1D88EB8F00681CB4 /* UIImageView+WebCache.m */; };
 		2C7A8B8E1D88EB9000681CB4 /* UIView+WebCacheOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 2C7A8B7E1D88EB9000681CB4 /* UIView+WebCacheOperation.m */; };
 		2C7A8B911D8950A300681CB4 /* News.m in Sources */ = {isa = PBXBuildFile; fileRef = 2C7A8B901D8950A300681CB4 /* News.m */; };
-		2C7A8B9A1D89680500681CB4 /* MyClasses.m in Sources */ = {isa = PBXBuildFile; fileRef = 2C7A8B991D89680500681CB4 /* MyClasses.m */; };
 		2C8782B51DC1D2390053370B /* AssetsLibrary.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2C8782B41DC1D2390053370B /* AssetsLibrary.framework */; };
 		2C8782B71DC1D2470053370B /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2C8782B61DC1D2470053370B /* AudioToolbox.framework */; };
 		2C8DBEA21DC2EC62001F6A4F /* AnswerChatListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2C8DBEA11DC2EC62001F6A4F /* AnswerChatListViewController.m */; };
@@ -114,7 +107,6 @@
 		2CB20E1D1D8D6D7800DE531D /* AllPaperDetailsTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2CB20E1C1D8D6D7800DE531D /* AllPaperDetailsTableViewController.m */; };
 		2CB20E201D8D739200DE531D /* PaperViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2CB20E1F1D8D739200DE531D /* PaperViewController.m */; };
 		2CB20E331D8E530A00DE531D /* HelpTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2CB20E311D8E530A00DE531D /* HelpTableViewController.m */; };
-		2CB20E371D8E55A600DE531D /* HelpThings.m in Sources */ = {isa = PBXBuildFile; fileRef = 2CB20E361D8E55A600DE531D /* HelpThings.m */; };
 		2CEAA6861D8A409700AADD66 /* News.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2CEAA6851D8A409700AADD66 /* News.xib */; };
 		2CEAA6891D8A40AA00AADD66 /* NewsView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2CEAA6881D8A40AA00AADD66 /* NewsView.m */; };
 		EA607025D395B045278EB88E /* libPods-北信+.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 2D389DB6BA7A2B61A1249394 /* libPods-北信+.a */; };
@@ -140,16 +132,6 @@
 /* Begin PBXFileReference section */
 		2C2048E01DA0F05500FD6BC0 /* UINavigationController+FDFullscreenPopGesture.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UINavigationController+FDFullscreenPopGesture.h"; sourceTree = "<group>"; };
 		2C2048E11DA0F05500FD6BC0 /* UINavigationController+FDFullscreenPopGesture.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UINavigationController+FDFullscreenPopGesture.m"; sourceTree = "<group>"; };
-		2C2048F51DA0F7B700FD6BC0 /* LLAnimationManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LLAnimationManager.h; sourceTree = "<group>"; };
-		2C2048F61DA0F7B700FD6BC0 /* LLAnimationManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LLAnimationManager.m; sourceTree = "<group>"; };
-		2C2048F71DA0F7B700FD6BC0 /* LLCircleLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LLCircleLayer.h; sourceTree = "<group>"; };
-		2C2048F81DA0F7B700FD6BC0 /* LLCircleLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LLCircleLayer.m; sourceTree = "<group>"; };
-		2C2048F91DA0F7B700FD6BC0 /* LLDisplayLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LLDisplayLayer.h; sourceTree = "<group>"; };
-		2C2048FA1DA0F7B700FD6BC0 /* LLDisplayLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LLDisplayLayer.m; sourceTree = "<group>"; };
-		2C2048FB1DA0F7B700FD6BC0 /* LLSlideMenu.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LLSlideMenu.h; sourceTree = "<group>"; };
-		2C2048FC1DA0F7B700FD6BC0 /* LLSlideMenu.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LLSlideMenu.m; sourceTree = "<group>"; };
-		2C2048FD1DA0F7B700FD6BC0 /* UIView+SetRect.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+SetRect.h"; sourceTree = "<group>"; };
-		2C2048FE1DA0F7B700FD6BC0 /* UIView+SetRect.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+SetRect.m"; sourceTree = "<group>"; };
 		2C20490C1DA1F27D00FD6BC0 /* MyAllWrongBookViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MyAllWrongBookViewController.h; path = ../MyAllWrongBookViewController.h; sourceTree = "<group>"; };
 		2C20490D1DA1F27D00FD6BC0 /* MyAllWrongBookViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MyAllWrongBookViewController.m; path = ../MyAllWrongBookViewController.m; sourceTree = "<group>"; };
 		2C2049121DA1F2E400FD6BC0 /* AboutUsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AboutUsViewController.h; sourceTree = "<group>"; };
@@ -210,8 +192,6 @@
 		2C5F10C61D8BF6F600C58B05 /* PaperDetailsView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PaperDetailsView.h; sourceTree = "<group>"; };
 		2C5F10C71D8BF6F600C58B05 /* PaperDetailsView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PaperDetailsView.m; sourceTree = "<group>"; };
 		2C5F10CB1D8C277800C58B05 /* PaperDetailsView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PaperDetailsView.xib; sourceTree = "<group>"; };
-		2C6072F31D91300B004375CD /* Paper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Paper.h; sourceTree = "<group>"; };
-		2C6072F41D91300B004375CD /* Paper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Paper.m; sourceTree = "<group>"; };
 		2C72FF151DCCAFC3007D560D /* MyAllCollectTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyAllCollectTableViewController.h; sourceTree = "<group>"; };
 		2C72FF161DCCAFC3007D560D /* MyAllCollectTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyAllCollectTableViewController.m; sourceTree = "<group>"; };
 		2C7A8AF11D87E19900681CB4 /* 北信+.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "北信+.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -283,8 +263,6 @@
 		2C7A8B7E1D88EB9000681CB4 /* UIView+WebCacheOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+WebCacheOperation.m"; sourceTree = "<group>"; };
 		2C7A8B8F1D8950A300681CB4 /* News.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = News.h; sourceTree = "<group>"; };
 		2C7A8B901D8950A300681CB4 /* News.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = News.m; sourceTree = "<group>"; };
-		2C7A8B981D89680500681CB4 /* MyClasses.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyClasses.h; sourceTree = "<group>"; };
-		2C7A8B991D89680500681CB4 /* MyClasses.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyClasses.m; sourceTree = "<group>"; };
 		2C8782B41DC1D2390053370B /* AssetsLibrary.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AssetsLibrary.framework; path = System/Library/Frameworks/AssetsLibrary.framework; sourceTree = SDKROOT; };
 		2C8782B61DC1D2470053370B /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
 		2C8782B81DC1D2540053370B /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
@@ -359,8 +337,6 @@
 		2CB20E1F1D8D739200DE531D /* PaperViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PaperViewController.m; sourceTree = "<group>"; };
 		2CB20E301D8E530A00DE531D /* HelpTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HelpTableViewController.h; sourceTree = "<group>"; };
 		2CB20E311D8E530A00DE531D /* HelpTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HelpTableViewController.m; sourceTree = "<group>"; };
-		2CB20E351D8E55A600DE531D /* HelpThings.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HelpThings.h; sourceTree = "<group>"; };
-		2CB20E361D8E55A600DE531D /* HelpThings.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HelpThings.m; sourceTree = "<group>"; };
 		2CEAA6851D8A409700AADD66 /* News.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = News.xib; sourceTree = "<group>"; };
 		2CEAA6871D8A40AA00AADD66 /* NewsView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewsView.h; sourceTree = "<group>"; };
 		2CEAA6881D8A40AA00AADD66 /* NewsView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewsView.m; sourceTree = "<group>"; };
@@ -404,23 +380,6 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		2C2048E51DA0F79900FD6BC0 /* LLSlideMenu */ = {
-			isa = PBXGroup;
-			children = (
-				2C2048F51DA0F7B700FD6BC0 /* LLAnimationManager.h */,
-				2C2048F61DA0F7B700FD6BC0 /* LLAnimationManager.m */,
-				2C2048F71DA0F7B700FD6BC0 /* LLCircleLayer.h */,
-				2C2048F81DA0F7B700FD6BC0 /* LLCircleLayer.m */,
-				2C2048F91DA0F7B700FD6BC0 /* LLDisplayLayer.h */,
-				2C2048FA1DA0F7B700FD6BC0 /* LLDisplayLayer.m */,
-				2C2048FB1DA0F7B700FD6BC0 /* LLSlideMenu.h */,
-				2C2048FC1DA0F7B700FD6BC0 /* LLSlideMenu.m */,
-				2C2048FD1DA0F7B700FD6BC0 /* UIView+SetRect.h */,
-				2C2048FE1DA0F7B700FD6BC0 /* UIView+SetRect.m */,
-			);
-			name = LLSlideMenu;
-			sourceTree = "<group>";
-		};
 		2C225BB51DB493180072F970 /* Framework */ = {
 			isa = PBXGroup;
 			children = (
@@ -689,12 +648,6 @@
 			children = (
 				2C7A8B8F1D8950A300681CB4 /* News.h */,
 				2C7A8B901D8950A300681CB4 /* News.m */,
-				2C7A8B981D89680500681CB4 /* MyClasses.h */,
-				2C7A8B991D89680500681CB4 /* MyClasses.m */,
-				2CB20E351D8E55A600DE531D /* HelpThings.h */,
-				2CB20E361D8E55A600DE531D /* HelpThings.m */,
-				2C6072F31D91300B004375CD /* Paper.h */,
-				2C6072F41D91300B004375CD /* Paper.m */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -922,7 +875,6 @@
 				2CA20DFA1D922DC600180B0F /* NSString+PJNSStringExtension.m */,
 				2C2048E01DA0F05500FD6BC0 /* UINavigationController+FDFullscreenPopGesture.h */,
 				2C2048E11DA0F05500FD6BC0 /* UINavigationController+FDFullscreenPopGesture.m */,
-				2C2048E51DA0F79900FD6BC0 /* LLSlideMenu */,
 				2C97BC461DBC7AF600E7CD7C /* MBProgressHUD */,
 				2CA20DFF1D94292100180B0F /* MZTimerLabel */,
 			);
@@ -1168,18 +1120,14 @@
 				2C7A8B801D88EB9000681CB4 /* NSData+ImageContentType.m in Sources */,
 				2C7A8B571D88EA6200681CB4 /* TAAnimatedDotView.m in Sources */,
 				2C7A8B861D88EB9000681CB4 /* SDWebImageManager.m in Sources */,
-				2C2048FF1DA0F7B700FD6BC0 /* LLAnimationManager.m in Sources */,
 				2C225BC41DB495910072F970 /* AFHTTPSessionManager.m in Sources */,
 				2C97BC391DB9D9BF00E7CD7C /* IQBarButtonItem.m in Sources */,
 				2CA20DFE1D9428FA00180B0F /* MZTimerLabel.m in Sources */,
 				2C7A8B841D88EB9000681CB4 /* SDWebImageDownloader.m in Sources */,
 				2C7A8B8D1D88EB9000681CB4 /* UIImageView+WebCache.m in Sources */,
 				2C97BC241DB9D99A00E7CD7C /* IQNSArray+Sort.m in Sources */,
-				2CB20E371D8E55A600DE531D /* HelpThings.m in Sources */,
 				2C97BC261DB9D99A00E7CD7C /* IQUITextFieldView+Additions.m in Sources */,
-				2C2049031DA0F7B700FD6BC0 /* UIView+SetRect.m in Sources */,
 				2C225BC61DB495910072F970 /* AFSecurityPolicy.m in Sources */,
-				2C7A8B9A1D89680500681CB4 /* MyClasses.m in Sources */,
 				2C5DDD601DC050680065527D /* UserCenterPageViewController.m in Sources */,
 				2C7A8B8C1D88EB9000681CB4 /* UIImageView+HighlightedWebCache.m in Sources */,
 				2C7A8B911D8950A300681CB4 /* News.m in Sources */,
@@ -1188,7 +1136,6 @@
 				2CB20E1D1D8D6D7800DE531D /* AllPaperDetailsTableViewController.m in Sources */,
 				2C97BC251DB9D99A00E7CD7C /* IQUIScrollView+Additions.m in Sources */,
 				2C2049141DA1F2E400FD6BC0 /* AboutUsViewController.m in Sources */,
-				2C2049021DA0F7B700FD6BC0 /* LLSlideMenu.m in Sources */,
 				2C7A8B891D88EB9000681CB4 /* UIImage+GIF.m in Sources */,
 				2C7A8B581D88EA6200681CB4 /* TADotView.m in Sources */,
 				2C7A8B871D88EB9000681CB4 /* SDWebImagePrefetcher.m in Sources */,
@@ -1205,14 +1152,11 @@
 				2CB20E201D8D739200DE531D /* PaperViewController.m in Sources */,
 				2C3C65661DC7333200C7A5FB /* YiRightView.m in Sources */,
 				2C97BC451DB9D9D000E7CD7C /* IQKeyboardReturnKeyHandler.m in Sources */,
-				2C2049011DA0F7B700FD6BC0 /* LLDisplayLayer.m in Sources */,
 				2C225BC81DB495910072F970 /* AFURLResponseSerialization.m in Sources */,
 				2C97BC3D1DB9D9BF00E7CD7C /* IQUIView+IQKeyboardToolbar.m in Sources */,
-				2C6072F51D91300B004375CD /* Paper.m in Sources */,
 				2C225BD71DB4C6FC0072F970 /* OutCampusViewController.m in Sources */,
 				2C97BC3C1DB9D9BF00E7CD7C /* IQToolbar.m in Sources */,
 				2C3C65871DCAF3D300C7A5FB /* MyGetAgentView.m in Sources */,
-				2C2049001DA0F7B700FD6BC0 /* LLCircleLayer.m in Sources */,
 				2C946F6D1DCDB12500C14903 /* MyAllCollectDetailViewController.m in Sources */,
 				2C5F10BD1D8B942700C58B05 /* NewsViewController.m in Sources */,
 				2C97BC3B1DB9D9BF00E7CD7C /* IQTitleBarButtonItem.m in Sources */,

@@ -7,6 +7,15 @@
 //
 
 #import "UserCenterPageViewController.h"
+#import "MyAllCollectTableViewController.h"
+#import "MyAllWrongBookDetailTableViewController.h"
+#import "MyActivitiesViewController.h"
+#import "MydelegateTableViewController.h"
+#import "AboutUsViewController.h"
+#import "AnswerChatListViewController.h"
+#import "LoginViewController.h"
+#import "AppDelegate.h"
+#import "ViewController.h"
 #import <BmobSDK/Bmob.h>
 
 
@@ -149,19 +158,22 @@
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
     if (indexPath.section == 0)
     {
+        cell.backgroundColor = [UIColor colorWithRed:211/255.0 green:211/255.0 blue:211/255.0 alpha:0.1];
         UIView *btnView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, cell.frame.size.width, 60)];
         [cell addSubview:btnView];
-        UIButton *firstBtn = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, cell.frame.size.width / 2 - 5, 60)];
+        UIButton *firstBtn = [[UIButton alloc] initWithFrame:CGRectMake(5, 0, cell.frame.size.width / 2 - 5, 60)];
         firstBtn.backgroundColor = [UIColor whiteColor];
-        [firstBtn setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+        [firstBtn setTitleColor:[UIColor grayColor] forState:UIControlStateNormal];
         [firstBtn setTitle:@"我的关注：9" forState:UIControlStateNormal];
+        firstBtn.font = [UIFont systemFontOfSize:16];
         [btnView addSubview:firstBtn];
         UIView *middleView = [[UIView alloc] initWithFrame:CGRectMake(CGRectGetMaxX(firstBtn.frame), 0, 5, 60)];
-        middleView.backgroundColor = [UIColor colorWithRed:211/255.0 green:211/255.0 blue:211/255.0 alpha:0.5];
+        middleView.backgroundColor = [UIColor colorWithRed:211/255.0 green:211/255.0 blue:211/255.0 alpha:0.1];
         [cell addSubview:middleView];
-        UIButton *secondBtn = [[UIButton alloc] initWithFrame:CGRectMake(CGRectGetMaxX(middleView.frame), 0, cell.frame.size.width / 2 - 5, 60)];
+        UIButton *secondBtn = [[UIButton alloc] initWithFrame:CGRectMake(CGRectGetMaxX(middleView.frame), 0, cell.frame.size.width / 2 - 10, 60)];
         secondBtn.backgroundColor = [UIColor whiteColor];
-        [secondBtn setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+        secondBtn.font = [UIFont systemFontOfSize:16];
+        [secondBtn setTitleColor:[UIColor grayColor] forState:UIControlStateNormal];
         [secondBtn setTitle:@"我的粉丝：11" forState:UIControlStateNormal];
         [btnView addSubview:secondBtn];
         return cell;
@@ -195,18 +207,19 @@
     }
     else
     {
-        UIView *cellView = [[UIView alloc] initWithFrame:CGRectMake(20, 0, self.view.frame.size.width - 40, 40)];
-        cellView.backgroundColor = [UIColor colorWithRed:220/255.0 green:20/255.0 blue:60/255.0 alpha:1.0];
-        [cell addSubview:cellView];
-        cellView.center = cell.center;
-        cellView.clipsToBounds = YES;
-        cellView.layer.cornerRadius = 10;
+        cell.backgroundColor = [UIColor whiteColor];
+        UIButton *cellBtn = [[UIButton alloc] initWithFrame:CGRectMake(20, 10, self.view.frame.size.width - 40, 40)];
+        cellBtn.backgroundColor = [UIColor colorWithRed:220/255.0 green:20/255.0 blue:60/255.0 alpha:1.0];
+        [cell addSubview:cellBtn];
+        [cellBtn addTarget:self action:@selector(cellBtnClickMethon) forControlEvents:UIControlEventTouchUpInside];
+        cellBtn.clipsToBounds = YES;
+        cellBtn.layer.cornerRadius = 10;
         
-        UILabel *cellTextLabel = [[UILabel alloc] initWithFrame:CGRectMake((cellView.frame.size.width / 2 - 20), 3, 40, 30)];
+        UILabel *cellTextLabel = [[UILabel alloc] initWithFrame:CGRectMake((cellBtn.frame.size.width / 2 - 20), 3, 40, 30)];
         cellTextLabel.textAlignment = NSTextAlignmentCenter;
         cellTextLabel.text = @"退出";
         cellTextLabel.textColor = [UIColor whiteColor];
-        [cellView addSubview:cellTextLabel];
+        [cellBtn addSubview:cellTextLabel];
         return cell;
 
     }
@@ -214,7 +227,61 @@
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    
+    NSLog(@"%ld", (long)indexPath.row);
+
+    if (indexPath.section == 1)
+    {
+        switch (indexPath.row)
+        {
+            case 0:
+            {
+                self.hidesBottomBarWhenPushed = YES;
+                MyAllCollectTableViewController *cl = [[MyAllCollectTableViewController alloc] init];
+                [self.navigationController pushViewController:cl animated:YES];
+                self.hidesBottomBarWhenPushed = NO;
+            }
+                break;
+            case 1:
+            {
+                self.hidesBottomBarWhenPushed = YES;
+                AnswerChatListViewController *cl = [[AnswerChatListViewController alloc] init];
+                [self.navigationController pushViewController:cl animated:YES];
+                self.hidesBottomBarWhenPushed = NO;
+            }
+                break;
+            case 2:
+            {
+                self.hidesBottomBarWhenPushed = YES;
+                MydelegateTableViewController *cl = [[MydelegateTableViewController alloc] init];
+                [self.navigationController pushViewController:cl animated:YES];
+                self.hidesBottomBarWhenPushed = NO;
+            }
+                break;
+            case 3:
+            {
+                self.hidesBottomBarWhenPushed = YES;
+                MyAllWrongBookDetailTableViewController *cl = [[MyAllWrongBookDetailTableViewController alloc] init];
+                [self.navigationController pushViewController:cl animated:YES];
+                self.hidesBottomBarWhenPushed = NO;
+            }
+                break;
+            case 4:
+            {
+                self.hidesBottomBarWhenPushed = YES;
+                MyActivitiesViewController *cl = [[MyActivitiesViewController alloc] init];
+                [self.navigationController pushViewController:cl animated:YES];
+                self.hidesBottomBarWhenPushed = NO;
+            }
+                break;
+            case 5:
+            {
+                self.hidesBottomBarWhenPushed = YES;
+                AboutUsViewController *cl = [[AboutUsViewController alloc] init];
+                [self.navigationController pushViewController:cl animated:YES];
+                self.hidesBottomBarWhenPushed = NO;
+            }
+        }
+    }
 }
 
 -(CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
@@ -222,6 +289,23 @@
     return 10;
 }
 
+- (void)cellBtnClickMethon
+{
+    [BmobUser logout];
+    BmobUser *bUser = [BmobUser currentUser];
+    if (bUser == NULL)
+    {
+        LoginViewController *lg = [LoginViewController loginView];
+        AppDelegate* appDelagete = [UIApplication sharedApplication].delegate;
+        appDelagete.window.rootViewController = lg;
+    }
+    else
+    {
+        ViewController *view = [[ViewController alloc] init];
+        AppDelegate* appDelagete = [UIApplication sharedApplication].delegate;
+        appDelagete.window.rootViewController = view.contentTabBarController;
+    }
+}
 
 
 

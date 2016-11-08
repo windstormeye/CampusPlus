@@ -7,7 +7,6 @@
 //
 
 #import "HelpTableViewController.h"
-#import "HelpThings.h"
 #import "AgentView.h"
 #import "MJRefresh.h"
 #import "MBProgressHUD+NJ.h"

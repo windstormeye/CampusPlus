@@ -11,10 +11,8 @@
 #import "SDCycleScrollView.h"
 #import "NewsViewController.h"
 #import "PaperDetailsView.h"
-#import "MyClasses.h"
 #import "NewsView.h"
 #import "News.h"
-#import "LLSlideMenu.h"
 #import "MyAllCollectTableViewController.h"
 #import "MyAllWrongBookDetailTableViewController.h"
 #import "AnswerChatListViewController.h"
@@ -35,9 +33,6 @@
 @property (weak, nonatomic) UIButton *cover;
 @property(nonatomic, weak) PaperDetailsView *paper;
 @property (nonatomic, retain) NSDictionary *newsDict;
-@property (nonatomic, strong) LLSlideMenu *slideMenu;
-// 全屏侧滑手势
-@property (nonatomic, strong) UIPanGestureRecognizer *leftSwipe;
 @property (nonatomic, strong) UIPercentDrivenInteractiveTransition *percent;
 @property (nonatomic, retain) NSMutableArray *bomeObjArr;
 
@@ -108,17 +103,7 @@
     [titleView addSubview:beixingImg];
     [titleView addSubview:beixingjiaiImg];
     self.navigationItem.titleView = titleView;
-    // 设置头像View
-    UIImageView *userImgView= [[UIImageView alloc] initWithFrame:CGRectMake(0, 5, 25, 30)];
-    userImgView.image = [UIImage imageNamed:@"汉堡线"];
-    // 设置用户头像Button
-    UIButton *userButton = [UIButton buttonWithType:UIButtonTypeCustom];
-    userButton.frame = CGRectMake(0, 0, 40, 40);
-    // 把用户头像View添加到button上
-    [userButton addSubview:userImgView];
-    [userButton addTarget:self action:@selector(openLLSlideMenuAction) forControlEvents:UIControlEventTouchUpInside];
-    UIBarButtonItem *leftItem = [[UIBarButtonItem alloc] initWithCustomView:userButton];
-    self.navigationItem.leftBarButtonItem = leftItem;
+
     // 设置图片轮播器
     NSArray *imagesURLStrings = @[@"http://nos.netease.com/edu-image/C5C39772ECC196D005F6EEACF98D4C9D.jpg?imageView&thumbnail=1205y490&quality=100",
         @"http://nos.netease.com/edu-image/64E75B1A8458347BA49D4A77BDEA130C.jpg?imageView&thumbnail=1205y490&quality=100",
@@ -290,133 +275,6 @@
 
     // 设置ScrollView的滚动区域
     scrollView.contentSize = CGSizeMake(ww.width, tmp);
-    
-    // 设置个人中心弹簧页面
-    // 初始化
-    _slideMenu = [[LLSlideMenu alloc] init];
-
-    [self.tabBarController.view addSubview:_slideMenu];
-    // 设置菜单宽度
-    _slideMenu.ll_menuWidth = 220;
-    _slideMenu.ll_menuBackgroundColor = [UIColor whiteColor];
-    self.leftSwipe = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(swipeLeftHandle:)];
-    self.leftSwipe.maximumNumberOfTouches = 1;
-    [self.view addGestureRecognizer:_leftSwipe];
-    
-    UIImageView *userCenterBGI = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"侧滑背景图"]];
-    userCenterBGI.frame = CGRectMake(0, 0, self.slideMenu.frame.size.width - 100, 150);
-    [self.slideMenu addSubview:userCenterBGI];
-    
-    // 设置头像View
-    UIImageView *userCenterImgView= [[UIImageView alloc] init];
-    userCenterImgView.frame = CGRectMake(0, 0, 40, 40);
-    userCenterImgView.image = [UIImage imageNamed:@"user_name"];
-    userCenterImgView.backgroundColor = [UIColor blackColor];
-    // 设置用户头像为圆形
-    userCenterImgView.layer.cornerRadius = userCenterImgView.frame.size.width / 2;
-    userCenterImgView.clipsToBounds = YES;
-    userCenterImgView.layer.borderWidth = 2;
-    userCenterImgView.layer.borderColor = [UIColor blackColor].CGColor;
-    // 设置用户头像Button
-    UIButton *userCenterButton = [UIButton buttonWithType:UIButtonTypeCustom];
-    userCenterButton.frame = CGRectMake(10, (userCenterBGI.frame.size.height - 40) / 3, 40, 40);
-    // 把用户头像View添加到button上
-    [userCenterButton addSubview:userCenterImgView];
-    [self.slideMenu addSubview:userCenterButton];
-
-    
-    UILabel *userCenterNamelab = [[UILabel alloc] initWithFrame:CGRectMake(CGRectGetMaxX(userCenterButton.frame) + 5, userCenterButton.frame.origin.y + (userCenterButton.frame.size.height / 4), self.slideMenu.frame.size.width / 4 - 20, 30)];
-    userCenterNamelab.text = @"翁培钧";
-    userCenterNamelab.textColor = [UIColor colorWithRed:72/255.0 green:82/255.0 blue:94/255.0 alpha:1];
-    userCenterNamelab.font = [UIFont fontWithName:@"Helvetica-Bold" size:20];
-    [self.slideMenu addSubview:userCenterNamelab];
-
-    UILabel *schoolNameLab = [[UILabel alloc] initWithFrame:CGRectMake(userCenterButton.frame.origin.x, CGRectGetMaxY(userCenterButton.frame) + 10, self.slideMenu.frame.size.width - userCenterButton.frame.origin.x, 20)];
-    schoolNameLab.text = @"北京信息科技大学";
-    schoolNameLab.textColor = [UIColor colorWithRed:72/255.0 green:82/255.0 blue:94/255.0 alpha:1];
-    schoolNameLab.font = [UIFont fontWithName:@"Helvetica-Bold" size:14];
-    [self.slideMenu addSubview:schoolNameLab];
-    
-    UILabel *collegeNameAndClassNum = [[UILabel alloc] initWithFrame:CGRectMake(schoolNameLab.frame.origin.x, CGRectGetMaxY(schoolNameLab.frame), schoolNameLab.frame.size.width + 20, schoolNameLab.frame.size.height)];
-    collegeNameAndClassNum.text = @"计算机学院 1503班";
-    collegeNameAndClassNum.textColor = [UIColor colorWithRed:72/255.0 green:82/255.0 blue:94/255.0 alpha:1];
-    collegeNameAndClassNum.font = [UIFont fontWithName:@"Helvetica-Bold" size:14];
-    [self.slideMenu addSubview:collegeNameAndClassNum];
-    
-    UIScrollView *menuScrollView = [[UIScrollView alloc] initWithFrame:CGRectMake(0, CGRectGetMaxY(userCenterBGI.frame) + 10, userCenterBGI.frame.size.width, self.view.frame.size.height - userCenterBGI.frame.size.height + 30)];
-    menuScrollView.showsVerticalScrollIndicator = YES;
-    [self.slideMenu addSubview:menuScrollView];
-    
-    CGFloat tempY = 0;
-    CGFloat btnW = 200.f;
-    CGFloat btnH = 30;
-    CGFloat btnY = 20;
-    CGFloat btnMaginTop = 30;
-    for (int i = 0; i < 6; i++)
-    {
-        UIButton *btn = [[UIButton alloc] init];
-        tempY = btnY + i * (btnMaginTop + btnH);
-        btn.frame = CGRectMake(15, tempY, btnW - 30, btnH);
-        btn.contentHorizontalAlignment = UIControlContentHorizontalAlignmentLeft;
-        switch (i)
-        {
-            case 0:
-                [btn setTitle:@"我的收藏" forState:UIControlStateNormal];
-                [btn addTarget:self action:@selector(toMyAllCollect) forControlEvents:UIControlEventTouchUpInside];
-                [btn setImage:[UIImage imageNamed:@"all_of_my_collect"] forState:UIControlStateNormal];
-                [btn setTitleColor:[UIColor colorWithRed:39/255.0 green:38/255.0 blue:54/255.0 alpha:1.0] forState:UIControlStateNormal];
-                [btn setTitleEdgeInsets:UIEdgeInsetsMake(0, 12, 0, 0)];
-                break;
-            case 1:
-                [btn setTitle:@"我的消息" forState:UIControlStateNormal];
-                [btn addTarget:self action:@selector(toMyAllExpertsAnswers) forControlEvents:UIControlEventTouchUpInside];
-                [btn setImage:[UIImage imageNamed:@"all_of_my_answer"] forState:UIControlStateNormal];
-                [btn setTitleColor:[UIColor colorWithRed:39/255.0 green:38/255.0 blue:54/255.0 alpha:1.0] forState:UIControlStateNormal];
-                [btn setTitleEdgeInsets:UIEdgeInsetsMake(0, 12, 0, 0)];
-                break;
-            case 2:
-                [btn setTitle:@"错题本" forState:UIControlStateNormal];
-                [btn addTarget:self action:@selector(toMyAllWrongBook) forControlEvents:UIControlEventTouchUpInside];
-                [btn setImage:[UIImage imageNamed:@"all_of_my_wrong"] forState:UIControlStateNormal];
-                [btn setTitleColor:[UIColor colorWithRed:39/255.0 green:38/255.0 blue:54/255.0 alpha:1.0] forState:UIControlStateNormal];
-                [btn setTitleEdgeInsets:UIEdgeInsetsMake(0, 12, 0, 0)];
-                break;
-            case 3:
-                [btn setTitle:@"我的代理" forState:UIControlStateNormal];
-                [btn addTarget:self action:@selector(toMyDelegates) forControlEvents:UIControlEventTouchUpInside];
-                [btn setImage:[UIImage imageNamed:@"mydelegate"] forState:UIControlStateNormal];
-                [btn setTitleColor:[UIColor colorWithRed:39/255.0 green:38/255.0 blue:54/255.0 alpha:1.0] forState:UIControlStateNormal];
-                [btn setTitleEdgeInsets:UIEdgeInsetsMake(0, 12, 0, 0)];
-                break;
-            case 4:
-                [btn setTitle:@"我的活动" forState:UIControlStateNormal];
-                [btn addTarget:self action:@selector(toMyActivities) forControlEvents:UIControlEventTouchUpInside];
-                [btn setImage:[UIImage imageNamed:@"myActivities"] forState:UIControlStateNormal];
-                [btn setTitleColor:[UIColor colorWithRed:39/255.0 green:38/255.0 blue:54/255.0 alpha:1.0] forState:UIControlStateNormal];
-                [btn setTitleEdgeInsets:UIEdgeInsetsMake(0, 12, 0, 0)];
-                break;
-            case 5:
-                [btn setTitle:@"关于我们" forState:UIControlStateNormal];
-                [btn addTarget:self action:@selector(toAboutUs) forControlEvents:UIControlEventTouchUpInside];
-                [btn setImage:[UIImage imageNamed:@"aboutme"] forState:UIControlStateNormal];
-                [btn setTitleColor:[UIColor colorWithRed:39/255.0 green:38/255.0 blue:54/255.0 alpha:1.0] forState:UIControlStateNormal];
-                [btn setTitleEdgeInsets:UIEdgeInsetsMake(0, 12, 0, 0)];
-                break;
-        }
-        btn.titleLabel.font = [UIFont systemFontOfSize:16];
-        btn.tintColor = [UIColor blackColor];
-        [menuScrollView addSubview:btn];
-    }
-    menuScrollView.contentSize = CGSizeMake(0, menuScrollView.frame.size.height + 20);
-    
-    UIButton *settingBtn = [[UIButton alloc] initWithFrame:CGRectMake(0, self.slideMenu.frame.size.height - 40, 80, 35)];
-    settingBtn.font = [UIFont systemFontOfSize:16];
-    [settingBtn setImage:[UIImage imageNamed:@"设置"] forState:UIControlStateNormal];
-    [settingBtn setTitle:@"设置" forState:UIControlStateNormal];
-    [settingBtn setTitleEdgeInsets:UIEdgeInsetsMake(0, 12, 0, 0)];
-    [settingBtn setTitleColor:[UIColor colorWithRed:39/255.0 green:38/255.0 blue:54/255.0 alpha:1.0] forState:UIControlStateNormal];
-    [self.slideMenu addSubview:settingBtn];
-    
 }
 
 - (void)classViewClick
@@ -486,129 +344,5 @@
     self.hidesBottomBarWhenPushed=NO;
 }
 
-// 全屏侧滑手势监听
-- (void)swipeLeftHandle:(UIScreenEdgePanGestureRecognizer *)recognizer {
-    // 如果菜单已打开则禁止滑动
-    if (_slideMenu.ll_isOpen) {
-        return;
-    }
-    // 计算手指滑的物理距离（滑了多远，与起始位置无关）
-    CGFloat progress = [recognizer translationInView:self.navigationController.view].x / (self.navigationController.view.bounds.size.width * 1.0);
-    // 把这个百分比限制在 0~1 之间
-    progress = MIN(1.0, MAX(0.0, progress));
-    
-    // 当手势刚刚开始，我们创建一个 UIPercentDrivenInteractiveTransition 对象
-    if (recognizer.state == UIGestureRecognizerStateBegan) {
-        self.percent = [[UIPercentDrivenInteractiveTransition alloc] init];
-    } else if (recognizer.state == UIGestureRecognizerStateChanged) {
-        
-        // 当手慢慢划入时，我们把总体手势划入的进度告诉 UIPercentDrivenInteractiveTransition 对象。
-        [self.percent updateInteractiveTransition:progress];
-        _slideMenu.ll_distance = [recognizer translationInView:self.navigationController.view].x;
-        
-    } else if (recognizer.state == UIGestureRecognizerStateCancelled || recognizer.state == UIGestureRecognizerStateEnded) {
-        // 当手势结束，我们根据用户的手势进度来判断过渡是应该完成还是取消并相应的调用 finishInteractiveTransition 或者 cancelInteractiveTransition 方法.
-        if (progress > 0.4) {
-            [self.percent finishInteractiveTransition];
-            [_slideMenu ll_openSlideMenu];
-           
-        }else{
-            [self.percent cancelInteractiveTransition];
-            [_slideMenu ll_closeSlideMenu];
-           
-        }
-        self.percent = nil;
-    }
-}
 
-// 按钮监听
-- (void)openLLSlideMenuAction{
-    if (_slideMenu.ll_isOpen) {
-        [_slideMenu ll_closeSlideMenu];
-
-    } else {
-        [_slideMenu ll_openSlideMenu];
-
-    }
-}
-
-- (void)toMyAllCollect
-{
-    [_slideMenu ll_closeSlideMenu];
-    if (_slideMenu.ll_isOpen)
-    {
-        [_slideMenu ll_closeSlideMenu];
-        self.hidesBottomBarWhenPushed=YES;
-        MyAllCollectTableViewController *collect = [[MyAllCollectTableViewController alloc] init];
-        [self.navigationController pushViewController:collect animated:YES];
-        self.hidesBottomBarWhenPushed=NO;
-    }
-
-}
-
-- (void)toMyAllExpertsAnswers
-{
-    [_slideMenu ll_closeSlideMenu];
-    if (_slideMenu.ll_isOpen)
-    {
-        [_slideMenu ll_closeSlideMenu];
-        self.hidesBottomBarWhenPushed = YES;
-        AnswerChatListViewController * AC = [[AnswerChatListViewController alloc] init];
-        AC.isShowNetworkIndicatorView = YES;
-        [self.navigationController pushViewController:AC animated:YES];
-        self.hidesBottomBarWhenPushed = NO;
-    }
-}
-
-- (void)toMyAllWrongBook
-{
-    [_slideMenu ll_closeSlideMenu];
-    if (_slideMenu.ll_isOpen)
-    {
-        [_slideMenu ll_closeSlideMenu];
-        self.hidesBottomBarWhenPushed=YES;
-        MyAllWrongBookDetailTableViewController *book = [[MyAllWrongBookDetailTableViewController alloc] init];
-        [self.navigationController pushViewController:book animated:YES];
-        self.hidesBottomBarWhenPushed=NO;
-    }
-}
-
-- (void)toMyDelegates
-{
-    [_slideMenu ll_closeSlideMenu];
-    if (_slideMenu.ll_isOpen)
-    {
-        [_slideMenu ll_closeSlideMenu];
-        self.hidesBottomBarWhenPushed=YES;
-        MydelegateTableViewController *dele = [[MydelegateTableViewController alloc] init];
-        [self.navigationController pushViewController:dele animated:YES];
-        self.hidesBottomBarWhenPushed=NO;
-    }
-}
-
-- (void)toMyActivities
-{
-    [_slideMenu ll_closeSlideMenu];
-    if (_slideMenu.ll_isOpen)
-    {
-        [_slideMenu ll_closeSlideMenu];
-        self.hidesBottomBarWhenPushed=YES;
-        MyActivitiesViewController *dele = [[MyActivitiesViewController alloc] init];
-        [self.navigationController pushViewController:dele animated:YES];
-        self.hidesBottomBarWhenPushed=NO;
-    }
-}
-
-- (void)toAboutUs
-{
-    [_slideMenu ll_closeSlideMenu];
-    if (_slideMenu.ll_isOpen)
-    {
-        [_slideMenu ll_closeSlideMenu];
-        self.hidesBottomBarWhenPushed=YES;
-        AboutUsViewController *us = [[AboutUsViewController alloc] init];
-        [self.navigationController pushViewController:us animated:YES];
-        self.hidesBottomBarWhenPushed=NO;
-    }
-}
 @end
