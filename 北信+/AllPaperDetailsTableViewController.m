@@ -35,9 +35,6 @@
     self.navigationController.navigationBar.tintColor = [UIColor whiteColor];
     
     UIView *view = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, 30)];
-//    UIView *whiteView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 20, view.frame.size.height)];
-//    whiteView.backgroundColor = [UIColor clearColor];
-//    [view addSubview:whiteView];
     UILabel *lab = [[UILabel alloc] init];
     lab.font = [UIFont systemFontOfSize:12];
     lab.text = @"北京信息科技大学 · BISTU";

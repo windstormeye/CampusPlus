@@ -18,7 +18,6 @@
 
 @property (nonatomic, retain) NSMutableArray *bomeObjArr;
 @property (nonatomic, retain) NSMutableArray *ActiviesBomeObjArr;
-
 @property (nonatomic, retain) UIScrollView *scrollView;
 
 @end

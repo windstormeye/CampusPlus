@@ -87,7 +87,7 @@
     UIScrollView *scrollView = [[UIScrollView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height)];
     scrollView.backgroundColor = [UIColor clearColor];
     scrollView.showsVerticalScrollIndicator = NO;
-    //当bounces属性设置为YES时，当UIScrollView中图片滑动到边界的时候会出现弹动的效果，就像是Linux中的果冻效果一样。当bounces属性设置为NO时，当UIScrollView中图片滑动到边界时会直接定在边界就不会有弹动的效果。
+    //当bounces属性设置为YES时，当UIScrollView中图片滑动到边界的时候会出现弹动的效果，就像是果冻效果一样。当bounces属性设置为NO时，当UIScrollView中图片滑动到边界时会直接定在边界就不会有弹动的效果。
     scrollView.bounces = NO;
     [self.view addSubview:scrollView];
     //设置navigationbar的颜色
@@ -200,6 +200,7 @@
     [classesView4 addSubview:classBtn4];
     [scrollView addSubview:classesView4];
     
+    
     UIView *classesView5 = [[UIView alloc] initWithFrame:CGRectMake(27 + 70 + 27, CGRectGetMaxY(myClassView.frame) + 70 + 20, 70, 70)];
     UIImageView *imgView5 = [[UIImageView alloc] initWithFrame:CGRectMake(15, 10, 35, 35)];
     imgView5.image = [UIImage imageNamed:@"5"];
@@ -304,6 +305,7 @@
         paper.alpha = 1.0;
     }];
     
+    // 要添加到当前视图最上层的糊视图
     self.paper = paper;
     [self.tabBarController.view addSubview:paper];
     [self.tabBarController.view   bringSubviewToFront:paper];

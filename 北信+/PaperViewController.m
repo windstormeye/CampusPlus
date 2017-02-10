@@ -687,7 +687,6 @@
     
     if (page < 21)
     {
-        
         NSString *tempstr = [NSString stringWithFormat:@"%@", self.titleNumArr[page]];
         if ([self isPureInt:tempstr])
         {
@@ -887,4 +886,5 @@
     }
     return NO;
 }
+
 @end
