@@ -8,6 +8,7 @@ PODS:
   - SDWebImage (3.8.2):
     - SDWebImage/Core (= 3.8.2)
   - SDWebImage/Core (3.8.2)
+  - SVProgressHUD (2.1.2)
 
 DEPENDENCIES:
   - IQKeyboardManager
@@ -15,15 +16,17 @@ DEPENDENCIES:
   - MJRefresh
   - RongCloudIMKit (~> 2.7.3)
   - SDCycleScrollView (~> 1.64)
+  - SVProgressHUD
 
 SPEC CHECKSUMS:
   IQKeyboardManager: 69002bb4fea60596b710e57d426abc00e5063630
   MBProgressHUD: 4890f671c94e8a0f3cf959aa731e9de2f036d71a
   MJRefresh: b96cdb21c4aa75a7b07654311ab2f315c497e806
-  RongCloudIMKit: 0b93700b17d224c7c213815b8a23a9c356fe20e2
+  RongCloudIMKit: e0cddb316d359ccafefe7beaa4eb10c0700845e2
   SDCycleScrollView: f72904c77698a7f93a41bcbbc2d78b073bf7326c
   SDWebImage: 098e97e6176540799c27e804c96653ee0833d13c
+  SVProgressHUD: c404a55d78acbeb7ebb78b76d3faf986475a6994
 
-PODFILE CHECKSUM: dee8d823579ee83c91f2207394c32a14701b27ce
+PODFILE CHECKSUM: 62aaa7af50f2afd7498bf05085d09a11d06dacf5
 
 COCOAPODS: 1.1.1

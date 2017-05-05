@@ -1,15 +1,5 @@
-//
-//  GModel.m
-//  BeijingWifi
-//
-//  Created by xlx on 16/12/13.
-//  Copyright © 2016年 xlx. All rights reserved.
-//
 
 #import "GModel.h"
-//#import "InternationalControl.h"
-//#import <ShareSDK/ShareSDK.h>
-//#import <ShareSDKUI/ShareSDK+SSUI.h>
 #import "AppDelegate.h"
 
 #define tokenKey @"tokenKey"

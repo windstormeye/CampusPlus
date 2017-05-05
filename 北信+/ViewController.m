@@ -10,7 +10,7 @@
 #import "HomePageViewController.h"
 #import "FindViewController.h"
 #import "HelpViewController.h"
-#import "UserCenterPageViewController.h"
+#import "PJUserViewController.h"
 #import "IQKeyboardManager.h"
 #import "LoginViewController.h"
 #import "AppDelegate.h"
@@ -31,7 +31,10 @@
         HomePageViewController *homePage = [[HomePageViewController alloc] init];
         HelpViewController *help = [[HelpViewController alloc] init];
         FindViewController *find = [[FindViewController alloc] init];
-        UserCenterPageViewController *user = [[UserCenterPageViewController alloc] init];
+//        PJUserViewController *user = [[PJUserViewController alloc] init];
+        UIStoryboard *SB = [UIStoryboard storyboardWithName:@"PJUserSB" bundle:nil];
+        PJUserViewController *user = [SB instantiateViewControllerWithIdentifier:@"PJUserViewController"];
+
         UINavigationController *firstContentViewController = [[UINavigationController alloc] initWithRootViewController:homePage];
         UINavigationController *secondContentViewController = [[UINavigationController alloc] initWithRootViewController:help];
         UINavigationController *thirdContentViewController = [[UINavigationController alloc] initWithRootViewController:find];

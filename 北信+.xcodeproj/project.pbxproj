@@ -51,7 +51,6 @@
 		2C7A8B911D8950A300681CB4 /* News.m in Sources */ = {isa = PBXBuildFile; fileRef = 2C7A8B901D8950A300681CB4 /* News.m */; };
 		2C8782B71DC1D2470053370B /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2C8782B61DC1D2470053370B /* AudioToolbox.framework */; };
 		2C8DBEA21DC2EC62001F6A4F /* AnswerChatListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2C8DBEA11DC2EC62001F6A4F /* AnswerChatListViewController.m */; };
-		2C8DBEA71DC2F312001F6A4F /* Login.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2C8DBEA61DC2F312001F6A4F /* Login.xib */; };
 		2C8DBEAA1DC2F331001F6A4F /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2C8DBEA91DC2F331001F6A4F /* LoginViewController.m */; };
 		2C946F6D1DCDB12500C14903 /* MyAllCollectDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2C946F6C1DCDB12500C14903 /* MyAllCollectDetailViewController.m */; };
 		2C946F741DCDC7DF00C14903 /* MyAllWrongBookDetailTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2C946F731DCDC7DF00C14903 /* MyAllWrongBookDetailTableViewController.m */; };
@@ -67,6 +66,13 @@
 		2CBA74E91E10154400335677 /* MBProgressHUD+NJ.m in Sources */ = {isa = PBXBuildFile; fileRef = 2CBA74E81E10154400335677 /* MBProgressHUD+NJ.m */; };
 		2CEAA6861D8A409700AADD66 /* News.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2CEAA6851D8A409700AADD66 /* News.xib */; };
 		2CEAA6891D8A40AA00AADD66 /* NewsView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2CEAA6881D8A40AA00AADD66 /* NewsView.m */; };
+		7470790B1EBC606A00F40558 /* UIViewController+Extension.m in Sources */ = {isa = PBXBuildFile; fileRef = 7470790A1EBC606A00F40558 /* UIViewController+Extension.m */; };
+		747079111EBC60D000F40558 /* PJUIImage+Extension.m in Sources */ = {isa = PBXBuildFile; fileRef = 747079101EBC60D000F40558 /* PJUIImage+Extension.m */; };
+		747079EF1EBC610500F40558 /* PJHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 747079EE1EBC610500F40558 /* PJHUD.m */; };
+		747079F31EBC61DD00F40558 /* PJUserViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 747079F21EBC61DD00F40558 /* PJUserViewController.m */; };
+		747079F51EBC67E100F40558 /* PJUserSB.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 747079F41EBC67E100F40558 /* PJUserSB.storyboard */; };
+		747079F71EBC689D00F40558 /* PJUserHead.xib in Resources */ = {isa = PBXBuildFile; fileRef = 747079F61EBC689D00F40558 /* PJUserHead.xib */; };
+		747079FD1EBC72FE00F40558 /* PJUserHead.m in Sources */ = {isa = PBXBuildFile; fileRef = 747079FC1EBC72FE00F40558 /* PJUserHead.m */; };
 		EA607025D395B045278EB88E /* libPods-北信+.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 2D389DB6BA7A2B61A1249394 /* libPods-北信+.a */; };
 /* End PBXBuildFile section */
 
@@ -183,7 +189,6 @@
 		2C8782D41DC1D3690053370B /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		2C8DBEA01DC2EC62001F6A4F /* AnswerChatListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AnswerChatListViewController.h; sourceTree = "<group>"; };
 		2C8DBEA11DC2EC62001F6A4F /* AnswerChatListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AnswerChatListViewController.m; sourceTree = "<group>"; };
-		2C8DBEA61DC2F312001F6A4F /* Login.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = Login.xib; sourceTree = "<group>"; };
 		2C8DBEA81DC2F331001F6A4F /* LoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginViewController.h; sourceTree = "<group>"; };
 		2C8DBEA91DC2F331001F6A4F /* LoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginViewController.m; sourceTree = "<group>"; };
 		2C946F6B1DCDB12500C14903 /* MyAllCollectDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyAllCollectDetailViewController.h; sourceTree = "<group>"; };
@@ -217,6 +222,18 @@
 		2CEAA6881D8A40AA00AADD66 /* NewsView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewsView.m; sourceTree = "<group>"; };
 		2D389DB6BA7A2B61A1249394 /* libPods-北信+.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-北信+.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		6E2CDC8AE8EDD87CBE1B7EDB /* Pods-北信+.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-北信+.release.xcconfig"; path = "Pods/Target Support Files/Pods-北信+/Pods-北信+.release.xcconfig"; sourceTree = "<group>"; };
+		747079091EBC606A00F40558 /* UIViewController+Extension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIViewController+Extension.h"; sourceTree = "<group>"; };
+		7470790A1EBC606A00F40558 /* UIViewController+Extension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+Extension.m"; sourceTree = "<group>"; };
+		7470790F1EBC60D000F40558 /* PJUIImage+Extension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "PJUIImage+Extension.h"; sourceTree = "<group>"; };
+		747079101EBC60D000F40558 /* PJUIImage+Extension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "PJUIImage+Extension.m"; sourceTree = "<group>"; };
+		747079ED1EBC610500F40558 /* PJHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PJHUD.h; sourceTree = "<group>"; };
+		747079EE1EBC610500F40558 /* PJHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PJHUD.m; sourceTree = "<group>"; };
+		747079F11EBC61DD00F40558 /* PJUserViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PJUserViewController.h; sourceTree = "<group>"; };
+		747079F21EBC61DD00F40558 /* PJUserViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PJUserViewController.m; sourceTree = "<group>"; };
+		747079F41EBC67E100F40558 /* PJUserSB.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = PJUserSB.storyboard; sourceTree = "<group>"; };
+		747079F61EBC689D00F40558 /* PJUserHead.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PJUserHead.xib; sourceTree = "<group>"; };
+		747079FB1EBC72FE00F40558 /* PJUserHead.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PJUserHead.h; sourceTree = "<group>"; };
+		747079FC1EBC72FE00F40558 /* PJUserHead.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PJUserHead.m; sourceTree = "<group>"; };
 		B86A80FB401D29367734F535 /* Pods-北信+.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-北信+.debug.xcconfig"; path = "Pods/Target Support Files/Pods-北信+/Pods-北信+.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -308,14 +325,18 @@
 			name = AFNetworking;
 			sourceTree = "<group>";
 		};
-		2C225BCA1DB4C5820072F970 /* UserCenterPage */ = {
+		2C225BCA1DB4C5820072F970 /* 个人中心 */ = {
 			isa = PBXGroup;
 			children = (
 				2C5DDD5E1DC050680065527D /* UserCenterPageViewController.h */,
 				2C5DDD5F1DC050680065527D /* UserCenterPageViewController.m */,
+				747079F11EBC61DD00F40558 /* PJUserViewController.h */,
+				747079F21EBC61DD00F40558 /* PJUserViewController.m */,
+				747079F41EBC67E100F40558 /* PJUserSB.storyboard */,
+				747079FE1EBC73CD00F40558 /* head */,
 				2C5DDD5D1DC0504D0065527D /* pages */,
 			);
-			name = UserCenterPage;
+			name = "个人中心";
 			sourceTree = "<group>";
 		};
 		2C225BCB1DB4C59B0072F970 /* Papers */ = {
@@ -336,7 +357,7 @@
 				2C225BCF1DB4C6350072F970 /* FindPage */,
 				2C225BCE1DB4C6140072F970 /* HelpPage */,
 				2C225BCD1DB4C5FF0072F970 /* HomePage */,
-				2C225BCA1DB4C5820072F970 /* UserCenterPage */,
+				2C225BCA1DB4C5820072F970 /* 个人中心 */,
 			);
 			name = MainView;
 			sourceTree = "<group>";
@@ -431,6 +452,7 @@
 				2C7A8B281D87E1A600681CB4 /* Controller */,
 				2CA446C01EBC166900A0FCAF /* 登录 */,
 				2C7A8B271D87E19F00681CB4 /* View */,
+				2CA446C31EBC22D300A0FCAF /* Global */,
 				2CB20E241D8D77EC00DE531D /* Extension */,
 				2C7A8AF41D87E19900681CB4 /* Supporting Files */,
 			);
@@ -564,7 +586,6 @@
 			children = (
 				2C8DBEA81DC2F331001F6A4F /* LoginViewController.h */,
 				2C8DBEA91DC2F331001F6A4F /* LoginViewController.m */,
-				2C8DBEA61DC2F312001F6A4F /* Login.xib */,
 				2CA446C11EBC1C0F00A0FCAF /* PJLoginSB.storyboard */,
 			);
 			name = "登录";
@@ -573,6 +594,7 @@
 		2CA446C31EBC22D300A0FCAF /* Global */ = {
 			isa = PBXGroup;
 			children = (
+				747079F01EBC610800F40558 /* PJHUD */,
 				2CA446CA1EBC263200A0FCAF /* Constant */,
 				2CA446C41EBC230300A0FCAF /* GModel.h */,
 				2CA446C51EBC230300A0FCAF /* GModel.m */,
@@ -592,13 +614,16 @@
 		2CB20E241D8D77EC00DE531D /* Extension */ = {
 			isa = PBXGroup;
 			children = (
-				2CA446C31EBC22D300A0FCAF /* Global */,
 				2CA20DF91D922DC600180B0F /* NSString+PJNSStringExtension.h */,
 				2CA20DFA1D922DC600180B0F /* NSString+PJNSStringExtension.m */,
 				2C2048E01DA0F05500FD6BC0 /* UINavigationController+FDFullscreenPopGesture.h */,
 				2C2048E11DA0F05500FD6BC0 /* UINavigationController+FDFullscreenPopGesture.m */,
 				2CBA74E71E10154400335677 /* MBProgressHUD+NJ.h */,
 				2CBA74E81E10154400335677 /* MBProgressHUD+NJ.m */,
+				747079091EBC606A00F40558 /* UIViewController+Extension.h */,
+				7470790A1EBC606A00F40558 /* UIViewController+Extension.m */,
+				7470790F1EBC60D000F40558 /* PJUIImage+Extension.h */,
+				747079101EBC60D000F40558 /* PJUIImage+Extension.m */,
 				2CA20DFF1D94292100180B0F /* MZTimerLabel */,
 			);
 			name = Extension;
@@ -621,6 +646,25 @@
 				2D389DB6BA7A2B61A1249394 /* libPods-北信+.a */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		747079F01EBC610800F40558 /* PJHUD */ = {
+			isa = PBXGroup;
+			children = (
+				747079ED1EBC610500F40558 /* PJHUD.h */,
+				747079EE1EBC610500F40558 /* PJHUD.m */,
+			);
+			name = PJHUD;
+			sourceTree = "<group>";
+		};
+		747079FE1EBC73CD00F40558 /* head */ = {
+			isa = PBXGroup;
+			children = (
+				747079FB1EBC72FE00F40558 /* PJUserHead.h */,
+				747079FC1EBC72FE00F40558 /* PJUserHead.m */,
+				747079F61EBC689D00F40558 /* PJUserHead.xib */,
+			);
+			name = head;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -736,11 +780,12 @@
 				2CEAA6861D8A409700AADD66 /* News.xib in Resources */,
 				2C3C65891DCAF3DE00C7A5FB /* MyGetAgentView.xib in Resources */,
 				2C7A8B011D87E19A00681CB4 /* Assets.xcassets in Resources */,
-				2C8DBEA71DC2F312001F6A4F /* Login.xib in Resources */,
 				2C225BDC1DB884640072F970 /* demandView.xib in Resources */,
+				747079F51EBC67E100F40558 /* PJUserSB.storyboard in Resources */,
 				2C3C65741DC8D76900C7A5FB /* AgentView.xib in Resources */,
 				2C5F10CC1D8C277800C58B05 /* PaperDetailsView.xib in Resources */,
 				2C7A8AFF1D87E19900681CB4 /* Main.storyboard in Resources */,
+				747079F71EBC689D00F40558 /* PJUserHead.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -813,6 +858,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				747079EF1EBC610500F40558 /* PJHUD.m in Sources */,
 				2C72FF171DCCAFC3007D560D /* MyAllCollectTableViewController.m in Sources */,
 				2C7A8B391D87F33900681CB4 /* HomePageViewController.m in Sources */,
 				2C946F741DCDC7DF00C14903 /* MyAllWrongBookDetailTableViewController.m in Sources */,
@@ -820,8 +866,10 @@
 				2C7A8AFC1D87E19900681CB4 /* ViewController.m in Sources */,
 				2CA446C91EBC263000A0FCAF /* constant.mm in Sources */,
 				2C225BDA1DB884500072F970 /* demandView.m in Sources */,
+				747079111EBC60D000F40558 /* PJUIImage+Extension.m in Sources */,
 				2CB20E331D8E530A00DE531D /* HelpTableViewController.m in Sources */,
 				2C7A8B3F1D87F35400681CB4 /* FindViewController.m in Sources */,
+				7470790B1EBC606A00F40558 /* UIViewController+Extension.m in Sources */,
 				2C225BC71DB495910072F970 /* AFURLRequestSerialization.m in Sources */,
 				2C225BC91DB495910072F970 /* AFURLSessionManager.m in Sources */,
 				2C7A8AF91D87E19900681CB4 /* AppDelegate.m in Sources */,
@@ -833,8 +881,10 @@
 				2C225BC41DB495910072F970 /* AFHTTPSessionManager.m in Sources */,
 				2CA20DFE1D9428FA00180B0F /* MZTimerLabel.m in Sources */,
 				2C225BC61DB495910072F970 /* AFSecurityPolicy.m in Sources */,
+				747079FD1EBC72FE00F40558 /* PJUserHead.m in Sources */,
 				2C5DDD601DC050680065527D /* UserCenterPageViewController.m in Sources */,
 				2C7A8B911D8950A300681CB4 /* News.m in Sources */,
+				747079F31EBC61DD00F40558 /* PJUserViewController.m in Sources */,
 				2CB20E1D1D8D6D7800DE531D /* AllPaperDetailsTableViewController.m in Sources */,
 				2C2049141DA1F2E400FD6BC0 /* AboutUsViewController.m in Sources */,
 				2C3C65721DC8D75200C7A5FB /* AgentView.m in Sources */,
@@ -1005,6 +1055,7 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
+					"$(PROJECT_DIR)/北信+/iCampus/External/SMS_SDK",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				INFOPLIST_FILE = "北信+/Info.plist";
@@ -1027,6 +1078,7 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
+					"$(PROJECT_DIR)/北信+/iCampus/External/SMS_SDK",
 				);
 				INFOPLIST_FILE = "北信+/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.4;

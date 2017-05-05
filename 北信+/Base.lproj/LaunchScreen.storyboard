@@ -20,40 +20,12 @@
                     <view key="view" contentMode="scaleToFill" id="Ze5-6b-2t3">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="团队logo" translatesAutoresizingMaskIntoConstraints="NO" id="j9v-wj-cHx">
-                                <rect key="frame" x="139" y="571" width="97" height="47"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="47" id="LgX-gy-dWP"/>
-                                    <constraint firstAttribute="width" constant="97" id="O1B-sm-4aS"/>
-                                </constraints>
-                            </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Copyright by 黑宝宝" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RGg-z8-TVy">
-                                <rect key="frame" x="130.5" y="626" width="113" height="21"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="113" id="LBA-SY-vR7"/>
-                                    <constraint firstAttribute="height" constant="21" id="TPz-k0-WtP"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="12"/>
-                                <color key="textColor" red="0.66666666666666663" green="0.66666666666666663" blue="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                        </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                        <constraints>
-                            <constraint firstItem="xb3-aO-Qok" firstAttribute="top" secondItem="RGg-z8-TVy" secondAttribute="bottom" constant="20" id="6Qc-AP-Nmf"/>
-                            <constraint firstItem="RGg-z8-TVy" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="C8K-sk-Log"/>
-                            <constraint firstItem="RGg-z8-TVy" firstAttribute="top" secondItem="j9v-wj-cHx" secondAttribute="bottom" constant="8" id="Zav-4O-rDU"/>
-                            <constraint firstItem="j9v-wj-cHx" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="qTW-e7-EuT"/>
-                        </constraints>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="iYj-Kq-Ea1" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="12" y="382"/>
+            <point key="canvasLocation" x="12" y="381.85907046476763"/>
         </scene>
     </scenes>
-    <resources>
-        <image name="团队logo" width="1200" height="600"/>
-    </resources>
 </document>
