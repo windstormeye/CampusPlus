@@ -295,9 +295,7 @@
     BmobUser *bUser = [BmobUser currentUser];
     if (bUser == NULL)
     {
-        LoginViewController *lg = [LoginViewController loginView];
-        AppDelegate* appDelagete = [UIApplication sharedApplication].delegate;
-        appDelagete.window.rootViewController = lg;
+        [LoginViewController show];
     }
     else
     {

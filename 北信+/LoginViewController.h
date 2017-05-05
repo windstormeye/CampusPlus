@@ -11,5 +11,6 @@
 @interface LoginViewController : UIViewController
 
 + (instancetype)loginView;
++ (void)show;
 
 @end
