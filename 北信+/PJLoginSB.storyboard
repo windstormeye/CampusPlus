@@ -78,16 +78,6 @@
                                     <constraint firstAttribute="height" constant="1" id="y19-lm-5EV"/>
                                 </constraints>
                             </view>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Copyright by 黑宝宝" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gLR-tF-hLW">
-                                <rect key="frame" x="131" y="626" width="113" height="21"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="113" id="W8L-at-h23"/>
-                                    <constraint firstAttribute="height" constant="21" id="gzD-vc-9am"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="12"/>
-                                <color key="textColor" red="0.66666666669999997" green="0.66666666669999997" blue="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="密码" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="goL-3H-2wq">
                                 <rect key="frame" x="36" y="308" width="303" height="30"/>
                                 <constraints>
@@ -97,17 +87,9 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="团队logo" translatesAutoresizingMaskIntoConstraints="NO" id="blP-kI-MIk">
-                                <rect key="frame" x="159" y="597" width="56" height="27"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="27" id="ErV-gi-hLX"/>
-                                    <constraint firstAttribute="width" constant="56" id="IUc-BT-FZQ"/>
-                                </constraints>
-                            </imageView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="gLR-tF-hLW" firstAttribute="centerX" secondItem="Bn7-s7-l3t" secondAttribute="centerX" id="2Mo-dV-RyZ"/>
                             <constraint firstAttribute="trailingMargin" secondItem="msy-Mt-uCf" secondAttribute="trailing" constant="20" id="3Zq-t3-HPg"/>
                             <constraint firstItem="goL-3H-2wq" firstAttribute="leading" secondItem="Bn7-s7-l3t" secondAttribute="leadingMargin" constant="20" id="3c1-TR-HJl"/>
                             <constraint firstAttribute="trailingMargin" secondItem="Lo7-2C-CAY" secondAttribute="trailing" constant="20" id="7bp-YN-CiM"/>
@@ -118,11 +100,8 @@
                             <constraint firstItem="xvU-sD-bnw" firstAttribute="leading" secondItem="Bn7-s7-l3t" secondAttribute="leadingMargin" constant="20" id="KRe-4c-dg1"/>
                             <constraint firstItem="Px1-oA-cHl" firstAttribute="top" secondItem="msy-Mt-uCf" secondAttribute="bottom" constant="12" id="Mo7-Gd-keM"/>
                             <constraint firstItem="Lo7-2C-CAY" firstAttribute="leading" secondItem="Bn7-s7-l3t" secondAttribute="leadingMargin" constant="20" id="NU5-Q4-7ha"/>
-                            <constraint firstItem="4a7-Ze-ehj" firstAttribute="top" secondItem="gLR-tF-hLW" secondAttribute="bottom" constant="20" id="Na5-Ft-dnt"/>
                             <constraint firstItem="xvU-sD-bnw" firstAttribute="top" secondItem="goL-3H-2wq" secondAttribute="bottom" constant="8" id="PD3-pK-vup"/>
                             <constraint firstItem="Lo7-2C-CAY" firstAttribute="top" secondItem="xvU-sD-bnw" secondAttribute="bottom" constant="55" id="S0j-12-vAx"/>
-                            <constraint firstItem="gLR-tF-hLW" firstAttribute="top" secondItem="blP-kI-MIk" secondAttribute="bottom" constant="2" id="Szy-qz-aHy"/>
-                            <constraint firstItem="blP-kI-MIk" firstAttribute="centerX" secondItem="Bn7-s7-l3t" secondAttribute="centerX" id="YEX-iV-Wm0"/>
                             <constraint firstItem="Lee-4A-VY6" firstAttribute="top" secondItem="z7r-ka-1tl" secondAttribute="bottom" constant="58" id="chn-1F-M60"/>
                             <constraint firstAttribute="trailingMargin" secondItem="Px1-oA-cHl" secondAttribute="trailing" constant="20" id="e97-uP-hX5"/>
                             <constraint firstAttribute="trailingMargin" secondItem="xvU-sD-bnw" secondAttribute="trailing" constant="20" id="icc-dC-jOh"/>
@@ -149,6 +128,5 @@
     </scenes>
     <resources>
         <image name="login_pic" width="427" height="230"/>
-        <image name="团队logo" width="1200" height="600"/>
     </resources>
 </document>

@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface PJUserViewController : UITableViewController
+@interface PJUserViewController : UITableViewController 
 
 @end

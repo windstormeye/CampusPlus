@@ -8,6 +8,11 @@
 
 #import "PJUserViewController.h"
 #import "PJUserHead.h"
+#import "MyAllCollectTableViewController.h"
+#import "MyAllWrongBookDetailTableViewController.h"
+#import "MydelegateTableViewController.h"
+#import "MyActivitiesViewController.h"
+
 
 @interface PJUserViewController ()
 
@@ -39,11 +44,10 @@
     [_view addSubview:_tableView];
     [self initNavigationBar];
     self.navigationBar.alpha = 0;
-    [self.leftBarButton setImage:nil forState:0];
-//    [self.leftBarButton addTarget:self action:@selector(messageAction) forControlEvents:1<<6];
-//    [self.rightBarButton setImage:[UIImage imageNamed:@"setting"] forState:0];
-//    [self.rightBarButton addTarget:self action:@selector(settingAction) forControlEvents:1<<6];
-    
+    [self.leftBarButton setImage:[UIImage imageNamed:@"notice"] forState:0];
+    [self.leftBarButton addTarget:self action:@selector(messageAction) forControlEvents:1<<6];
+    [self.rightBarButton setImage:[UIImage imageNamed:@"setting"] forState:0];
+    [self.rightBarButton addTarget:self action:@selector(settingAction) forControlEvents:1<<6];
     
     _tableView.delegate = self;
     _tableView.dataSource = self;
@@ -52,7 +56,42 @@
     NSArray *views = [[NSBundle mainBundle] loadNibNamed:@"PJUserHead" owner:self options:nil];
     _tableHead = views.firstObject;
     _tableView.tableHeaderView = _tableHead;
-//    _tableHead.delegate = self;
+}
+
+-(CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section{
+    if(section == 0){
+        return 0.01;
+    }
+    return 5;
+}
+-(CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section{
+    return 5;
+}
+
+-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+    if (indexPath.section == 1) {
+        if (indexPath.row == 0) {
+            MyAllCollectTableViewController *vc = [MyAllCollectTableViewController new];
+            [self.navigationController pushViewController:vc animated:YES];
+        }
+        if (indexPath.row == 1) {
+            MyAllWrongBookDetailTableViewController *vc = [MyAllWrongBookDetailTableViewController new];
+            [self.navigationController pushViewController:vc animated:YES];
+        }
+    }
+    if (indexPath.section == 2) {
+        if (indexPath.row == 0) {
+            MydelegateTableViewController *vc = [MydelegateTableViewController new];
+            [self.navigationController pushViewController:vc animated:YES];
+        }
+    }
+    if (indexPath.section == 3) {
+        if (indexPath.row == 0) {
+            MyActivitiesViewController *vc = [MyActivitiesViewController new];
+            [self.navigationController pushViewController:vc animated:YES];
+        }
+    }
+    
 }
 
 -(void)scrollViewDidScroll:(UIScrollView *)scrollView{
@@ -69,6 +108,19 @@
         [self.leftBarButton setImage:[UIImage imageNamed:@"notice"] forState:0];
         [self.rightBarButton setImage:[UIImage imageNamed:@"setting"] forState:0];
     }
+}
+
+/*
+ * 设置按钮
+ */
+-(void)settingAction{
+   
+}
+/*
+ * 消息按钮
+ */
+-(void)messageAction{
+
 }
 
 @end

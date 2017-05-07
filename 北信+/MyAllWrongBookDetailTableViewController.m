@@ -49,11 +49,8 @@
 
 -(void)viewWillAppear:(BOOL)animated
 {
-    self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"back"] style:UIBarButtonItemStylePlain target:self action:@selector(back)];
-    self.navigationController.navigationBar.tintColor = [UIColor whiteColor];
-    self.navigationItem.title = @"我的收藏";
-    NSDictionary *dict = [NSDictionary dictionaryWithObject:[UIColor whiteColor] forKey:NSForegroundColorAttributeName];
-    self.navigationController.navigationBar.titleTextAttributes = dict;
+    [self initNavigationBar];
+    self.titleLabel.text = @"错题本";
     self.tableView.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
     self.tableView.mj_header = [MJRefreshNormalHeader headerWithRefreshingBlock:^{
         // 进入刷新状态后会自动调用这个block

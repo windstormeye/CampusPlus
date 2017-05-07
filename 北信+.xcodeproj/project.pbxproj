@@ -33,7 +33,6 @@
 		2C3C65771DC982A900C7A5FB /* HelpViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2C3C65761DC982A900C7A5FB /* HelpViewController.m */; };
 		2C3C65871DCAF3D300C7A5FB /* MyGetAgentView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2C3C65861DCAF3D300C7A5FB /* MyGetAgentView.m */; };
 		2C3C65891DCAF3DE00C7A5FB /* MyGetAgentView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2C3C65881DCAF3DE00C7A5FB /* MyGetAgentView.xib */; };
-		2C5DDD601DC050680065527D /* UserCenterPageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2C5DDD5F1DC050680065527D /* UserCenterPageViewController.m */; };
 		2C5F10BD1D8B942700C58B05 /* NewsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2C5F10BC1D8B942700C58B05 /* NewsViewController.m */; };
 		2C5F10C81D8BF6F600C58B05 /* PaperDetailsView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2C5F10C71D8BF6F600C58B05 /* PaperDetailsView.m */; };
 		2C5F10CC1D8C277800C58B05 /* PaperDetailsView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2C5F10CB1D8C277800C58B05 /* PaperDetailsView.xib */; };
@@ -73,6 +72,7 @@
 		747079F51EBC67E100F40558 /* PJUserSB.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 747079F41EBC67E100F40558 /* PJUserSB.storyboard */; };
 		747079F71EBC689D00F40558 /* PJUserHead.xib in Resources */ = {isa = PBXBuildFile; fileRef = 747079F61EBC689D00F40558 /* PJUserHead.xib */; };
 		747079FD1EBC72FE00F40558 /* PJUserHead.m in Sources */ = {isa = PBXBuildFile; fileRef = 747079FC1EBC72FE00F40558 /* PJUserHead.m */; };
+		74707A021EBEDDEB00F40558 /* PJUserSectionHeadView.m in Sources */ = {isa = PBXBuildFile; fileRef = 74707A011EBEDDEB00F40558 /* PJUserSectionHeadView.m */; };
 		EA607025D395B045278EB88E /* libPods-北信+.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 2D389DB6BA7A2B61A1249394 /* libPods-北信+.a */; };
 /* End PBXBuildFile section */
 
@@ -141,8 +141,6 @@
 		2C3C65851DCAF3D300C7A5FB /* MyGetAgentView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyGetAgentView.h; sourceTree = "<group>"; };
 		2C3C65861DCAF3D300C7A5FB /* MyGetAgentView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyGetAgentView.m; sourceTree = "<group>"; };
 		2C3C65881DCAF3DE00C7A5FB /* MyGetAgentView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MyGetAgentView.xib; sourceTree = "<group>"; };
-		2C5DDD5E1DC050680065527D /* UserCenterPageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserCenterPageViewController.h; sourceTree = "<group>"; };
-		2C5DDD5F1DC050680065527D /* UserCenterPageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserCenterPageViewController.m; sourceTree = "<group>"; };
 		2C5F10BB1D8B942700C58B05 /* NewsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewsViewController.h; sourceTree = "<group>"; };
 		2C5F10BC1D8B942700C58B05 /* NewsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewsViewController.m; sourceTree = "<group>"; };
 		2C5F10C61D8BF6F600C58B05 /* PaperDetailsView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PaperDetailsView.h; sourceTree = "<group>"; };
@@ -234,6 +232,8 @@
 		747079F61EBC689D00F40558 /* PJUserHead.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PJUserHead.xib; sourceTree = "<group>"; };
 		747079FB1EBC72FE00F40558 /* PJUserHead.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PJUserHead.h; sourceTree = "<group>"; };
 		747079FC1EBC72FE00F40558 /* PJUserHead.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PJUserHead.m; sourceTree = "<group>"; };
+		74707A001EBEDDEB00F40558 /* PJUserSectionHeadView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PJUserSectionHeadView.h; sourceTree = "<group>"; };
+		74707A011EBEDDEB00F40558 /* PJUserSectionHeadView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PJUserSectionHeadView.m; sourceTree = "<group>"; };
 		B86A80FB401D29367734F535 /* Pods-北信+.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-北信+.debug.xcconfig"; path = "Pods/Target Support Files/Pods-北信+/Pods-北信+.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -328,12 +328,11 @@
 		2C225BCA1DB4C5820072F970 /* 个人中心 */ = {
 			isa = PBXGroup;
 			children = (
-				2C5DDD5E1DC050680065527D /* UserCenterPageViewController.h */,
-				2C5DDD5F1DC050680065527D /* UserCenterPageViewController.m */,
+				747079FF1EBEDDD000F40558 /* sectionHeadView */,
 				747079F11EBC61DD00F40558 /* PJUserViewController.h */,
 				747079F21EBC61DD00F40558 /* PJUserViewController.m */,
 				747079F41EBC67E100F40558 /* PJUserSB.storyboard */,
-				747079FE1EBC73CD00F40558 /* head */,
+				747079FE1EBC73CD00F40558 /* headView */,
 				2C5DDD5D1DC0504D0065527D /* pages */,
 			);
 			name = "个人中心";
@@ -657,14 +656,23 @@
 			name = PJHUD;
 			sourceTree = "<group>";
 		};
-		747079FE1EBC73CD00F40558 /* head */ = {
+		747079FE1EBC73CD00F40558 /* headView */ = {
 			isa = PBXGroup;
 			children = (
 				747079FB1EBC72FE00F40558 /* PJUserHead.h */,
 				747079FC1EBC72FE00F40558 /* PJUserHead.m */,
 				747079F61EBC689D00F40558 /* PJUserHead.xib */,
 			);
-			name = head;
+			name = headView;
+			sourceTree = "<group>";
+		};
+		747079FF1EBEDDD000F40558 /* sectionHeadView */ = {
+			isa = PBXGroup;
+			children = (
+				74707A001EBEDDEB00F40558 /* PJUserSectionHeadView.h */,
+				74707A011EBEDDEB00F40558 /* PJUserSectionHeadView.m */,
+			);
+			name = sectionHeadView;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -882,7 +890,6 @@
 				2CA20DFE1D9428FA00180B0F /* MZTimerLabel.m in Sources */,
 				2C225BC61DB495910072F970 /* AFSecurityPolicy.m in Sources */,
 				747079FD1EBC72FE00F40558 /* PJUserHead.m in Sources */,
-				2C5DDD601DC050680065527D /* UserCenterPageViewController.m in Sources */,
 				2C7A8B911D8950A300681CB4 /* News.m in Sources */,
 				747079F31EBC61DD00F40558 /* PJUserViewController.m in Sources */,
 				2CB20E1D1D8D6D7800DE531D /* AllPaperDetailsTableViewController.m in Sources */,
@@ -901,6 +908,7 @@
 				2CA446C61EBC230300A0FCAF /* GModel.m in Sources */,
 				2C2048E21DA0F05500FD6BC0 /* UINavigationController+FDFullscreenPopGesture.m in Sources */,
 				2CEAA6891D8A40AA00AADD66 /* NewsView.m in Sources */,
+				74707A021EBEDDEB00F40558 /* PJUserSectionHeadView.m in Sources */,
 				2C225BD41DB4C6D00072F970 /* OnCampusViewController.m in Sources */,
 				2CA20DFB1D922DC600180B0F /* NSString+PJNSStringExtension.m in Sources */,
 			);
