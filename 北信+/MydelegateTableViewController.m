@@ -26,6 +26,10 @@
 @end
 
 @implementation MydelegateTableViewController
+{
+    UITableView *_tableView;
+    UIView *_view;
+}
 
 -(NSMutableArray *)agentArr
 {
@@ -36,26 +40,35 @@
     return _agentArr;
 }
 
-- (void)viewWillAppear:(BOOL)animated
-{
+- (void)viewDidLoad {
+    [super viewDidLoad];
+    [self initView];
+}
+
+- (void)initView {
+    self.tableView.tableFooterView = [UIView new];
+    self.tableView.delegate = self;
     self.view.backgroundColor = [UIColor whiteColor];
+    self.automaticallyAdjustsScrollViewInsets = false;
+    _tableView = self.tableView;
+    _tableView.frame = CGRectMake(0, 64, SCREEN_WIDTH, SCREEN_HEIGHT-64);
+    [_tableView removeFromSuperview];
+    _view = [[UIView alloc]initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT)];
+    self.view = _view;
+    [_view addSubview:_tableView];
     [self initNavigationBar];
     self.titleLabel.text = @"我的代理";
     
-    
-    self.tableView.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
-    // 设置tableView的frame是因为会出现的黑边，给高度加20，否则下边出黑边
-    self.tableView.frame = CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height + 20);
-    
-    self.tableView.mj_header = [MJRefreshNormalHeader headerWithRefreshingBlock:^{
+    _tableView.mj_header = [MJRefreshNormalHeader headerWithRefreshingBlock:^{
         // 进入刷新状态后会自动调用这个block
         [self loadNewData];
-        [self.tableView reloadData];
+        [_tableView reloadData];
     }];
     // 设置回调（一旦进入刷新状态，就调用target的action，也就是调用self的loadNewData方法）
-    self.tableView.mj_header = [MJRefreshNormalHeader headerWithRefreshingTarget:self refreshingAction:@selector(loadNewData)];
+    _tableView.mj_header = [MJRefreshNormalHeader headerWithRefreshingTarget:self refreshingAction:@selector(loadNewData)];
     // 马上进入刷新状态
-    [self.tableView.mj_header beginRefreshing];
+    [_tableView.mj_header beginRefreshing];
+
 }
 
 -(void)back
@@ -82,16 +95,15 @@
                  [tempArr  exchangeObjectAtIndex:i withObjectAtIndex:tempArr.count-1-i];
              }
              self.agentArr = tempArr;
-             [self.tableView reloadData];
+             [_tableView reloadData];
              // 放到这进行下拉刷新的停止
-             [self.tableView.mj_header endRefreshing];
+             [_tableView.mj_header endRefreshing];
          });
      }];
 }
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
 }
 
 #pragma mark - Table view data source

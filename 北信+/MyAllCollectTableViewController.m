@@ -19,6 +19,10 @@
 @end
 
 @implementation MyAllCollectTableViewController
+{
+    UITableView *_tableView;
+    UIView *_view;
+}
 
 - (NSMutableArray *)webViewY
 {
@@ -40,28 +44,36 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
-    self.view.backgroundColor = [UIColor whiteColor];
+    [self initView];
 }
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
 }
 
--(void)viewWillAppear:(BOOL)animated
-{
-    [self initNavigationBar];
+- (void)initView {
     self.tableView.tableFooterView = [UIView new];
+    self.tableView.delegate = self;
+    self.view.backgroundColor = [UIColor whiteColor];
+    self.automaticallyAdjustsScrollViewInsets = false;
+    _tableView = self.tableView;
+    _tableView.frame = CGRectMake(0, 64, SCREEN_WIDTH, SCREEN_HEIGHT-64);
+    [_tableView removeFromSuperview];
+    _view = [[UIView alloc]initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT)];
+    self.view = _view;
+    [_view addSubview:_tableView];
+    [self initNavigationBar];
+    
     self.titleLabel.text = @"我的收藏";
-    self.tableView.mj_header = [MJRefreshNormalHeader headerWithRefreshingBlock:^{
+    _tableView.mj_header = [MJRefreshNormalHeader headerWithRefreshingBlock:^{
         // 进入刷新状态后会自动调用这个block
         [self loadNewData];
-        [self.tableView reloadData];
+        [_tableView reloadData];
     }];
     // 设置回调（一旦进入刷新状态，就调用target的action，也就是调用self的loadNewData方法）
-    self.tableView.mj_header = [MJRefreshNormalHeader headerWithRefreshingTarget:self refreshingAction:@selector(loadNewData)];
+    _tableView.mj_header = [MJRefreshNormalHeader headerWithRefreshingTarget:self refreshingAction:@selector(loadNewData)];
     // 马上进入刷新状态
-    [self.tableView.mj_header beginRefreshing];
+    [_tableView.mj_header beginRefreshing];
 }
 
 - (void)loadNewData
@@ -89,16 +101,11 @@
                 [tempArr  exchangeObjectAtIndex:i withObjectAtIndex:tempArr.count-1-i];
             }
             self.collectQuestionsArr = tempArr;
-            [self.tableView reloadData];
+            [_tableView reloadData];
             // 放到这进行下拉刷新的停止
-            [self.tableView.mj_header endRefreshing];
+            [_tableView.mj_header endRefreshing];
         });
     }];
-}
-
--(void)back
-{
-    [self.navigationController popViewControllerAnimated:YES];
 }
 
 #pragma mark - Table view data source

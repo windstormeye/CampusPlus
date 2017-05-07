@@ -12,7 +12,8 @@
 #import "MyAllWrongBookDetailTableViewController.h"
 #import "MydelegateTableViewController.h"
 #import "MyActivitiesViewController.h"
-
+#import "PJSettingViewController.h"
+#import "AnswerChatListViewController.h"
 
 @interface PJUserViewController ()
 
@@ -45,9 +46,9 @@
     [self initNavigationBar];
     self.navigationBar.alpha = 0;
     [self.leftBarButton setImage:[UIImage imageNamed:@"notice"] forState:0];
-    [self.leftBarButton addTarget:self action:@selector(messageAction) forControlEvents:1<<6];
+    [self.leftBarButton addTarget:self action:@selector(messageAction) forControlEvents:UIControlEventTouchUpInside];
     [self.rightBarButton setImage:[UIImage imageNamed:@"setting"] forState:0];
-    [self.rightBarButton addTarget:self action:@selector(settingAction) forControlEvents:1<<6];
+    [self.rightBarButton addTarget:self action:@selector(settingAction) forControlEvents:UIControlEventTouchUpInside];
     
     _tableView.delegate = self;
     _tableView.dataSource = self;
@@ -72,22 +73,26 @@
     if (indexPath.section == 1) {
         if (indexPath.row == 0) {
             MyAllCollectTableViewController *vc = [MyAllCollectTableViewController new];
+            vc.hidesBottomBarWhenPushed = YES;
             [self.navigationController pushViewController:vc animated:YES];
         }
         if (indexPath.row == 1) {
             MyAllWrongBookDetailTableViewController *vc = [MyAllWrongBookDetailTableViewController new];
+            vc.hidesBottomBarWhenPushed = YES;
             [self.navigationController pushViewController:vc animated:YES];
         }
     }
     if (indexPath.section == 2) {
         if (indexPath.row == 0) {
             MydelegateTableViewController *vc = [MydelegateTableViewController new];
+            vc.hidesBottomBarWhenPushed = YES;
             [self.navigationController pushViewController:vc animated:YES];
         }
     }
     if (indexPath.section == 3) {
         if (indexPath.row == 0) {
             MyActivitiesViewController *vc = [MyActivitiesViewController new];
+            vc.hidesBottomBarWhenPushed = YES;
             [self.navigationController pushViewController:vc animated:YES];
         }
     }
@@ -113,14 +118,20 @@
 /*
  * 设置按钮
  */
--(void)settingAction{
-   
+-(void)settingAction{    
+    UIStoryboard *sb = [UIStoryboard storyboardWithName:@"PJSettingSB" bundle:nil];
+    PJSettingViewController *vc = [sb instantiateViewControllerWithIdentifier:@"PJSettingViewController"];
+
+    vc.hidesBottomBarWhenPushed = YES;
+    [self.navigationController pushViewController:vc animated:YES];
 }
 /*
  * 消息按钮
  */
 -(void)messageAction{
-
+    AnswerChatListViewController *vc = [AnswerChatListViewController new];
+    vc.hidesBottomBarWhenPushed = YES;
+    [self.navigationController pushViewController:vc animated:YES];
 }
 
 @end

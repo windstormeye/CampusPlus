@@ -73,6 +73,8 @@
 		747079F71EBC689D00F40558 /* PJUserHead.xib in Resources */ = {isa = PBXBuildFile; fileRef = 747079F61EBC689D00F40558 /* PJUserHead.xib */; };
 		747079FD1EBC72FE00F40558 /* PJUserHead.m in Sources */ = {isa = PBXBuildFile; fileRef = 747079FC1EBC72FE00F40558 /* PJUserHead.m */; };
 		74707A021EBEDDEB00F40558 /* PJUserSectionHeadView.m in Sources */ = {isa = PBXBuildFile; fileRef = 74707A011EBEDDEB00F40558 /* PJUserSectionHeadView.m */; };
+		74707A071EBF3D6400F40558 /* PJSettingSB.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 74707A061EBF3D6400F40558 /* PJSettingSB.storyboard */; };
+		74707A0A1EBF3D7900F40558 /* PJSettingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 74707A091EBF3D7900F40558 /* PJSettingViewController.m */; };
 		EA607025D395B045278EB88E /* libPods-北信+.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 2D389DB6BA7A2B61A1249394 /* libPods-北信+.a */; };
 /* End PBXBuildFile section */
 
@@ -234,6 +236,9 @@
 		747079FC1EBC72FE00F40558 /* PJUserHead.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PJUserHead.m; sourceTree = "<group>"; };
 		74707A001EBEDDEB00F40558 /* PJUserSectionHeadView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PJUserSectionHeadView.h; sourceTree = "<group>"; };
 		74707A011EBEDDEB00F40558 /* PJUserSectionHeadView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PJUserSectionHeadView.m; sourceTree = "<group>"; };
+		74707A061EBF3D6400F40558 /* PJSettingSB.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = PJSettingSB.storyboard; sourceTree = "<group>"; };
+		74707A081EBF3D7900F40558 /* PJSettingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PJSettingViewController.h; sourceTree = "<group>"; };
+		74707A091EBF3D7900F40558 /* PJSettingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PJSettingViewController.m; sourceTree = "<group>"; };
 		B86A80FB401D29367734F535 /* Pods-北信+.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-北信+.debug.xcconfig"; path = "Pods/Target Support Files/Pods-北信+/Pods-北信+.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -328,11 +333,11 @@
 		2C225BCA1DB4C5820072F970 /* 个人中心 */ = {
 			isa = PBXGroup;
 			children = (
-				747079FF1EBEDDD000F40558 /* sectionHeadView */,
 				747079F11EBC61DD00F40558 /* PJUserViewController.h */,
 				747079F21EBC61DD00F40558 /* PJUserViewController.m */,
 				747079F41EBC67E100F40558 /* PJUserSB.storyboard */,
-				747079FE1EBC73CD00F40558 /* headView */,
+				747079FF1EBEDDD000F40558 /* sectionHeadView */,
+				747079FE1EBC73CD00F40558 /* tableHeadView */,
 				2C5DDD5D1DC0504D0065527D /* pages */,
 			);
 			name = "个人中心";
@@ -356,7 +361,6 @@
 				2C225BCF1DB4C6350072F970 /* FindPage */,
 				2C225BCE1DB4C6140072F970 /* HelpPage */,
 				2C225BCD1DB4C5FF0072F970 /* HomePage */,
-				2C225BCA1DB4C5820072F970 /* 个人中心 */,
 			);
 			name = MainView;
 			sourceTree = "<group>";
@@ -516,6 +520,8 @@
 			children = (
 				2C7A8AFA1D87E19900681CB4 /* ViewController.h */,
 				2C7A8AFB1D87E19900681CB4 /* ViewController.m */,
+				74707A051EBF3D5000F40558 /* 设置 */,
+				2C225BCA1DB4C5820072F970 /* 个人中心 */,
 				2C225BCC1DB4C5D10072F970 /* MainView */,
 			);
 			name = Controller;
@@ -656,14 +662,14 @@
 			name = PJHUD;
 			sourceTree = "<group>";
 		};
-		747079FE1EBC73CD00F40558 /* headView */ = {
+		747079FE1EBC73CD00F40558 /* tableHeadView */ = {
 			isa = PBXGroup;
 			children = (
 				747079FB1EBC72FE00F40558 /* PJUserHead.h */,
 				747079FC1EBC72FE00F40558 /* PJUserHead.m */,
 				747079F61EBC689D00F40558 /* PJUserHead.xib */,
 			);
-			name = headView;
+			name = tableHeadView;
 			sourceTree = "<group>";
 		};
 		747079FF1EBEDDD000F40558 /* sectionHeadView */ = {
@@ -673,6 +679,16 @@
 				74707A011EBEDDEB00F40558 /* PJUserSectionHeadView.m */,
 			);
 			name = sectionHeadView;
+			sourceTree = "<group>";
+		};
+		74707A051EBF3D5000F40558 /* 设置 */ = {
+			isa = PBXGroup;
+			children = (
+				74707A061EBF3D6400F40558 /* PJSettingSB.storyboard */,
+				74707A081EBF3D7900F40558 /* PJSettingViewController.h */,
+				74707A091EBF3D7900F40558 /* PJSettingViewController.m */,
+			);
+			name = "设置";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -785,6 +801,7 @@
 			files = (
 				2C7A8B041D87E19A00681CB4 /* LaunchScreen.storyboard in Resources */,
 				2CA446C21EBC1C0F00A0FCAF /* PJLoginSB.storyboard in Resources */,
+				74707A071EBF3D6400F40558 /* PJSettingSB.storyboard in Resources */,
 				2CEAA6861D8A409700AADD66 /* News.xib in Resources */,
 				2C3C65891DCAF3DE00C7A5FB /* MyGetAgentView.xib in Resources */,
 				2C7A8B011D87E19A00681CB4 /* Assets.xcassets in Resources */,
@@ -885,6 +902,7 @@
 				2C7A8AF61D87E19900681CB4 /* main.m in Sources */,
 				2C3C65771DC982A900C7A5FB /* HelpViewController.m in Sources */,
 				2C946F7B1DCDD29200C14903 /* MydelegateTableViewController.m in Sources */,
+				74707A0A1EBF3D7900F40558 /* PJSettingViewController.m in Sources */,
 				2C5F10C81D8BF6F600C58B05 /* PaperDetailsView.m in Sources */,
 				2C225BC41DB495910072F970 /* AFHTTPSessionManager.m in Sources */,
 				2CA20DFE1D9428FA00180B0F /* MZTimerLabel.m in Sources */,

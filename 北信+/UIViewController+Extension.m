@@ -50,7 +50,7 @@ static const void *LeftBarButton = &LeftBarButton;
 -(void)initNavigationBar{
     self.navigationController.navigationBar.hidden = true;
     self.navigationBar = [[UIView alloc]initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, 64)];
-    self.navigationBar.backgroundColor = RGB(249, 249, 249);
+    self.navigationBar.backgroundColor = mainDeepSkyBlue;
     [self.view addSubview:self.navigationBar];
     
     self.leftBarButton = [[UIButton alloc]initWithFrame:CGRectMake(0, 20, 44, 44)];
