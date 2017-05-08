@@ -7,7 +7,7 @@
 //
 
 #import "ViewController.h"
-#import "HomePageViewController.h"
+#import "PJHomePageViewController.h"
 #import "FindViewController.h"
 #import "HelpViewController.h"
 #import "PJUserViewController.h"
@@ -28,7 +28,7 @@
     {
         UITabBarController *contentTabBarController = [[UITabBarController alloc] init];
         // 设置tabbar
-        HomePageViewController *homePage = [[HomePageViewController alloc] init];
+        PJHomePageViewController *homePage = [[PJHomePageViewController alloc] init];
         HelpViewController *help = [[HelpViewController alloc] init];
         FindViewController *find = [[FindViewController alloc] init];
 //        PJUserViewController *user = [[PJUserViewController alloc] init];

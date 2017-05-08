@@ -75,6 +75,14 @@
 		74707A021EBEDDEB00F40558 /* PJUserSectionHeadView.m in Sources */ = {isa = PBXBuildFile; fileRef = 74707A011EBEDDEB00F40558 /* PJUserSectionHeadView.m */; };
 		74707A071EBF3D6400F40558 /* PJSettingSB.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 74707A061EBF3D6400F40558 /* PJSettingSB.storyboard */; };
 		74707A0A1EBF3D7900F40558 /* PJSettingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 74707A091EBF3D7900F40558 /* PJSettingViewController.m */; };
+		74707A0E1EC04B8B00F40558 /* PJHomePageBannerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 74707A0D1EC04B8B00F40558 /* PJHomePageBannerView.m */; };
+		74707A141EC04E5800F40558 /* PJHomePageTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 74707A131EC04E5800F40558 /* PJHomePageTableView.m */; };
+		74707A181EC050E400F40558 /* PJHomePageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 74707A171EC050E400F40558 /* PJHomePageViewController.m */; };
+		74707A1C1EC05C2300F40558 /* PJHomePageCourseView.m in Sources */ = {isa = PBXBuildFile; fileRef = 74707A1B1EC05C2300F40558 /* PJHomePageCourseView.m */; };
+		74707A231EC05C8100F40558 /* PJHomePageCourseCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 74707A211EC05C8100F40558 /* PJHomePageCourseCollectionViewCell.m */; };
+		74707A241EC05C8100F40558 /* PJHomePageCourseCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 74707A221EC05C8100F40558 /* PJHomePageCourseCollectionViewCell.xib */; };
+		74707A261EC06ABB00F40558 /* PJHomePageSB.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 74707A251EC06ABB00F40558 /* PJHomePageSB.storyboard */; };
+		74707A291EC06DED00F40558 /* PJCourceCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 74707A281EC06DED00F40558 /* PJCourceCell.m */; };
 		EA607025D395B045278EB88E /* libPods-北信+.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 2D389DB6BA7A2B61A1249394 /* libPods-北信+.a */; };
 /* End PBXBuildFile section */
 
@@ -239,6 +247,20 @@
 		74707A061EBF3D6400F40558 /* PJSettingSB.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = PJSettingSB.storyboard; sourceTree = "<group>"; };
 		74707A081EBF3D7900F40558 /* PJSettingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PJSettingViewController.h; sourceTree = "<group>"; };
 		74707A091EBF3D7900F40558 /* PJSettingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PJSettingViewController.m; sourceTree = "<group>"; };
+		74707A0C1EC04B8B00F40558 /* PJHomePageBannerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PJHomePageBannerView.h; sourceTree = "<group>"; };
+		74707A0D1EC04B8B00F40558 /* PJHomePageBannerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PJHomePageBannerView.m; sourceTree = "<group>"; };
+		74707A121EC04E5800F40558 /* PJHomePageTableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PJHomePageTableView.h; sourceTree = "<group>"; };
+		74707A131EC04E5800F40558 /* PJHomePageTableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PJHomePageTableView.m; sourceTree = "<group>"; };
+		74707A161EC050E400F40558 /* PJHomePageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PJHomePageViewController.h; sourceTree = "<group>"; };
+		74707A171EC050E400F40558 /* PJHomePageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PJHomePageViewController.m; sourceTree = "<group>"; };
+		74707A1A1EC05C2300F40558 /* PJHomePageCourseView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PJHomePageCourseView.h; sourceTree = "<group>"; };
+		74707A1B1EC05C2300F40558 /* PJHomePageCourseView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PJHomePageCourseView.m; sourceTree = "<group>"; };
+		74707A201EC05C8100F40558 /* PJHomePageCourseCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PJHomePageCourseCollectionViewCell.h; sourceTree = "<group>"; };
+		74707A211EC05C8100F40558 /* PJHomePageCourseCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PJHomePageCourseCollectionViewCell.m; sourceTree = "<group>"; };
+		74707A221EC05C8100F40558 /* PJHomePageCourseCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PJHomePageCourseCollectionViewCell.xib; sourceTree = "<group>"; };
+		74707A251EC06ABB00F40558 /* PJHomePageSB.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = PJHomePageSB.storyboard; sourceTree = "<group>"; };
+		74707A271EC06DED00F40558 /* PJCourceCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PJCourceCell.h; sourceTree = "<group>"; };
+		74707A281EC06DED00F40558 /* PJCourceCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PJCourceCell.m; sourceTree = "<group>"; };
 		B86A80FB401D29367734F535 /* Pods-北信+.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-北信+.debug.xcconfig"; path = "Pods/Target Support Files/Pods-北信+/Pods-北信+.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -360,21 +382,26 @@
 			children = (
 				2C225BCF1DB4C6350072F970 /* FindPage */,
 				2C225BCE1DB4C6140072F970 /* HelpPage */,
-				2C225BCD1DB4C5FF0072F970 /* HomePage */,
+				2C225BCD1DB4C5FF0072F970 /* 首页 */,
 			);
 			name = MainView;
 			sourceTree = "<group>";
 		};
-		2C225BCD1DB4C5FF0072F970 /* HomePage */ = {
+		2C225BCD1DB4C5FF0072F970 /* 首页 */ = {
 			isa = PBXGroup;
 			children = (
+				74707A161EC050E400F40558 /* PJHomePageViewController.h */,
+				74707A171EC050E400F40558 /* PJHomePageViewController.m */,
+				74707A191EC05BD100F40558 /* 首页课程view */,
+				74707A151EC04FDF00F40558 /* 首页tableView */,
+				74707A0B1EC04B4100F40558 /* 首页轮播图 */,
 				2C7A8B371D87F33900681CB4 /* HomePageViewController.h */,
 				2C7A8B381D87F33900681CB4 /* HomePageViewController.m */,
 				2C5F10BB1D8B942700C58B05 /* NewsViewController.h */,
 				2C5F10BC1D8B942700C58B05 /* NewsViewController.m */,
 				2C225BCB1DB4C59B0072F970 /* Papers */,
 			);
-			name = HomePage;
+			name = "首页";
 			sourceTree = "<group>";
 		};
 		2C225BCE1DB4C6140072F970 /* HelpPage */ = {
@@ -691,6 +718,39 @@
 			name = "设置";
 			sourceTree = "<group>";
 		};
+		74707A0B1EC04B4100F40558 /* 首页轮播图 */ = {
+			isa = PBXGroup;
+			children = (
+				74707A0C1EC04B8B00F40558 /* PJHomePageBannerView.h */,
+				74707A0D1EC04B8B00F40558 /* PJHomePageBannerView.m */,
+			);
+			name = "首页轮播图";
+			sourceTree = "<group>";
+		};
+		74707A151EC04FDF00F40558 /* 首页tableView */ = {
+			isa = PBXGroup;
+			children = (
+				74707A121EC04E5800F40558 /* PJHomePageTableView.h */,
+				74707A131EC04E5800F40558 /* PJHomePageTableView.m */,
+				74707A251EC06ABB00F40558 /* PJHomePageSB.storyboard */,
+			);
+			name = "首页tableView";
+			sourceTree = "<group>";
+		};
+		74707A191EC05BD100F40558 /* 首页课程view */ = {
+			isa = PBXGroup;
+			children = (
+				74707A1A1EC05C2300F40558 /* PJHomePageCourseView.h */,
+				74707A1B1EC05C2300F40558 /* PJHomePageCourseView.m */,
+				74707A201EC05C8100F40558 /* PJHomePageCourseCollectionViewCell.h */,
+				74707A211EC05C8100F40558 /* PJHomePageCourseCollectionViewCell.m */,
+				74707A221EC05C8100F40558 /* PJHomePageCourseCollectionViewCell.xib */,
+				74707A271EC06DED00F40558 /* PJCourceCell.h */,
+				74707A281EC06DED00F40558 /* PJCourceCell.m */,
+			);
+			name = "首页课程view";
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -800,12 +860,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				2C7A8B041D87E19A00681CB4 /* LaunchScreen.storyboard in Resources */,
+				74707A261EC06ABB00F40558 /* PJHomePageSB.storyboard in Resources */,
 				2CA446C21EBC1C0F00A0FCAF /* PJLoginSB.storyboard in Resources */,
 				74707A071EBF3D6400F40558 /* PJSettingSB.storyboard in Resources */,
 				2CEAA6861D8A409700AADD66 /* News.xib in Resources */,
 				2C3C65891DCAF3DE00C7A5FB /* MyGetAgentView.xib in Resources */,
 				2C7A8B011D87E19A00681CB4 /* Assets.xcassets in Resources */,
 				2C225BDC1DB884640072F970 /* demandView.xib in Resources */,
+				74707A241EC05C8100F40558 /* PJHomePageCourseCollectionViewCell.xib in Resources */,
 				747079F51EBC67E100F40558 /* PJUserSB.storyboard in Resources */,
 				2C3C65741DC8D76900C7A5FB /* AgentView.xib in Resources */,
 				2C5F10CC1D8C277800C58B05 /* PaperDetailsView.xib in Resources */,
@@ -884,6 +946,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				747079EF1EBC610500F40558 /* PJHUD.m in Sources */,
+				74707A181EC050E400F40558 /* PJHomePageViewController.m in Sources */,
 				2C72FF171DCCAFC3007D560D /* MyAllCollectTableViewController.m in Sources */,
 				2C7A8B391D87F33900681CB4 /* HomePageViewController.m in Sources */,
 				2C946F741DCDC7DF00C14903 /* MyAllWrongBookDetailTableViewController.m in Sources */,
@@ -894,7 +957,9 @@
 				747079111EBC60D000F40558 /* PJUIImage+Extension.m in Sources */,
 				2CB20E331D8E530A00DE531D /* HelpTableViewController.m in Sources */,
 				2C7A8B3F1D87F35400681CB4 /* FindViewController.m in Sources */,
+				74707A291EC06DED00F40558 /* PJCourceCell.m in Sources */,
 				7470790B1EBC606A00F40558 /* UIViewController+Extension.m in Sources */,
+				74707A231EC05C8100F40558 /* PJHomePageCourseCollectionViewCell.m in Sources */,
 				2C225BC71DB495910072F970 /* AFURLRequestSerialization.m in Sources */,
 				2C225BC91DB495910072F970 /* AFURLSessionManager.m in Sources */,
 				2C7A8AF91D87E19900681CB4 /* AppDelegate.m in Sources */,
@@ -916,11 +981,14 @@
 				2C20490E1DA1F27D00FD6BC0 /* MyAllWrongBookViewController.m in Sources */,
 				2CBA74E91E10154400335677 /* MBProgressHUD+NJ.m in Sources */,
 				2C225BC51DB495910072F970 /* AFNetworkReachabilityManager.m in Sources */,
+				74707A0E1EC04B8B00F40558 /* PJHomePageBannerView.m in Sources */,
 				2C8DBEAA1DC2F331001F6A4F /* LoginViewController.m in Sources */,
+				74707A141EC04E5800F40558 /* PJHomePageTableView.m in Sources */,
 				2CB20E201D8D739200DE531D /* PaperViewController.m in Sources */,
 				2C225BC81DB495910072F970 /* AFURLResponseSerialization.m in Sources */,
 				2C225BD71DB4C6FC0072F970 /* OutCampusViewController.m in Sources */,
 				2C3C65871DCAF3D300C7A5FB /* MyGetAgentView.m in Sources */,
+				74707A1C1EC05C2300F40558 /* PJHomePageCourseView.m in Sources */,
 				2C946F6D1DCDB12500C14903 /* MyAllCollectDetailViewController.m in Sources */,
 				2C5F10BD1D8B942700C58B05 /* NewsViewController.m in Sources */,
 				2CA446C61EBC230300A0FCAF /* GModel.m in Sources */,
