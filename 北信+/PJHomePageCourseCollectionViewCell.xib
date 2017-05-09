@@ -12,34 +12,33 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="PJHomePageCourseCollectionViewCell" id="gTV-IL-0wX" customClass="PJHomePageCourseCollectionViewCell">
-            <rect key="frame" x="0.0" y="0.0" width="70" height="90"/>
+            <rect key="frame" x="0.0" y="0.0" width="60" height="80"/>
             <autoresizingMask key="autoresizingMask"/>
             <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                <rect key="frame" x="0.0" y="0.0" width="70" height="90"/>
+                <rect key="frame" x="0.0" y="0.0" width="60" height="80"/>
                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 <subviews>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wVg-cG-wSO">
+                        <rect key="frame" x="0.0" y="60" width="60" height="17"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                        <color key="textColor" red="0.40000000600000002" green="0.40000000600000002" blue="0.40000000600000002" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="highlightedColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                    </label>
                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="bTC-XM-8j2">
-                        <rect key="frame" x="0.0" y="0.0" width="70" height="70"/>
+                        <rect key="frame" x="9.5" y="10" width="40" height="40"/>
                         <constraints>
-                            <constraint firstAttribute="height" constant="70" id="Dbh-wi-cPi"/>
+                            <constraint firstAttribute="height" constant="40" id="6vS-Hx-6fg"/>
+                            <constraint firstAttribute="width" constant="40" id="O1W-g3-bCz"/>
                         </constraints>
                     </imageView>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wVg-cG-wSO">
-                        <rect key="frame" x="0.0" y="75" width="70" height="15"/>
-                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                        <nil key="textColor"/>
-                        <nil key="highlightedColor"/>
-                    </label>
                 </subviews>
             </view>
             <constraints>
-                <constraint firstItem="wVg-cG-wSO" firstAttribute="top" secondItem="bTC-XM-8j2" secondAttribute="bottom" constant="5" id="1kg-uq-2VI"/>
                 <constraint firstAttribute="trailing" secondItem="wVg-cG-wSO" secondAttribute="trailing" id="74J-BN-voB"/>
-                <constraint firstAttribute="trailing" secondItem="bTC-XM-8j2" secondAttribute="trailing" id="Olh-Hw-GJD"/>
+                <constraint firstItem="bTC-XM-8j2" firstAttribute="centerX" secondItem="gTV-IL-0wX" secondAttribute="centerX" id="Iv8-Ld-a3Z"/>
+                <constraint firstItem="wVg-cG-wSO" firstAttribute="top" secondItem="bTC-XM-8j2" secondAttribute="bottom" constant="10" id="T6o-fj-xWo"/>
                 <constraint firstItem="wVg-cG-wSO" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="hXP-iR-20B"/>
-                <constraint firstItem="bTC-XM-8j2" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="v25-AH-2hL"/>
-                <constraint firstItem="bTC-XM-8j2" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="w4R-Kh-2R3"/>
-                <constraint firstAttribute="bottom" secondItem="wVg-cG-wSO" secondAttribute="bottom" id="zcx-0u-GJO"/>
+                <constraint firstItem="bTC-XM-8j2" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" constant="10" id="qI0-15-ABN"/>
             </constraints>
             <connections>
                 <outlet property="showImgView" destination="bTC-XM-8j2" id="8J5-PK-zW7"/>

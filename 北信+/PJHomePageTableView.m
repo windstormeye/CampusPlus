@@ -9,6 +9,8 @@
 #import "PJHomePageTableView.h"
 #import "PJHomePageBannerView.h"
 #import "PJCourceCell.h"
+#import "PJHomePageSectionView.h"
+#import "PJNewsCell.h"
 
 @implementation PJHomePageTableView
 {
@@ -21,23 +23,34 @@
     return self;
 }
 
+- (id)init {
+    self = [super init];
+    [self initView];
+    return self;
+}
 - (void)initView {
-    self.frame = CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT);
+    _newsDataArr = [@[] mutableCopy];
+    self.frame = CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT-48);
     self.delegate = self;
     self.dataSource = self;
     self.tableFooterView = [UIView new];
     _bannerView = [PJHomePageBannerView new];
     self.tableHeaderView = _bannerView;
-    
+    self.separatorStyle = UITableViewCellSeparatorStyleNone;
     [self registerClass:[PJCourceCell class] forCellReuseIdentifier:@"PJCourceCell"];
+    [self registerClass:[PJNewsCell class] forCellReuseIdentifier:@"PJNewsCell"];
+}
+
+- (void)setNewsDataArr:(NSArray *)newsDataArr {
+    _newsDataArr = newsDataArr;
+    [self reloadData];
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     if (indexPath.section == 0) {
-        return SCREEN_WIDTH/4 + 50;
-      
+        return SCREEN_HEIGHT * 0.33;
     } else {
-        return 90;
+        return (_newsDataArr.count/2 + 1) * (SCREEN_WIDTH/2*0.7 + 15);
     }
 }
 
@@ -53,23 +66,22 @@
     return 50;
 }
 
+- (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section {
+    return 0.01;
+}
+
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {
+    PJHomePageSectionView *sectionView = [[PJHomePageSectionView alloc] init];
+    sectionView = [[NSBundle mainBundle] loadNibNamed:@"PJHomePageSectionView" owner:self options:nil].firstObject;
     if (section == 0) {
-        // 设置我的课程栏
-        UIView *myClassView=[[UIView alloc] initWithFrame:CGRectMake(0, 200, SCREEN_WIDTH, 40)];
-        myClassView.backgroundColor = [UIColor whiteColor];
-        UIImageView *myclassImg = [[UIImageView alloc] initWithFrame:CGRectMake(13, 10, 35, myClassView.frame.size.height - 10)];
-        myclassImg.image = [UIImage imageNamed:@"blackboard"];
-        [myClassView addSubview:myclassImg];
-        // 设置我的课程标签
-        UILabel *myclassLabel = [[UILabel alloc] initWithFrame:CGRectMake(60, 25, 50, 20)];
-        myclassLabel.text = [NSString stringWithFormat:@"我的课程"];
-        myclassLabel.textColor = [UIColor blackColor];
-        myclassLabel.font = [UIFont systemFontOfSize:12];
-        [myClassView addSubview:myclassLabel];
-        return myClassView;
+        sectionView.showImgView.image = [UIImage imageNamed:@"blackboard"];
+        sectionView.showTitleLabel.text = @"我的课程";
+        return sectionView;
+    } else {
+        sectionView.showImgView.image = [UIImage imageNamed:@"crown"];
+        sectionView.showTitleLabel.text = @"热点新闻";
+        return  sectionView;
     }
-    return nil;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -77,8 +89,8 @@
         PJCourceCell *cell = [tableView dequeueReusableCellWithIdentifier:@"PJCourceCell" forIndexPath:indexPath];
         return cell;
     } else {
-        UITableViewCell *cell = [UITableViewCell new];
-        cell.backgroundColor = [UIColor redColor];
+        PJNewsCell *cell = [tableView dequeueReusableCellWithIdentifier:@"PJNewsCell" forIndexPath:indexPath];
+        cell.dataArr = _newsDataArr;
         return cell;
     }
 }

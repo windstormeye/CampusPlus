@@ -16,7 +16,8 @@
 
 @implementation PJHomePageViewController
 {
-    PJHomePageTableView *_tableView;
+    PJHomePageTableView *_kTableView;
+    NSMutableArray *_dataArr;
 }
 
 - (void)viewDidLoad {
@@ -29,6 +30,7 @@
 }
 
 - (void)initView {
+    _dataArr = [@[] mutableCopy];
     self.view.backgroundColor = [UIColor whiteColor];
     [self.navigationController.navigationBar setBarTintColor:mainDeepSkyBlue];
     [self.leftBarButton setImage:nil forState:UIControlStateNormal];
@@ -42,8 +44,22 @@
     [titleView addSubview:beixingjiaiImg];
     self.navigationItem.titleView = titleView;
 
-    _tableView = [[PJHomePageTableView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT) style:UITableViewStyleGrouped];
-    [self.view addSubview:_tableView];
+    _kTableView = [[PJHomePageTableView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT) style:UITableViewStyleGrouped];
+    [self.view addSubview:_kTableView];
+    
+    [self getDataFromBmob];
+}
+
+- (void)getDataFromBmob {
+    BmobQuery   *bquery = [BmobQuery queryWithClassName:@"News"];
+    [bquery findObjectsInBackgroundWithBlock:^(NSArray *array, NSError *error)
+     {
+         for (BmobObject *obj in array)
+         {
+             [_dataArr addObject:obj];
+         }
+         _kTableView.newsDataArr = _dataArr;
+     }];
 }
 
 @end

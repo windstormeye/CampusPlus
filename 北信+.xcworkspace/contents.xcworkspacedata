@@ -2,7 +2,22 @@
 <Workspace
    version = "1.0">
    <FileRef
-      location = "group:北信+.xcodeproj">
+      location = "group:&#x5317;&#x4fe1;+/PJHomePageCourseCollectionViewCell.h">
+   </FileRef>
+   <FileRef
+      location = "group:&#x5317;&#x4fe1;+/PJHomePageCourseCollectionViewCell.m">
+   </FileRef>
+   <FileRef
+      location = "group:&#x5317;&#x4fe1;+/PJHomePageCourseCollectionViewCell.xib">
+   </FileRef>
+   <FileRef
+      location = "group:&#x5317;&#x4fe1;+/PJHomePageCourseView.h">
+   </FileRef>
+   <FileRef
+      location = "group:&#x5317;&#x4fe1;+/PJHomePageCourseView.m">
+   </FileRef>
+   <FileRef
+      location = "group:&#x5317;&#x4fe1;+.xcodeproj">
    </FileRef>
    <FileRef
       location = "group:Pods/Pods.xcodeproj">

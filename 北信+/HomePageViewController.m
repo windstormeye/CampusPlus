@@ -67,7 +67,6 @@
     self.view.backgroundColor = [UIColor whiteColor];
  
     BmobQuery   *bquery = [BmobQuery queryWithClassName:@"News"];
-    //查找GameScore表的数据
     [bquery findObjectsInBackgroundWithBlock:^(NSArray *array, NSError *error)
      {
          for (BmobObject *obj in array)

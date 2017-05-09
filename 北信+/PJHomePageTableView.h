@@ -10,4 +10,6 @@
 
 @interface PJHomePageTableView : UITableView <UITableViewDelegate, UITableViewDataSource>
 
+
+@property (nonatomic, strong) NSArray *newsDataArr;
 @end
