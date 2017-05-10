@@ -8,7 +8,14 @@
 
 #import <UIKit/UIKit.h>
 
+@protocol PJHomePageNewsCollectionViewDelegate <NSObject>
+
+- (void)PJHomePageNewsCollectionViewCellClick:(BmobObject *)data;
+
+@end
+
 @interface PJHomePageNewsCollectionView : UICollectionView <UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout>
 
 @property (nonatomic, strong) NSArray *dataArr;
+@property (nonatomic, weak) id<PJHomePageNewsCollectionViewDelegate> collectionDelegate;
 @end

@@ -7,7 +7,7 @@
 //
 
 #import "PJNewsCell.h"
-#import "PJHomePageNewsCollectionView.h"
+
 
 @implementation PJNewsCell
 {
@@ -28,9 +28,12 @@
     self.selectionStyle = UITableViewCellSelectionStyleNone;
     _collectionView = [[PJHomePageNewsCollectionView alloc]initWithFrame:CGRectMake(0, 0, 0, 0) collectionViewLayout:[UICollectionViewFlowLayout new]];
     _collectionView.dataArr = _dataArr;
+    _collectionView.collectionDelegate = self;
     [self.contentView addSubview:_collectionView];
 }
 
-
+- (void)PJHomePageNewsCollectionViewCellClick:(BmobObject *)data {
+    [_cellDelegate PJNewsCellClick:data];
+}
 
 @end

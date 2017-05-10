@@ -34,7 +34,7 @@
     return 5;
 }
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
-
+    NSLog(@"%d", (int)indexPath.row);
 }
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
     PJHomePageCourseCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"PJHomePageCourseCollectionViewCell" forIndexPath:indexPath];

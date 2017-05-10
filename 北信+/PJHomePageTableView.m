@@ -10,7 +10,8 @@
 #import "PJHomePageBannerView.h"
 #import "PJCourceCell.h"
 #import "PJHomePageSectionView.h"
-#import "PJNewsCell.h"
+#import "NewsViewController.h"
+
 
 @implementation PJHomePageTableView
 {
@@ -30,6 +31,7 @@
 }
 - (void)initView {
     _newsDataArr = [@[] mutableCopy];
+    self.backgroundColor = [UIColor whiteColor];
     self.frame = CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT-48);
     self.delegate = self;
     self.dataSource = self;
@@ -91,8 +93,13 @@
     } else {
         PJNewsCell *cell = [tableView dequeueReusableCellWithIdentifier:@"PJNewsCell" forIndexPath:indexPath];
         cell.dataArr = _newsDataArr;
+        cell.cellDelegate = self;
         return cell;
     }
+}
+
+- (void)PJNewsCellClick:(BmobObject *)data {
+    [_tableDelegate PJHomePageTableViewNewsCellClick:data];
 }
 
 @end

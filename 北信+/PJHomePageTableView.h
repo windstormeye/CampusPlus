@@ -7,9 +7,17 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "PJNewsCell.h"
 
-@interface PJHomePageTableView : UITableView <UITableViewDelegate, UITableViewDataSource>
+@protocol PJHomePageTableViewDelegate <NSObject>
+
+- (void)PJHomePageTableViewNewsCellClick:(BmobObject *)data;
+
+@end
+
+@interface PJHomePageTableView : UITableView <UITableViewDelegate, UITableViewDataSource, PJNewsCellDelegate>
 
 
 @property (nonatomic, strong) NSArray *newsDataArr;
+@property (nonatomic, weak) id<PJHomePageTableViewDelegate> tableDelegate;
 @end

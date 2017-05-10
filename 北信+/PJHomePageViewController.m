@@ -8,9 +8,9 @@
 
 #import "PJHomePageViewController.h"
 #import "PJHomePageTableView.h"
+#import "NewsViewController.h"
 
-
-@interface PJHomePageViewController ()
+@interface PJHomePageViewController () <PJHomePageTableViewDelegate>
 
 @end
 
@@ -45,6 +45,7 @@
     self.navigationItem.titleView = titleView;
 
     _kTableView = [[PJHomePageTableView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT) style:UITableViewStyleGrouped];
+    _kTableView.tableDelegate = self;
     [self.view addSubview:_kTableView];
     
     [self getDataFromBmob];
@@ -60,6 +61,13 @@
          }
          _kTableView.newsDataArr = _dataArr;
      }];
+}
+
+- (void)PJHomePageTableViewNewsCellClick:(BmobObject *)data {
+    NewsViewController *vc = [NewsViewController new];
+    vc.data = data;
+    vc.hidesBottomBarWhenPushed = YES;
+    [self.navigationController pushViewController:vc animated:YES];
 }
 
 @end

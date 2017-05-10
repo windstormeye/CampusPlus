@@ -10,6 +10,8 @@
 
 @interface NewsViewController : UIViewController
 
+@property (nonatomic, strong) BmobObject *data;
+
 - (void)getNewsMessageWithURL:(NSString *)urlStr;
 
 @end

@@ -39,7 +39,7 @@
     return _dataArr.count;
 }
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
-    
+    [_collectionDelegate PJHomePageNewsCollectionViewCellClick:_dataArr[indexPath.row]];
 }
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
     PJHomePageNewsCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"PJHomePageNewsCollectionViewCell" forIndexPath:indexPath];
