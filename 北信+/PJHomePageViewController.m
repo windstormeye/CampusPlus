@@ -10,8 +10,9 @@
 #import "PJHomePageTableView.h"
 #import "NewsViewController.h"
 #import "PJClassHomePage.h"
+#import "AllPaperDetailsTableViewController.h"
 
-@interface PJHomePageViewController () <PJHomePageTableViewDelegate>
+@interface PJHomePageViewController () <PJHomePageTableViewDelegate, PJClassHomePageDelegate>
 
 @end
 
@@ -78,6 +79,7 @@
     _kPaper = [[NSBundle mainBundle] loadNibNamed:@"PJClassHomePageView" owner:self options:nil].firstObject;
     _kPaper.frame = CGRectMake(20, 80, self.tabBarController.view.frame.size.width - 40, self.tabBarController.view.frame.size.height - 160);
     _kPaper.dataSource = dict;
+    _kPaper.viewDelegate = self;
     [self.tabBarController.view addSubview:_kPaper];
     
     // 创建蒙板按钮
@@ -107,8 +109,15 @@
     } completion:^(BOOL finished) {
         [_kPaper removeFromSuperview];
         [_kCover removeFromSuperview];
-//        self.cover = nil;
     }];
+}
+
+- (void)PJClassHomePagePushQuestionBtnClick {
+    [_kPaper removeFromSuperview];
+    [_kCover removeFromSuperview];
+    AllPaperDetailsTableViewController *vc = [AllPaperDetailsTableViewController new];
+    vc.hidesBottomBarWhenPushed = YES;
+    [self.navigationController pushViewController:vc animated:YES];
 }
 
 @end

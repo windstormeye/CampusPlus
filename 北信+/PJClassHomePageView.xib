@@ -104,6 +104,9 @@
                         <constraint firstAttribute="width" constant="40" id="jOh-cK-aOt"/>
                     </constraints>
                     <state key="normal" image="test_fragment_lijiezhengti"/>
+                    <connections>
+                        <action selector="questionBtnClick:" destination="iN0-l3-epB" eventType="touchUpInside" id="O48-cp-xMJ"/>
+                    </connections>
                 </button>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Fio-YP-1Dq">
                     <rect key="frame" x="168" y="245" width="40" height="40"/>
@@ -112,6 +115,9 @@
                         <constraint firstAttribute="height" constant="40" id="yee-as-Ijt"/>
                     </constraints>
                     <state key="normal" image="test_fragment_zhinenglianxi"/>
+                    <connections>
+                        <action selector="publishBtnClick:" destination="iN0-l3-epB" eventType="touchUpInside" id="DvG-ow-feg"/>
+                    </connections>
                 </button>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rPr-Kq-uFj">
                     <rect key="frame" x="90" y="325" width="40" height="40"/>
@@ -120,6 +126,9 @@
                         <constraint firstAttribute="height" constant="40" id="tbP-es-Lan"/>
                     </constraints>
                     <state key="normal" image="test_fragment_shoucangjia"/>
+                    <connections>
+                        <action selector="collectionbookBtnClick:" destination="iN0-l3-epB" eventType="touchUpInside" id="6GY-Lp-1DG"/>
+                    </connections>
                 </button>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ez7-v5-okB">
                     <rect key="frame" x="290" y="245" width="40" height="40"/>
@@ -128,6 +137,9 @@
                         <constraint firstAttribute="height" constant="40" id="lQt-H5-F56"/>
                     </constraints>
                     <state key="normal" image="test_fragment_cuotiben"/>
+                    <connections>
+                        <action selector="errorbookBtnClick:" destination="iN0-l3-epB" eventType="touchUpInside" id="zcG-Tv-egW"/>
+                    </connections>
                 </button>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Iup-ev-6th">
                     <rect key="frame" x="245" y="325" width="40" height="40"/>
@@ -136,6 +148,9 @@
                         <constraint firstAttribute="height" constant="40" id="Hpk-K3-Wyt"/>
                     </constraints>
                     <state key="normal" image="test_fragment_wenda"/>
+                    <connections>
+                        <action selector="myAnswerBtnClick:" destination="iN0-l3-epB" eventType="touchUpInside" id="orq-y3-AIg"/>
+                    </connections>
                 </button>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="历届真题" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4g8-qW-z9e">
                     <rect key="frame" x="36.5" y="290" width="57.5" height="17"/>
@@ -218,8 +233,12 @@
             <nil key="simulatedStatusBarMetrics"/>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <connections>
+                <outlet property="answerNumLabel" destination="ja7-6T-MGK" id="jW1-TH-pQb"/>
                 <outlet property="bgView" destination="3Ru-qr-Kgn" id="hfY-Tj-BiO"/>
                 <outlet property="classTitleLabel" destination="xCu-l5-dBB" id="Pra-b4-mCr"/>
+                <outlet property="correctNumLabel" destination="E6O-B2-Ad9" id="krb-oe-iwv"/>
+                <outlet property="levelImgView" destination="TaO-zm-6sq" id="g7F-iC-sjQ"/>
+                <outlet property="scoreLabel" destination="uaj-IW-b5r" id="10Y-8w-L6g"/>
             </connections>
             <point key="canvasLocation" x="-70.5" y="41"/>
         </view>

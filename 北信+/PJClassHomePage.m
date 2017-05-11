@@ -27,4 +27,20 @@
     _classTitleLabel.text = [NSString stringWithFormat:@"%@", dataSource[@"title"]];
 }
 
+- (IBAction)questionBtnClick:(id)sender {
+    [_viewDelegate PJClassHomePagePushQuestionBtnClick];
+}
+
+- (IBAction)publishBtnClick:(id)sender {
+}
+
+- (IBAction)errorbookBtnClick:(id)sender {
+}
+
+- (IBAction)collectionbookBtnClick:(id)sender {
+}
+
+- (IBAction)myAnswerBtnClick:(id)sender {
+}
+
 @end
