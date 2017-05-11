@@ -9,6 +9,7 @@
 #import "PJHomePageViewController.h"
 #import "PJHomePageTableView.h"
 #import "NewsViewController.h"
+#import "PJClassHomePage.h"
 
 @interface PJHomePageViewController () <PJHomePageTableViewDelegate>
 
@@ -18,6 +19,9 @@
 {
     PJHomePageTableView *_kTableView;
     NSMutableArray *_dataArr;
+    
+    UIButton *_kCover;
+    PJClassHomePage *_kPaper;
 }
 
 - (void)viewDidLoad {
@@ -68,6 +72,43 @@
     vc.data = data;
     vc.hidesBottomBarWhenPushed = YES;
     [self.navigationController pushViewController:vc animated:YES];
+}
+
+- (void)PJHomePageTableViewCourseCellClick:(NSDictionary *)dict {
+    _kPaper = [[NSBundle mainBundle] loadNibNamed:@"PJClassHomePageView" owner:self options:nil].firstObject;
+    _kPaper.frame = CGRectMake(20, 80, self.tabBarController.view.frame.size.width - 40, self.tabBarController.view.frame.size.height - 160);
+    _kPaper.dataSource = dict;
+    [self.tabBarController.view addSubview:_kPaper];
+    
+    // 创建蒙板按钮
+    UIButton *btnCover = [[UIButton alloc]init];
+    // 设置蒙板按钮的大小
+    btnCover.frame = CGRectMake(0, 0, self.navigationController.view.frame.size.width, self.navigationController.view.frame.size.height);
+    // 设置蒙板按钮的颜色
+    btnCover.backgroundColor = [UIColor blackColor];
+    // 设置蒙板按钮的透明度，开始先设置为0，使用动画进行变化
+    btnCover.alpha = 0.0;
+    [self.tabBarController.view addSubview:btnCover];
+    _kCover = btnCover;
+    [btnCover addTarget:self action:@selector(removeAll) forControlEvents:UIControlEventTouchUpInside];
+    [UIView animateWithDuration:0.3 animations:^{
+        btnCover.alpha = 0.6;
+        _kPaper.alpha = 1.0;
+    }];
+    [self.tabBarController.view bringSubviewToFront:_kPaper];
+}
+
+- (void)removeAll
+{
+    // 设置动画
+    [UIView animateWithDuration:0.3 animations:^{
+        _kCover.alpha = 0.0;
+        _kPaper.alpha = 0.0;
+    } completion:^(BOOL finished) {
+        [_kPaper removeFromSuperview];
+        [_kCover removeFromSuperview];
+//        self.cover = nil;
+    }];
 }
 
 @end

@@ -7,7 +7,15 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "PJHomePageCourseView.h"
 
-@interface PJCourceCell : UITableViewCell
+@protocol PJCourceCellDelegate <NSObject>
 
+- (void)PJCourceCellClick:(NSDictionary *)dict;
+
+@end
+
+@interface PJCourceCell : UITableViewCell <PJHomePageCourseViewDelegate>
+
+@property (nonatomic, weak) id<PJCourceCellDelegate> cellDelegate;
 @end

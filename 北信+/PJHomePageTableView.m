@@ -8,7 +8,6 @@
 
 #import "PJHomePageTableView.h"
 #import "PJHomePageBannerView.h"
-#import "PJCourceCell.h"
 #import "PJHomePageSectionView.h"
 #import "NewsViewController.h"
 
@@ -89,6 +88,7 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     if (indexPath.section == 0) {
         PJCourceCell *cell = [tableView dequeueReusableCellWithIdentifier:@"PJCourceCell" forIndexPath:indexPath];
+        cell.cellDelegate = self;
         return cell;
     } else {
         PJNewsCell *cell = [tableView dequeueReusableCellWithIdentifier:@"PJNewsCell" forIndexPath:indexPath];
@@ -100,6 +100,10 @@
 
 - (void)PJNewsCellClick:(BmobObject *)data {
     [_tableDelegate PJHomePageTableViewNewsCellClick:data];
+}
+
+- (void)PJCourceCellClick:(NSDictionary *)dict {
+    [_tableDelegate PJHomePageTableViewCourseCellClick:dict];
 }
 
 @end

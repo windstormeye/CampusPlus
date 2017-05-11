@@ -88,6 +88,8 @@
 		74707A461EC19ED700F40558 /* PJHomePageNewsCollectionView.m in Sources */ = {isa = PBXBuildFile; fileRef = 74707A451EC19ED700F40558 /* PJHomePageNewsCollectionView.m */; };
 		74707A4D1EC19F7400F40558 /* PJHomePageNewsCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 74707A4B1EC19F7400F40558 /* PJHomePageNewsCollectionViewCell.m */; };
 		74707A4E1EC19F7400F40558 /* PJHomePageNewsCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 74707A4C1EC19F7400F40558 /* PJHomePageNewsCollectionViewCell.xib */; };
+		747573461EC422FD009471CB /* PJClassHomePage.m in Sources */ = {isa = PBXBuildFile; fileRef = 747573451EC422FD009471CB /* PJClassHomePage.m */; };
+		747573481EC42458009471CB /* PJClassHomePageView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 747573471EC42458009471CB /* PJClassHomePageView.xib */; };
 		EA607025D395B045278EB88E /* libPods-北信+.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 2D389DB6BA7A2B61A1249394 /* libPods-北信+.a */; };
 /* End PBXBuildFile section */
 
@@ -275,6 +277,9 @@
 		74707A4A1EC19F7400F40558 /* PJHomePageNewsCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PJHomePageNewsCollectionViewCell.h; sourceTree = "<group>"; };
 		74707A4B1EC19F7400F40558 /* PJHomePageNewsCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PJHomePageNewsCollectionViewCell.m; sourceTree = "<group>"; };
 		74707A4C1EC19F7400F40558 /* PJHomePageNewsCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PJHomePageNewsCollectionViewCell.xib; sourceTree = "<group>"; };
+		747573441EC422FD009471CB /* PJClassHomePage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PJClassHomePage.h; sourceTree = "<group>"; };
+		747573451EC422FD009471CB /* PJClassHomePage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PJClassHomePage.m; sourceTree = "<group>"; };
+		747573471EC42458009471CB /* PJClassHomePageView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PJClassHomePageView.xib; sourceTree = "<group>"; };
 		B86A80FB401D29367734F535 /* Pods-北信+.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-北信+.debug.xcconfig"; path = "Pods/Target Support Files/Pods-北信+/Pods-北信+.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -406,6 +411,8 @@
 			children = (
 				74707A161EC050E400F40558 /* PJHomePageViewController.h */,
 				74707A171EC050E400F40558 /* PJHomePageViewController.m */,
+				747573431EC422DA009471CB /* 课程详情 */,
+				747573421EC422D0009471CB /* 课程首页 */,
 				74707A401EC19E1E00F40558 /* 我的课程 */,
 				74707A321EC19D4100F40558 /* 热点新闻 */,
 				74707A2A1EC18E7D00F40558 /* 首页sectionView */,
@@ -767,11 +774,7 @@
 			children = (
 				74707A411EC19E4F00F40558 /* PJNewsCell.h */,
 				74707A421EC19E4F00F40558 /* PJNewsCell.m */,
-				74707A441EC19ED700F40558 /* PJHomePageNewsCollectionView.h */,
-				74707A451EC19ED700F40558 /* PJHomePageNewsCollectionView.m */,
-				74707A4A1EC19F7400F40558 /* PJHomePageNewsCollectionViewCell.h */,
-				74707A4B1EC19F7400F40558 /* PJHomePageNewsCollectionViewCell.m */,
-				74707A4C1EC19F7400F40558 /* PJHomePageNewsCollectionViewCell.xib */,
+				747573401EC42000009471CB /* collectionView */,
 			);
 			name = "热点新闻";
 			sourceTree = "<group>";
@@ -798,12 +801,49 @@
 		74707A401EC19E1E00F40558 /* 我的课程 */ = {
 			isa = PBXGroup;
 			children = (
-				74707A3F1EC19E0700F40558 /* collectionView */,
-				74707A3E1EC19DFF00F40558 /* cell */,
 				74707A3B1EC19DE400F40558 /* PJCourceCell.h */,
 				74707A3C1EC19DE400F40558 /* PJCourceCell.m */,
+				74707A3F1EC19E0700F40558 /* collectionView */,
+				74707A3E1EC19DFF00F40558 /* cell */,
 			);
 			name = "我的课程";
+			sourceTree = "<group>";
+		};
+		747573401EC42000009471CB /* collectionView */ = {
+			isa = PBXGroup;
+			children = (
+				747573411EC42012009471CB /* cell */,
+				74707A441EC19ED700F40558 /* PJHomePageNewsCollectionView.h */,
+				74707A451EC19ED700F40558 /* PJHomePageNewsCollectionView.m */,
+			);
+			name = collectionView;
+			sourceTree = "<group>";
+		};
+		747573411EC42012009471CB /* cell */ = {
+			isa = PBXGroup;
+			children = (
+				74707A4A1EC19F7400F40558 /* PJHomePageNewsCollectionViewCell.h */,
+				74707A4B1EC19F7400F40558 /* PJHomePageNewsCollectionViewCell.m */,
+				74707A4C1EC19F7400F40558 /* PJHomePageNewsCollectionViewCell.xib */,
+			);
+			name = cell;
+			sourceTree = "<group>";
+		};
+		747573421EC422D0009471CB /* 课程首页 */ = {
+			isa = PBXGroup;
+			children = (
+				747573441EC422FD009471CB /* PJClassHomePage.h */,
+				747573451EC422FD009471CB /* PJClassHomePage.m */,
+				747573471EC42458009471CB /* PJClassHomePageView.xib */,
+			);
+			name = "课程首页";
+			sourceTree = "<group>";
+		};
+		747573431EC422DA009471CB /* 课程详情 */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = "课程详情";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -923,6 +963,7 @@
 				74707A391EC19DAF00F40558 /* PJHomePageCourseCollectionViewCell.xib in Resources */,
 				2C7A8B011D87E19A00681CB4 /* Assets.xcassets in Resources */,
 				2C225BDC1DB884640072F970 /* demandView.xib in Resources */,
+				747573481EC42458009471CB /* PJClassHomePageView.xib in Resources */,
 				747079F51EBC67E100F40558 /* PJUserSB.storyboard in Resources */,
 				2C3C65741DC8D76900C7A5FB /* AgentView.xib in Resources */,
 				2C5F10CC1D8C277800C58B05 /* PaperDetailsView.xib in Resources */,
@@ -1051,6 +1092,7 @@
 				2C946F6D1DCDB12500C14903 /* MyAllCollectDetailViewController.m in Sources */,
 				2C5F10BD1D8B942700C58B05 /* NewsViewController.m in Sources */,
 				2CA446C61EBC230300A0FCAF /* GModel.m in Sources */,
+				747573461EC422FD009471CB /* PJClassHomePage.m in Sources */,
 				2C2048E21DA0F05500FD6BC0 /* UINavigationController+FDFullscreenPopGesture.m in Sources */,
 				2CEAA6891D8A40AA00AADD66 /* NewsView.m in Sources */,
 				74707A461EC19ED700F40558 /* PJHomePageNewsCollectionView.m in Sources */,

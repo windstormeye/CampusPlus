@@ -8,14 +8,16 @@
 
 #import <UIKit/UIKit.h>
 #import "PJNewsCell.h"
+#import "PJCourceCell.h"
 
 @protocol PJHomePageTableViewDelegate <NSObject>
 
 - (void)PJHomePageTableViewNewsCellClick:(BmobObject *)data;
+- (void)PJHomePageTableViewCourseCellClick:(NSDictionary *)dict;
 
 @end
 
-@interface PJHomePageTableView : UITableView <UITableViewDelegate, UITableViewDataSource, PJNewsCellDelegate>
+@interface PJHomePageTableView : UITableView <UITableViewDelegate, UITableViewDataSource, PJNewsCellDelegate, PJCourceCellDelegate>
 
 
 @property (nonatomic, strong) NSArray *newsDataArr;

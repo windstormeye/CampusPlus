@@ -7,7 +7,7 @@
 //
 
 #import "PJCourceCell.h"
-#import "PJHomePageCourseView.h"
+
 
 @implementation PJCourceCell
 {
@@ -23,7 +23,12 @@
 - (void)initView {
     self.selectionStyle = UITableViewCellSelectionStyleNone;
     _kCourseView = [[PJHomePageCourseView alloc]initWithFrame:CGRectMake(0, 0, 0, 0) collectionViewLayout:[UICollectionViewFlowLayout new]];
+    _kCourseView.collectionDelegate = self;
     [self.contentView addSubview:_kCourseView];
+}
+
+- (void)PJHomePageCourseViewCellClick:(NSDictionary *)dataSource {
+    [_cellDelegate PJCourceCellClick:dataSource];
 }
 
 @end

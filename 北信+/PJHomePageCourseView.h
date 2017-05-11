@@ -8,7 +8,13 @@
 
 #import <UIKit/UIKit.h>
 
+@protocol PJHomePageCourseViewDelegate <NSObject>
+
+- (void)PJHomePageCourseViewCellClick:(NSDictionary *)dataSource;
+
+@end
+
 @interface PJHomePageCourseView : UICollectionView <UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout>
 
-
+@property (nonatomic, weak) id<PJHomePageCourseViewDelegate> collectionDelegate;
 @end

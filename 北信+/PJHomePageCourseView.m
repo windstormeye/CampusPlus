@@ -34,7 +34,10 @@
     return 5;
 }
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
-    NSLog(@"%d", (int)indexPath.row);
+    PJHomePageCourseCollectionViewCell *cell = (PJHomePageCourseCollectionViewCell *)[collectionView cellForItemAtIndexPath:indexPath];
+    NSString *titleStr = cell.showLabel.text;
+    NSDictionary *dict = @{@"title":titleStr};
+    [_collectionDelegate PJHomePageCourseViewCellClick:dict];
 }
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
     PJHomePageCourseCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"PJHomePageCourseCollectionViewCell" forIndexPath:indexPath];
