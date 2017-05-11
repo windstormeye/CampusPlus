@@ -21,12 +21,16 @@
 }
 
 - (void)initView {
-    self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"back"] style:UIBarButtonItemStylePlain target:self action:@selector(back)];
-    self.navigationItem.title = @"历届真题";
-    NSDictionary *dict = [NSDictionary dictionaryWithObject:[UIColor whiteColor] forKey:NSForegroundColorAttributeName];
-    self.navigationController.navigationBar.titleTextAttributes = dict;
-    self.navigationController.navigationBar.tintColor = [UIColor whiteColor];
+//    self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"back"] style:UIBarButtonItemStylePlain target:self action:@selector(back)];
+//    self.navigationItem.title = @"历届真题";
+//    NSDictionary *dict = [NSDictionary dictionaryWithObject:[UIColor whiteColor] forKey:NSForegroundColorAttributeName];
+//    self.navigationController.navigationBar.titleTextAttributes = dict;
+//    self.navigationController.navigationBar.tintColor = [UIColor whiteColor];
+
+    [self initNavigationBar];
+    self.titleLabel.text = @"历届真题";
     
+    self.view.frame = CGRectMake(0, 64, SCREEN_WIDTH, SCREEN_HEIGHT - 64);
     UIView *view = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, 30)];
     UILabel *lab = [[UILabel alloc] init];
     lab.font = [UIFont systemFontOfSize:12];

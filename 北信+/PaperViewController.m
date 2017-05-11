@@ -46,7 +46,6 @@
 @property (nonatomic, retain) NSMutableArray *answerUsersBomeObjArr;
 @property (weak, nonatomic) MBProgressHUD *MB;
 @property (weak, nonatomic) UIScrollView *paperScrollView;
-@property (weak, nonatomic) UIView *navigationBarView;
 @property (nonatomic, retain) NSMutableArray *titleNumArr;
 
 
@@ -147,7 +146,7 @@
     [[RCIM sharedRCIM] setUserInfoDataSource:self];
     
     self.view.backgroundColor = [UIColor whiteColor];
-    self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"close"] style:UIBarButtonItemStylePlain target:self action:@selector(back)];
+    self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"back"] style:UIBarButtonItemStylePlain target:self action:@selector(back)];
     self.navigationController.navigationBar.tintColor = [UIColor whiteColor];
     
     self.isTouchCheckBtn = NO;
@@ -157,31 +156,32 @@
     answerPaperViewNums = 0;
     currentPaperNum = 0;
     
-    UIView *view = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.navigationController.navigationBar.frame.size.width, self.navigationController.navigationBar.frame.size.height)];
-    self.navigationBarView = view;
-    view.backgroundColor = [UIColor grayColor];
-    view.backgroundColor = [UIColor clearColor];
-    // 设置navigationBar标签
-    UIButton *btn1 = [[UIButton alloc] initWithFrame:CGRectMake(120, 10, self.navigationController.navigationBar.frame.size.height - 25, self.navigationController.navigationBar.frame.size.height - 20)];
-    [btn1 addTarget:self action:@selector(collect) forControlEvents:UIControlEventTouchUpInside];
-    [view addSubview:btn1];
-    UIImageView *imgView1 = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, btn1.frame.size.width, btn1.frame.size.height)];
-    imgView1.image = [UIImage imageNamed:@"exam_collect"];
-    [btn1 addSubview:imgView1];
-    // 设置navigationBar答题卡
-    UIButton *btn2 = [[UIButton alloc] initWithFrame:CGRectMake(CGRectGetMaxX(btn1.frame) + 30, btn1.frame.origin.y, btn1.frame.size.width + 8, btn1.frame.size.height)];
-    [view addSubview:btn2];
-    [btn2 addTarget:self action:@selector(answerViewClick) forControlEvents:UIControlEventTouchUpInside];
-    UIImageView *imgView2 = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, btn2.frame.size.width, btn2.frame.size.height)];
-    imgView2.image = [UIImage imageNamed:@"exam_paper"];
-    [btn2 addSubview:imgView2];
-    // 设置navigationBar纠错
-    UIButton *btn3 = [[UIButton alloc] initWithFrame:CGRectMake(CGRectGetMaxX(btn2.frame) + 30, btn2.frame.origin.y, btn2.frame.size.width + 8, btn2.frame.size.height)];
-    [view addSubview:btn3];
-    [btn3 addTarget:self action:@selector(messageBtnClickMethon) forControlEvents:UIControlEventTouchUpInside];
-    UIImageView *imgView3 = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, btn2.frame.size.width, btn2.frame.size.height)];
-    imgView3.image = [UIImage imageNamed:@"message"];
-    [btn3 addSubview:imgView3];
+    CGFloat wi = SCREEN_WIDTH * 0.1;
+    
+    UIView *view = [[UIView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH * 0.8, 44)];
+    self.navigationItem.titleView = view;
+    
+    UIButton *messageBtn = [[UIButton alloc] initWithFrame:CGRectMake(view.frame.size.width - 25, 10, 25, 25)];
+    [view addSubview:messageBtn];
+    [messageBtn addTarget:self action:@selector(messageBtnClickMethon) forControlEvents:UIControlEventTouchUpInside];
+    UIImageView *messageImgView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, messageBtn.frame.size.width, messageBtn.frame.size.height)];
+    messageImgView.image = [UIImage imageNamed:@"message"];
+    [messageBtn addSubview:messageImgView];
+    
+    UIButton *answerBtn = [[UIButton alloc] initWithFrame:CGRectMake(messageBtn.frame.origin.x - wi - messageBtn.frame.size.width, messageBtn.frame.origin.y, messageBtn.frame.size.width, messageBtn.frame.size.height)];
+    [view addSubview:answerBtn];
+    [answerBtn addTarget:self action:@selector(answerViewClick) forControlEvents:UIControlEventTouchUpInside];
+    UIImageView *ansewrImgView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, answerBtn.frame.size.width, answerBtn.frame.size.height)];
+    ansewrImgView.image = [UIImage imageNamed:@"exam_paper"];
+    [answerBtn addSubview:ansewrImgView];
+    
+    UIButton *collectBtn = [[UIButton alloc] initWithFrame:CGRectMake(answerBtn.frame.origin.x - wi - answerBtn.frame.size.width, answerBtn.frame.origin.y, ansewrImgView.frame.size.width - 5, ansewrImgView.frame.size.height)];
+    [collectBtn addTarget:self action:@selector(collect) forControlEvents:UIControlEventTouchUpInside];
+    [view addSubview:collectBtn];
+    UIImageView *collectImgView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, collectBtn.frame.size.width, collectBtn.frame.size.height)];
+    collectImgView.image = [UIImage imageNamed:@"exam_collect"];
+    [collectBtn addSubview:collectImgView];
+    
     // 设置navigationBar计时器
     MZTimerLabel *timeLabel = [[MZTimerLabel alloc] initWithFrame:CGRectMake(10, 0, self.navigationController.navigationBar.frame.size.width, self.navigationController.navigationBar.frame.size.height)];
     timeLabel.timeLabel.textColor = [UIColor whiteColor];
@@ -192,10 +192,8 @@
     
     numOfQuestions = 0;
     
-    MBProgressHUD *MB = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
-    MB.label.text = @"正在加载试卷，请稍后...";
-    [self.view bringSubviewToFront:MB];
-    
+    [PJHUD showWithStatus:@""];
+
     BmobQuery *bquery = [BmobQuery queryWithClassName:@"Questions"];
     // 按照升序排列
     [bquery orderByAscending:@"Q_num"];
@@ -206,11 +204,9 @@
             [self.answerBomeObjArr addObject:obj];
         }
         [self initPaperViewWithDict];
-        [MB hideAnimated:YES];
+        [PJHUD dismiss];
         [timeLabel start];
     }];
-    
-    [self.navigationItem setTitleView:view];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -227,13 +223,14 @@
 - (void)initPaperViewWithDict
 {
     Questions = 0;
+    [PJHUD showWithStatus:@""];
     
     // 让第一个出现的题目View的标签是非题目
     self.nowLabel.text = [NSString stringWithFormat:@"非题目"];
     self.nowLabel.textColor = [UIColor grayColor];
     self.nowLabel.font = [UIFont systemFontOfSize:18];
     
-    UIView *view = [[UIView alloc] initWithFrame:CGRectMake(0, self.navigationController.navigationBar.frame.size.height - 45, self.view.frame.size.width, 40)];
+    UIView *view = [[UIView alloc] initWithFrame:CGRectMake(0, 64, self.view.frame.size.width, 40)];
     view.backgroundColor = [UIColor whiteColor];
     UILabel *lab = [[UILabel alloc] initWithFrame:CGRectMake(10, 0, self.view.frame.size.width, view.frame.size.height - 1)];
     UIView *lineView = [[UIView alloc] initWithFrame:CGRectMake(0, lab.frame.size.height, self.view.frame.size.width, 1)];
@@ -248,7 +245,7 @@
     [self.view bringSubviewToFront:view];
     
     // 设置整个试卷题目scrollView
-    UIScrollView *scrollView = [[UIScrollView alloc] initWithFrame:CGRectMake(0, view.frame.size.height, self.view.frame.size.width, self.view.frame.size.height)];
+    UIScrollView *scrollView = [[UIScrollView alloc] initWithFrame:CGRectMake(0, CGRectGetMaxY(view.frame), self.view.frame.size.width, self.view.frame.size.height)];
     scrollView.backgroundColor = [UIColor whiteColor];
     
     self.scrollView = scrollView;
@@ -513,7 +510,7 @@
             question ++;
         }
     }
-      UIButton *checkBtn = [[UIButton alloc] initWithFrame:CGRectMake(0, answerView.frame.size.height - 100, self.view.frame.size.width, 60)];
+      UIButton *checkBtn = [[UIButton alloc] initWithFrame:CGRectMake(0, SCREEN_HEIGHT - 164, self.view.frame.size.width, 60)];
     self.checkBtn = checkBtn;
     checkBtn.backgroundColor = [UIColor colorWithRed:38/255.0 green:184/255.0 blue:242/255.0 alpha:1.0];
     [checkBtn addTarget:self action:@selector(checkBtnMethon) forControlEvents:UIControlEventTouchUpInside];
@@ -523,12 +520,12 @@
     checkBtnLabel.textAlignment = NSTextAlignmentCenter;
     if (self.isTouchCheckBtn)
     {
-        checkBtnLabel.text = @"完成批改并查看报告";
+        checkBtnLabel.text = @"查看报告";
         checkBtn.backgroundColor = [UIColor colorWithRed:50/255.0 green:205/255.0 blue:50/255.0 alpha:1.0];
     }
     else
     {
-        checkBtnLabel.text = @"查看答案并自我批改";
+        checkBtnLabel.text = @"查看答案";
     }
     checkBtnLabel.textColor = [UIColor whiteColor];
     self.checkBtnLabel = checkBtnLabel;
@@ -552,6 +549,8 @@
     [view addSubview:now];
     
     self.scrollView.delegate = self;
+    
+    [PJHUD dismiss];
 }
 
 - (void)trueBtnClickMethon:(UIButton *)button
@@ -667,13 +666,9 @@
     else
     {
         [self.timeLabel pause];
-        MBProgressHUD *MB = [MBProgressHUD showHUDAddedTo:[[UIApplication sharedApplication]keyWindow] animated:YES];
-        MB.label.text = @"答案正在加载，请耐心等待...";
-        self.timeLabelPauseStr = self.timeLabel.text;
         self.isTouchCheckBtn = YES;
         self.isTouchCheckBtnAgain = NO;
         [self initPaperViewWithDict];
-        [MB hideAnimated:YES afterDelay:2];
     }
 }
 
@@ -744,47 +739,11 @@
             }
         }];
 
-        CGFloat width = SCREEN.width * 0.5 * SCREEN_WIDTH_RATIO;
-        CGFloat height = 0.3 * width;
-        UIView * tip = [[UIView alloc]initWithFrame:CGRectMake(self.view.frame.size.width * 0.5 - width / 2, self.view.frame.size.height - (self.view.frame.size.height * 0.45 / 3 * 2), width, height)];
-        tip.backgroundColor = [UIColor colorWithRed:244/255.0 green:244/255.0 blue:244/255.0 alpha:1.0];
-        tip.layer.cornerRadius = 8.0f;
-        [self.view addSubview:tip];
-        UILabel * label = [[UILabel alloc]init];
-        label.text = @"收藏成功 (◕ω ◕｀ヽ)";
-        //sizetofit的作用，是让label自动适应为跟文字大小等大的label
-        label.font = [UIFont systemFontOfSize:12];
-        [label sizeToFit];
-        label.center = CGPointMake(tip.frame.size.width * 0.5, tip.frame.size.height * 0.5);
-        [tip addSubview:label];
-        tip.alpha = 0.0;
-        [UIView animateWithDuration:0.8 animations:^{
-            tip.alpha = 1;
-        } completion:^(BOOL finished) {
-            [tip removeFromSuperview];
-        }];
+        [PJHUD showSuccessWithStatus:@"收藏成功"];
     }
     else
     {
-        CGFloat width = SCREEN.width * 0.5 * SCREEN_WIDTH_RATIO;
-        CGFloat height = 0.3 * width;
-        UIView * tip = [[UIView alloc]initWithFrame:CGRectMake(self.view.frame.size.width * 0.5 - width / 2, self.view.frame.size.height - (self.view.frame.size.height * 0.45 / 3 * 2), width, height)];
-        tip.backgroundColor = [UIColor colorWithRed:244/255.0 green:244/255.0 blue:244/255.0 alpha:1.0];
-        tip.layer.cornerRadius = 8.0f;
-        [self.view addSubview:tip];
-        UILabel * label = [[UILabel alloc]init];
-        label.text = @"这不是题目噢~";
-        //sizetofit的作用，是让label自动适应为跟文字大小等大的label
-        label.font = [UIFont systemFontOfSize:12];
-        [label sizeToFit];
-        label.center = CGPointMake(tip.frame.size.width * 0.5, tip.frame.size.height * 0.5);
-        [tip addSubview:label];
-        tip.alpha = 0.0;
-        [UIView animateWithDuration:0.8 animations:^{
-            tip.alpha = 1;
-        } completion:^(BOOL finished) {
-            [tip removeFromSuperview];
-        }];
+        [PJHUD showErrorWithStatus:@"非题目"];
     }
 }
 // 答题卡题目按钮点击事件

@@ -11,6 +11,7 @@
 #import "NewsViewController.h"
 #import "PJClassHomePage.h"
 #import "AllPaperDetailsTableViewController.h"
+#import "PJClassViewController.h"
 
 @interface PJHomePageViewController () <PJHomePageTableViewDelegate, PJClassHomePageDelegate>
 
@@ -115,7 +116,7 @@
 - (void)PJClassHomePagePushQuestionBtnClick {
     [_kPaper removeFromSuperview];
     [_kCover removeFromSuperview];
-    AllPaperDetailsTableViewController *vc = [AllPaperDetailsTableViewController new];
+    PJClassViewController *vc = [PJClassViewController new];
     vc.hidesBottomBarWhenPushed = YES;
     [self.navigationController pushViewController:vc animated:YES];
 }

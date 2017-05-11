@@ -19,11 +19,16 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
+    self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"back"] style:UIBarButtonItemStylePlain target:self action:@selector(back)];
+    self.navigationItem.title = @"我的消息";
+    NSDictionary *dict = [NSDictionary dictionaryWithObject:[UIColor whiteColor] forKey:NSForegroundColorAttributeName];
+    self.navigationController.navigationBar.titleTextAttributes = dict;
+    self.navigationController.navigationBar.tintColor = [UIColor whiteColor];
+    self.view.backgroundColor = [UIColor whiteColor];
+
     [[RCIM sharedRCIM] setUserInfoDataSource:self];
-    self.conversationListTableView.frame = CGRectMake(0, 64, SCREEN_WIDTH, SCREEN_HEIGHT-64);
-    [self initNavigationBar];
-    self.titleLabel.text = @"我的消息";
+    self.conversationListTableView.frame = CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT);
+    
     // 隐藏未显示的cell并且已显示的cell
     self.conversationListTableView.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
     
@@ -35,6 +40,11 @@
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
+}
+
+-(void)back
+{
+    [self.navigationController popViewControllerAnimated:YES];
 }
 
 //重写RCConversationListViewController的onSelectedTableRow事件

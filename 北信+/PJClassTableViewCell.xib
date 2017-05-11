@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="12118" systemVersion="16E195" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12086"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="KGk-i7-Jjw" customClass="PJClassTableViewCell">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="70"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="320" height="69.5"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="N53-mD-V6m">
+                        <rect key="frame" x="15" y="7" width="55" height="55"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="14级" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CYt-Hj-5D1">
+                                <rect key="frame" x="0.0" y="17" width="55" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" red="0.80000001190000003" green="0.80000001190000003" blue="0.80000001190000003" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="55" id="18V-nX-hao"/>
+                            <constraint firstAttribute="height" constant="55" id="1co-Kg-zds"/>
+                        </constraints>
+                    </view>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WEp-nf-gOr">
+                        <rect key="frame" x="80" y="7" width="235" height="19.5"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BVw-PR-EYa">
+                        <rect key="frame" x="80" y="45" width="235" height="17"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                        <color key="textColor" red="0.50196081400000003" green="0.50196081400000003" blue="0.50196081400000003" alpha="1" colorSpace="calibratedRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="BVw-PR-EYa" firstAttribute="bottom" secondItem="N53-mD-V6m" secondAttribute="bottom" id="6zm-TS-a1s"/>
+                    <constraint firstItem="BVw-PR-EYa" firstAttribute="leading" secondItem="N53-mD-V6m" secondAttribute="trailing" constant="10" id="841-xi-8sB"/>
+                    <constraint firstAttribute="trailing" secondItem="BVw-PR-EYa" secondAttribute="trailing" constant="5" id="AD3-yU-uOg"/>
+                    <constraint firstItem="WEp-nf-gOr" firstAttribute="top" secondItem="N53-mD-V6m" secondAttribute="top" id="VGN-QJ-6IW"/>
+                    <constraint firstAttribute="trailing" secondItem="WEp-nf-gOr" secondAttribute="trailing" constant="5" id="ejz-bO-L8n"/>
+                    <constraint firstItem="N53-mD-V6m" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="15" id="iWt-yb-7Uj"/>
+                    <constraint firstItem="WEp-nf-gOr" firstAttribute="leading" secondItem="N53-mD-V6m" secondAttribute="trailing" constant="10" id="pcK-xE-G2D"/>
+                    <constraint firstItem="N53-mD-V6m" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="wDV-3z-uJG"/>
+                </constraints>
+            </tableViewCellContentView>
+            <connections>
+                <outlet property="detailsLabel" destination="BVw-PR-EYa" id="7JQ-p2-Wa2"/>
+                <outlet property="levelTitleLabel" destination="CYt-Hj-5D1" id="SFm-zY-9Ka"/>
+                <outlet property="titleLabel" destination="WEp-nf-gOr" id="Di1-S8-Wkz"/>
+            </connections>
+        </tableViewCell>
+    </objects>
+</document>

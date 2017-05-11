@@ -31,7 +31,10 @@
         PJHomePageViewController *homePage = [[PJHomePageViewController alloc] init];
         HelpViewController *help = [[HelpViewController alloc] init];
         FindViewController *find = [[FindViewController alloc] init];
-        PJUserViewController *user = [PJUserViewController new];
+        
+        UIStoryboard *sb = [UIStoryboard storyboardWithName:@"PJUserSB" bundle:nil];
+        PJUserViewController *user = [sb instantiateViewControllerWithIdentifier:@"PJUserViewController"];
+
 
         UINavigationController *firstContentViewController = [[UINavigationController alloc] initWithRootViewController:homePage];
         UINavigationController *secondContentViewController = [[UINavigationController alloc] initWithRootViewController:help];
