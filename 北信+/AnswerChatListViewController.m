@@ -19,18 +19,20 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    self.navigationController.navigationBar.hidden = false;
     self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"back"] style:UIBarButtonItemStylePlain target:self action:@selector(back)];
     self.navigationItem.title = @"我的消息";
     NSDictionary *dict = [NSDictionary dictionaryWithObject:[UIColor whiteColor] forKey:NSForegroundColorAttributeName];
     self.navigationController.navigationBar.titleTextAttributes = dict;
     self.navigationController.navigationBar.tintColor = [UIColor whiteColor];
+    self.navigationController.navigationBar.barTintColor = mainDeepSkyBlue;
     self.view.backgroundColor = [UIColor whiteColor];
-
+    
     [[RCIM sharedRCIM] setUserInfoDataSource:self];
     self.conversationListTableView.frame = CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT);
     
     // 隐藏未显示的cell并且已显示的cell
-    self.conversationListTableView.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
+    self.conversationListTableView.tableFooterView =[UIView new];
     
     [self setDisplayConversationTypes:@[@(ConversationType_PRIVATE)]];
     // 设置聊天列表界面和聊天界面用户头像为圆形

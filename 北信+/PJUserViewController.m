@@ -31,6 +31,11 @@
     [self initView];
 }
 
+// 解决当从消息界面pop回来时navigationBar出现问题
+- (void)viewDidAppear:(BOOL)animated {
+    self.navigationController.navigationBar.hidden = true;
+}
+
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
 }

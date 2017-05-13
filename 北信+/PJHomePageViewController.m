@@ -10,7 +10,6 @@
 #import "PJHomePageTableView.h"
 #import "NewsViewController.h"
 #import "PJClassHomePage.h"
-#import "AllPaperDetailsTableViewController.h"
 #import "PJClassViewController.h"
 
 @interface PJHomePageViewController () <PJHomePageTableViewDelegate, PJClassHomePageDelegate>

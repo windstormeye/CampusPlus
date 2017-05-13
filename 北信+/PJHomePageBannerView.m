@@ -17,8 +17,13 @@
     return self;
 }
 
+- (instancetype)initWithFrame:(CGRect)frame {
+    self = [super initWithFrame:frame];
+    [self initView];
+    return self;
+}
+
 - (void)initView {
-    self.frame = CGRectMake(0, 0, SCREEN_WIDTH, 160);
     NSArray *imagesURLStrings = @[@"http://nos.netease.com/edu-image/C5C39772ECC196D005F6EEACF98D4C9D.jpg?imageView&thumbnail=1205y490&quality=100",
                                   @"http://nos.netease.com/edu-image/64E75B1A8458347BA49D4A77BDEA130C.jpg?imageView&thumbnail=1205y490&quality=100",
                                   @"http://nos.netease.com/edu-image/BFABA934ABB3A4030DF95E87DEE4F167.jpg?imageView&thumbnail=1205y490&quality=100",
@@ -37,6 +42,11 @@
     cycleScrollView.pageControlAliment = SDCycleScrollViewPageContolAlimentCenter;
     [self addSubview:cycleScrollView];
 
+}
+
+- (void)setDataSource:(NSDictionary *)dataSource {
+    _dataSource = dataSource;
+    
 }
 
 @end

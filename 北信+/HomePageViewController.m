@@ -10,7 +10,6 @@
 #import "NewsViewController.h"
 #import "PJHomePageTableView.h"
 #import "NewsViewController.h"
-#import "PaperDetailsView.h"
 #import "NewsView.h"
 #import "News.h"
 #import "MyAllCollectTableViewController.h"
@@ -31,7 +30,6 @@
 
 @property(nonatomic, strong) UIScrollView *scrollView;
 @property (weak, nonatomic) UIButton *cover;
-@property(nonatomic, weak) PaperDetailsView *paper;
 @property (nonatomic, retain) NSDictionary *newsDict;
 @property (nonatomic, strong) UIPercentDrivenInteractiveTransition *percent;
 @property (nonatomic, retain) NSMutableArray *bomeObjArr;
@@ -264,56 +262,11 @@
     scrollView.contentSize = CGSizeMake(ww.width, tmp);
 }
 
-- (void)classViewClick
-{
-    PaperDetailsView *paper = [PaperDetailsView paperView];
-    paper.frame = CGRectMake(20, 80, self.tabBarController.view.frame.size.width - 40, self.tabBarController.view.frame.size.height - 160);
-    paper.layer.cornerRadius = 13.0f;
-    paper.alpha = 0.0;
-    paper.clipsToBounds = YES;
 
-    // 创建蒙板按钮
-    UIButton *btnCover = [[UIButton alloc]init];
-    // 设置蒙板按钮的大小
-    btnCover.frame = CGRectMake(0, 0, self.navigationController.view.frame.size.width, self.navigationController.view.frame.size.height);
-    // 设置蒙板按钮的颜色
-    btnCover.backgroundColor = [UIColor blackColor];
-    // 设置蒙板按钮的透明度，开始先设置为0，使用动画进行变化
-    btnCover.alpha = 0.0;
-    // 添加蒙板按钮至最底层的View中
-    [self.tabBarController.view addSubview:btnCover];
-    self.cover = btnCover;
-    // 为按钮注册一个单击事件
-    [btnCover addTarget:self action:@selector(removeAll) forControlEvents:UIControlEventTouchUpInside];
-    //设置动画，在0.5秒内把这个图片变大
-    [UIView animateWithDuration:0.3 animations:^{
-        btnCover.alpha = 0.6;
-        paper.alpha = 1.0;
-    }];
-    
-    // 要添加到当前视图最上层的糊视图
-    self.paper = paper;
-    [self.tabBarController.view addSubview:paper];
-    [self.tabBarController.view   bringSubviewToFront:paper];
-
-}
-- (void)removeAll
-{
-    // 设置动画
-    [UIView animateWithDuration:0.3 animations:^{
-        self.cover.alpha = 0.0;
-        self.paper.alpha = 0.0;
-    } completion:^(BOOL finished) {
-        [self.paper removeFromSuperview];
-        [self.cover removeFromSuperview];
-        self.cover = nil;
-    }];
-}
 
 -(void)viewWillDisappear:(BOOL)animated
 {
     [super viewWillDisappear:animated];
-    [self removeAll];
 }
 
 -(void )newsViewBtnClick:(UIButton *)sender

@@ -13,6 +13,7 @@
 #import "PJUserViewController.h"
 #import "IQKeyboardManager.h"
 #import "LoginViewController.h"
+#import "PJFindViewController.h"
 #import "AppDelegate.h"
 #import <BmobSDK/Bmob.h>
 #import <RongIMKit/RongIMKit.h>
@@ -30,7 +31,7 @@
         // 设置tabbar
         PJHomePageViewController *homePage = [[PJHomePageViewController alloc] init];
         HelpViewController *help = [[HelpViewController alloc] init];
-        FindViewController *find = [[FindViewController alloc] init];
+        PJFindViewController *find = [[PJFindViewController alloc] init];
         
         UIStoryboard *sb = [UIStoryboard storyboardWithName:@"PJUserSB" bundle:nil];
         PJUserViewController *user = [sb instantiateViewControllerWithIdentifier:@"PJUserViewController"];

@@ -1,15 +1,15 @@
 //
-//  PJHomePageBannerView.h
+//  PJSlideshowTableViewCell.h
 //  北信+
 //
-//  Created by pjpjpj on 2017/5/8.
+//  Created by pjpjpj on 2017/5/13.
 //  Copyright © 2017年 #incloud. All rights reserved.
 //
 
 #import <UIKit/UIKit.h>
-#import "SDCycleScrollView.h"
 
-@interface PJHomePageBannerView : UIView <SDCycleScrollViewDelegate>
+@interface PJSlideshowTableViewCell : UITableViewCell
 
 @property (nonatomic, strong) NSDictionary *dataSource;
+
 @end

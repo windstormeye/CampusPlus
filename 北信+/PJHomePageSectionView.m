@@ -15,6 +15,13 @@
     [self initView];
 }
 
+- (id)init {
+    self = [super init];
+    self = [[NSBundle mainBundle] loadNibNamed:@"PJHomePageSectionView" owner:self options:nil].firstObject;
+    [self initView];
+    return self;
+}
+
 - (void)initView {
     self.backgroundColor = [UIColor whiteColor];
     self.frame = CGRectMake(0, 0, SCREEN_WIDTH, 50);

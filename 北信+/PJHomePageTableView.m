@@ -35,7 +35,7 @@
     self.delegate = self;
     self.dataSource = self;
     self.tableFooterView = [UIView new];
-    _bannerView = [PJHomePageBannerView new];
+    _bannerView = [[PJHomePageBannerView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, 160)];
     self.tableHeaderView = _bannerView;
     self.separatorStyle = UITableViewCellSeparatorStyleNone;
     [self registerClass:[PJCourceCell class] forCellReuseIdentifier:@"PJCourceCell"];

@@ -54,20 +54,20 @@ static const void *LeftBarButton = &LeftBarButton;
     [self.view addSubview:self.navigationBar];
     
     self.leftBarButton = [[UIButton alloc]initWithFrame:CGRectMake(0, 20, 44, 44)];
-    [self.leftBarButton setImage:[[UIImage imageNamed:@"back"] imageWithColor:[UIColor blackColor]] forState:0];
+    [self.leftBarButton setImage:[[UIImage imageNamed:@"back"] imageWithColor:[UIColor whiteColor]] forState:0];
     [self.leftBarButton addTarget:self action:@selector(extentionBack) forControlEvents:1<<6];
     [self.view addSubview:self.leftBarButton];
     
     self.titleLabel = [[UILabel alloc]initWithFrame:CGRectMake(0, 32, SCREEN_WIDTH, 20)];
     self.titleLabel.font = [UIFont systemFontOfSize:18];
-    self.titleLabel.textColor = [UIColor blackColor];
+    self.titleLabel.textColor = [UIColor whiteColor];
     self.titleLabel.textAlignment = NSTextAlignmentCenter;
     
     [self.view addSubview:self.titleLabel];
     
     self.rightBarButton = [[UIButton alloc]initWithFrame:CGRectMake(SCREEN_WIDTH-55, 20, 44, 44)];
     self.rightBarButton.titleLabel.font = [UIFont systemFontOfSize:15];
-    [self.rightBarButton setTitleColor:[UIColor blackColor] forState:0];
+    [self.rightBarButton setTitleColor:[UIColor whiteColor] forState:0];
     [self.view addSubview:self.rightBarButton];
 }
 -(void)extentionBack{
