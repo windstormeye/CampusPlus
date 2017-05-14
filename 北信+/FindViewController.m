@@ -136,8 +136,6 @@
     self.moneyStr = self.de.moneyTextField.text;
     
     [self removeAll];
-    
-    NSLog(@"%@\n%@\n%@",self.titleStr, self.textStr, self.moneyStr);
 }
 
 - (void)event:(UITapGestureRecognizer *)gesture

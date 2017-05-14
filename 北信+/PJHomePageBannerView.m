@@ -10,6 +10,9 @@
 
 
 @implementation PJHomePageBannerView
+{
+    SDCycleScrollView *_kView;
+}
 
 - (id)init {
     self = [super init];
@@ -24,24 +27,21 @@
 }
 
 - (void)initView {
-    NSArray *imagesURLStrings = @[@"http://nos.netease.com/edu-image/C5C39772ECC196D005F6EEACF98D4C9D.jpg?imageView&thumbnail=1205y490&quality=100",
-                                  @"http://nos.netease.com/edu-image/64E75B1A8458347BA49D4A77BDEA130C.jpg?imageView&thumbnail=1205y490&quality=100",
-                                  @"http://nos.netease.com/edu-image/BFABA934ABB3A4030DF95E87DEE4F167.jpg?imageView&thumbnail=1205y490&quality=100",
-                                  @"http://nos.netease.com/edu-image/EA12D3DC06397D7FAE882FA7521C33DA.png?imageView&thumbnail=1205y490&quality=100",
-                                  @"http://nos.netease.com/edu-image/05E35FD224C59CBE03120BFC0F8C1FA9.jpg?imageView&thumbnail=1205y490&quality=100"
-                                  ];
-
-    SDCycleScrollView *cycleScrollView = [SDCycleScrollView cycleScrollViewWithFrame:CGRectMake(0, 0, self.frame.size.width, self.frame.size.height) delegate:self placeholderImage:[UIImage imageNamed:@"placeholder"]];
+    
+    _kView = [SDCycleScrollView cycleScrollViewWithFrame:CGRectMake(0, 0, self.frame.size.width, self.frame.size.height) delegate:self placeholderImage:[UIImage imageNamed:@"placeholder"]];
     // 自定义分页控件小圆标颜色
-    cycleScrollView.currentPageDotColor = [UIColor whiteColor];
-    // 设置轮播器图片
-    cycleScrollView.imageURLStringsGroup = imagesURLStrings;
+    _kView.currentPageDotColor = [UIColor whiteColor];
     // 自定义轮播时间间隔
-    cycleScrollView.autoScrollTimeInterval = 3.5;
+    _kView.autoScrollTimeInterval = 3.5;
     // 设置分页控制器
-    cycleScrollView.pageControlAliment = SDCycleScrollViewPageContolAlimentCenter;
-    [self addSubview:cycleScrollView];
+    _kView.pageControlAliment = SDCycleScrollViewPageContolAlimentCenter;
+    [self addSubview:_kView];
 
+}
+
+- (void)setDataArr:(NSArray *)dataArr {
+    _dataArr = dataArr;
+    _kView.imageURLStringsGroup = dataArr;
 }
 
 - (void)setDataSource:(NSDictionary *)dataSource {

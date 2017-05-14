@@ -29,14 +29,25 @@
     return self;
 }
 - (void)initView {
+    NSArray *imagesURLStrings = @[@"http://nos.netease.com/edu-image/C5C39772ECC196D005F6EEACF98D4C9D.jpg?imageView&thumbnail=1205y490&quality=100",
+                                  @"http://nos.netease.com/edu-image/64E75B1A8458347BA49D4A77BDEA130C.jpg?imageView&thumbnail=1205y490&quality=100",
+                                  @"http://nos.netease.com/edu-image/BFABA934ABB3A4030DF95E87DEE4F167.jpg?imageView&thumbnail=1205y490&quality=100",
+                                  @"http://nos.netease.com/edu-image/EA12D3DC06397D7FAE882FA7521C33DA.png?imageView&thumbnail=1205y490&quality=100",
+                                  @"http://nos.netease.com/edu-image/05E35FD224C59CBE03120BFC0F8C1FA9.jpg?imageView&thumbnail=1205y490&quality=100"
+                                  ];
+
+    
     _newsDataArr = [@[] mutableCopy];
     self.backgroundColor = [UIColor whiteColor];
     self.frame = CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT-48);
     self.delegate = self;
     self.dataSource = self;
     self.tableFooterView = [UIView new];
+    
     _bannerView = [[PJHomePageBannerView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, 160)];
     self.tableHeaderView = _bannerView;
+    _bannerView.dataArr =imagesURLStrings;
+    
     self.separatorStyle = UITableViewCellSeparatorStyleNone;
     [self registerClass:[PJCourceCell class] forCellReuseIdentifier:@"PJCourceCell"];
     [self registerClass:[PJNewsCell class] forCellReuseIdentifier:@"PJNewsCell"];

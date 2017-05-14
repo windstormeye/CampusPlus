@@ -64,10 +64,11 @@
 		2CEAA6891D8A40AA00AADD66 /* NewsView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2CEAA6881D8A40AA00AADD66 /* NewsView.m */; };
 		7441E23A1EC6EDAD00F4ED5A /* PJFindViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7441E2391EC6EDAD00F4ED5A /* PJFindViewController.m */; };
 		7441E23D1EC6F14D00F4ED5A /* PJDelegateTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7441E23C1EC6F14D00F4ED5A /* PJDelegateTableView.m */; };
-		7441E2401EC6F25D00F4ED5A /* PJSlideshowTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7441E23F1EC6F25D00F4ED5A /* PJSlideshowTableViewCell.m */; };
 		7441E2481EC6FF2700F4ED5A /* PJFindActivityCollectionView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7441E2471EC6FF2700F4ED5A /* PJFindActivityCollectionView.m */; };
 		7441E2501EC6FF5300F4ED5A /* PJFindAcitityCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7441E24E1EC6FF5300F4ED5A /* PJFindAcitityCollectionViewCell.m */; };
 		7441E2511EC6FF5300F4ED5A /* PJFindAcitityCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7441E24F1EC6FF5300F4ED5A /* PJFindAcitityCollectionViewCell.xib */; };
+		7441E2551EC892C800F4ED5A /* PJFindTableSectionView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7441E2541EC892C800F4ED5A /* PJFindTableSectionView.m */; };
+		7441E2571EC8969B00F4ED5A /* PJFindTableSectionView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7441E2561EC8969B00F4ED5A /* PJFindTableSectionView.xib */; };
 		7470790B1EBC606A00F40558 /* UIViewController+Extension.m in Sources */ = {isa = PBXBuildFile; fileRef = 7470790A1EBC606A00F40558 /* UIViewController+Extension.m */; };
 		747079111EBC60D000F40558 /* PJUIImage+Extension.m in Sources */ = {isa = PBXBuildFile; fileRef = 747079101EBC60D000F40558 /* PJUIImage+Extension.m */; };
 		747079EF1EBC610500F40558 /* PJHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 747079EE1EBC610500F40558 /* PJHUD.m */; };
@@ -243,13 +244,14 @@
 		7441E2391EC6EDAD00F4ED5A /* PJFindViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PJFindViewController.m; sourceTree = "<group>"; };
 		7441E23B1EC6F14D00F4ED5A /* PJDelegateTableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PJDelegateTableView.h; sourceTree = "<group>"; };
 		7441E23C1EC6F14D00F4ED5A /* PJDelegateTableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PJDelegateTableView.m; sourceTree = "<group>"; };
-		7441E23E1EC6F25D00F4ED5A /* PJSlideshowTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PJSlideshowTableViewCell.h; sourceTree = "<group>"; };
-		7441E23F1EC6F25D00F4ED5A /* PJSlideshowTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PJSlideshowTableViewCell.m; sourceTree = "<group>"; };
 		7441E2461EC6FF2700F4ED5A /* PJFindActivityCollectionView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PJFindActivityCollectionView.h; sourceTree = "<group>"; };
 		7441E2471EC6FF2700F4ED5A /* PJFindActivityCollectionView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PJFindActivityCollectionView.m; sourceTree = "<group>"; };
 		7441E24D1EC6FF5300F4ED5A /* PJFindAcitityCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PJFindAcitityCollectionViewCell.h; sourceTree = "<group>"; };
 		7441E24E1EC6FF5300F4ED5A /* PJFindAcitityCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PJFindAcitityCollectionViewCell.m; sourceTree = "<group>"; };
 		7441E24F1EC6FF5300F4ED5A /* PJFindAcitityCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PJFindAcitityCollectionViewCell.xib; sourceTree = "<group>"; };
+		7441E2531EC892C800F4ED5A /* PJFindTableSectionView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PJFindTableSectionView.h; sourceTree = "<group>"; };
+		7441E2541EC892C800F4ED5A /* PJFindTableSectionView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PJFindTableSectionView.m; sourceTree = "<group>"; };
+		7441E2561EC8969B00F4ED5A /* PJFindTableSectionView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PJFindTableSectionView.xib; sourceTree = "<group>"; };
 		747079091EBC606A00F40558 /* UIViewController+Extension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIViewController+Extension.h"; sourceTree = "<group>"; };
 		7470790A1EBC606A00F40558 /* UIViewController+Extension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+Extension.m"; sourceTree = "<group>"; };
 		7470790F1EBC60D000F40558 /* PJUIImage+Extension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "PJUIImage+Extension.h"; sourceTree = "<group>"; };
@@ -732,7 +734,6 @@
 			isa = PBXGroup;
 			children = (
 				7441E2451EC6FF0500F4ED5A /* collectionView */,
-				7441E2441EC6FEAB00F4ED5A /* 发现轮播图 */,
 				7441E2431EC6FEA000F4ED5A /* tableView */,
 			);
 			name = V;
@@ -750,19 +751,11 @@
 		7441E2431EC6FEA000F4ED5A /* tableView */ = {
 			isa = PBXGroup;
 			children = (
+				7441E2521EC8929F00F4ED5A /* sectionView */,
 				7441E23B1EC6F14D00F4ED5A /* PJDelegateTableView.h */,
 				7441E23C1EC6F14D00F4ED5A /* PJDelegateTableView.m */,
 			);
 			name = tableView;
-			sourceTree = "<group>";
-		};
-		7441E2441EC6FEAB00F4ED5A /* 发现轮播图 */ = {
-			isa = PBXGroup;
-			children = (
-				7441E23E1EC6F25D00F4ED5A /* PJSlideshowTableViewCell.h */,
-				7441E23F1EC6F25D00F4ED5A /* PJSlideshowTableViewCell.m */,
-			);
-			name = "发现轮播图";
 			sourceTree = "<group>";
 		};
 		7441E2451EC6FF0500F4ED5A /* collectionView */ = {
@@ -783,6 +776,16 @@
 				7441E24F1EC6FF5300F4ED5A /* PJFindAcitityCollectionViewCell.xib */,
 			);
 			name = cell;
+			sourceTree = "<group>";
+		};
+		7441E2521EC8929F00F4ED5A /* sectionView */ = {
+			isa = PBXGroup;
+			children = (
+				7441E2531EC892C800F4ED5A /* PJFindTableSectionView.h */,
+				7441E2541EC892C800F4ED5A /* PJFindTableSectionView.m */,
+				7441E2561EC8969B00F4ED5A /* PJFindTableSectionView.xib */,
+			);
+			name = sectionView;
 			sourceTree = "<group>";
 		};
 		747079F01EBC610800F40558 /* PJHUD */ = {
@@ -1091,6 +1094,7 @@
 				2C3C65741DC8D76900C7A5FB /* AgentView.xib in Resources */,
 				74707A311EC18EB200F40558 /* PJHomePageSectionView.xib in Resources */,
 				2C7A8AFF1D87E19900681CB4 /* Main.storyboard in Resources */,
+				7441E2571EC8969B00F4ED5A /* PJFindTableSectionView.xib in Resources */,
 				747079F71EBC689D00F40558 /* PJUserHead.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1171,7 +1175,6 @@
 				2C946F741DCDC7DF00C14903 /* MyAllWrongBookDetailTableViewController.m in Sources */,
 				2C3C65581DC641CD00C7A5FB /* MyActivitiesViewController.m in Sources */,
 				2C7A8AFC1D87E19900681CB4 /* ViewController.m in Sources */,
-				7441E2401EC6F25D00F4ED5A /* PJSlideshowTableViewCell.m in Sources */,
 				2CA446C91EBC263000A0FCAF /* constant.mm in Sources */,
 				2C225BDA1DB884500072F970 /* demandView.m in Sources */,
 				747079111EBC60D000F40558 /* PJUIImage+Extension.m in Sources */,
@@ -1202,6 +1205,7 @@
 				747079F31EBC61DD00F40558 /* PJUserViewController.m in Sources */,
 				2C2049141DA1F2E400FD6BC0 /* AboutUsViewController.m in Sources */,
 				2C3C65721DC8D75200C7A5FB /* AgentView.m in Sources */,
+				7441E2551EC892C800F4ED5A /* PJFindTableSectionView.m in Sources */,
 				2C20490E1DA1F27D00FD6BC0 /* MyAllWrongBookViewController.m in Sources */,
 				74707A3D1EC19DE400F40558 /* PJCourceCell.m in Sources */,
 				7441E23A1EC6EDAD00F4ED5A /* PJFindViewController.m in Sources */,

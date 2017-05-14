@@ -7,11 +7,13 @@
 //
 
 #import "PJDelegateTableView.h"
-#import "PJSlideshowTableViewCell.h"
 #import "PJHomePageSectionView.h"
+#import "PJHomePageBannerView.h"
+#import "PJFindTableSectionView.h"
 
 @implementation PJDelegateTableView
 {
+    PJHomePageBannerView *_bannerView;
 }
 
 - (id)init {
@@ -26,16 +28,23 @@
     return self;
 }
 
+- (void)setBannerArr:(NSArray *)bannerArr {
+    _bannerView.dataArr = bannerArr;
+    [self reloadData];
+}
+
 - (void)initView {
     self.backgroundColor = [UIColor whiteColor];
     self.delegate = self;
     self.dataSource = self;
     self.tableFooterView = [UIView new];
-    [self registerClass:[PJSlideshowTableViewCell class] forCellReuseIdentifier:@"PJSlideshowTableViewCell"];
+    
+    _bannerView = [[PJHomePageBannerView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, 180)];
+    self.tableHeaderView = _bannerView;
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-    return 2;
+    return 1;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
@@ -43,23 +52,12 @@
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-    if (indexPath.section == 0) {
-        return 170;
-    } else {
-        return 100;
-    }
+    return 50;
 }
 
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {
-    PJHomePageSectionView *view = [PJHomePageSectionView new];
-    if (section == 0) {
-        return nil;
-    }
-    if (section == 1) {
-        view.showImgView.image = [UIImage imageNamed:@"fire_balloon"];
-        view.showTitleLabel.text = @"high翻全场";
-        view.showTitleLabel.textColor = RGB(119, 119, 119);
-    }
+    PJFindTableSectionView *view = [PJFindTableSectionView new];
+    view = [[NSBundle mainBundle] loadNibNamed:@"PJFindTableSectionView" owner:self options:nil].firstObject;
     return view;
 }
 
@@ -68,23 +66,13 @@
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {
-    if (section == 0) {
-        return 0;
-    } else {
-        return 50;
-    }
+    return 50;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    if (indexPath.section == 0) {
-        PJSlideshowTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"PJSlideshowTableViewCell" forIndexPath:indexPath];
-        cell.dataSource = @{@"1":@"1"};
-        return cell;
-    } else {
-        UITableViewCell *cell = [UITableViewCell new];
-        cell.backgroundColor = [UIColor redColor];
-        return cell;
-    }
+    UITableViewCell *cell = [UITableViewCell new];
+    cell.backgroundColor = [UIColor redColor];
+    return cell;
 }
 
 @end

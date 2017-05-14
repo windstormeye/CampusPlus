@@ -11,5 +11,6 @@
 
 @interface PJHomePageBannerView : UIView <SDCycleScrollViewDelegate>
 
+@property (nonatomic, strong) NSArray *dataArr;
 @property (nonatomic, strong) NSDictionary *dataSource;
 @end

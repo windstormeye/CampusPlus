@@ -10,4 +10,6 @@
 
 @interface PJDelegateTableView : UITableView <UITableViewDelegate, UITableViewDataSource>
 
+
+@property (nonatomic, strong) NSArray *bannerArr;
 @end
