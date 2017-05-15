@@ -7,7 +7,7 @@
 //
 
 #import "PJFindViewController.h"
-#import "PJDelegateTableView.h"
+#import "PJFindActivityTableView.h"
 
 @interface PJFindViewController ()
 
@@ -15,7 +15,7 @@
 
 @implementation PJFindViewController
 {
-    PJDelegateTableView *_kTableView;
+    PJFindActivityTableView *_kTableView;
 }
 
 - (void)viewDidLoad {
@@ -33,10 +33,11 @@
     self.view.backgroundColor = [UIColor whiteColor];
     [self.leftBarButton setImage:nil forState:0];
     
-    _kTableView = [[PJDelegateTableView alloc] initWithFrame:CGRectMake(0, 64, SCREEN_WIDTH, SCREEN_HEIGHT - 64)];
+    _kTableView = [[PJFindActivityTableView alloc] initWithFrame:CGRectMake(0, 64, SCREEN_WIDTH, SCREEN_HEIGHT - 64)];
     [self.view addSubview:_kTableView];
     
     [self getBannerDataFromBmob];
+    [self getCollectionDataFromBmob];
 }
 
 - (void)getBannerDataFromBmob {
@@ -52,6 +53,24 @@
              [dataArr addObject:url];
          }
          _kTableView.bannerArr = dataArr;
+     }];
+}
+
+- (void)getCollectionDataFromBmob {
+    BmobQuery   *ActiviesBquery = [BmobQuery queryWithClassName:@"Activies"];
+    [ActiviesBquery findObjectsInBackgroundWithBlock:^(NSArray *array, NSError *error)
+     {
+         NSMutableArray *dataArr = [@[] mutableCopy];
+         for (BmobObject *obj in array)
+         {
+             NSString *s = [obj objectForKey:@"Poster_Url"];
+             NSString *urlStr = [s stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
+             NSArray *infoArr = [[NSArray alloc] initWithArray:[obj objectForKey:@"Activity_Info"]];
+             NSDictionary *dict = @{@"url":urlStr,
+                                    @"info":infoArr};
+             [dataArr addObject:dict];
+         }
+         _kTableView.tableDataArr = dataArr;
      }];
 }
 

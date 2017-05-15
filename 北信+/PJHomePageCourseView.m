@@ -22,7 +22,7 @@
     self.backgroundColor = [UIColor whiteColor];
     self.delegate = self;
     self.dataSource = self;
-    self.frame = CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT * 0.33);
+    self.frame = CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT * 0.25);
     [self registerNib:[UINib nibWithNibName:@"PJHomePageCourseCollectionViewCell" bundle:nil] forCellWithReuseIdentifier:@"PJHomePageCourseCollectionViewCell"];
 }
 
@@ -45,14 +45,14 @@
     return cell;
 }
 - (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath{
-    CGFloat width = SCREEN_WIDTH/4 - 15;
-    return CGSizeMake(width, width+10);
+    CGFloat width = SCREEN_WIDTH/4 - 30;
+    return CGSizeMake(width, width);
 }
 - (UIEdgeInsets)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout insetForSectionAtIndex:(NSInteger)section{
-    return UIEdgeInsetsMake(15, 15, 15, 15);    // 上、左、下、右
+    return UIEdgeInsetsMake(5, 15, 10, 15);    // 上、左、下、右
 }
 - (CGFloat)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout minimumLineSpacingForSectionAtIndex:(NSInteger)section{
-    return 5;
+    return 20;
 }
 
 

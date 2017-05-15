@@ -12,4 +12,5 @@
 @property (weak, nonatomic) IBOutlet UIImageView *showImgView;
 @property (weak, nonatomic) IBOutlet UILabel *showTitleLablel;
 
+@property (nonatomic, strong) NSDictionary *dataSource;
 @end

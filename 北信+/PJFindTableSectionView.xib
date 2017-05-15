@@ -12,31 +12,31 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="PJFindTableSectionView">
-            <rect key="frame" x="0.0" y="0.0" width="375" height="50"/>
+            <rect key="frame" x="0.0" y="0.0" width="375" height="30"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ping_pong" translatesAutoresizingMaskIntoConstraints="NO" id="aJ5-7j-3ia">
-                    <rect key="frame" x="345" y="15" width="20" height="20"/>
+                    <rect key="frame" x="350" y="7.5" width="15" height="15"/>
                     <constraints>
-                        <constraint firstAttribute="width" constant="20" id="XTk-LJ-JOd"/>
-                        <constraint firstAttribute="height" constant="20" id="yXK-9w-MaJ"/>
+                        <constraint firstAttribute="width" constant="15" id="XTk-LJ-JOd"/>
+                        <constraint firstAttribute="height" constant="15" id="yXK-9w-MaJ"/>
                     </constraints>
                 </imageView>
                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="baseball" translatesAutoresizingMaskIntoConstraints="NO" id="Ddf-4V-Sgw">
-                    <rect key="frame" x="177" y="15" width="20" height="20"/>
+                    <rect key="frame" x="179.5" y="7.5" width="15" height="15"/>
                     <constraints>
-                        <constraint firstAttribute="height" constant="20" id="Pq6-Z1-7t1"/>
-                        <constraint firstAttribute="width" constant="20" id="mMJ-PW-kRn"/>
+                        <constraint firstAttribute="height" constant="15" id="Pq6-Z1-7t1"/>
+                        <constraint firstAttribute="width" constant="15" id="mMJ-PW-kRn"/>
                     </constraints>
                 </imageView>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="nyM-XG-wBQ">
-                    <rect key="frame" x="30" y="0.0" width="147" height="50"/>
+                    <rect key="frame" x="25" y="0.0" width="154.5" height="30"/>
                     <subviews>
                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bowling_pins" translatesAutoresizingMaskIntoConstraints="NO" id="XNv-In-gYA">
-                            <rect key="frame" x="64" y="14.5" width="20" height="20"/>
+                            <rect key="frame" x="70.5" y="7" width="15" height="15"/>
                             <constraints>
-                                <constraint firstAttribute="width" constant="20" id="fkI-er-7PX"/>
-                                <constraint firstAttribute="height" constant="20" id="hi1-qX-mtT"/>
+                                <constraint firstAttribute="width" constant="15" id="fkI-er-7PX"/>
+                                <constraint firstAttribute="height" constant="15" id="hi1-qX-mtT"/>
                             </constraints>
                         </imageView>
                     </subviews>
@@ -47,13 +47,13 @@
                     </constraints>
                 </view>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Bg0-VD-rPU">
-                    <rect key="frame" x="197" y="0.0" width="148" height="50"/>
+                    <rect key="frame" x="194.5" y="0.0" width="155.5" height="30"/>
                     <subviews>
                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="football" translatesAutoresizingMaskIntoConstraints="NO" id="fW6-dt-tcu">
-                            <rect key="frame" x="64.5" y="15" width="20" height="20"/>
+                            <rect key="frame" x="71" y="7.5" width="15" height="15"/>
                             <constraints>
-                                <constraint firstAttribute="height" constant="20" id="2cX-wM-g9X"/>
-                                <constraint firstAttribute="width" constant="20" id="WJo-1d-J59"/>
+                                <constraint firstAttribute="height" constant="15" id="2cX-wM-g9X"/>
+                                <constraint firstAttribute="width" constant="15" id="WJo-1d-J59"/>
                             </constraints>
                         </imageView>
                     </subviews>
@@ -64,10 +64,10 @@
                     </constraints>
                 </view>
                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="basketball" translatesAutoresizingMaskIntoConstraints="NO" id="AVi-54-UjJ">
-                    <rect key="frame" x="10" y="15" width="20" height="20"/>
+                    <rect key="frame" x="10" y="7.5" width="15" height="15"/>
                     <constraints>
-                        <constraint firstAttribute="height" constant="20" id="G1Z-DF-izt"/>
-                        <constraint firstAttribute="width" constant="20" id="gha-E8-oue"/>
+                        <constraint firstAttribute="height" constant="15" id="G1Z-DF-izt"/>
+                        <constraint firstAttribute="width" constant="15" id="gha-E8-oue"/>
                     </constraints>
                 </imageView>
             </subviews>

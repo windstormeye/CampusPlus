@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface PJFindActivityCollectionView : UICollectionView
+@interface PJFindActivityCollectionView : UICollectionView <UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout>
 
+@property (nonatomic, strong) NSArray *dataArr;
 @end

@@ -6,12 +6,14 @@
 //  Copyright © 2017年 #incloud. All rights reserved.
 //
 
-#import "PJDelegateTableView.h"
+#import "PJFindActivityTableView.h"
 #import "PJHomePageSectionView.h"
 #import "PJHomePageBannerView.h"
 #import "PJFindTableSectionView.h"
+#import "PJFindActivityTableViewCell.h"
 
-@implementation PJDelegateTableView
+
+@implementation PJFindActivityTableView
 {
     PJHomePageBannerView *_bannerView;
 }
@@ -33,14 +35,21 @@
     [self reloadData];
 }
 
+- (void)setTableDataArr:(NSArray *)tableDataArr {
+    _tableDataArr = tableDataArr;
+    [self reloadData];
+}
+
 - (void)initView {
     self.backgroundColor = [UIColor whiteColor];
     self.delegate = self;
     self.dataSource = self;
     self.tableFooterView = [UIView new];
-    
-    _bannerView = [[PJHomePageBannerView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, 180)];
+    self.separatorStyle = UITableViewCellSeparatorStyleNone;
+    _bannerView = [[PJHomePageBannerView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, 160)];
     self.tableHeaderView = _bannerView;
+    
+    [self registerClass:[PJFindActivityTableViewCell class] forCellReuseIdentifier:@"PJFindActivityTableViewCell"];
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
@@ -52,7 +61,7 @@
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-    return 50;
+    return (_tableDataArr.count/2 + 1) * (SCREEN_WIDTH/2*0.7 + 15) + 20;
 }
 
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {
@@ -66,12 +75,12 @@
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {
-    return 50;
+    return 30;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    UITableViewCell *cell = [UITableViewCell new];
-    cell.backgroundColor = [UIColor redColor];
+    PJFindActivityTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"PJFindActivityTableViewCell" forIndexPath:indexPath];
+    cell.dataArr = _tableDataArr;
     return cell;
 }
 

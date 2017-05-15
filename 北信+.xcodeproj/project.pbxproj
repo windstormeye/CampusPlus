@@ -62,8 +62,9 @@
 		2CBA74E91E10154400335677 /* MBProgressHUD+NJ.m in Sources */ = {isa = PBXBuildFile; fileRef = 2CBA74E81E10154400335677 /* MBProgressHUD+NJ.m */; };
 		2CEAA6861D8A409700AADD66 /* News.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2CEAA6851D8A409700AADD66 /* News.xib */; };
 		2CEAA6891D8A40AA00AADD66 /* NewsView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2CEAA6881D8A40AA00AADD66 /* NewsView.m */; };
+		741D43FE1EC937AB00015EB8 /* PJFindActivityTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 741D43FD1EC937AB00015EB8 /* PJFindActivityTableViewCell.m */; };
 		7441E23A1EC6EDAD00F4ED5A /* PJFindViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7441E2391EC6EDAD00F4ED5A /* PJFindViewController.m */; };
-		7441E23D1EC6F14D00F4ED5A /* PJDelegateTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7441E23C1EC6F14D00F4ED5A /* PJDelegateTableView.m */; };
+		7441E23D1EC6F14D00F4ED5A /* PJFindActivityTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7441E23C1EC6F14D00F4ED5A /* PJFindActivityTableView.m */; };
 		7441E2481EC6FF2700F4ED5A /* PJFindActivityCollectionView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7441E2471EC6FF2700F4ED5A /* PJFindActivityCollectionView.m */; };
 		7441E2501EC6FF5300F4ED5A /* PJFindAcitityCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7441E24E1EC6FF5300F4ED5A /* PJFindAcitityCollectionViewCell.m */; };
 		7441E2511EC6FF5300F4ED5A /* PJFindAcitityCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7441E24F1EC6FF5300F4ED5A /* PJFindAcitityCollectionViewCell.xib */; };
@@ -240,10 +241,12 @@
 		2CEAA6881D8A40AA00AADD66 /* NewsView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewsView.m; sourceTree = "<group>"; };
 		2D389DB6BA7A2B61A1249394 /* libPods-北信+.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-北信+.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		6E2CDC8AE8EDD87CBE1B7EDB /* Pods-北信+.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-北信+.release.xcconfig"; path = "Pods/Target Support Files/Pods-北信+/Pods-北信+.release.xcconfig"; sourceTree = "<group>"; };
+		741D43FC1EC937AB00015EB8 /* PJFindActivityTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PJFindActivityTableViewCell.h; sourceTree = "<group>"; };
+		741D43FD1EC937AB00015EB8 /* PJFindActivityTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PJFindActivityTableViewCell.m; sourceTree = "<group>"; };
 		7441E2381EC6EDAD00F4ED5A /* PJFindViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PJFindViewController.h; sourceTree = "<group>"; };
 		7441E2391EC6EDAD00F4ED5A /* PJFindViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PJFindViewController.m; sourceTree = "<group>"; };
-		7441E23B1EC6F14D00F4ED5A /* PJDelegateTableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PJDelegateTableView.h; sourceTree = "<group>"; };
-		7441E23C1EC6F14D00F4ED5A /* PJDelegateTableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PJDelegateTableView.m; sourceTree = "<group>"; };
+		7441E23B1EC6F14D00F4ED5A /* PJFindActivityTableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PJFindActivityTableView.h; sourceTree = "<group>"; };
+		7441E23C1EC6F14D00F4ED5A /* PJFindActivityTableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PJFindActivityTableView.m; sourceTree = "<group>"; };
 		7441E2461EC6FF2700F4ED5A /* PJFindActivityCollectionView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PJFindActivityCollectionView.h; sourceTree = "<group>"; };
 		7441E2471EC6FF2700F4ED5A /* PJFindActivityCollectionView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PJFindActivityCollectionView.m; sourceTree = "<group>"; };
 		7441E24D1EC6FF5300F4ED5A /* PJFindAcitityCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PJFindAcitityCollectionViewCell.h; sourceTree = "<group>"; };
@@ -752,8 +755,8 @@
 			isa = PBXGroup;
 			children = (
 				7441E2521EC8929F00F4ED5A /* sectionView */,
-				7441E23B1EC6F14D00F4ED5A /* PJDelegateTableView.h */,
-				7441E23C1EC6F14D00F4ED5A /* PJDelegateTableView.m */,
+				7441E23B1EC6F14D00F4ED5A /* PJFindActivityTableView.h */,
+				7441E23C1EC6F14D00F4ED5A /* PJFindActivityTableView.m */,
 			);
 			name = tableView;
 			sourceTree = "<group>";
@@ -761,6 +764,8 @@
 		7441E2451EC6FF0500F4ED5A /* collectionView */ = {
 			isa = PBXGroup;
 			children = (
+				741D43FC1EC937AB00015EB8 /* PJFindActivityTableViewCell.h */,
+				741D43FD1EC937AB00015EB8 /* PJFindActivityTableViewCell.m */,
 				7441E2491EC6FF3000F4ED5A /* cell */,
 				7441E2461EC6FF2700F4ED5A /* PJFindActivityCollectionView.h */,
 				7441E2471EC6FF2700F4ED5A /* PJFindActivityCollectionView.m */,
@@ -1189,7 +1194,7 @@
 				2C8DBEA21DC2EC62001F6A4F /* AnswerChatListViewController.m in Sources */,
 				2C7A8AF61D87E19900681CB4 /* main.m in Sources */,
 				2C3C65771DC982A900C7A5FB /* HelpViewController.m in Sources */,
-				7441E23D1EC6F14D00F4ED5A /* PJDelegateTableView.m in Sources */,
+				7441E23D1EC6F14D00F4ED5A /* PJFindActivityTableView.m in Sources */,
 				2C946F7B1DCDD29200C14903 /* MydelegateTableViewController.m in Sources */,
 				74707A0A1EBF3D7900F40558 /* PJSettingViewController.m in Sources */,
 				74707A2D1EC18E9900F40558 /* PJHomePageSectionView.m in Sources */,
@@ -1203,6 +1208,7 @@
 				2C7A8B911D8950A300681CB4 /* News.m in Sources */,
 				747573561EC4842F009471CB /* PJClassTableViewCell.m in Sources */,
 				747079F31EBC61DD00F40558 /* PJUserViewController.m in Sources */,
+				741D43FE1EC937AB00015EB8 /* PJFindActivityTableViewCell.m in Sources */,
 				2C2049141DA1F2E400FD6BC0 /* AboutUsViewController.m in Sources */,
 				2C3C65721DC8D75200C7A5FB /* AgentView.m in Sources */,
 				7441E2551EC892C800F4ED5A /* PJFindTableSectionView.m in Sources */,

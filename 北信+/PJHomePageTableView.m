@@ -60,7 +60,7 @@
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     if (indexPath.section == 0) {
-        return SCREEN_HEIGHT * 0.33;
+        return SCREEN_HEIGHT * 0.25;
     } else {
         return (_newsDataArr.count/2 + 1) * (SCREEN_WIDTH/2*0.7 + 15);
     }

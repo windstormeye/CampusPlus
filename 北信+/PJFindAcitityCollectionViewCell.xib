@@ -22,24 +22,24 @@
                         <rect key="frame" x="0.0" y="0.0" width="150" height="100"/>
                     </imageView>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WwS-ja-Fbq">
-                        <rect key="frame" x="0.0" y="85" width="150" height="15"/>
+                        <rect key="frame" x="5" y="83" width="143" height="15"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="15" id="7KK-vY-kiE"/>
                         </constraints>
-                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
                 </subviews>
             </view>
             <constraints>
-                <constraint firstAttribute="bottom" secondItem="WwS-ja-Fbq" secondAttribute="bottom" id="7Sd-61-l84"/>
-                <constraint firstItem="WwS-ja-Fbq" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="BDy-vE-5Aj"/>
+                <constraint firstAttribute="bottom" secondItem="WwS-ja-Fbq" secondAttribute="bottom" constant="2" id="7Sd-61-l84"/>
+                <constraint firstItem="WwS-ja-Fbq" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="5" id="BDy-vE-5Aj"/>
                 <constraint firstItem="CM9-e1-TEI" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="Xuf-RF-Xhp"/>
                 <constraint firstAttribute="bottom" secondItem="CM9-e1-TEI" secondAttribute="bottom" id="Yih-ez-21Q"/>
                 <constraint firstAttribute="trailing" secondItem="CM9-e1-TEI" secondAttribute="trailing" id="iz8-CU-wyI"/>
                 <constraint firstItem="CM9-e1-TEI" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="rRp-lw-FSa"/>
-                <constraint firstAttribute="trailing" secondItem="WwS-ja-Fbq" secondAttribute="trailing" id="zEp-Jc-Afe"/>
+                <constraint firstAttribute="trailing" secondItem="WwS-ja-Fbq" secondAttribute="trailing" constant="2" id="zEp-Jc-Afe"/>
             </constraints>
             <connections>
                 <outlet property="showImgView" destination="CM9-e1-TEI" id="JLz-T6-gaT"/>

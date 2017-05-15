@@ -8,8 +8,9 @@
 
 #import <UIKit/UIKit.h>
 
-@interface PJDelegateTableView : UITableView <UITableViewDelegate, UITableViewDataSource>
+@interface PJFindActivityTableView : UITableView <UITableViewDelegate, UITableViewDataSource>
 
 
 @property (nonatomic, strong) NSArray *bannerArr;
+@property (nonatomic, strong) NSArray *tableDataArr;
 @end
