@@ -1,3 +1,5 @@
+[![Travis](https://img.shields.io/travis/rust-lang/rust.svg)]()
+
 MIAC三等奖
 
 CMAIT华北赛区优秀奖
