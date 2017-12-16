@@ -7,7 +7,6 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "News.h"
 #import <BmobSDK/Bmob.h>
 
 @interface NewsView : UIView

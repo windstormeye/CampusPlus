@@ -63,8 +63,7 @@
     [self.tableView.mj_header beginRefreshing];
 }
 
--(void)back
-{
+-(void)back {
     [self.navigationController popViewControllerAnimated:YES];
 }
 

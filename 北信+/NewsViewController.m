@@ -7,7 +7,6 @@
 //
 
 #import "NewsViewController.h"
-#import "News.h"
 
 @interface NewsViewController ()
 

@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="12118" systemVersion="16E195" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13196" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12086"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13173"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -29,23 +29,6 @@
                         <constraint firstAttribute="width" constant="15" id="mMJ-PW-kRn"/>
                     </constraints>
                 </imageView>
-                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="nyM-XG-wBQ">
-                    <rect key="frame" x="25" y="0.0" width="154.5" height="30"/>
-                    <subviews>
-                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bowling_pins" translatesAutoresizingMaskIntoConstraints="NO" id="XNv-In-gYA">
-                            <rect key="frame" x="70.5" y="7" width="15" height="15"/>
-                            <constraints>
-                                <constraint firstAttribute="width" constant="15" id="fkI-er-7PX"/>
-                                <constraint firstAttribute="height" constant="15" id="hi1-qX-mtT"/>
-                            </constraints>
-                        </imageView>
-                    </subviews>
-                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                    <constraints>
-                        <constraint firstItem="XNv-In-gYA" firstAttribute="centerX" secondItem="nyM-XG-wBQ" secondAttribute="centerX" id="JGM-dt-wxK"/>
-                        <constraint firstItem="XNv-In-gYA" firstAttribute="centerY" secondItem="nyM-XG-wBQ" secondAttribute="centerY" id="Jdn-L5-DTb"/>
-                    </constraints>
-                </view>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Bg0-VD-rPU">
                     <rect key="frame" x="194.5" y="0.0" width="155.5" height="30"/>
                     <subviews>
@@ -75,22 +58,37 @@
             <constraints>
                 <constraint firstItem="aJ5-7j-3ia" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="2dj-US-P2J"/>
                 <constraint firstItem="Bg0-VD-rPU" firstAttribute="leading" secondItem="Ddf-4V-Sgw" secondAttribute="trailing" id="5FJ-8z-gNZ"/>
-                <constraint firstAttribute="bottom" secondItem="nyM-XG-wBQ" secondAttribute="bottom" id="E4C-3M-cMB"/>
                 <constraint firstItem="AVi-54-UjJ" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="FGl-Gp-A8V"/>
-                <constraint firstItem="Ddf-4V-Sgw" firstAttribute="leading" secondItem="nyM-XG-wBQ" secondAttribute="trailing" id="MbC-bB-p4n"/>
                 <constraint firstAttribute="bottom" secondItem="Bg0-VD-rPU" secondAttribute="bottom" id="WFa-nv-RsB"/>
                 <constraint firstItem="Bg0-VD-rPU" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="bfG-5p-fUK"/>
-                <constraint firstItem="nyM-XG-wBQ" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="biZ-Dy-ZjB"/>
                 <constraint firstItem="Ddf-4V-Sgw" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="cTq-xI-7Dj"/>
                 <constraint firstItem="AVi-54-UjJ" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="10" id="ciS-lh-BGx"/>
                 <constraint firstItem="Ddf-4V-Sgw" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="fNH-PH-pcg"/>
-                <constraint firstItem="nyM-XG-wBQ" firstAttribute="leading" secondItem="AVi-54-UjJ" secondAttribute="trailing" id="t6d-Dv-KI0"/>
                 <constraint firstAttribute="trailing" secondItem="aJ5-7j-3ia" secondAttribute="trailing" constant="10" id="uH5-Vm-2Ix"/>
                 <constraint firstItem="aJ5-7j-3ia" firstAttribute="leading" secondItem="Bg0-VD-rPU" secondAttribute="trailing" id="v5a-3Q-YVN"/>
             </constraints>
             <nil key="simulatedStatusBarMetrics"/>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <point key="canvasLocation" x="34.5" y="54"/>
+        </view>
+        <view contentMode="scaleToFill" id="nyM-XG-wBQ">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <subviews>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bowling_pins" translatesAutoresizingMaskIntoConstraints="NO" id="XNv-In-gYA">
+                    <rect key="frame" x="180" y="326" width="15" height="15"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="15" id="fkI-er-7PX"/>
+                        <constraint firstAttribute="height" constant="15" id="hi1-qX-mtT"/>
+                    </constraints>
+                </imageView>
+            </subviews>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+            <constraints>
+                <constraint firstItem="XNv-In-gYA" firstAttribute="centerX" secondItem="nyM-XG-wBQ" secondAttribute="centerX" id="JGM-dt-wxK"/>
+                <constraint firstItem="XNv-In-gYA" firstAttribute="centerY" secondItem="nyM-XG-wBQ" secondAttribute="centerY" id="Jdn-L5-DTb"/>
+            </constraints>
+            <point key="canvasLocation" x="487" y="-113"/>
         </view>
     </objects>
     <resources>

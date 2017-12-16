@@ -1,8 +1,10 @@
-MIAC三等奖
+MIAC 全国三等奖
 
-CMAIT华北赛区优秀奖
+CMAIT 华北赛区优秀奖
 
-国家级大创项目
+2017 BISTU 国家级大创项目
+
+首届中国iOS应用开发大赛 全国三等奖
 
 详情见：  
 [从大学+洞见iOS开发（一）](http://www.pjhubs.com/?p=285)  

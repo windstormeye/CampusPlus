@@ -9,7 +9,7 @@
 #import "OnCampusViewController.h"
 #import "SDCycleScrollView.h"
 #include "NewsViewController.h"
-#include "HomePageViewController.h"
+
 #import <BmobSDK/Bmob.h>
 #import "NewsView.h"
 
